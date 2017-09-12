@@ -1,19 +1,19 @@
 PODS:
-  - Alamofire (4.5.0)
-  - Firebase (4.1.0):
-    - Firebase/Core (= 4.1.0)
-  - Firebase/Core (4.1.0):
+  - Alamofire (4.5.1)
+  - Firebase (4.1.1):
+    - Firebase/Core (= 4.1.1)
+  - Firebase/Core (4.1.1):
     - FirebaseAnalytics (= 4.0.3)
-    - FirebaseCore (= 4.0.5)
+    - FirebaseCore (= 4.0.6)
   - FirebaseAnalytics (4.0.3):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseCore (4.0.5):
+  - FirebaseCore (4.0.6):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
-  - FirebaseInstanceID (2.0.1):
+  - FirebaseInstanceID (2.0.2):
     - FirebaseCore (~> 4.0)
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
@@ -23,38 +23,50 @@ PODS:
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - ObjectMapper (2.2.8)
+  - ObjectMapper (2.2.7)
   - Realm (2.10.0):
     - Realm/Headers (= 2.10.0)
   - Realm/Headers (2.10.0)
   - RealmSwift (2.10.0):
     - Realm (= 2.10.0)
-  - RxCocoa (3.6.1):
-    - RxSwift (~> 3.6)
-  - RxSwift (3.6.1)
+  - RxSwift (4.0.0-alpha.1)
 
 DEPENDENCIES:
   - Alamofire
   - Firebase
-  - ObjectMapper
+  - ObjectMapper (from `https://github.com/Hearst-DD/ObjectMapper.git`, branch `swift-4`)
   - RealmSwift
-  - RxCocoa
-  - RxSwift
+  - RxSwift (from `https://github.com/ReactiveX/RxSwift.git`, branch `swift4.0`)
+
+EXTERNAL SOURCES:
+  ObjectMapper:
+    :branch: swift-4
+    :git: https://github.com/Hearst-DD/ObjectMapper.git
+  RxSwift:
+    :branch: swift4.0
+    :git: https://github.com/ReactiveX/RxSwift.git
+
+CHECKOUT OPTIONS:
+  ObjectMapper:
+    :commit: 57459cfbff5097ab29c5b1dadac3320dea7f3865
+    :git: https://github.com/Hearst-DD/ObjectMapper.git
+  RxSwift:
+    :commit: c79b00f66e6c976c52ddc6654e3f0a3b6fa3b260
+    :git: https://github.com/ReactiveX/RxSwift.git
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  Firebase: ebebf41db7f10e0c7668b6eaaa857fbe599aa478
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Firebase: 052c0de688fc87b414996eea13e223dd9fee3fa2
   FirebaseAnalytics: 76f754d37ca5b04f36856729b6af3ca0152d1069
-  FirebaseCore: 7d876ea97a830cbe62ba7fbbe7670c833a324ba0
-  FirebaseInstanceID: 0500e3cb54a1a4e01a8cffcc09323b8bb8fc7e1e
+  FirebaseCore: 28def3c643989c97ea5a69ea5000f5fa9902b9fd
+  FirebaseInstanceID: c4c7fca62c7b7330caee5da04f19a37ea37bb1c1
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  ObjectMapper: 3d571bb5af471c779e1160828cd9ad5c4ef90958
+  ObjectMapper: d1403cdc39bfeab113616d1c2ce2083fa3f32cbb
   Realm: 98b3a25643cf6b3e07d2b99fb43fe0eb9c801dec
   RealmSwift: 34073ad3a31232bbaf7c0db898c037940284cba2
-  RxCocoa: 84a08739ab186248c7f31ce4ee92d6f8a947d690
-  RxSwift: f9de85ea20cd2f7716ee5409fc13523dc638e4e4
+  RxSwift: d313a43a0109708ada75e1ce99bf7c36d4180ad8
 
-PODFILE CHECKSUM: 3712368d93cd4e615778f846f9260585f5da95e9
+PODFILE CHECKSUM: 1866f69ad0e3159ac8ced73e4793cd2136ad75cc
 
 COCOAPODS: 1.2.0

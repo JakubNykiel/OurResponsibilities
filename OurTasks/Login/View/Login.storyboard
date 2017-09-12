@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13165.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="gtp-05-6g5">
+            <objects>
+                <viewController storyboardIdentifier="loginViewController" id="ztl-aY-1dg" customClass="LoginViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HO3-FQ-0uE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY6-IA-jn2">
+                                <rect key="frame" x="63.5" y="547" width="248" height="56"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="0.10025149830000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="Qwl-5w-N6F"/>
+                                    <constraint firstAttribute="height" constant="56" id="ayO-IR-5dw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Sing In">
+                                    <color key="titleColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duW-lE-m2y">
+                                <rect key="frame" x="63" y="367" width="248" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="aAM-Q4-ksV"/>
+                                    <constraint firstAttribute="height" constant="50" id="cwe-B6-yjo"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3w-SD-b8e">
+                                <rect key="frame" x="63" y="433" width="248" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="248" id="rdW-e8-ELB"/>
+                                    <constraint firstAttribute="height" constant="50" id="y2s-Ml-da9"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oak-7d-95d" firstAttribute="bottom" secondItem="hY6-IA-jn2" secondAttribute="bottom" constant="64" id="FAE-dC-osp"/>
+                            <constraint firstItem="hY6-IA-jn2" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="UjS-Ue-FKp"/>
+                            <constraint firstItem="Z3w-SD-b8e" firstAttribute="top" secondItem="duW-lE-m2y" secondAttribute="bottom" constant="16" id="agV-lC-ygH"/>
+                            <constraint firstItem="hY6-IA-jn2" firstAttribute="top" secondItem="Z3w-SD-b8e" secondAttribute="bottom" constant="64" id="bBi-2O-l82"/>
+                            <constraint firstItem="Z3w-SD-b8e" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="bvl-5r-GCj"/>
+                            <constraint firstItem="duW-lE-m2y" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="yIf-rF-eZj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oak-7d-95d"/>
+                    </view>
+                    <connections>
+                        <outlet property="bottomTextFieldsConstraint" destination="FAE-dC-osp" id="OL1-PI-Mgc"/>
+                        <outlet property="emailTextField" destination="duW-lE-m2y" id="5JM-mm-NnX"/>
+                        <outlet property="passwordTextField" destination="Z3w-SD-b8e" id="Ayd-qY-lUC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NGB-h1-F7B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="472.80000000000001" y="-82.3088455772114"/>
+        </scene>
+    </scenes>
+</document>
