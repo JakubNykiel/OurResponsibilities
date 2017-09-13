@@ -15,14 +15,17 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
 
+    let viewModel = RegisterViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTextFields()
+        self.hideKeyboardWhenTappedAround()
         self.containerDependOnKeyboardBottomConstrain = bottomConstraint
         self.watchForKeyboard()
     }
     @IBAction func registerUser(_ sender: Any) {
-        print("Registered")
+        self.viewModel.createUser(email: emailTextField.text, password: passwordTextField.text)
     }
     
     @IBAction func presentLoginView(_ sender: Any) {

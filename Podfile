@@ -9,6 +9,10 @@ target 'OurTasks' do
   pod 'Alamofire'
   pod 'ObjectMapper', :git => 'https://github.com/Hearst-DD/ObjectMapper.git', :branch => 'swift-4'
   pod 'Firebase'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
   pod 'RealmSwift'
   pod 'RxSwift', :git =>  'https://github.com/ReactiveX/RxSwift.git', :branch => 'swift4.0'
 

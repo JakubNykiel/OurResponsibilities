@@ -15,6 +15,7 @@
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
 		C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE63B1F68386400692B3D /* KeyboardObservers.swift */; };
 		C36BDFBD1F6934A8005D7650 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* User.swift */; };
+		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
 		C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A5F6211F66E0BC002A9B30 /* Main.storyboard */; };
 		C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6231F66E36B002A9B30 /* MainViewController.swift */; };
 		C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6251F66E76D002A9B30 /* StoryboardManager.swift */; };
@@ -23,6 +24,7 @@
 		C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */; };
 		C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */; };
 		C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC49501F66D629001E2586 /* ButtonBorder.swift */; };
+		C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,7 @@
 		C32FE63B1F68386400692B3D /* KeyboardObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservers.swift; sourceTree = "<group>"; };
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C3A5F6211F66E0BC002A9B30 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C3A5F6231F66E36B002A9B30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C3A5F6251F66E76D002A9B30 /* StoryboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardManager.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		C3A5F62A1F66EA20002A9B30 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -299,6 +303,7 @@
 				C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
+				C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +366,7 @@
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
+				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
