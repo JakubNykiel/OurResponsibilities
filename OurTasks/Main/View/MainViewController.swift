@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func registerAction(_ sender: Any) {
-        
+        let registerVC = StoryboardManager.registerViewController()
+        self.present(registerVC, animated: true, completion: nil)
     }
 }

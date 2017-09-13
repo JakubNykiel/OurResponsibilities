@@ -11,6 +11,9 @@
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
 		C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C301FF251F66C7070045641A /* LaunchScreen.storyboard */; };
+		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
+		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
+		C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE63B1F68386400692B3D /* KeyboardObservers.swift */; };
 		C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A5F6211F66E0BC002A9B30 /* Main.storyboard */; };
 		C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6231F66E36B002A9B30 /* MainViewController.swift */; };
 		C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6251F66E76D002A9B30 /* StoryboardManager.swift */; };
@@ -29,6 +32,9 @@
 		C301FF231F66C7070045641A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C301FF261F66C7070045641A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C301FF281F66C7070045641A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
+		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		C32FE63B1F68386400692B3D /* KeyboardObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservers.swift; sourceTree = "<group>"; };
 		C3A5F6211F66E0BC002A9B30 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C3A5F6231F66E36B002A9B30 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C3A5F6251F66E76D002A9B30 /* StoryboardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardManager.swift; sourceTree = "<group>"; };
@@ -122,6 +128,8 @@
 		C3A5F6291F66EA20002A9B30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C32FE6351F68192800692B3D /* Register.storyboard */,
+				C32FE6371F6819A600692B3D /* RegisterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,6 +214,7 @@
 				C3AC49501F66D629001E2586 /* ButtonBorder.swift */,
 				C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */,
 				C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */,
+				C32FE63B1F68386400692B3D /* KeyboardObservers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,6 +285,7 @@
 				C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */,
 				C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
+				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +347,10 @@
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
+				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
+				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
 				C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */,
 			);
