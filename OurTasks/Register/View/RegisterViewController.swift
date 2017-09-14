@@ -25,7 +25,7 @@ class RegisterViewController: UIViewController {
         self.watchForKeyboard()
     }
     @IBAction func registerUser(_ sender: Any) {
-        self.viewModel.createUser(email: emailTextField.text, password: passwordTextField.text)
+        self.viewModel.createUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, username: self.usernameTextField.text!)
     }
     
     @IBAction func presentLoginView(_ sender: Any) {

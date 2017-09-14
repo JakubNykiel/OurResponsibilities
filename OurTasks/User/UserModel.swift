@@ -9,12 +9,13 @@
 import Foundation
 import ObjectMapper
 
-class User: Mappable {
+class UserModel: Mappable {
     
     var email: String!
     var username: String!
     var groups: [String]!
     var invites: [String]!
+    var uid: String!
     
     init() {
         

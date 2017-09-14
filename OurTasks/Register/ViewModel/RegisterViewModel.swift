@@ -11,16 +11,20 @@ import Firebase
 
 class RegisterViewModel {
     
-    func createUser(email: String?, password: String?) {
-        guard let email = email, let password = password else { return }
+    let currentUser = UserModel()
+    var ref: DatabaseReference!
+    
+    func createUser(email: String, password: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
                 print("Error with create user: \(error)")
             }
             if let user = user {
-                print(user)
+                self.currentUser.email = email
+                self.currentUser.username = username
+                self.currentUser.uid = user.uid
+                FirebaseManager.sharedInstance.saveUser(user: self.currentUser)
             }
         }
     }
-    
 }
