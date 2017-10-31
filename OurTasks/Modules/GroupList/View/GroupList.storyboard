@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="78t-7n-6Oh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Group List View Controller-->
+        <scene sceneID="tCO-D3-MrK">
+            <objects>
+                <viewController id="78t-7n-6Oh" customClass="GroupListViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MRd-9E-Udr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0z-hR-kSC">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Your Groups" id="5sl-DN-O8u">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0RM-Ue-s7N"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L5e-sC-Cc2">
+                                <rect key="frame" x="0.0" y="103" width="375" height="564"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jiR-Nb-kZX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <segments>
+                                    <segment title="Your"/>
+                                    <segment title="Invites(3)"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="height" secondItem="PFl-GD-LRZ" secondAttribute="height" multiplier="0.06" id="4aY-Ul-tBZ"/>
+                            <constraint firstItem="L5e-sC-Cc2" firstAttribute="bottom" secondItem="PFl-GD-LRZ" secondAttribute="bottom" id="CT1-4G-6v4"/>
+                            <constraint firstItem="PFl-GD-LRZ" firstAttribute="trailing" secondItem="q0z-hR-kSC" secondAttribute="trailing" id="Dmz-RA-vpK"/>
+                            <constraint firstItem="L5e-sC-Cc2" firstAttribute="trailing" secondItem="PFl-GD-LRZ" secondAttribute="trailing" id="EBe-pq-q1f"/>
+                            <constraint firstItem="L5e-sC-Cc2" firstAttribute="top" secondItem="jiR-Nb-kZX" secondAttribute="bottom" id="F5S-QN-Wdc"/>
+                            <constraint firstItem="q0z-hR-kSC" firstAttribute="top" secondItem="PFl-GD-LRZ" secondAttribute="top" id="OMu-0Z-sCV"/>
+                            <constraint firstItem="L5e-sC-Cc2" firstAttribute="leading" secondItem="PFl-GD-LRZ" secondAttribute="leading" id="Ssw-bG-mOn"/>
+                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="top" secondItem="q0z-hR-kSC" secondAttribute="bottom" id="Zdf-hz-q6x"/>
+                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="leading" secondItem="PFl-GD-LRZ" secondAttribute="leading" id="k6b-60-3Ex"/>
+                            <constraint firstItem="q0z-hR-kSC" firstAttribute="leading" secondItem="MRd-9E-Udr" secondAttribute="leading" id="yDp-lY-UwZ"/>
+                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="trailing" secondItem="PFl-GD-LRZ" secondAttribute="trailing" id="ysR-6A-eq8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="PFl-GD-LRZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="18e-qZ-f4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151.19999999999999" y="235.23238380809596"/>
+        </scene>
+    </scenes>
+</document>

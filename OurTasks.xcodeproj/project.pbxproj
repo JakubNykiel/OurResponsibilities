@@ -25,6 +25,8 @@
 		C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */; };
 		C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */; };
 		C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC49501F66D629001E2586 /* ButtonBorder.swift */; };
+		C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C11DB61F83B1590074D9AC /* GroupList.storyboard */; };
+		C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */; };
 		C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C3AC49501F66D629001E2586 /* ButtonBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
+		C3C11DB61F83B1590074D9AC /* GroupList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList.storyboard; sourceTree = "<group>"; };
+		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		F434F277D5B930F5EFEC7F00 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,16 +108,13 @@
 		C301FF1B1F66C7070045641A /* OurTasks */ = {
 			isa = PBXGroup;
 			children = (
-				C36BDFBB1F69349E005D7650 /* User */,
-				C3A5F62B1F66EA20002A9B30 /* Login */,
-				C3A5F6271F66EA20002A9B30 /* Register */,
-				C3AC494A1F66D0C4001E2586 /* Main */,
+				C3D5519C1FA61A9800D7F081 /* AppSettings */,
+				C3AC494F1F66D419001E2586 /* Extensions */,
+				C3D5519D1FA61A9F00D7F081 /* Models */,
+				C3D5519B1FA61A8700D7F081 /* Modules */,
+				C3D5519E1FA61AB700D7F081 /* Reusable */,
+				C3D5519F1FA61ABE00D7F081 /* SupportingFiles */,
 				C3AC494E1F66D419001E2586 /* Utilities */,
-				C301FF1C1F66C7070045641A /* AppDelegate.swift */,
-				C301FF231F66C7070045641A /* Assets.xcassets */,
-				C301FF251F66C7070045641A /* LaunchScreen.storyboard */,
-				C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */,
-				C301FF281F66C7070045641A /* Info.plist */,
 			);
 			path = OurTasks;
 			sourceTree = "<group>";
@@ -129,18 +130,10 @@
 		C3A5F6271F66EA20002A9B30 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				C3A5F6281F66EA20002A9B30 /* Model */,
 				C3A5F6291F66EA20002A9B30 /* View */,
-				C3A5F62A1F66EA20002A9B30 /* ViewModel */,
+				C3A5F62A1F66EA20002A9B30 /* Logic */,
 			);
 			path = Register;
-			sourceTree = "<group>";
-		};
-		C3A5F6281F66EA20002A9B30 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C3A5F6291F66EA20002A9B30 /* View */ = {
@@ -152,29 +145,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C3A5F62A1F66EA20002A9B30 /* ViewModel */ = {
+		C3A5F62A1F66EA20002A9B30 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
 				C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */,
 			);
-			path = ViewModel;
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		C3A5F62B1F66EA20002A9B30 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				C3A5F62C1F66EA20002A9B30 /* Model */,
 				C3A5F62D1F66EA20002A9B30 /* View */,
-				C3A5F62E1F66EA20002A9B30 /* ViewModel */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		C3A5F62C1F66EA20002A9B30 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		C3A5F62D1F66EA20002A9B30 /* View */ = {
@@ -186,18 +170,10 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C3A5F62E1F66EA20002A9B30 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C3AC494A1F66D0C4001E2586 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				C3AC494B1F66D0C4001E2586 /* View */,
-				C3AC494C1F66D0C4001E2586 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -211,17 +187,9 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		C3AC494C1F66D0C4001E2586 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		C3AC494E1F66D419001E2586 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				C3AC494F1F66D419001E2586 /* Extensions */,
 				C3A5F6251F66E76D002A9B30 /* StoryboardManager.swift */,
 				C32F96011F6A9A41003491E1 /* FirebaseManager.swift */,
 			);
@@ -231,12 +199,106 @@
 		C3AC494F1F66D419001E2586 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C3D551971FA6193C00D7F081 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C3C11DB21F83B1460074D9AC /* GroupList */ = {
+			isa = PBXGroup;
+			children = (
+				C3C11DB51F83B1460074D9AC /* View */,
+			);
+			path = GroupList;
+			sourceTree = "<group>";
+		};
+		C3C11DB51F83B1460074D9AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3C11DB61F83B1590074D9AC /* GroupList.storyboard */,
+				C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3D551971FA6193C00D7F081 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				C3D5519A1FA6196500D7F081 /* UIViewController */,
+				C3D551991FA6195800D7F081 /* UITextField */,
+				C3D551981FA6194B00D7F081 /* UIButton */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		C3D551981FA6194B00D7F081 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
 				C3AC49501F66D629001E2586 /* ButtonBorder.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
+		C3D551991FA6195800D7F081 /* UITextField */ = {
+			isa = PBXGroup;
+			children = (
 				C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */,
+			);
+			path = UITextField;
+			sourceTree = "<group>";
+		};
+		C3D5519A1FA6196500D7F081 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
 				C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */,
 				C32FE63B1F68386400692B3D /* KeyboardObservers.swift */,
 			);
-			path = Extensions;
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		C3D5519B1FA61A8700D7F081 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C3C11DB21F83B1460074D9AC /* GroupList */,
+				C3A5F62B1F66EA20002A9B30 /* Login */,
+				C3A5F6271F66EA20002A9B30 /* Register */,
+				C3AC494A1F66D0C4001E2586 /* Main */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C3D5519C1FA61A9800D7F081 /* AppSettings */ = {
+			isa = PBXGroup;
+			children = (
+				C301FF1C1F66C7070045641A /* AppDelegate.swift */,
+				C301FF251F66C7070045641A /* LaunchScreen.storyboard */,
+			);
+			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		C3D5519D1FA61A9F00D7F081 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C36BDFBB1F69349E005D7650 /* User */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C3D5519E1FA61AB700D7F081 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		C3D5519F1FA61ABE00D7F081 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */,
+				C301FF231F66C7070045641A /* Assets.xcassets */,
+				C301FF281F66C7070045641A /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +366,7 @@
 				C3A5F6301F66EA9C002A9B30 /* Login.storyboard in Resources */,
 				C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */,
 				C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */,
+				C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
 				C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */,
@@ -365,6 +428,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */,
 				C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
@@ -508,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6454359TU3;
-				INFOPLIST_FILE = OurTasks/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OurTasks/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nykiel.OurTasks;
@@ -525,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6454359TU3;
-				INFOPLIST_FILE = OurTasks/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/OurTasks/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nykiel.OurTasks;
