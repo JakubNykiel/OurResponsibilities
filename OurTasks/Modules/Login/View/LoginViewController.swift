@@ -37,6 +37,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInUser(_ sender: Any) {
+        let groupListVC = StoryboardManager.groupListViewController()
+        self.present(groupListVC, animated: true, completion: nil)
     }
     
     @IBAction func presentRegisterView(_ sender: Any) {

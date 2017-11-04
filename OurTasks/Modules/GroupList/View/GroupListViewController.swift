@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class GroupListViewController: UIViewController {
 
+    @IBOutlet weak var groupSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var groupListTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    @IBAction func addGroupView(_ sender: Any) {
+    
+    }
+    
+    @IBAction func changeGroupList(_ sender: Any) {
+        
     }
 }

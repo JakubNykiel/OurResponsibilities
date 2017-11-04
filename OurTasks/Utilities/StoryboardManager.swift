@@ -23,16 +23,19 @@ struct StoryboardManager {
     struct ViewControllerTypes {
         let login = LoginViewController.self
         let register = RegisterViewController.self
+        let afterLogin = GroupListViewController.self
     }
 
     enum StoryboardNames: String {
         case Login
         case Register
+        case AfterLogin
     }
 
     enum ViewControllerIdentifiers: String {
         case loginViewController
         case registerViewController
+        case groupListViewcontroller
     }
 
     static func loginViewController() -> LoginViewController {
@@ -43,5 +46,10 @@ struct StoryboardManager {
     static func registerViewController() -> RegisterViewController {
         let registerVC = self.viewController(ViewControllerTypes().register, withIdentifier: ViewControllerIdentifiers.registerViewController.rawValue, fromStoryboard: StoryboardNames.Register.rawValue)
         return registerVC
+    }
+    
+    static func groupListViewController() -> GroupListViewController {
+        let groupListVC = self.viewController(ViewControllerTypes().afterLogin, withIdentifier: ViewControllerIdentifiers.groupListViewcontroller.rawValue, fromStoryboard: StoryboardNames.AfterLogin.rawValue)
+        return groupListVC
     }
 }
