@@ -25,6 +25,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideKeyboardWhenTappedAround()
+        //TODO: remove mocks
+        self.mockLogin()
     }
     
     deinit {
@@ -37,8 +39,12 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInUser(_ sender: Any) {
-        let groupListVC = StoryboardManager.groupListViewController()
-        self.present(groupListVC, animated: true, completion: nil)
+//        let groupListVC = StoryboardManager.groupListViewController()
+        let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "loginNavigation")
+        self.present(mainViewController, animated: true, completion: nil)
+//        self.navigationController?.pushViewController(groupListVC, animated: true)
+//        self.present(groupListVC, animated: true, completion: nil)
     }
     
     @IBAction func presentRegisterView(_ sender: Any) {
@@ -46,4 +52,11 @@ class LoginViewController: UIViewController {
         self.present(registerVC, animated: true, completion: nil)
     }
     
+}
+// MARK: mocks [TO REMOVE]
+extension LoginViewController {
+    func mockLogin() {
+        self.emailTextField.text = "test@testfirebase.com"
+        self.passwordTextField.text = "01234567"
+    }
 }

@@ -16,10 +16,12 @@ class GroupListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @IBAction func addGroupView(_ sender: Any) {
-    
+        let addGroupVC = StoryboardManager.addGroupViewController()
+        self.present(addGroupVC, animated: true, completion: nil)
     }
     
     @IBAction func changeGroupList(_ sender: Any) {

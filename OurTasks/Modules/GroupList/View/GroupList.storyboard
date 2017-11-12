@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="78t-7n-6Oh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hXo-Kq-t9z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,32 +11,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Group List View Controller-->
+        <!--Groups-->
         <scene sceneID="tCO-D3-MrK">
             <objects>
-                <viewController id="78t-7n-6Oh" customClass="GroupListViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="groupListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="78t-7n-6Oh" customClass="GroupListViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MRd-9E-Udr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q0z-hR-kSC">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <items>
-                                    <navigationItem title="Your Groups" id="5sl-DN-O8u">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0RM-Ue-s7N">
-                                            <connections>
-                                                <action selector="addGroupView:" destination="78t-7n-6Oh" id="Yg2-Ag-Nq2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="L5e-sC-Cc2">
-                                <rect key="frame" x="0.0" y="103" width="375" height="564"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jiR-Nb-kZX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="37"/>
                                 <segments>
                                     <segment title="Your"/>
                                     <segment title="Invites(3)"/>
@@ -50,18 +38,22 @@
                         <constraints>
                             <constraint firstItem="jiR-Nb-kZX" firstAttribute="height" secondItem="PFl-GD-LRZ" secondAttribute="height" multiplier="0.06" id="4aY-Ul-tBZ"/>
                             <constraint firstItem="L5e-sC-Cc2" firstAttribute="bottom" secondItem="PFl-GD-LRZ" secondAttribute="bottom" id="CT1-4G-6v4"/>
-                            <constraint firstItem="PFl-GD-LRZ" firstAttribute="trailing" secondItem="q0z-hR-kSC" secondAttribute="trailing" id="Dmz-RA-vpK"/>
                             <constraint firstItem="L5e-sC-Cc2" firstAttribute="trailing" secondItem="PFl-GD-LRZ" secondAttribute="trailing" id="EBe-pq-q1f"/>
                             <constraint firstItem="L5e-sC-Cc2" firstAttribute="top" secondItem="jiR-Nb-kZX" secondAttribute="bottom" id="F5S-QN-Wdc"/>
-                            <constraint firstItem="q0z-hR-kSC" firstAttribute="top" secondItem="PFl-GD-LRZ" secondAttribute="top" id="OMu-0Z-sCV"/>
                             <constraint firstItem="L5e-sC-Cc2" firstAttribute="leading" secondItem="PFl-GD-LRZ" secondAttribute="leading" id="Ssw-bG-mOn"/>
-                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="top" secondItem="q0z-hR-kSC" secondAttribute="bottom" id="Zdf-hz-q6x"/>
+                            <constraint firstItem="jiR-Nb-kZX" firstAttribute="top" secondItem="PFl-GD-LRZ" secondAttribute="top" id="Vnh-f2-UqH"/>
                             <constraint firstItem="jiR-Nb-kZX" firstAttribute="leading" secondItem="PFl-GD-LRZ" secondAttribute="leading" id="k6b-60-3Ex"/>
-                            <constraint firstItem="q0z-hR-kSC" firstAttribute="leading" secondItem="MRd-9E-Udr" secondAttribute="leading" id="yDp-lY-UwZ"/>
                             <constraint firstItem="jiR-Nb-kZX" firstAttribute="trailing" secondItem="PFl-GD-LRZ" secondAttribute="trailing" id="ysR-6A-eq8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PFl-GD-LRZ"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Groups" id="5sl-DN-O8u">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="0RM-Ue-s7N">
+                            <connections>
+                                <action selector="addGroupView:" destination="78t-7n-6Oh" id="Yg2-Ag-Nq2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="groupListTableView" destination="L5e-sC-Cc2" id="YAw-no-rMB"/>
                         <outlet property="groupSegmentedControl" destination="jiR-Nb-kZX" id="NWt-sl-6jM"/>
@@ -69,7 +61,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="18e-qZ-f4l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-151.19999999999999" y="235.23238380809596"/>
+            <point key="canvasLocation" x="326" y="234"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CY3-We-0Qi">
+            <objects>
+                <navigationController storyboardIdentifier="loginNavigation" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hXo-Kq-t9z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7eD-gX-b34">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="78t-7n-6Oh" kind="relationship" relationship="rootViewController" id="lf7-1F-rn3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TS6-hK-9Of" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1001" y="235"/>
         </scene>
     </scenes>
 </document>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add Group View Controller-->
+        <scene sceneID="tgB-2B-OIl">
+            <objects>
+                <viewController storyboardIdentifier="addGroupViewController" id="K8S-JJ-y0v" customClass="AddGroupViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="83N-Um-znJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-6T-271">
+                                <rect key="frame" x="0.0" y="343.5" width="375" height="323.5"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-11-Q7r">
+                                        <rect key="frame" x="63" y="143.5" width="248" height="46.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="248" id="JML-hk-io9"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-5V-0th">
+                                        <rect key="frame" x="63" y="206" width="248" height="53.5"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="0.10025149830000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                        <state key="normal" title="Dodaj">
+                                            <color key="titleColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addGroup:" destination="K8S-JJ-y0v" eventType="touchUpInside" id="zm7-1q-bJu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podaj nazwę nowej grupy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGA-Ci-0WF">
+                                        <rect key="frame" x="63" y="81" width="248" height="46.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="b2K-11-Q7r" secondAttribute="trailing" constant="64" id="3Nv-Wa-M9l"/>
+                                    <constraint firstItem="b2K-11-Q7r" firstAttribute="top" secondItem="xGA-Ci-0WF" secondAttribute="bottom" constant="16" id="TtH-Q1-koO"/>
+                                    <constraint firstItem="xGA-Ci-0WF" firstAttribute="leading" secondItem="XBw-6T-271" secondAttribute="leading" constant="63" id="Xhy-S0-uhm"/>
+                                    <constraint firstItem="j4m-5V-0th" firstAttribute="top" secondItem="b2K-11-Q7r" secondAttribute="bottom" constant="16" id="Z3u-ij-wNq"/>
+                                    <constraint firstAttribute="bottom" secondItem="j4m-5V-0th" secondAttribute="bottom" constant="64" id="eox-no-xLY"/>
+                                    <constraint firstItem="j4m-5V-0th" firstAttribute="leading" secondItem="XBw-6T-271" secondAttribute="leading" constant="63" id="hRv-6d-vCc"/>
+                                    <constraint firstAttribute="trailing" secondItem="xGA-Ci-0WF" secondAttribute="trailing" constant="64" id="qn5-Ck-o9y"/>
+                                    <constraint firstAttribute="trailing" secondItem="j4m-5V-0th" secondAttribute="trailing" constant="64" id="u3s-wQ-jyr"/>
+                                    <constraint firstItem="b2K-11-Q7r" firstAttribute="leading" secondItem="XBw-6T-271" secondAttribute="leading" constant="63" id="yVB-BR-K6z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="XBw-6T-271" firstAttribute="leading" secondItem="haQ-ZM-JIL" secondAttribute="leading" id="84b-JT-S2F"/>
+                            <constraint firstItem="xGA-Ci-0WF" firstAttribute="height" secondItem="83N-Um-znJ" secondAttribute="height" multiplier="0.07" id="I5A-F9-XUL"/>
+                            <constraint firstItem="b2K-11-Q7r" firstAttribute="height" secondItem="83N-Um-znJ" secondAttribute="height" multiplier="0.07" id="JtA-UR-G2t"/>
+                            <constraint firstItem="XBw-6T-271" firstAttribute="trailing" secondItem="haQ-ZM-JIL" secondAttribute="trailing" id="Mz5-EN-Q6q"/>
+                            <constraint firstItem="XBw-6T-271" firstAttribute="height" secondItem="haQ-ZM-JIL" secondAttribute="height" multiplier="0.5" id="jzA-Cf-9fT"/>
+                            <constraint firstItem="j4m-5V-0th" firstAttribute="height" secondItem="83N-Um-znJ" secondAttribute="height" multiplier="0.08" id="kHa-kv-SX0"/>
+                            <constraint firstItem="XBw-6T-271" firstAttribute="bottom" secondItem="haQ-ZM-JIL" secondAttribute="bottom" id="xOp-at-hct"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="haQ-ZM-JIL"/>
+                    </view>
+                    <connections>
+                        <outlet property="groupNameTextField" destination="b2K-11-Q7r" id="k7E-bc-cwX"/>
+                        <outlet property="titleLabel" destination="xGA-Ci-0WF" id="WIq-AC-Axb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="epn-yR-kHf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="77.599999999999994" y="157.87106446776613"/>
+        </scene>
+    </scenes>
+</document>

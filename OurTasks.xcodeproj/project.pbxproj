@@ -28,6 +28,10 @@
 		C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C11DB61F83B1590074D9AC /* GroupList.storyboard */; };
 		C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */; };
 		C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */; };
+		C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */; };
+		C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */; };
+		C3D5B1FD1FB4758F00550564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3D5B1FC1FB4758F00550564 /* Localizable.strings */; };
+		C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5B2001FB4767200550564 /* Localize+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		C3AC49501F66D629001E2586 /* ButtonBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
 		C3C11DB61F83B1590074D9AC /* GroupList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList.storyboard; sourceTree = "<group>"; };
 		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
+		C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddGroup.storyboard; sourceTree = "<group>"; };
+		C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		C3D5B1FC1FB4758F00550564 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		C3D5B2001FB4767200550564 /* Localize+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+String.swift"; sourceTree = "<group>"; };
 		F434F277D5B930F5EFEC7F00 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -199,6 +207,7 @@
 		C3AC494F1F66D419001E2586 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C3D5B1FE1FB4762B00550564 /* Foundation */,
 				C3D551971FA6193C00D7F081 /* UIKit */,
 			);
 			path = Extensions;
@@ -207,6 +216,7 @@
 		C3C11DB21F83B1460074D9AC /* GroupList */ = {
 			isa = PBXGroup;
 			children = (
+				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
 				C3D3B1BE1FADD5FD00E04716 /* Logic */,
 				C3C11DB51F83B1460074D9AC /* View */,
 			);
@@ -227,6 +237,23 @@
 			children = (
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		C3D3B1BF1FADD70C00E04716 /* AddGroup */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3B1C01FADD72800E04716 /* View */,
+			);
+			path = AddGroup;
+			sourceTree = "<group>";
+		};
+		C3D3B1C01FADD72800E04716 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */,
+				C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C3D551971FA6193C00D7F081 /* UIKit */ = {
@@ -305,8 +332,25 @@
 				C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */,
 				C301FF231F66C7070045641A /* Assets.xcassets */,
 				C301FF281F66C7070045641A /* Info.plist */,
+				C3D5B1FC1FB4758F00550564 /* Localizable.strings */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		C3D5B1FE1FB4762B00550564 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				C3D5B1FF1FB4763C00550564 /* String */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		C3D5B1FF1FB4763C00550564 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				C3D5B2001FB4767200550564 /* Localize+String.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,9 +415,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */,
 				C3A5F6301F66EA9C002A9B30 /* Login.storyboard in Resources */,
 				C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */,
 				C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */,
+				C3D5B1FD1FB4758F00550564 /* Localizable.strings in Resources */,
 				C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
@@ -464,8 +510,10 @@
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
+				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
+				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
