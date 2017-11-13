@@ -14,6 +14,8 @@ class AddGroupViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var groupNameTextField: UITextField!
     
+    let viewModel: AddGroupViewModel = AddGroupViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -28,7 +30,7 @@ class AddGroupViewController: UIViewController {
     }
     
     @IBAction func addGroup(_ sender: Any) {
-        
+        self.viewModel.addGroupToDatabase()
     }
     
 }

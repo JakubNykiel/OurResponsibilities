@@ -11,6 +11,7 @@
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
 		C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C301FF251F66C7070045641A /* LaunchScreen.storyboard */; };
+		C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */; };
 		C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F96011F6A9A41003491E1 /* FirebaseManager.swift */; };
 		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
@@ -42,6 +43,7 @@
 		C301FF231F66C7070045641A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C301FF261F66C7070045641A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C301FF281F66C7070045641A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
 		C32F96011F6A9A41003491E1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,14 @@
 				C3AC494E1F66D419001E2586 /* Utilities */,
 			);
 			path = OurTasks;
+			sourceTree = "<group>";
+		};
+		C30826931FBA36A400876B56 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 		C36BDFBB1F69349E005D7650 /* User */ = {
@@ -242,6 +252,7 @@
 		C3D3B1BF1FADD70C00E04716 /* AddGroup */ = {
 			isa = PBXGroup;
 			children = (
+				C30826931FBA36A400876B56 /* Logic */,
 				C3D3B1C01FADD72800E04716 /* View */,
 			);
 			path = AddGroup;
@@ -508,6 +519,7 @@
 				C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
+				C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,

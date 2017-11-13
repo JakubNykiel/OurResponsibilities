@@ -27,8 +27,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBw-6T-271">
                                 <rect key="frame" x="0.0" y="343.5" width="375" height="323.5"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-11-Q7r">
-                                        <rect key="frame" x="63" y="143.5" width="248" height="46.5"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group name:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b2K-11-Q7r">
+                                        <rect key="frame" x="63" y="119.5" width="248" height="46.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="248" id="JML-hk-io9"/>
                                         </constraints>
@@ -59,7 +59,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Podaj nazwę nowej grupy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGA-Ci-0WF">
-                                        <rect key="frame" x="63" y="81" width="248" height="46.5"/>
+                                        <rect key="frame" x="63" y="57" width="248" height="46.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -70,7 +70,7 @@
                                     <constraint firstAttribute="trailing" secondItem="b2K-11-Q7r" secondAttribute="trailing" constant="64" id="3Nv-Wa-M9l"/>
                                     <constraint firstItem="b2K-11-Q7r" firstAttribute="top" secondItem="xGA-Ci-0WF" secondAttribute="bottom" constant="16" id="TtH-Q1-koO"/>
                                     <constraint firstItem="xGA-Ci-0WF" firstAttribute="leading" secondItem="XBw-6T-271" secondAttribute="leading" constant="63" id="Xhy-S0-uhm"/>
-                                    <constraint firstItem="j4m-5V-0th" firstAttribute="top" secondItem="b2K-11-Q7r" secondAttribute="bottom" constant="16" id="Z3u-ij-wNq"/>
+                                    <constraint firstItem="j4m-5V-0th" firstAttribute="top" secondItem="b2K-11-Q7r" secondAttribute="bottom" constant="40" id="Z3u-ij-wNq"/>
                                     <constraint firstAttribute="bottom" secondItem="j4m-5V-0th" secondAttribute="bottom" constant="64" id="eox-no-xLY"/>
                                     <constraint firstItem="j4m-5V-0th" firstAttribute="leading" secondItem="XBw-6T-271" secondAttribute="leading" constant="63" id="hRv-6d-vCc"/>
                                     <constraint firstAttribute="trailing" secondItem="xGA-Ci-0WF" secondAttribute="trailing" constant="64" id="qn5-Ck-o9y"/>
