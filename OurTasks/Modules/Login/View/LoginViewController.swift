@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         self.hideKeyboardWhenTappedAround()
         //TODO: remove mocks
-        self.mockLogin()
+        self.mockLoginData()
     }
     
     deinit {
@@ -39,12 +39,9 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signInUser(_ sender: Any) {
-//        let groupListVC = StoryboardManager.groupListViewController()
         let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
         let mainViewController = storyBoard.instantiateViewController(withIdentifier: "loginNavigation")
         self.present(mainViewController, animated: true, completion: nil)
-//        self.navigationController?.pushViewController(groupListVC, animated: true)
-//        self.present(groupListVC, animated: true, completion: nil)
     }
     
     @IBAction func presentRegisterView(_ sender: Any) {
@@ -55,7 +52,7 @@ class LoginViewController: UIViewController {
 }
 // MARK: mocks [TO REMOVE]
 extension LoginViewController {
-    func mockLogin() {
+    func mockLoginData() {
         self.emailTextField.text = "test@testfirebase.com"
         self.passwordTextField.text = "01234567"
     }

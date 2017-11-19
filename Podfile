@@ -15,5 +15,6 @@ target 'OurTasks' do
   pod 'Firebase/Storage'
   pod 'RealmSwift'
   pod 'RxSwift'
+  pod 'RxCocoa'
 
 end

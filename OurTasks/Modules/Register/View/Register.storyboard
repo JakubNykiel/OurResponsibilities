@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,10 +26,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U62-pL-Oey">
-                                <rect key="frame" x="63.5" y="505" width="248" height="56"/>
+                                <rect key="frame" x="65.5" y="505" width="244" height="56"/>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="0.1000642123" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="Tnw-ve-Zmw"/>
                                     <constraint firstAttribute="height" constant="56" id="cyS-oZ-DTr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -49,9 +49,8 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A11-Ff-drU">
-                                <rect key="frame" x="63.5" y="325" width="248" height="50"/>
+                                <rect key="frame" x="65.5" y="325" width="244" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="TBO-9S-YsH"/>
                                     <constraint firstAttribute="height" constant="50" id="cLH-B0-6Mj"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -59,20 +58,18 @@
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bAv-Qb-ifS">
-                                <rect key="frame" x="63.5" y="391" width="248" height="50"/>
+                                <rect key="frame" x="65.5" y="391" width="244" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Gqx-Cf-ltY"/>
-                                    <constraint firstAttribute="width" constant="248" id="xam-Qd-QGa"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ajP-3g-g7w">
-                                <rect key="frame" x="63.5" y="259" width="248" height="50"/>
+                                <rect key="frame" x="65.5" y="259" width="244" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9Ch-YD-tgL"/>
-                                    <constraint firstAttribute="width" constant="248" id="g2u-M2-wUd"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
@@ -95,18 +92,32 @@
                                     <action selector="presentLoginView:" destination="z1Y-kD-EQW" eventType="touchUpInside" id="tRb-ft-bEV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fMl-MQ-qXD">
+                                <rect key="frame" x="65.5" y="441" width="244" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99550908803939819" green="0.089599452912807465" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fMl-MQ-qXD" firstAttribute="width" secondItem="U62-pL-Oey" secondAttribute="width" id="2oN-c2-41x"/>
+                            <constraint firstItem="A11-Ff-drU" firstAttribute="width" secondItem="U62-pL-Oey" secondAttribute="width" id="57j-es-4yW"/>
                             <constraint firstItem="xND-5n-G90" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="5sR-K8-3gB"/>
                             <constraint firstItem="U62-pL-Oey" firstAttribute="top" secondItem="bAv-Qb-ifS" secondAttribute="bottom" constant="64" id="6jD-dk-3kH"/>
                             <constraint firstItem="U62-pL-Oey" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="9ho-zg-EtF"/>
                             <constraint firstItem="bAv-Qb-ifS" firstAttribute="top" secondItem="A11-Ff-drU" secondAttribute="bottom" constant="16" id="PI6-il-xby"/>
+                            <constraint firstItem="fMl-MQ-qXD" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="QXH-Tj-qTD"/>
                             <constraint firstItem="bAv-Qb-ifS" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="Rce-E4-FOj"/>
+                            <constraint firstItem="U62-pL-Oey" firstAttribute="top" secondItem="fMl-MQ-qXD" secondAttribute="bottom" constant="8" id="UxM-YQ-JBF"/>
+                            <constraint firstItem="ajP-3g-g7w" firstAttribute="width" secondItem="U62-pL-Oey" secondAttribute="width" id="Xpe-Vl-cyq"/>
                             <constraint firstItem="A11-Ff-drU" firstAttribute="top" secondItem="ajP-3g-g7w" secondAttribute="bottom" constant="16" id="m1A-Qn-Vna"/>
+                            <constraint firstItem="fMl-MQ-qXD" firstAttribute="top" secondItem="bAv-Qb-ifS" secondAttribute="bottom" id="n6B-HD-vTD"/>
                             <constraint firstItem="xND-5n-G90" firstAttribute="top" secondItem="U62-pL-Oey" secondAttribute="bottom" constant="16" id="nDg-Kp-KMV"/>
+                            <constraint firstItem="U62-pL-Oey" firstAttribute="width" secondItem="2Hp-lj-m9q" secondAttribute="width" multiplier="0.65" id="nVc-xb-fIp"/>
                             <constraint firstItem="h32-nn-T7c" firstAttribute="bottom" secondItem="xND-5n-G90" secondAttribute="bottom" constant="64" id="o58-ma-QrB"/>
                             <constraint firstItem="A11-Ff-drU" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="pgn-2w-FKt"/>
+                            <constraint firstItem="bAv-Qb-ifS" firstAttribute="width" secondItem="U62-pL-Oey" secondAttribute="width" id="pqB-Tb-fEn"/>
                             <constraint firstItem="ajP-3g-g7w" firstAttribute="centerX" secondItem="2Hp-lj-m9q" secondAttribute="centerX" id="vwN-zi-3Sx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h32-nn-T7c"/>
@@ -114,6 +125,7 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="o58-ma-QrB" id="Im9-uC-Myn"/>
                         <outlet property="emailTextField" destination="A11-Ff-drU" id="fu2-au-QHv"/>
+                        <outlet property="errorLabel" destination="fMl-MQ-qXD" id="HO7-cf-6ha"/>
                         <outlet property="passwordTextField" destination="bAv-Qb-ifS" id="am1-aH-WqD"/>
                         <outlet property="usernameTextField" destination="ajP-3g-g7w" id="ocm-4t-QTL"/>
                     </connections>
