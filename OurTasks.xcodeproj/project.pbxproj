@@ -33,6 +33,7 @@
 		C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */; };
 		C3D5B1FD1FB4758F00550564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3D5B1FC1FB4758F00550564 /* Localizable.strings */; };
 		C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5B2001FB4767200550564 /* Localize+String.swift */; };
+		C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B11FC36F2D004FD87F /* GroupModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		C3D5B1FC1FB4758F00550564 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C3D5B2001FB4767200550564 /* Localize+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+String.swift"; sourceTree = "<group>"; };
+		C3E122B11FC36F2D004FD87F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		F434F277D5B930F5EFEC7F00 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -325,6 +327,7 @@
 		C3D5519D1FA61A9F00D7F081 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3E122B01FC36EE9004FD87F /* Group */,
 				C36BDFBB1F69349E005D7650 /* User */,
 			);
 			path = Models;
@@ -362,6 +365,14 @@
 				C3D5B2001FB4767200550564 /* Localize+String.swift */,
 			);
 			path = String;
+			sourceTree = "<group>";
+		};
+		C3E122B01FC36EE9004FD87F /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				C3E122B11FC36F2D004FD87F /* GroupModel.swift */,
+			);
+			path = Group;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -529,6 +540,7 @@
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
+				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
