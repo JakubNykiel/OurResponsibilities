@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,10 +26,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY6-IA-jn2">
-                                <rect key="frame" x="63.5" y="505" width="248" height="56"/>
+                                <rect key="frame" x="65.5" y="505" width="244" height="56"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="0.10025149830000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="Qwl-5w-N6F"/>
                                     <constraint firstAttribute="height" constant="56" id="ayO-IR-5dw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
@@ -51,9 +51,8 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="duW-lE-m2y">
-                                <rect key="frame" x="63.5" y="325" width="248" height="50"/>
+                                <rect key="frame" x="65.5" y="325" width="244" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="aAM-Q4-ksV"/>
                                     <constraint firstAttribute="height" constant="50" id="cwe-B6-yjo"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -61,9 +60,8 @@
                                 <textInputTraits key="textInputTraits" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password:" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z3w-SD-b8e">
-                                <rect key="frame" x="63.5" y="391" width="248" height="50"/>
+                                <rect key="frame" x="65.5" y="391" width="244" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="248" id="rdW-e8-ELB"/>
                                     <constraint firstAttribute="height" constant="50" id="y2s-Ml-da9"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -80,10 +78,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFy-22-htU">
-                                <rect key="frame" x="63" y="577" width="248" height="26"/>
+                                <rect key="frame" x="65" y="577" width="244" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="Ovg-WF-SJ2"/>
-                                    <constraint firstAttribute="width" constant="248" id="cPI-oh-dlO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <state key="normal" title="Not Registered Yet? Register."/>
@@ -96,14 +93,28 @@
                                     <action selector="presentRegisterView:" destination="ztl-aY-1dg" eventType="touchUpInside" id="lPj-ee-BBi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ubv-If-nv2">
+                                <rect key="frame" x="65" y="449" width="244" height="56"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99550908800000004" green="0.089599452910000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Ubv-If-nv2" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="AOr-Wa-aq8"/>
+                            <constraint firstItem="Ubv-If-nv2" firstAttribute="width" secondItem="hY6-IA-jn2" secondAttribute="width" id="Cy3-NF-Oja"/>
+                            <constraint firstItem="Ubv-If-nv2" firstAttribute="top" secondItem="Z3w-SD-b8e" secondAttribute="bottom" constant="8" id="Fdw-my-k07"/>
+                            <constraint firstItem="Z3w-SD-b8e" firstAttribute="width" secondItem="hY6-IA-jn2" secondAttribute="width" id="FoB-BR-cDb"/>
+                            <constraint firstItem="hY6-IA-jn2" firstAttribute="top" secondItem="Ubv-If-nv2" secondAttribute="bottom" id="KtY-mp-INZ"/>
+                            <constraint firstItem="fFy-22-htU" firstAttribute="width" secondItem="hY6-IA-jn2" secondAttribute="width" id="P9J-Bt-Wzo"/>
                             <constraint firstItem="hY6-IA-jn2" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="UjS-Ue-FKp"/>
                             <constraint firstItem="fFy-22-htU" firstAttribute="top" secondItem="hY6-IA-jn2" secondAttribute="bottom" constant="16" id="ZMm-Bf-1Xt"/>
                             <constraint firstItem="Z3w-SD-b8e" firstAttribute="top" secondItem="duW-lE-m2y" secondAttribute="bottom" constant="16" id="agV-lC-ygH"/>
                             <constraint firstItem="hY6-IA-jn2" firstAttribute="top" secondItem="Z3w-SD-b8e" secondAttribute="bottom" constant="64" id="bBi-2O-l82"/>
                             <constraint firstItem="Z3w-SD-b8e" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="bvl-5r-GCj"/>
+                            <constraint firstItem="hY6-IA-jn2" firstAttribute="width" secondItem="oak-7d-95d" secondAttribute="width" multiplier="0.65" id="cfa-l3-9nN"/>
+                            <constraint firstItem="duW-lE-m2y" firstAttribute="width" secondItem="hY6-IA-jn2" secondAttribute="width" id="dWa-bt-XfH"/>
                             <constraint firstItem="QBA-I3-sjf" firstAttribute="top" secondItem="oak-7d-95d" secondAttribute="top" constant="16" id="j6g-Sj-CWF"/>
                             <constraint firstItem="QBA-I3-sjf" firstAttribute="leading" secondItem="oak-7d-95d" secondAttribute="leading" constant="16" id="mrg-ab-u7r"/>
                             <constraint firstItem="fFy-22-htU" firstAttribute="centerX" secondItem="HO3-FQ-0uE" secondAttribute="centerX" id="sHf-WI-KFV"/>
@@ -116,6 +127,7 @@
                     <connections>
                         <outlet property="bottomTextFieldsConstraint" destination="ysg-vv-B1I" id="Ssz-Wb-9F3"/>
                         <outlet property="emailTextField" destination="duW-lE-m2y" id="5JM-mm-NnX"/>
+                        <outlet property="errorLabel" destination="Ubv-If-nv2" id="lnP-CN-Vz0"/>
                         <outlet property="passwordTextField" destination="Z3w-SD-b8e" id="Ayd-qY-lUC"/>
                     </connections>
                 </viewController>

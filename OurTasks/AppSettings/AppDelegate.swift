@@ -19,6 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
+        
+        //[TO REMOVE]:  logout user on application start
+        do
+        {
+            try Auth.auth().signOut()
+        }
+        catch let error as NSError
+        {
+            print(error.localizedDescription)
+        }
         return true
     }
 

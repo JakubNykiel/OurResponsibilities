@@ -34,6 +34,7 @@
 		C3D5B1FD1FB4758F00550564 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C3D5B1FC1FB4758F00550564 /* Localizable.strings */; };
 		C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5B2001FB4767200550564 /* Localize+String.swift */; };
 		C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B11FC36F2D004FD87F /* GroupModel.swift */; };
+		C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B41FC392C8004FD87F /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		C3D5B1FC1FB4758F00550564 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		C3D5B2001FB4767200550564 /* Localize+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+String.swift"; sourceTree = "<group>"; };
 		C3E122B11FC36F2D004FD87F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
+		C3E122B41FC392C8004FD87F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F434F277D5B930F5EFEC7F00 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 		C3A5F62B1F66EA20002A9B30 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				C3E122B31FC392B0004FD87F /* Logic */,
 				C3A5F62D1F66EA20002A9B30 /* View */,
 			);
 			path = Login;
@@ -375,6 +378,14 @@
 			path = Group;
 			sourceTree = "<group>";
 		};
+		C3E122B31FC392B0004FD87F /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C3E122B41FC392C8004FD87F /* LoginViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -536,6 +547,7 @@
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
+				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
