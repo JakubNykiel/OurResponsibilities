@@ -47,11 +47,7 @@ class LoginViewController: UIViewController {
         self.passwordTextField.setBottomBorder()
     }
 
-    @IBAction func signInUser(_ sender: Any) {
-//        let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
-//        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "loginNavigation")
-//        self.present(mainViewController, animated: true, completion: nil)
-        
+    @IBAction func signInUser(_ sender: Any) {        
         guard let email = self.emailTextField.text else { return }
         guard let password = self.passwordTextField.text else { return }
         self.viewModel.signIn(email: email, password: password)
@@ -69,11 +65,7 @@ extension LoginViewController {
     private func siginInListener() {
         self.handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user != nil {
-                // User is signed in. Show home screen
-                print("Sukces")
-            } else {
-                // No User is signed in. Show user the login screen
-                print("porazka")
+                
             }
         })
     }

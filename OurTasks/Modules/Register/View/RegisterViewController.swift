@@ -16,7 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
+    
     let viewModel = RegisterViewModel()
     private let disposeBag = DisposeBag()
     
@@ -48,9 +48,15 @@ extension RegisterViewController {
     
     private func setupErrorObservable() {
         self.viewModel.error
-        .asObservable()
-        .bind(to: self.errorLabel.rx.text)
-        .disposed(by: self.disposeBag)
+            .asObservable()
+            .bind(to: self.errorLabel.rx.text)
+            .disposed(by: self.disposeBag)
+    }
+    
+    private func showViewAfterSuccessfulRegistration() {
+        let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
+        let mainViewController = storyBoard.instantiateViewController(withIdentifier: "loginNavigation")
+        self.present(mainViewController, animated: true, completion: nil)
     }
 }
 

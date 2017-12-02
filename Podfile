@@ -6,14 +6,12 @@ target 'OurTasks' do
   use_frameworks!
 
   # Pods for OurTasks
-  pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
-  pod 'RealmSwift'
   pod 'RxSwift'
   pod 'RxCocoa'
 

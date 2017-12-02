@@ -17,8 +17,12 @@ class FirebaseManager {
     static let sharedInstance = FirebaseManager()
     let ref = Database.database().reference()
     
+    //TODO: completion block
     func saveUser(user: UserModel) {
         let userJSON = user.toJSON()
-        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(userJSON)
+        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(userJSON) { (error, ref) -> Void in
+            guard let error = error else { return }
+            print(error.localizedDescription)
+        }
     }
 }
