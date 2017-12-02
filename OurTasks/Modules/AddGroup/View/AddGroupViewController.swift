@@ -14,7 +14,7 @@ class AddGroupViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var groupNameTextField: UITextField!
     
-    let viewModel: AddGroupViewModel = AddGroupViewModel()
+    private let viewModel: AddGroupViewModel = AddGroupViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,16 @@ class AddGroupViewController: UIViewController {
         self.groupNameTextField.setBottomBorder()
     }
     
+    private func configureGroupModel() {
+        guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
+        guard let groupName = self.titleLabel.text else { return }
+        self.viewModel.groupModel.admins.append(currentUserEmail)
+        self.viewModel.groupModel.name = groupName
+        self.viewModel.createGroupDate()
+    }
+    
     @IBAction func addGroup(_ sender: Any) {
+        
         self.viewModel.addGroupToDatabase()
     }
     

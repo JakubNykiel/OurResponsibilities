@@ -223,7 +223,6 @@
 		C3C11DB21F83B1460074D9AC /* GroupList */ = {
 			isa = PBXGroup;
 			children = (
-				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
 				C3D3B1BE1FADD5FD00E04716 /* Logic */,
 				C3C11DB51F83B1460074D9AC /* View */,
 			);
@@ -302,6 +301,7 @@
 		C3D5519B1FA61A8700D7F081 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
 				C3C11DB21F83B1460074D9AC /* GroupList */,
 				C3A5F62B1F66EA20002A9B30 /* Login */,
 				C3A5F6271F66EA20002A9B30 /* Register */,
