@@ -12,14 +12,30 @@ import RxSwift
 
 class AddGroupViewModel {
     
+    private let ref = Database.database().reference()
     let errorString = Variable<String>("")
     var groupModel: GroupModel = GroupModel()
+    private var currentUser: User? = Auth.auth().currentUser
     
     func addGroupToDatabase() {
-        guard let group = groupModel else { return }
+        let groupJSON = groupModel.toJSON()
+        let groupRefID = self.ref.child(FirebaseModel.groups.rawValue).childByAutoId()
+        guard let userUID = self.currentUser?.uid else { return }
+        groupRefID.setValue(groupJSON) { (error, ref) in
+            guard let error = error else { return }
+            self.errorString.value = error.localizedDescription
+        }
+        self.ref.child(FirebaseModel.users.rawValue).child(userUID).child(FirebaseModel.groups.rawValue).updateChildValues([groupRefID.key:true]) { (error, ref) in
+            guard let error = error else { return }
+            self.errorString.value = error.localizedDescription
+        }
     }
     
-    func createGroupDate() {
-        
+    func createGroupDate() -> String {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let todayDate = dateFormatter.string(from: date)
+        return todayDate
     }
 }

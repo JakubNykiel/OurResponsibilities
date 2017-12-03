@@ -30,15 +30,15 @@ class AddGroupViewController: UIViewController {
     }
     
     private func configureGroupModel() {
-        guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         guard let groupName = self.titleLabel.text else { return }
-        self.viewModel.groupModel.admins.append(currentUserEmail)
-        self.viewModel.groupModel.name = groupName
-        self.viewModel.createGroupDate()
+        self.viewModel.groupModel.admins.append(currentUserUid)
+        self.viewModel.groupModel.name = groupNameTextField.text
+        self.viewModel.groupModel.createDate = self.viewModel.createGroupDate()
     }
     
     @IBAction func addGroup(_ sender: Any) {
-        
+        self.configureGroupModel()
         self.viewModel.addGroupToDatabase()
     }
     

@@ -14,7 +14,7 @@ class GroupModel: Mappable {
     var createDate: String!
     var users: [String]!
     var tasks: [String]!
-    var admins: [String]!
+    var admins: [String]! = []
     var userInteraction: Bool!
     
     init() {

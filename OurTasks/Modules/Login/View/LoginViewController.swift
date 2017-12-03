@@ -65,7 +65,9 @@ extension LoginViewController {
     private func siginInListener() {
         self.handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user != nil {
-                
+                let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
+                let groupListVC = storyBoard.instantiateViewController(withIdentifier: "groupListNavigation")
+                self.present(groupListVC, animated: true, completion: nil)
             }
         })
     }

@@ -11,6 +11,7 @@ import Firebase
 
 enum FirebaseModel: String {
     case users
+    case groups
 }
 
 class FirebaseManager {
