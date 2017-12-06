@@ -7,28 +7,11 @@
 //
 
 import Foundation
-import ObjectMapper
 
-class UserModel: Mappable {
-    
-    var email: String!
-    var username: String!
-    var groups: [String]!
-    var invites: [String]!
-    var uid: String!
-    
-    init() {
-        
-    }
-    
-    required init?(map: Map) {
-        
-    }
-    
-    func mapping(map: Map) {
-        self.email <- map["email"]
-        self.username <- map["username"]
-        self.groups <- map["groups"]
-        self.invites <- map["invites"]
-    }
+struct UserModel: Codable {
+    var email: String
+    var username: String
+    var groups: [String]?
+    var invites: [String]?
+    var uid: String
 }

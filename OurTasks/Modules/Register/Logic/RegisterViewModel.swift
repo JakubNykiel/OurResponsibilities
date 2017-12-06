@@ -12,10 +12,10 @@ import RxSwift
 import RxCocoa
 
 class RegisterViewModel {
-    
+    let ref = Database.database().reference()
     let error = Variable<String>("")
-    let currentUser = UserModel()
-    var ref: DatabaseReference!
+    var currentUser: UserModel?
+    private let jsonEncoder: JSONEncoder = JSONEncoder()
     
     func createUser(email: String, password: String, username: String) {
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
@@ -24,11 +24,20 @@ class RegisterViewModel {
                 self.error.value = error.localizedDescription
             }
             if let user = user {
-                self.currentUser.email = email
-                self.currentUser.username = username
-                self.currentUser.uid = user.uid
-                FirebaseManager.sharedInstance.saveUser(user: self.currentUser)
+                self.currentUser = UserModel(email: email, username: username, groups: nil, invites: nil, uid: user.uid)
+                self.saveUser()
             }
         }
+    }
+    
+    private func saveUser() {
+        guard let user = self.currentUser else { return }
+        guard let userData = try? self.jsonEncoder.encode(user) else { return }
+        guard let json = try? JSONSerialization.jsonObject(with: userData, options: []) as! [String: AnyObject] else { return }
+        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(json) { (error, ref) -> Void in
+            guard let error = error else { return }
+            print(error.localizedDescription)
+        }
+        
     }
 }
