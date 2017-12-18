@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0EB1182FBE45AFE0AB0DF531 /* Pods_OurTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */; };
+		C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */; };
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
 		C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C301FF251F66C7070045641A /* LaunchScreen.storyboard */; };
@@ -41,6 +42,7 @@
 		7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC2731CBC522993327801F6 /* Pods-OurTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		A9779A76851841E46402BAF5 /* Pods-OurTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.release.xcconfig"; sourceTree = "<group>"; };
+		C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Encodable.swift"; sourceTree = "<group>"; };
 		C301FF191F66C7070045641A /* OurTasks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OurTasks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C301FF1C1F66C7070045641A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C301FF231F66C7070045641A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 				A9779A76851841E46402BAF5 /* Pods-OurTasks.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C301AE4E1FE8824600107DCD /* Encodable */ = {
+			isa = PBXGroup;
+			children = (
+				C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */,
+			);
+			path = Encodable;
 			sourceTree = "<group>";
 		};
 		C301FF101F66C7070045641A = {
@@ -349,6 +359,7 @@
 		C3D5B1FE1FB4762B00550564 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				C301AE4E1FE8824600107DCD /* Encodable */,
 				C3D5B1FF1FB4763C00550564 /* String */,
 			);
 			path = Foundation;
@@ -546,6 +557,7 @@
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
+				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
 				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,

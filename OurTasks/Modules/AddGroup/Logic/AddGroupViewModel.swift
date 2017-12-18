@@ -17,6 +17,11 @@ class AddGroupViewModel {
     var groupModel: GroupModel = GroupModel()
     private var currentUser: User? = Auth.auth().currentUser
     
+    func getCurrentUserUid() -> String {
+        guard let uid = self.currentUser?.uid else { return "" }
+        return uid
+    }
+    
     func addGroupToDatabase() {
         let groupJSON = groupModel.toJSON()
         let groupRefID = self.ref.child(FirebaseModel.groups.rawValue).childByAutoId()

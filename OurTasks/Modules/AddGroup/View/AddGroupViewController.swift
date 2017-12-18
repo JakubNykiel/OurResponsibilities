@@ -30,8 +30,7 @@ class AddGroupViewController: UIViewController {
     }
     
     private func configureGroupModel() {
-        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
-        guard let groupName = self.titleLabel.text else { return }
+        let currentUserUid = self.viewModel.getCurrentUserUid()
         self.viewModel.groupModel.admins.append(currentUserUid)
         self.viewModel.groupModel.name = groupNameTextField.text
         self.viewModel.groupModel.createDate = self.viewModel.createGroupDate()

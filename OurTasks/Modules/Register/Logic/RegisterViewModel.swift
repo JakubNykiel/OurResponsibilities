@@ -32,12 +32,12 @@ class RegisterViewModel {
     
     private func saveUser() {
         guard let user = self.currentUser else { return }
-        guard let userData = try? self.jsonEncoder.encode(user) else { return }
-        guard let json = try? JSONSerialization.jsonObject(with: userData, options: []) as! [String: AnyObject] else { return }
-        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(json) { (error, ref) -> Void in
+        guard let userData = user.asDictionary() else { return }
+        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(userData) { (error, ref) -> Void in
             guard let error = error else { return }
             print(error.localizedDescription)
         }
         
     }
 }
+
