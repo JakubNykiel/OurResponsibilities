@@ -26,6 +26,7 @@
 		C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6311F66EAAF002A9B30 /* LoginViewController.swift */; };
 		C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */; };
 		C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */; };
+		C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */; };
 		C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC49501F66D629001E2586 /* ButtonBorder.swift */; };
 		C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C11DB61F83B1590074D9AC /* GroupList.storyboard */; };
 		C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */; };
@@ -63,6 +64,7 @@
 		C3A5F6311F66EAAF002A9B30 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
+		C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewModel.swift; sourceTree = "<group>"; };
 		C3AC49501F66D629001E2586 /* ButtonBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
 		C3C11DB61F83B1590074D9AC /* GroupList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList.storyboard; sourceTree = "<group>"; };
 		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 		C3D3B1BE1FADD5FD00E04716 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -501,7 +504,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -511,7 +513,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -552,6 +553,7 @@
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
+				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,

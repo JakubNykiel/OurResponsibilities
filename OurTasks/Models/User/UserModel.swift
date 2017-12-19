@@ -22,19 +22,6 @@ struct UserModel {
         case invites
         case uid
     }
-    
-//    init() {
-//        guard let email = model["email"] as? String,
-//            let username = model[UserKeys.username.rawValue],
-//            let groups = model[UserKeys.groups.rawValue],
-//            let invites = model[UserKeys.invites.rawValue],
-//            let uid = model[UserKeys.uid.rawValue] else { return }
-//        self.email = email
-//        self.username = username
-//        self.groups = groups
-//        self.invites = invites
-//        self.uid = uid
-//    }
 }
 extension UserModel: Encodable {
     func encode(to encoder: Encoder) throws {

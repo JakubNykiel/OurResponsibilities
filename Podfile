@@ -6,7 +6,6 @@ target 'OurTasks' do
   use_frameworks!
 
   # Pods for OurTasks
-  pod 'ObjectMapper'
   pod 'Firebase'
   pod 'Firebase/Core'
   pod 'Firebase/Database'
@@ -14,5 +13,4 @@ target 'OurTasks' do
   pod 'Firebase/Storage'
   pod 'RxSwift'
   pod 'RxCocoa'
-
 end

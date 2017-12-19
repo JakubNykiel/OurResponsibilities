@@ -23,10 +23,10 @@ class AddGroupViewModel {
     }
     
     func addGroupToDatabase() {
-        let groupJSON = groupModel.toJSON()
+        let groupData = groupModel.asDictionary()
         let groupRefID = self.ref.child(FirebaseModel.groups.rawValue).childByAutoId()
         guard let userUID = self.currentUser?.uid else { return }
-        groupRefID.setValue(groupJSON) { (error, ref) in
+        groupRefID.setValue(groupData) { (error, ref) in
             guard let error = error else { return }
             self.errorString.value = error.localizedDescription
         }
