@@ -29,15 +29,14 @@ class AddGroupViewController: UIViewController {
         self.groupNameTextField.setBottomBorder()
     }
     
-    private func configureGroupModel() {
+    private func prepareGroupModel() {
         let currentUserUid = self.viewModel.getCurrentUserUid()
-        self.viewModel.groupModel.admins.append(currentUserUid)
-        self.viewModel.groupModel.name = groupNameTextField.text
-        self.viewModel.groupModel.createDate = self.viewModel.createGroupDate()
+        let groupName = self.groupNameTextField.text ?? ""
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), users: nil, tasks: nil, admins: [currentUserUid], userInteraction: false)
     }
     
     @IBAction func addGroup(_ sender: Any) {
-        self.configureGroupModel()
+        self.prepareGroupModel()
         self.viewModel.addGroupToDatabase()
     }
     

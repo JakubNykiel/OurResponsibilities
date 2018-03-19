@@ -8,8 +8,22 @@
 
 import Foundation
 import Firebase
+import RxSwift
 
 enum FirebaseModel: String {
     case users
     case groups
+    case admins
+}
+
+class FirebaseManager {
+    
+    let ref: DatabaseReference = Database.database().reference()
+    static let sharedInstance = FirebaseManager()
+    var currentUser: User?
+    
+    init() {
+        self.currentUser = Auth.auth().currentUser
+    }
+   
 }

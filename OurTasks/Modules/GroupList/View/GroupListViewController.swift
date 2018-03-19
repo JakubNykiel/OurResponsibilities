@@ -14,9 +14,13 @@ class GroupListViewController: UIViewController {
     @IBOutlet weak var groupSegmentedControl: UISegmentedControl!
     @IBOutlet weak var groupListTableView: UITableView!
     
+    private let viewModel: GroupListViewModel = GroupListViewModel()
+    private let firebaseManager: FirebaseManager = FirebaseManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        self.viewModel.getUserGroups()
     }
     
     @IBAction func addGroupView(_ sender: Any) {

@@ -8,13 +8,13 @@
 
 import Foundation
 
-class GroupModel {
-    var name: String!
-    var createDate: String!
-    var users: [String]!
-    var tasks: [String]!
-    var admins: [String]! = []
-    var userInteraction: Bool!
+struct GroupModel {
+    var name: String
+    var createDate: String
+    var users: [String]?
+    var tasks: [String]?
+    var admins: [String] = []
+    var userInteraction: Bool
 
     enum GroupKeys: String,CodingKey {
         case name
@@ -23,6 +23,26 @@ class GroupModel {
         case tasks
         case admins
         case userInteraction
+    }
+    
+    init(name: String, createDate: String, users: [String]?, tasks: [String]?, admins: [String], userInteraction: Bool) {
+        self.name = name
+        self.createDate = createDate
+        self.users = users
+        self.tasks = tasks
+        self.admins = admins
+        self.userInteraction = userInteraction
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy:
+            GroupKeys.self)
+        self.name = try container.decode(String?.self, forKey: .name) ?? ""
+        self.createDate = try container.decode(String?.self, forKey: .createDate) ?? ""
+        self.users = try container.decode([String]?.self, forKey: .users) ?? []
+        self.tasks = try container.decode([String]?.self, forKey: .tasks) ?? []
+        self.admins = try container.decode([String]?.self, forKey: .users) ?? []
+        self.userInteraction = try container.decode(Bool.self, forKey: .userInteraction)
     }
 
 }

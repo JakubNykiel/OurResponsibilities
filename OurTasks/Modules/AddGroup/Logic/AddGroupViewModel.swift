@@ -14,7 +14,7 @@ class AddGroupViewModel {
     
     private let ref = Database.database().reference()
     let errorString = Variable<String>("")
-    var groupModel: GroupModel = GroupModel()
+    var groupModel: GroupModel?
     private var currentUser: User? = Auth.auth().currentUser
     
     func getCurrentUserUid() -> String {
@@ -36,7 +36,7 @@ class AddGroupViewModel {
         }
     }
     
-    func createGroupDate() -> String {
+    func getTodayDate() -> String {
         let date = Date()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
