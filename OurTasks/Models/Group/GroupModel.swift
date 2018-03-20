@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GroupModel {
+struct GroupModel: Codable {
     var name: String
     var createDate: String
     var users: [String]?
@@ -46,7 +46,7 @@ struct GroupModel {
     }
 
 }
-extension GroupModel: Encodable {
+extension GroupModel {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: GroupKeys.self)
         try container.encode(self.name, forKey: .name)

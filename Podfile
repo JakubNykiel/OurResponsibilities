@@ -8,6 +8,7 @@ target 'OurTasks' do
   # Pods for OurTasks
   pod 'Firebase'
   pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'

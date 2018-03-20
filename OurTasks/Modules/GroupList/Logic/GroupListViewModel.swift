@@ -16,11 +16,13 @@ class GroupListViewModel {
     var userGroups: Variable<[GroupModel]> = Variable([])
     
     func getUserGroups() {
-        guard let id = self.firebaseManager.currentUser?.uid else { return }
-        var groups: [GroupModel] = []
-        self.firebaseManager.ref.child(FirebaseModel.users.rawValue).child(id).child(FirebaseModel.groups.rawValue).observeSingleEvent(of: .value, with: {
-            print($0)
-        })
-        self.userGroups.value = []
+//        guard let id = self.firebaseManager.currentUser?.uid else { return }
+//        var groups: [GroupModel] = []
+//        self.firebaseManager.ref.child(FirebaseModel.users.rawValue).child(id).child(FirebaseModel.groups.rawValue).observeSingleEvent(of: .value, with: {
+//            guard let id = $0.value as! String else { return }
+//                guard let group = self.firebaseManager.makeGroupModel(groupId: id) else { return }
+//                groups.append(group)
+//            })
+//        self.userGroups.value = groups
     }
 }

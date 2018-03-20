@@ -25,5 +25,18 @@ class FirebaseManager {
     init() {
         self.currentUser = Auth.auth().currentUser
     }
+    
+    func makeGroupModel(groupId: String) -> GroupModel? {
+        let jsonDecoder = JSONDecoder()
+        var groupModel: GroupModel?
+        
+        self.ref.child(FirebaseModel.groups.rawValue).child(groupId).observeSingleEvent(of: .value) { (group) in
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: group, options: .prettyPrinted),
+                let groupDecode = try? jsonDecoder.decode(GroupModel.self, from: jsonData) else { return }
+            groupModel = groupDecode
+        }
+        
+        return groupModel
+    }
    
 }
