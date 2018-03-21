@@ -12,7 +12,8 @@ import RxSwift
 import RxCocoa
 
 class RegisterViewModel {
-    let ref = Database.database().reference()
+    let db = Firestore.firestore()
+    var ref: DocumentReference?
     let error = Variable<String>("")
     var currentUser: UserModel?
     private let jsonEncoder: JSONEncoder = JSONEncoder()
@@ -33,11 +34,13 @@ class RegisterViewModel {
     private func saveUser() {
         guard let user = self.currentUser else { return }
         guard let userData = user.asDictionary() else { return }
-        self.ref.child(FirebaseModel.users.rawValue).child(user.uid).setValue(userData) { (error, ref) -> Void in
-            guard let error = error else { return }
-            print(error.localizedDescription)
+        ref = self.db.collection(FirebaseModel.users.rawValue).addDocument(data: userData) { err in
+            if let err = err {
+                print("[ERROR_USER_ADDED] Error adding document: \(err)")
+            } else {
+                print("[USER_ADDED] Document added with ID: \(self.ref!.documentID)")
+            }
         }
-        
     }
 }
 

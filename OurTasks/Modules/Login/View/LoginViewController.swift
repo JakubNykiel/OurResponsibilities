@@ -82,7 +82,7 @@ extension LoginViewController {
 // MARK: mocks [TO REMOVE]
 extension LoginViewController {
     func mockLoginData() {
-        self.emailTextField.text = "test@testfirebase.com"
-        self.passwordTextField.text = "01234567"
+        self.emailTextField.text = "kuba@test.com"
+        self.passwordTextField.text = "kuba1234567"
     }
 }
