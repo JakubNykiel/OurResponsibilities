@@ -34,11 +34,12 @@ class RegisterViewModel {
     private func saveUser() {
         guard let user = self.currentUser else { return }
         guard let userData = user.asDictionary() else { return }
-        ref = self.db.collection(FirebaseModel.users.rawValue).addDocument(data: userData) { err in
+        let userRef = self.db.collection(FirebaseModel.users.rawValue).document(user.uid)
+        userRef.setData(userData) { (err) in
             if let err = err {
                 print("[ERROR_USER_ADDED] Error adding document: \(err)")
             } else {
-                print("[USER_ADDED] Document added with ID: \(self.ref!.documentID)")
+                print("[USER_ADDED] Document added with ID: \(userRef.documentID)")
             }
         }
     }

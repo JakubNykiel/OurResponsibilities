@@ -12,7 +12,8 @@ import RxSwift
 
 class AddGroupViewModel {
     
-    private let ref = Database.database().reference()
+    let db = Firestore.firestore()
+    var ref: DocumentReference?
     let errorString = Variable<String>("")
     var groupModel: GroupModel?
     private var currentUser: User? = Auth.auth().currentUser
@@ -23,16 +24,23 @@ class AddGroupViewModel {
     }
     
     func addGroupToDatabase() {
-        let groupData = groupModel.asDictionary()
-        let groupRefID = self.ref.child(FirebaseModel.groups.rawValue).childByAutoId()
+        guard let groupData = groupModel.asDictionary() else { return }
         guard let userUID = self.currentUser?.uid else { return }
-        groupRefID.setValue(groupData) { (error, ref) in
-            guard let error = error else { return }
-            self.errorString.value = error.localizedDescription
-        }
-        self.ref.child(FirebaseModel.users.rawValue).child(userUID).child(FirebaseModel.groups.rawValue).updateChildValues([groupRefID.key:true]) { (error, ref) in
-            guard let error = error else { return }
-            self.errorString.value = error.localizedDescription
+        ref = self.db.collection(FirebaseModel.groups.rawValue).addDocument(data: groupData) { err in
+            if let err = err {
+                print("[ERROR_GROUP_ADD] Error adding document: \(err)")
+            } else {
+                print("[GROUP_ADD] Document added with ID: \(self.ref!.documentID)")
+                let groupInUserRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
+                groupInUserRef.updateData(["groups":[self.ref!.documentID]], completion: { (err) in
+                    if let err = err {
+                        print("[ERROR_GROUP_ADD_TO_USER] Error adding document: \(err)")
+                    } else {
+                        print("[GROUP_ADD_TO_USER] Document added with ID: \(self.ref!.documentID)")
+                    }
+                })
+                
+            }
         }
     }
     
