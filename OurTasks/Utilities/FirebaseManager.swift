@@ -18,6 +18,7 @@ enum FirebaseModel: String {
 
 class FirebaseManager {
     
+    let db = Firestore.firestore()
     let ref: DatabaseReference = Database.database().reference()
     static let sharedInstance = FirebaseManager()
     var currentUser: User?

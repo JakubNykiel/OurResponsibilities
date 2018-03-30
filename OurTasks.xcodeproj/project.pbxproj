@@ -17,6 +17,7 @@
 		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
 		C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE63B1F68386400692B3D /* KeyboardObservers.swift */; };
+		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
 		C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3A5F6211F66E0BC002A9B30 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C32FE63B1F68386400692B3D /* KeyboardObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservers.swift; sourceTree = "<group>"; };
+		C3415F5920697426007E7EED /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 			children = (
 				C3C11DB61F83B1590074D9AC /* GroupList.storyboard */,
 				C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */,
+				C3415F5920697426007E7EED /* GroupCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3415F5A20697426007E7EED /* GroupCell.swift in Sources */,
 				C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */,
 				C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,

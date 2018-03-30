@@ -25,23 +25,27 @@ class AddGroupViewModel {
     
     func addGroupToDatabase() {
         guard let groupData = groupModel.asDictionary() else { return }
-        guard let userUID = self.currentUser?.uid else { return }
         ref = self.db.collection(FirebaseModel.groups.rawValue).addDocument(data: groupData) { err in
             if let err = err {
                 print("[ERROR_GROUP_ADD] Error adding document: \(err)")
             } else {
                 print("[GROUP_ADD] Document added with ID: \(self.ref!.documentID)")
-                let groupInUserRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
-                groupInUserRef.updateData(["groups":[self.ref!.documentID]], completion: { (err) in
-                    if let err = err {
-                        print("[ERROR_GROUP_ADD_TO_USER] Error adding document: \(err)")
-                    } else {
-                        print("[GROUP_ADD_TO_USER] Document added with ID: \(self.ref!.documentID)")
-                    }
-                })
-                
+                self.addGroupToUser(id: self.ref!.documentID)
             }
         }
+    }
+    
+    private func addGroupToUser(id: String) {
+        guard let userUID = self.currentUser?.uid else { return }
+        let groupInUserRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
+        
+//        groupInUserRef.updateData(["groups":[self.ref!.documentID]], completion: { (err) in
+//            if let err = err {
+//                print("[ERROR_GROUP_ADD_TO_USER] Error adding document: \(err)")
+//            } else {
+//                print("[GROUP_ADD_TO_USER] Document added with ID: \(self.ref!.documentID)")
+//            }
+//        })
     }
     
     func getTodayDate() -> String {

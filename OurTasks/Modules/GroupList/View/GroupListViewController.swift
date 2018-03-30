@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import RxSwift
+import RxCocoa
 
 class GroupListViewController: UIViewController {
 
@@ -20,7 +22,13 @@ class GroupListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
+        self.prepare()
+    }
+    
+    private func prepare() {
         self.viewModel.getUserGroups()
+        self.groupListTableView.delegate = self
+        self.groupListTableView.dataSource = self
     }
     
     @IBAction func addGroupView(_ sender: Any) {
@@ -31,4 +39,18 @@ class GroupListViewController: UIViewController {
     @IBAction func changeGroupList(_ sender: Any) {
         
     }
+}
+extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.userGroups.value.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
+        let model = self.viewModel.userGroups.value[indexPath.row]
+        cell.configure(group: model)
+        return cell
+    }
+    
+    
 }
