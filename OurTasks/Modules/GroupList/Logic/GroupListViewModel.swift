@@ -17,7 +17,7 @@ class GroupListViewModel {
     var groupsFetched: Variable<Bool> = Variable(false)
     
     func getUserGroups() {
-        let uid = self.firebaseManager.currentUser?.uid ?? ""
-        let userGroupsRef = self.firebaseManager.db.collection(FirebaseModel.users.rawValue).document(uid).
+//        let uid = self.firebaseManager.currentUser?.uid ?? ""
+//        let userGroupsRef = self.firebaseManager.db.collection(FirebaseModel.users.rawValue).document(uid).
     }
 }
