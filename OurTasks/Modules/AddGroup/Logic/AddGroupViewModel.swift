@@ -27,14 +27,6 @@ class AddGroupViewModel {
         let batch = db.batch()
         guard let groupData = groupModel.asDictionary() else { return }
         guard let userUID = self.currentUser?.uid else { return }
-//        ref = self.db.collection(FirebaseModel.groups.rawValue).addDocument(data: groupData) { err in
-//            if let err = err {
-//                print("[ERROR_GROUP_ADD] Error adding document: \(err)")
-//            } else {
-//                print("[GROUP_ADD] Document added with ID: \(self.ref!.documentID)")
-//                self.addGroupToUser(id: self.ref!.documentID)
-//            }
-//        }
         
         let groupRef = self.db.collection(FirebaseModel.groups.rawValue).document()
         batch.setData(groupData, forDocument: groupRef)
