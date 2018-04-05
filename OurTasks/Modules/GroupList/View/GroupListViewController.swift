@@ -18,11 +18,19 @@ class GroupListViewController: UIViewController {
     
     private let viewModel: GroupListViewModel = GroupListViewModel()
     private let firebaseManager: FirebaseManager = FirebaseManager()
+    private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.prepare()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.groupsFetched.asObservable()
+            .subscribe(onNext: { (_) in
+                self.groupListTableView.reloadData()
+            }).disposed(by: self.disposeBag)
     }
     
     private func prepare() {

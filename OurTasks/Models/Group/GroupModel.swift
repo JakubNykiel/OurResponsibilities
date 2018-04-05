@@ -39,8 +39,8 @@ struct GroupModel: Codable {
             GroupKeys.self)
         self.name = try container.decode(String?.self, forKey: .name) ?? ""
         self.createDate = try container.decode(String?.self, forKey: .createDate) ?? ""
-        self.users = try container.decode([String]?.self, forKey: .users) ?? []
-        self.tasks = try container.decode([String]?.self, forKey: .tasks) ?? []
+        self.users = try? container.decode([String]?.self, forKey: .users) ?? []
+        self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
         self.admins = try container.decode([String]?.self, forKey: .users) ?? []
         self.userInteraction = try container.decode(Bool.self, forKey: .userInteraction)
     }

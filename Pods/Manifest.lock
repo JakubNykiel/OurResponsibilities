@@ -5,6 +5,7 @@ PODS:
   - BoringSSL/Implementation (10.0):
     - BoringSSL/Interface (= 10.0)
   - BoringSSL/Interface (10.0)
+  - CodableFirebase (0.0.7)
   - Firebase (4.11.0):
     - Firebase/Core (= 4.11.0)
   - Firebase/Auth (4.11.0):
@@ -91,6 +92,7 @@ PODS:
   - RxSwift (4.1.2)
 
 DEPENDENCIES:
+  - CodableFirebase
   - Firebase
   - Firebase/Auth
   - Firebase/Core
@@ -102,6 +104,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
+  CodableFirebase: 090c5b4c9ad67c9f4fddc3b00d168ec38cad3b14
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
   FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
   FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
@@ -122,6 +125,6 @@ SPEC CHECKSUMS:
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
   RxSwift: e49536837d9901277638493ea537394d4b55f570
 
-PODFILE CHECKSUM: f863cdb04d1c57b7b34ae3f666d7c5200a355593
+PODFILE CHECKSUM: 5c314e88a2dfdae467f7fcda4b154a75743cd393
 
 COCOAPODS: 1.4.0

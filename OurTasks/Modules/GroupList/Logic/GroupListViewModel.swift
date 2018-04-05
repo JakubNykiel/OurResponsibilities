@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import CodableFirebase
 import RxSwift
 
 class GroupListViewModel {
@@ -34,9 +35,18 @@ class GroupListViewModel {
     
     private func toGroupModel(_ groups: [String]) {
         groups.compactMap({ group in
-            guard let model = self.firebaseManager.makeGroupModel(groupId: group) else { return }
-            self.userGroups.value.append(model)
+            let groupRef = FirebaseReferences().groupRef.document(group)
+            groupRef.getDocument(completion: { (document, error) in
+                if let document = document {
+                    guard let groupData = document.data() else { return }
+                    let groupModel = try! FirebaseDecoder().decode(GroupModel.self, from: groupData)
+                    self.userGroups.value.append(groupModel)
+                    self.groupsFetched.value = true
+                } else {
+                    print("Group not exist")
+                }
+            })
         })
-        self.groupsFetched.value = true
+        
     }
 }
