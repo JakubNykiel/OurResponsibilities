@@ -15,9 +15,11 @@ class GroupListViewController: UIViewController {
 
     @IBOutlet weak var groupSegmentedControl: UISegmentedControl!
     @IBOutlet weak var groupListTableView: UITableView!
+    @IBOutlet weak var arButton: UIBarButtonItem!
     
     private let viewModel: GroupListViewModel = GroupListViewModel()
     private let firebaseManager: FirebaseManager = FirebaseManager()
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
@@ -44,6 +46,11 @@ class GroupListViewController: UIViewController {
         self.present(addGroupVC, animated: true, completion: nil)
     }
     
+    @IBAction func presentAR(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "ARKit", bundle: nil)
+        let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
+        self.present(groupListVC, animated: true, completion: nil)
+    }
     @IBAction func changeGroupList(_ sender: Any) {
         
     }

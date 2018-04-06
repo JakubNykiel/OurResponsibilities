@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hXo-Kq-t9z">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hXo-Kq-t9z">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -76,6 +76,11 @@
                         <viewLayoutGuide key="safeArea" id="PFl-GD-LRZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Groups" id="5sl-DN-O8u">
+                        <barButtonItem key="leftBarButtonItem" title="AR" id="86T-8j-9kn">
+                            <connections>
+                                <action selector="presentAR:" destination="78t-7n-6Oh" id="NQz-I0-yEM"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0RM-Ue-s7N">
                             <connections>
                                 <action selector="addGroupView:" destination="78t-7n-6Oh" id="Yg2-Ag-Nq2"/>
@@ -83,6 +88,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="arButton" destination="86T-8j-9kn" id="cuF-XV-BmB"/>
                         <outlet property="groupListTableView" destination="L5e-sC-Cc2" id="YAw-no-rMB"/>
                         <outlet property="groupSegmentedControl" destination="jiR-Nb-kZX" id="NWt-sl-6jM"/>
                     </connections>

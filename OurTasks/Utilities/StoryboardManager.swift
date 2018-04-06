@@ -32,6 +32,7 @@ struct StoryboardManager {
         case Register
         case GroupList
         case AddGroup
+        case ARKit
     }
 
     enum ViewControllerIdentifiers: String {
@@ -39,6 +40,7 @@ struct StoryboardManager {
         case registerViewController
         case groupListViewController
         case addGroupViewController
+        case arKitViewController
     }
 
     static func loginViewController() -> LoginViewController {
@@ -56,5 +58,11 @@ struct StoryboardManager {
     static func addGroupViewController() -> AddGroupViewController {
         let addGroupVC = self.viewController(ViewControllerTypes().addGroup, withIdentifier: ViewControllerIdentifiers.addGroupViewController.rawValue, fromStoryboard: StoryboardNames.AddGroup.rawValue)
         return addGroupVC
+    }
+    
+    @available(iOS 11.0, *)
+    static func arKitViewController() -> ARKitViewController {
+        let arVC = self.viewController(ARKitViewController.self, withIdentifier: ViewControllerIdentifiers.arKitViewController.rawValue, fromStoryboard: StoryboardNames.ARKit.rawValue)
+        return arVC
     }
 }
