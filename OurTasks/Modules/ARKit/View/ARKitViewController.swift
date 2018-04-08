@@ -23,7 +23,8 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.sceneView.delegate = self
+        self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         self.setupView()
     }
     
@@ -104,6 +105,22 @@ extension ARKitViewController: BarcodeDelegate {
         let results = self.sceneView.hitTest(self.sceneView.convertFromCamera(point), types: .featurePoint)
         return results.first
     }
+}
+
+@available(iOS 11.0, *)
+extension ARKitViewController {
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
+        node.addChildNode(planeNode)
+    }
     
-    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+        node.enumerateChildNodes { (childNode, _) in
+            childNode.removeFromParentNode()
+        }
+        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
+        node.addChildNode(planeNode)
+    }
 }

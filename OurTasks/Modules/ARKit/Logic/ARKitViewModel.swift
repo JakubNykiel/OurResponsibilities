@@ -52,6 +52,16 @@ class ARKitViewModel {
         self.barcodeHandler.delegate = viewController
         self.delegate = viewController
     }
+    
+    func foundPlane(planeAnchor: ARPlaneAnchor) -> SCNNode {
+//        let planeNode = SCNNode(geometry: SCNPlane(width: CGFloat(planeAnchor.extent.z), height: CGFloat(planeAnchor.extent.x)))
+        let planeNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+        planeNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        planeNode.geometry?.firstMaterial?.isDoubleSided = true
+        planeNode.position = SCNVector3(planeAnchor.center.x,planeAnchor.center.y,planeAnchor.center.z)
+        return planeNode
+        
+    }
 }
 
 

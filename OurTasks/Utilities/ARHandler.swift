@@ -14,6 +14,11 @@ class ARHandler {
     
     func startSession(sceneView: ARSCNView) {
         let configuration = ARWorldTrackingConfiguration()
+        if #available(iOS 11.3, *) {
+            configuration.planeDetection = [.horizontal, .vertical]
+        } else {
+            configuration.planeDetection = [.horizontal]
+        }
         sceneView.session.run(configuration)
     }
     
