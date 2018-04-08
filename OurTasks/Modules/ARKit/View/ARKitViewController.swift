@@ -74,10 +74,10 @@ extension ARKitViewController: QRNodeDelegate {
         let parentNode = SCNNode()
         parentNode.name = "parent"
         parentNode.addChildNode(node)
-        let textNode = self.addTextNode(node: node)
-        let textPosition = SCNVector3Make(node.position.x, node.position.y + 0.1, node.position.z)
-        textNode.position = textPosition
-        parentNode.addChildNode(textNode)
+//        let textNode = self.addTextNode(node: node)
+//        let textPosition = SCNVector3Make(node.position.x, node.position.y + 0.1, node.position.z)
+//        textNode.position = textPosition
+//        parentNode.addChildNode(textNode)
         self.sceneView.scene.rootNode.addChildNode(parentNode)
         self.viewModel?.isSearchingActive = false
     }

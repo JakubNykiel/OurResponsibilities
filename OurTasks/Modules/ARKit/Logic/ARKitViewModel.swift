@@ -28,9 +28,12 @@ class ARKitViewModel {
     }
     
     func foundQR(worldTransform: simd_float4x4) {
-        let boxNode = SCNNode(geometry: SCNSphere(radius: 0.1))
-        boxNode.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+        let boxNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+        let qrMaterial = SCNMaterial()
+        qrMaterial.diffuse.contents = #imageLiteral(resourceName: "qrNode")
+        qrMaterial.isDoubleSided = false
         boxNode.simdWorldTransform = worldTransform
+        boxNode.geometry?.materials = [qrMaterial]
         self.delegate?.showNodeOnQR(node: boxNode)
     }
     
