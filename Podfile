@@ -15,4 +15,5 @@ target 'OurTasks' do
   pod 'Firebase/Storage'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 end
