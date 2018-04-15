@@ -38,6 +38,7 @@ class AddGroupViewController: UIViewController {
     @IBAction func addGroup(_ sender: Any) {
         self.prepareGroupModel()
         self.viewModel.addGroupToDatabase()
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

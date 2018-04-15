@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "shopify-faae7065b7b351d28495b345ed76096c03de28bac346deb1e85db632862fd0e4.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

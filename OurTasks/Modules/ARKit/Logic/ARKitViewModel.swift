@@ -10,6 +10,7 @@ import UIKit
 import Vision
 import ARKit
 import SceneKit
+import RxSwift
 
 protocol QRNodeDelegate {
     func showNodeOnQR(node: SCNNode)
@@ -18,6 +19,8 @@ protocol QRNodeDelegate {
 @available(iOS 11.0, *)
 class ARKitViewModel {
     
+    var planeDetected: Variable<Bool> = Variable(false)
+    var detectingActive: Variable<Bool> = Variable(false)
     let barcodeHandler: BarcodeHandler
     private var delegate: QRNodeDelegate?
     var isSearchingActive: Bool = false

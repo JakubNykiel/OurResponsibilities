@@ -25,17 +25,20 @@ class GroupListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
-        self.prepare()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.prepare()
         self.viewModel.groupsFetched.asObservable()
             .subscribe(onNext: { (_) in
                 self.groupListTableView.reloadData()
             }).disposed(by: self.disposeBag)
+        self.groupListTableView.reloadData()
     }
     
     private func prepare() {
+        self.viewModel.userGroups.value = []
         self.viewModel.getUserGroups()
         self.groupListTableView.delegate = self
         self.groupListTableView.dataSource = self
@@ -43,7 +46,8 @@ class GroupListViewController: UIViewController {
     
     @IBAction func addGroupView(_ sender: Any) {
         let addGroupVC = StoryboardManager.addGroupViewController()
-        self.present(addGroupVC, animated: true, completion: nil)
+//        self.present(addGroupVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
     
     @IBAction func presentAR(_ sender: Any) {

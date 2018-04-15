@@ -30,6 +30,7 @@
                                     <constraint firstAttribute="width" constant="64" id="ZWV-sa-bct"/>
                                     <constraint firstAttribute="width" secondItem="Lqz-WR-xg8" secondAttribute="height" multiplier="1:1" id="rGT-lu-r4s"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <state key="normal" image="icQR"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -40,20 +41,61 @@
                                     <action selector="startSearchingQR:" destination="wA2-WR-aqt" eventType="touchUpInside" id="Fc5-Qg-Hsd"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSl-pL-HBj">
+                                <rect key="frame" x="163" y="587" width="48" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="0.28772474315068491" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="PZf-lT-ag4"/>
+                                    <constraint firstAttribute="width" secondItem="ZSl-pL-HBj" secondAttribute="height" multiplier="1:1" id="ats-q5-YD1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" red="0.99550908803939819" green="0.089599452912807465" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="removePlane:" destination="wA2-WR-aqt" eventType="touchUpInside" id="L3e-S5-PgG"/>
+                                    <action selector="startSearchingQR:" destination="wA2-WR-aqt" eventType="touchUpInside" id="7oa-iq-U7k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgv-nq-lbF">
+                                <rect key="frame" x="287" y="495" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="oit-pN-UGc"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="icSurfaceArea"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="32"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="startSearchingPlane:" destination="wA2-WR-aqt" eventType="touchUpInside" id="tra-zX-Ymr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Lqz-WR-xg8" secondAttribute="trailing" constant="24" id="GBI-6a-pyi"/>
+                            <constraint firstItem="ZSl-pL-HBj" firstAttribute="centerY" secondItem="Lqz-WR-xg8" secondAttribute="centerY" id="Hqu-8x-oyM"/>
                             <constraint firstItem="FS4-FM-ZtW" firstAttribute="top" secondItem="7YZ-Gm-h6p" secondAttribute="topMargin" id="OFW-OV-NvS"/>
                             <constraint firstAttribute="bottom" secondItem="Lqz-WR-xg8" secondAttribute="bottom" constant="24" id="P2O-ES-98e"/>
                             <constraint firstItem="JBo-uL-uPv" firstAttribute="bottom" secondItem="FS4-FM-ZtW" secondAttribute="bottom" id="Qes-P9-5WV"/>
                             <constraint firstItem="FS4-FM-ZtW" firstAttribute="leading" secondItem="JBo-uL-uPv" secondAttribute="leading" id="T39-3e-XTa"/>
+                            <constraint firstItem="Lqz-WR-xg8" firstAttribute="top" secondItem="sgv-nq-lbF" secondAttribute="bottom" constant="20" id="W9j-LC-yP8"/>
+                            <constraint firstItem="sgv-nq-lbF" firstAttribute="width" secondItem="sgv-nq-lbF" secondAttribute="height" multiplier="1:1" id="WZp-sy-7zN"/>
+                            <constraint firstItem="ZSl-pL-HBj" firstAttribute="centerX" secondItem="7YZ-Gm-h6p" secondAttribute="centerX" id="jcO-Jd-4Z4"/>
                             <constraint firstItem="JBo-uL-uPv" firstAttribute="trailing" secondItem="FS4-FM-ZtW" secondAttribute="trailing" id="lRi-hl-qe3"/>
+                            <constraint firstItem="JBo-uL-uPv" firstAttribute="trailing" secondItem="sgv-nq-lbF" secondAttribute="trailing" constant="24" id="rLT-gC-av0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JBo-uL-uPv"/>
                     </view>
                     <connections>
+                        <outlet property="qrBtn" destination="Lqz-WR-xg8" id="Vln-fC-Gy9"/>
+                        <outlet property="removeBtn" destination="ZSl-pL-HBj" id="bVj-fR-Yad"/>
                         <outlet property="sceneView" destination="FS4-FM-ZtW" id="3eM-4J-aOG"/>
+                        <outlet property="surfaceBtn" destination="sgv-nq-lbF" id="DhN-BH-V4a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JoT-SN-EKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -63,5 +105,6 @@
     </scenes>
     <resources>
         <image name="icQR" width="220" height="220"/>
+        <image name="icSurfaceArea" width="512" height="512"/>
     </resources>
 </document>

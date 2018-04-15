@@ -8,3 +8,6 @@
 
 // Add group
 "addGroupTitle" = "Podaj nazwę nowej grupy";
+
+//GroupList
+"admins" = "Zarzadzający: ";

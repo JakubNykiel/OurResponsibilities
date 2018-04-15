@@ -24,25 +24,25 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" id="MzD-h7-UdI" customClass="GroupCell" customModule="OurTasks" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="groupCell" rowHeight="60" id="MzD-h7-UdI" customClass="GroupCell" customModule="OurTasks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MzD-h7-UdI" id="B66-dX-nhS">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-jx-egC">
-                                                    <rect key="frame" x="15" y="11" width="345" height="22"/>
+                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="AS6-jx-egC" secondAttribute="bottom" id="Hvf-q7-5Ol"/>
                                                 <constraint firstItem="AS6-jx-egC" firstAttribute="top" secondItem="B66-dX-nhS" secondAttribute="topMargin" id="OuJ-Ju-n2R"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="AS6-jx-egC" secondAttribute="trailing" id="WZJ-tj-8Gs"/>
                                                 <constraint firstItem="AS6-jx-egC" firstAttribute="leading" secondItem="B66-dX-nhS" secondAttribute="leadingMargin" id="f5l-BD-Mfu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="AS6-jx-egC" secondAttribute="bottom" id="qHY-h5-ea9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -55,7 +55,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="37"/>
                                 <segments>
                                     <segment title="Your"/>
-                                    <segment title="Invites(3)"/>
+                                    <segment title="Invites"/>
                                 </segments>
                                 <connections>
                                     <action selector="changeGroupList:" destination="78t-7n-6Oh" eventType="valueChanged" id="mPW-Tt-avZ"/>
