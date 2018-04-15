@@ -13,14 +13,12 @@ struct UserModel {
     var username: String
     var groups: [String]?
     var invites: [String]?
-    var uid: String
     
     enum UserKeys: String, CodingKey {
         case email
         case username
         case groups
         case invites
-        case uid
     }
 }
 extension UserModel: Encodable {
@@ -30,6 +28,5 @@ extension UserModel: Encodable {
         try container.encode(self.username, forKey: .username)
         try container.encode(self.groups, forKey: .groups)
         try container.encode(self.invites, forKey: .invites)
-//        try container.encode(self.uid, forKey: .uid)
     }
 }

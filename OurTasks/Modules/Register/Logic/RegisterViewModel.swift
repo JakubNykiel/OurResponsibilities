@@ -25,7 +25,7 @@ class RegisterViewModel {
                 self.error.value = error.localizedDescription
             }
             if let user = user {
-                self.currentUser = UserModel(email: email, username: username, groups: nil, invites: nil, uid: user.uid)
+                self.currentUser = UserModel(email: email, username: username, groups: nil, invites: nil)
                 self.saveUser()
             }
         }
@@ -33,8 +33,9 @@ class RegisterViewModel {
     
     private func saveUser() {
         guard let user = self.currentUser else { return }
+        guard let currentUserUid = Auth.auth().currentUser?.uid else { return }
         guard let userData = user.asDictionary() else { return }
-        let userRef = self.db.collection(FirebaseModel.users.rawValue).document(user.uid)
+        let userRef = self.db.collection(FirebaseModel.users.rawValue).document(currentUserUid)
         userRef.setData(userData) { (err) in
             if let err = err {
                 print("[ERROR_USER_ADDED] Error adding document: \(err)")
