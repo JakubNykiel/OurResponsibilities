@@ -12,7 +12,7 @@ struct GroupModel: Codable {
     var name: String
     var createDate: String
     var users: [String]?
-    var tasks: [String]?
+    var events: [String]?
     var admins: [String] = []
     var userInteraction: Bool
 
@@ -20,16 +20,16 @@ struct GroupModel: Codable {
         case name
         case createDate
         case users
-        case tasks
+        case events
         case admins
         case userInteraction
     }
     
-    init(name: String, createDate: String, users: [String]?, tasks: [String]?, admins: [String], userInteraction: Bool) {
+    init(name: String, createDate: String, users: [String]?, events: [String]?, admins: [String], userInteraction: Bool) {
         self.name = name
         self.createDate = createDate
         self.users = users
-        self.tasks = tasks
+        self.events = events
         self.admins = admins
         self.userInteraction = userInteraction
     }
@@ -40,7 +40,7 @@ struct GroupModel: Codable {
         self.name = try container.decode(String?.self, forKey: .name) ?? ""
         self.createDate = try container.decode(String?.self, forKey: .createDate) ?? ""
         self.users = try? container.decode([String]?.self, forKey: .users) ?? []
-        self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
+        self.events = try? container.decode([String]?.self, forKey: .events) ?? []
         self.admins = try container.decode([String]?.self, forKey: .users) ?? []
         self.userInteraction = try container.decode(Bool.self, forKey: .userInteraction)
     }
@@ -52,7 +52,7 @@ extension GroupModel {
         try container.encode(self.name, forKey: .name)
         try container.encode(self.createDate, forKey: .createDate)
         try container.encode(self.users, forKey: .users)
-        try container.encode(self.tasks, forKey: .tasks)
+        try container.encode(self.events, forKey: .events)
         try container.encode(self.admins, forKey: .admins)
         try container.encode(self.userInteraction, forKey: .userInteraction)
     }

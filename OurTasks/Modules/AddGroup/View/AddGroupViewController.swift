@@ -32,7 +32,7 @@ class AddGroupViewController: UIViewController {
     private func prepareGroupModel() {
         let currentUserUid = self.viewModel.getCurrentUserUid()
         let groupName = self.groupNameTextField.text ?? ""
-        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), users: nil, tasks: nil, admins: [currentUserUid], userInteraction: false)
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), users: nil, events: nil, admins: [currentUserUid], userInteraction: false)
     }
     
     @IBAction func addGroup(_ sender: Any) {
