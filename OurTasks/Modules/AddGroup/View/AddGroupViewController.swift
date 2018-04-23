@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import RxSwift
 
 class AddGroupViewController: UIViewController {
 
@@ -15,7 +16,7 @@ class AddGroupViewController: UIViewController {
     @IBOutlet weak var groupNameTextField: UITextField!
     
     private let viewModel: AddGroupViewModel = AddGroupViewModel()
-    
+    private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -23,6 +24,13 @@ class AddGroupViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideKeyboardWhenTappedAround()
+
+        self.viewModel.groupAdded.asObservable()
+            .subscribe(onNext: {
+                if $0 {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     private func configureTextFields() {
@@ -38,7 +46,6 @@ class AddGroupViewController: UIViewController {
     @IBAction func addGroup(_ sender: Any) {
         self.prepareGroupModel()
         self.viewModel.addGroupToDatabase()
-        self.navigationController?.popViewController(animated: true)
     }
     
 }

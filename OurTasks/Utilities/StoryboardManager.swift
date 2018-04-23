@@ -53,6 +53,7 @@ struct StoryboardManager {
     }
     static func groupListViewController() -> GroupListViewController {
         let groupListVC = self.viewController(ViewControllerTypes().afterLogin, withIdentifier: ViewControllerIdentifiers.groupListViewController.rawValue, fromStoryboard: StoryboardNames.GroupList.rawValue)
+        groupListVC.viewModel = GroupListViewModel()
         return groupListVC
     }
     static func addGroupViewController() -> AddGroupViewController {

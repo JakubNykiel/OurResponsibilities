@@ -12,22 +12,22 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class GroupListViewController: UIViewController {
+class GroupListViewController: UITableViewController {
 
-    @IBOutlet weak var groupSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var groupListTableView: UITableView!
     @IBOutlet weak var arButton: UIBarButtonItem!
     
-    private let viewModel: GroupListViewModel = GroupListViewModel()
+    var viewModel: GroupListViewModel!
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private var dataSource: RxTableViewSectionedReloadDataSource<GroupSection>!
     
-    private let disposeBag: DisposeBag = DisposeBag()
+    private var disposeBag: DisposeBag!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = false
-        //TODO: viewModel configure for rxdatasources
+
+        self.tableView.delaysContentTouches = false
+        self.tableView.dataSource = nil
+        self.tableView.delegate = nil
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .userGroups(let model):
@@ -37,30 +37,35 @@ class GroupListViewController: UIViewController {
             case .userInvites(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupInvitesCell", for: indexPath) as! GroupInviteCell
                 cell.configure(model)
-                return cell
+                return UITableViewCell()
             }
         })
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.disposeBag = DisposeBag()
+    
+        self.viewModel.sectionsBehaviourSubject.asObservable()
+            .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
+            .disposed(by: self.disposeBag)
+
         self.prepare()
-        self.viewModel.groupsFetched.asObservable()
-            .subscribe(onNext: { (_) in
-                self.groupListTableView.reloadData()
-            }).disposed(by: self.disposeBag)
-        self.groupListTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
     
     private func prepare() {
         self.viewModel.userGroups.value = []
         self.viewModel.getUserGroups()
-        self.groupListTableView.delegate = self
-        self.groupListTableView.dataSource = self
     }
     
     @IBAction func addGroupView(_ sender: Any) {
         let addGroupVC = StoryboardManager.addGroupViewController()
-//        self.present(addGroupVC, animated: true, completion: nil)
         self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
     
@@ -69,21 +74,14 @@ class GroupListViewController: UIViewController {
         let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
         self.present(groupListVC, animated: true, completion: nil)
     }
-    @IBAction func changeGroupList(_ sender: Any) {
-        
-    }
+
 }
-extension GroupListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.userGroups.value.count
+extension GroupListViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90.0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! GroupCell
-        let model = self.viewModel.userGroups.value[indexPath.row]
-        cell.configure(group: model)
-        return cell
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
     }
-    
-    
 }

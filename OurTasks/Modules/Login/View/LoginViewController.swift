@@ -66,8 +66,9 @@ extension LoginViewController {
         self.handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             if user != nil {
                 let storyBoard = UIStoryboard(name: "GroupList", bundle: nil)
-                let groupListVC = storyBoard.instantiateViewController(withIdentifier: "groupListNavigation")
-                self.present(groupListVC, animated: true, completion: nil)
+                let groupListVC = StoryboardManager.groupListViewController()
+                let navController = UINavigationController(rootViewController: groupListVC)
+                self.present(navController, animated: true, completion: nil)
             }
         })
     }

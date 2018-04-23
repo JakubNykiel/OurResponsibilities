@@ -17,6 +17,7 @@ class AddGroupViewModel {
     let errorString: Variable<String> = Variable("")
     var groupModel: GroupModel?
     private var currentUser: User? = Auth.auth().currentUser
+    var groupAdded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     
     func getCurrentUserUid() -> String {
         guard let uid = self.currentUser?.uid else { return "" }
@@ -53,6 +54,7 @@ class AddGroupViewModel {
                 guard var groups: [String] = data[FirebaseModel.groups.rawValue] as? [String] else { return }
                 groups.append(id)
                 userRef.updateData([FirebaseModel.groups.rawValue : groups])
+                self.groupAdded.onNext(true)
             } else {
                 print("Document does not exist")
             }
