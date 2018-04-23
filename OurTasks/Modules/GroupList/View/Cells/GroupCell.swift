@@ -23,7 +23,7 @@ class GroupCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(group: GroupModel) {
-        self.nameLbl.text = group.name
+    func configure(_ model: UserGroupsCellModel) {
+        self.nameLbl.text = model.name
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class GroupListViewController: UIViewController {
 
@@ -19,13 +20,26 @@ class GroupListViewController: UIViewController {
     
     private let viewModel: GroupListViewModel = GroupListViewModel()
     private let firebaseManager: FirebaseManager = FirebaseManager()
+    private var dataSource: RxTableViewSectionedReloadDataSource<GroupSection>!
     
     private let disposeBag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
-        
+        //TODO: viewModel configure for rxdatasources
+        self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
+            switch dataSource[indexPath] {
+            case .userGroups(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupCell", for: indexPath) as! GroupCell
+                cell.configure(model)
+                return cell
+            case .userInvites(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupInvitesCell", for: indexPath) as! GroupInviteCell
+                cell.configure(model)
+                return cell
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

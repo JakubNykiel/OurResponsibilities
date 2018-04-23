@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0EB1182FBE45AFE0AB0DF531 /* Pods_OurTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */; };
+		74B869512087627300D6F99B /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupSection.swift */; };
+		74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869532087655F00D6F99B /* GroupInviteCell.swift */; };
 		C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */; };
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		74B869502087627300D6F99B /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
+		74B869532087655F00D6F99B /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
 		7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC2731CBC522993327801F6 /* Pods-OurTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		A9779A76851841E46402BAF5 /* Pods-OurTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.release.xcconfig"; sourceTree = "<group>"; };
@@ -106,6 +110,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		74B86952208764D500D6F99B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C3415F5920697426007E7EED /* GroupCell.swift */,
+				74B869532087655F00D6F99B /* GroupInviteCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		AE03FAE935383AD154A450EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,9 +311,9 @@
 		C3C11DB51F83B1460074D9AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				74B86952208764D500D6F99B /* Cells */,
 				C3C11DB61F83B1590074D9AC /* GroupList.storyboard */,
 				C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */,
-				C3415F5920697426007E7EED /* GroupCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */,
+				74B869502087627300D6F99B /* GroupSection.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -646,8 +660,10 @@
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
+				74B869512087627300D6F99B /* GroupSection.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
+				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
