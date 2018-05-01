@@ -7,14 +7,15 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Groups Table-->
         <scene sceneID="zb2-PK-Fcv">
             <objects>
-                <tableViewController storyboardIdentifier="groupListViewController" id="nX5-zc-pxx" userLabel="Groups Table" customClass="GroupListViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e6r-yf-fjm">
+                <tableViewController id="nX5-zc-pxx" userLabel="Groups Table" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e6r-yf-fjm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,10 +77,6 @@
                                 </connections>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="nX5-zc-pxx" id="trM-WZ-62S"/>
-                            <outlet property="delegate" destination="nX5-zc-pxx" id="fAi-LT-jrc"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Groups" id="cVC-Ea-f9o">
                         <barButtonItem key="leftBarButtonItem" title="AR" id="rJp-Tq-tQ6">
@@ -102,10 +99,104 @@
             </objects>
             <point key="canvasLocation" x="2932" y="233.43328335832086"/>
         </scene>
+        <!--Groups-->
+        <scene sceneID="U1r-91-yZk">
+            <objects>
+                <viewController storyboardIdentifier="groupListViewController" id="8iw-Ne-ucS" customClass="GroupListViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="koH-ia-wZM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gpM-iE-3kr">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userGroupCell" rowHeight="60" id="HKk-IL-7yj" customClass="GroupCell" customModule="OurTasks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HKk-IL-7yj" id="Z9o-PM-Ugb">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4C2-pd-Th9">
+                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4C2-pd-Th9" firstAttribute="leading" secondItem="Z9o-PM-Ugb" secondAttribute="leadingMargin" id="5Sz-42-fj0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4C2-pd-Th9" secondAttribute="trailing" id="9c2-Gs-R5S"/>
+                                                <constraint firstItem="4C2-pd-Th9" firstAttribute="top" secondItem="Z9o-PM-Ugb" secondAttribute="topMargin" id="iS4-cE-hGx"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4C2-pd-Th9" secondAttribute="bottom" id="jXr-c8-vZI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="4C2-pd-Th9" id="PVu-dT-glI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userInvitesCell" rowHeight="60" id="4eB-BE-hUG" customClass="GroupInviteCell" customModule="OurTasks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4eB-BE-hUG" id="6wJ-ET-oOX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR4-nE-49P">
+                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ke6-vg-AO2">
+                                                    <rect key="frame" x="164" y="14" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oR4-nE-49P" secondAttribute="trailing" id="0Qo-pG-ivN"/>
+                                                <constraint firstItem="oR4-nE-49P" firstAttribute="top" secondItem="6wJ-ET-oOX" secondAttribute="topMargin" id="2XL-y6-oVF"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="oR4-nE-49P" secondAttribute="bottom" id="FeO-AH-3sE"/>
+                                                <constraint firstItem="oR4-nE-49P" firstAttribute="leading" secondItem="6wJ-ET-oOX" secondAttribute="leadingMargin" id="hcs-cT-TzM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="acceptInvitationButton" destination="Ke6-vg-AO2" id="KIF-ga-h1v"/>
+                                            <outlet property="nameLbl" destination="oR4-nE-49P" id="RZ6-qi-d2q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6Lr-Av-Ork"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Groups" id="car-QO-FVr">
+                        <barButtonItem key="leftBarButtonItem" title="AR" id="nQ7-hH-xwX">
+                            <connections>
+                                <action selector="presentAR:" destination="nX5-zc-pxx" id="0LE-pw-LVJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jvj-l3-YB1">
+                            <connections>
+                                <action selector="addGroupView:" destination="nX5-zc-pxx" id="OzD-NU-n8k"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="gpM-iE-3kr" id="Phn-9B-KfR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCp-iQ-kGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1993" y="994"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="p55-cy-rbT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Cy-dN-Vhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uwZ-Ym-uTK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WBs-eX-rc7">
@@ -114,9 +205,10 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="nX5-zc-pxx" kind="relationship" relationship="rootViewController" id="QDY-En-90E"/>
+                        <segue destination="8iw-Ne-ucS" kind="relationship" relationship="rootViewController" id="c21-2C-cIW"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Cy-dN-Vhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1992.8" y="233.43328335832086"/>
         </scene>

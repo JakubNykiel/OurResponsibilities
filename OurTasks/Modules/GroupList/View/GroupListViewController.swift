@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 import RxSwift
-import RxCocoa
 import RxDataSources
 
-class GroupListViewController: UITableViewController {
+class GroupListViewController: UIViewController {
 
     @IBOutlet weak var arButton: UIBarButtonItem!
+    @IBOutlet weak var tableView: UITableView!
     
     var viewModel: GroupListViewModel!
     private let firebaseManager: FirebaseManager = FirebaseManager()
@@ -25,9 +25,6 @@ class GroupListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.delaysContentTouches = false
-        self.tableView.dataSource = nil
-        self.tableView.delegate = nil
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .userGroups(let model):
@@ -48,7 +45,7 @@ class GroupListViewController: UITableViewController {
         self.disposeBag = DisposeBag()
     
         self.viewModel.sectionsBehaviourSubject.asObservable()
-            .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
+            .bind(to: tableView.rx.items(dataSource: self.dataSource))
             .disposed(by: self.disposeBag)
 
         self.prepare()
@@ -74,14 +71,32 @@ class GroupListViewController: UITableViewController {
         let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
         self.present(groupListVC, animated: true, completion: nil)
     }
-
+    
 }
 extension GroupListViewController {
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard section < dataSource.sectionModels.count else { return UIView() }
+        let section = dataSource[section]
+        guard section.items.count > 0 else { return UIView() }
+        
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 50.0))
+        let label = UILabel(frame: CGRect(x: 21.0, y: 30.0, width: tableView.frame.size.width, height: 20.0))
+        
+        label.text = "My Groups"
+        view.addSubview(label)
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0))
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 21.0))
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 21.0))
+        
+        return view
     }
 }
