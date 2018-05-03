@@ -13,6 +13,9 @@ import RxSwift
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var signBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var signLbl: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var bottomTextFieldsConstraint: NSLayoutConstraint!
@@ -24,6 +27,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.prepareTexts()
         self.configureTextFields()
         self.containerDependOnKeyboardBottomConstrain = bottomTextFieldsConstraint
         self.watchForKeyboard()
@@ -85,5 +89,15 @@ extension LoginViewController {
     func mockLoginData() {
         self.emailTextField.text = "kuba@test.com"
         self.passwordTextField.text = "kuba1234567"
+    }
+}
+//MARK: Localize
+extension LoginViewController {
+    func prepareTexts() {
+        self.signLbl.text = "signIn".localize()
+        self.emailTextField.placeholder = "email".localize()
+        self.passwordTextField.placeholder = "password".localize()
+        self.signBtn.setTitle("signInAction".localize(), for: .normal)
+        self.registerBtn.setTitle("notRegisterYet".localize(), for: .normal)
     }
 }

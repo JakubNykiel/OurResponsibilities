@@ -18,6 +18,7 @@ class AddGroupViewModel {
     var groupModel: GroupModel?
     private var currentUser: User? = Auth.auth().currentUser
     var groupAdded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    let colors = [AppColor.appleBlue, AppColor.appleGreen, AppColor.appleOrange, AppColor.applePink, AppColor.applePurple, AppColor.appleRed, AppColor.appleTealBlue, AppColor.appleYellow]
     
     func getCurrentUserUid() -> String {
         guard let uid = self.currentUser?.uid else { return "" }
@@ -68,5 +69,9 @@ class AddGroupViewModel {
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let todayDate = dateFormatter.string(from: date)
         return todayDate
+    }
+    
+    func prepareColorForGroup(_ index: Int) -> String {
+        return colors[index].hexString
     }
 }

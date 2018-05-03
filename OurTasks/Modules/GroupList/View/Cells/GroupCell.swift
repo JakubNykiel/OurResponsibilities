@@ -11,6 +11,7 @@ import UIKit
 class GroupCell: UITableViewCell {
     
     @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var groupColor: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +26,6 @@ class GroupCell: UITableViewCell {
     
     func configure(_ model: UserGroupsCellModel) {
         self.nameLbl.text = model.name
+        self.groupColor.backgroundColor = model.color.hexStringToUIColor()
     }
 }

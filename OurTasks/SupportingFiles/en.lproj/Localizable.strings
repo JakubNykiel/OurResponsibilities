@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  OurTasks
+
+  Created by Jakub Nykiel on 09.11.2017.
+  Copyright © 2017 Jakub Nykiel. All rights reserved.
+*/
+
+// Login
+"signIn" = "Sign In";
+"signInAction" = "Sign In";
+"email" = "Email:";
+"password" = "Password:";
+"notRegisterYet" = "Not Registered Yet? Register.";
+//Register
+"username" = "Username:";
+"register" = "Register";
+"alreadyAccount" = "Have you already account? Sign In.";
+// Add group
+"addGroupTitle" = "Add group name:";
+"group_name" = "Group name:";
+"group_color" = "Group Color:";
+"add_group" = "Add group";
+//GroupList
+"admins" = "Admins: ";
+"groups" = "Groups";
+"my_groups" = "My Groups";
+"invites" = "Invites";

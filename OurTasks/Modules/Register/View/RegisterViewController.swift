@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 class RegisterViewController: UIViewController {
     
+    @IBOutlet weak var alreadyAccountBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -27,6 +29,7 @@ class RegisterViewController: UIViewController {
         self.containerDependOnKeyboardBottomConstrain = bottomConstraint
         self.watchForKeyboard()
         self.setupErrorObservable()
+        self.prepareTexts()
     }
     @IBAction func registerUser(_ sender: Any) {
         self.viewModel.createUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, username: self.usernameTextField.text!)
@@ -59,4 +62,13 @@ extension RegisterViewController {
         self.present(mainViewController, animated: true, completion: nil)
     }
 }
-
+// MARK: Localize
+extension RegisterViewController {
+    private func prepareTexts() {
+        self.usernameTextField.placeholder = "username".localize()
+        self.emailTextField.placeholder = "email".localize()
+        self.passwordTextField.placeholder = "password".localize()
+        self.registerBtn.setTitle("register".localize(), for: .normal)
+        self.alreadyAccountBtn.setTitle("alreadyAccount".localize(), for: .normal)
+    }
+}

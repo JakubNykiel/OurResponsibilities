@@ -11,6 +11,7 @@ import Foundation
 struct GroupModel: Codable {
     var name: String
     var createDate: String
+    var color: String
     var users: [String]?
     var events: [String]?
     var admins: [String] = []
@@ -19,15 +20,17 @@ struct GroupModel: Codable {
     enum GroupKeys: String,CodingKey {
         case name
         case createDate
+        case color
         case users
         case events
         case admins
         case userInteraction
     }
     
-    init(name: String, createDate: String, users: [String]?, events: [String]?, admins: [String], userInteraction: Bool) {
+    init(name: String, createDate: String, color: String, users: [String]?, events: [String]?, admins: [String], userInteraction: Bool) {
         self.name = name
         self.createDate = createDate
+        self.color = color
         self.users = users
         self.events = events
         self.admins = admins
@@ -39,6 +42,7 @@ struct GroupModel: Codable {
             GroupKeys.self)
         self.name = try container.decode(String?.self, forKey: .name) ?? ""
         self.createDate = try container.decode(String?.self, forKey: .createDate) ?? ""
+        self.color = try container.decode(String?.self, forKey: .color) ?? "FFFFFF"
         self.users = try? container.decode([String]?.self, forKey: .users) ?? []
         self.events = try? container.decode([String]?.self, forKey: .events) ?? []
         self.admins = try container.decode([String]?.self, forKey: .users) ?? []
@@ -51,6 +55,7 @@ extension GroupModel {
         var container = encoder.container(keyedBy: GroupKeys.self)
         try container.encode(self.name, forKey: .name)
         try container.encode(self.createDate, forKey: .createDate)
+        try container.encode(self.color, forKey: .color)
         try container.encode(self.users, forKey: .users)
         try container.encode(self.events, forKey: .events)
         try container.encode(self.admins, forKey: .admins)

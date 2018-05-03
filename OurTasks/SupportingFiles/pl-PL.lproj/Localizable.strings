@@ -1,0 +1,28 @@
+/* 
+  Localizable.strings
+  OurTasks
+
+  Created by Jakub Nykiel on 09.11.2017.
+  Copyright © 2017 Jakub Nykiel. All rights reserved.
+*/
+
+// Login
+"signIn" = "Logowanie";
+"signInAction" = "Zaloguj";
+"email" = "Email:";
+"password" = "Hasło:";
+"notRegisterYet" = "Nie masz konta? Zarejestruj się.";
+//Register
+"username" = "Nazwa użytkownika:";
+"register" = "Zarejestruj się";
+"alreadyAccount" = "Masz już konto? Zaloguj się.";
+// Add group
+"addGroupTitle" = "Podaj nazwę nowej grupy";
+"group_name" = "Nazwa grupy:";
+"group_color" = "Kolor grupy:";
+"add_group" = "Dodaj grupę";
+//GroupList
+"admins" = "Zarzadzający:";
+"groups" = "Grupy";
+"my_groups" = "Moje grupy";
+"invites" = "Zaproszenia do grup";

@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-            <string>HelveticaNeue-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Register View Controller-->
         <scene sceneID="Hcd-2L-ugj">
@@ -123,10 +117,12 @@
                         <viewLayoutGuide key="safeArea" id="h32-nn-T7c"/>
                     </view>
                     <connections>
+                        <outlet property="alreadyAccountBtn" destination="xND-5n-G90" id="UP5-qP-yyq"/>
                         <outlet property="bottomConstraint" destination="o58-ma-QrB" id="Im9-uC-Myn"/>
                         <outlet property="emailTextField" destination="A11-Ff-drU" id="fu2-au-QHv"/>
                         <outlet property="errorLabel" destination="fMl-MQ-qXD" id="HO7-cf-6ha"/>
                         <outlet property="passwordTextField" destination="bAv-Qb-ifS" id="am1-aH-WqD"/>
+                        <outlet property="registerBtn" destination="U62-pL-Oey" id="3gg-fM-Gx2"/>
                         <outlet property="usernameTextField" destination="ajP-3g-g7w" id="ocm-4t-QTL"/>
                     </connections>
                 </viewController>

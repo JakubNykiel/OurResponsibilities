@@ -24,7 +24,7 @@ class GroupListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.prepareTexts()
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .userGroups(let model):
@@ -91,12 +91,17 @@ extension GroupListViewController {
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 50.0))
         let label = UILabel(frame: CGRect(x: 21.0, y: 30.0, width: tableView.frame.size.width, height: 20.0))
         
-        label.text = "My Groups"
         view.addSubview(label)
         view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0.0))
         view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 21.0))
         view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 21.0))
         
         return view
+    }
+}
+//MARK: Localize
+extension GroupListViewController {
+    private func prepareTexts() {
+        self.navigationItem.title = "groups".localize()
     }
 }

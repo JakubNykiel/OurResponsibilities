@@ -12,6 +12,7 @@ class GroupInviteCell: UITableViewCell {
 
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet var acceptInvitationButton: UIButton!
+    @IBOutlet weak var groupColor: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,7 @@ class GroupInviteCell: UITableViewCell {
     
     func configure(_ model: UserInvitesCellModel) {
         self.nameLbl.text = model.name
+        self.groupColor.backgroundColor = model.color.hexStringToUIColor()
         self.acceptInvitationButton.setTitle(model.followBtnText, for: .normal)
     }
 }

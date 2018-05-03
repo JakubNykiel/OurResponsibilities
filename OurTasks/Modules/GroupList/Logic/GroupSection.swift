@@ -40,16 +40,25 @@ enum GroupItemType {
 }
 
 enum GroupSectionTitle: String {
-    case userGroups = "Your Groups"
-    case userInvites = "Invites"
+    case userGroups
+    case userInvites
+    
+    var rawValue: String  {
+        switch self {
+        case .userGroups: return "my_groups".localize()
+        case .userInvites: return "invites".localize()
+        }
+    }
 }
 
 struct UserGroupsCellModel {
     var name: String
+    var color: String
 }
 
 struct UserInvitesCellModel {
     var name: String
+    var color: String
     var followBtnText: String
     var followBtnVisible: Bool
 }

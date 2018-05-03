@@ -123,6 +123,9 @@
                         <outlet property="emailTextField" destination="duW-lE-m2y" id="5JM-mm-NnX"/>
                         <outlet property="errorLabel" destination="Ubv-If-nv2" id="lnP-CN-Vz0"/>
                         <outlet property="passwordTextField" destination="Z3w-SD-b8e" id="Ayd-qY-lUC"/>
+                        <outlet property="registerBtn" destination="fFy-22-htU" id="DbC-6H-l8V"/>
+                        <outlet property="signBtn" destination="hY6-IA-jn2" id="baF-Jc-q3x"/>
+                        <outlet property="signLbl" destination="QBA-I3-sjf" id="sH6-T8-UE5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NGB-h1-F7B" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -119,21 +120,37 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fMD-wr-Lcg">
+                                                    <rect key="frame" x="16" y="9" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="fMD-wr-Lcg" secondAttribute="height" multiplier="1:1" id="89j-eO-5P9"/>
+                                                        <constraint firstAttribute="height" constant="40" id="qIQ-dF-WSI"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4C2-pd-Th9">
-                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
+                                                    <rect key="frame" x="72" y="11" width="288" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4C2-pd-Th9" firstAttribute="leading" secondItem="Z9o-PM-Ugb" secondAttribute="leadingMargin" id="5Sz-42-fj0"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4C2-pd-Th9" secondAttribute="trailing" id="9c2-Gs-R5S"/>
+                                                <constraint firstItem="fMD-wr-Lcg" firstAttribute="leading" secondItem="Z9o-PM-Ugb" secondAttribute="leading" constant="16" id="DTk-6Q-hxh"/>
+                                                <constraint firstItem="4C2-pd-Th9" firstAttribute="leading" secondItem="fMD-wr-Lcg" secondAttribute="trailing" constant="16" id="QNC-1e-JBB"/>
+                                                <constraint firstItem="fMD-wr-Lcg" firstAttribute="centerY" secondItem="Z9o-PM-Ugb" secondAttribute="centerY" id="V2a-5K-Lzc"/>
                                                 <constraint firstItem="4C2-pd-Th9" firstAttribute="top" secondItem="Z9o-PM-Ugb" secondAttribute="topMargin" id="iS4-cE-hGx"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4C2-pd-Th9" secondAttribute="bottom" id="jXr-c8-vZI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="groupColor" destination="fMD-wr-Lcg" id="dA0-MW-oCf"/>
                                             <outlet property="nameLbl" destination="4C2-pd-Th9" id="PVu-dT-glI"/>
                                         </connections>
                                     </tableViewCell>
@@ -144,27 +161,47 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0yj-5U-dyf">
+                                                    <rect key="frame" x="16" y="9" width="40" height="40"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="0yj-5U-dyf" secondAttribute="height" multiplier="1:1" id="2Ix-G0-2N1"/>
+                                                        <constraint firstAttribute="height" constant="40" id="alw-dh-p8h"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ke6-vg-AO2">
+                                                    <rect key="frame" x="294" y="14" width="50" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="w2m-2B-av4"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oR4-nE-49P">
-                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
+                                                    <rect key="frame" x="72" y="11" width="206" height="38"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ke6-vg-AO2">
-                                                    <rect key="frame" x="164" y="14" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="oR4-nE-49P" secondAttribute="trailing" id="0Qo-pG-ivN"/>
+                                                <constraint firstItem="0yj-5U-dyf" firstAttribute="centerY" secondItem="6wJ-ET-oOX" secondAttribute="centerY" id="1um-Af-HCg"/>
                                                 <constraint firstItem="oR4-nE-49P" firstAttribute="top" secondItem="6wJ-ET-oOX" secondAttribute="topMargin" id="2XL-y6-oVF"/>
+                                                <constraint firstItem="oR4-nE-49P" firstAttribute="leading" secondItem="0yj-5U-dyf" secondAttribute="trailing" constant="16" id="9fL-sh-Xex"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="oR4-nE-49P" secondAttribute="bottom" id="FeO-AH-3sE"/>
-                                                <constraint firstItem="oR4-nE-49P" firstAttribute="leading" secondItem="6wJ-ET-oOX" secondAttribute="leadingMargin" id="hcs-cT-TzM"/>
+                                                <constraint firstItem="Ke6-vg-AO2" firstAttribute="leading" secondItem="oR4-nE-49P" secondAttribute="trailing" constant="16" id="YbF-p0-vmd"/>
+                                                <constraint firstItem="0yj-5U-dyf" firstAttribute="leading" secondItem="6wJ-ET-oOX" secondAttribute="leading" constant="16" id="d6i-zR-0Oo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ke6-vg-AO2" secondAttribute="trailing" constant="16" id="idy-Je-w8a"/>
+                                                <constraint firstItem="Ke6-vg-AO2" firstAttribute="centerY" secondItem="6wJ-ET-oOX" secondAttribute="centerY" id="n3x-DH-G0s"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="acceptInvitationButton" destination="Ke6-vg-AO2" id="KIF-ga-h1v"/>
+                                            <outlet property="groupColor" destination="0yj-5U-dyf" id="RpZ-rr-6fb"/>
                                             <outlet property="nameLbl" destination="oR4-nE-49P" id="RZ6-qi-d2q"/>
                                         </connections>
                                     </tableViewCell>
@@ -182,7 +219,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jvj-l3-YB1">
                             <connections>
-                                <action selector="addGroupView:" destination="nX5-zc-pxx" id="OzD-NU-n8k"/>
+                                <action selector="addGroupView:" destination="8iw-Ne-ucS" id="uVa-1v-F0i"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
