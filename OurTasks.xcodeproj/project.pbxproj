@@ -15,7 +15,7 @@
 		743F220320988F8100B25E30 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F220220988F8100B25E30 /* AppColor.swift */; };
 		743F2205209A77D400B25E30 /* String+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F2204209A77D400B25E30 /* String+Hex.swift */; };
 		743F2206209A79F100B25E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743F2208209A79F100B25E30 /* Localizable.strings */; };
-		74B869512087627300D6F99B /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupSection.swift */; };
+		74B869512087627300D6F99B /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupListSection.swift */; };
 		74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869532087655F00D6F99B /* GroupInviteCell.swift */; };
 		C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */; };
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
@@ -66,7 +66,7 @@
 		743F2207209A79F100B25E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		743F2209209A7A7F00B25E30 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		743F220A209A7A7F00B25E30 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		74B869502087627300D6F99B /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
+		74B869502087627300D6F99B /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		74B869532087655F00D6F99B /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
 		7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC2731CBC522993327801F6 /* Pods-OurTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.debug.xcconfig"; sourceTree = "<group>"; };
@@ -370,7 +370,7 @@
 			isa = PBXGroup;
 			children = (
 				C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */,
-				74B869502087627300D6F99B /* GroupSection.swift */,
+				74B869502087627300D6F99B /* GroupListSection.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -700,7 +700,7 @@
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
-				74B869512087627300D6F99B /* GroupSection.swift in Sources */,
+				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,

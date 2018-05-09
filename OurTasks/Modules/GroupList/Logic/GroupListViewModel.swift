@@ -18,10 +18,10 @@ class GroupListViewModel {
     
     var userGroupsBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
     var userInvitesBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
-    var sectionsBehaviourSubject: BehaviorSubject<[GroupSection]> = BehaviorSubject(value: [])
+    var sectionsBehaviourSubject: BehaviorSubject<[GroupListSection]> = BehaviorSubject(value: [])
     
     private let disposeBag = DisposeBag()
-    private var sections: [GroupSection] = []
+    private var sections: [GroupListSection] = []
     
     init() {
         self.userGroupsBehaviorSubject
@@ -32,8 +32,8 @@ class GroupListViewModel {
                 return Observable.of(ret)
             })
             .subscribe(onNext: {
-                self.sections = self.sections.filter({ $0.title != GroupSectionTitle.userGroups.rawValue })
-                self.sections.insert(GroupSection.section(title: .userGroups, items: $0.compactMap({ GroupItemType.userGroups($0) })), at: 0)
+                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userGroups.rawValue })
+                self.sections.insert(GroupListSection.section(title: .userGroups, items: $0.compactMap({ GroupListItemType.userGroups($0) })), at: 0)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -46,8 +46,8 @@ class GroupListViewModel {
                 return Observable.of(ret)
             })
             .subscribe(onNext: {
-                self.sections = self.sections.filter({ $0.title != GroupSectionTitle.userInvites.rawValue })
-                self.sections.insert(GroupSection.section(title: .userInvites, items: $0.compactMap({ GroupItemType.userInvites($0) })), at: 1)
+                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userInvites.rawValue })
+                self.sections.insert(GroupListSection.section(title: .userInvites, items: $0.compactMap({ GroupListItemType.userInvites($0) })), at: 1)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)

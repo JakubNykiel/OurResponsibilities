@@ -212,11 +212,7 @@
                         <viewLayoutGuide key="safeArea" id="6Lr-Av-Ork"/>
                     </view>
                     <navigationItem key="navigationItem" title="Groups" id="car-QO-FVr">
-                        <barButtonItem key="leftBarButtonItem" title="AR" id="nQ7-hH-xwX">
-                            <connections>
-                                <action selector="presentAR:" destination="nX5-zc-pxx" id="0LE-pw-LVJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" image="icSettings" id="0ek-vV-SVi"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Jvj-l3-YB1">
                             <connections>
                                 <action selector="addGroupView:" destination="8iw-Ne-ucS" id="uVa-1v-F0i"/>
@@ -250,4 +246,7 @@
             <point key="canvasLocation" x="1992.8" y="233.43328335832086"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icSettings" width="20" height="20"/>
+    </resources>
 </document>

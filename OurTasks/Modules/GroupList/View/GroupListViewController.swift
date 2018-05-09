@@ -18,7 +18,7 @@ class GroupListViewController: UIViewController {
     
     var viewModel: GroupListViewModel!
     private let firebaseManager: FirebaseManager = FirebaseManager()
-    private var dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
+    private var dataSource = RxTableViewSectionedReloadDataSource<GroupListSection>(configureCell: { dataSource, tableView, indexPath, item in
         switch dataSource[indexPath] {
         case .userGroups(let model):
             let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupCell", for: indexPath) as! GroupCell

@@ -1,5 +1,5 @@
 //
-//  GroupSection.swift
+//  GroupListSection.swift
 //  OurTasks
 //
 //  Created by Jakub Nykiel on 18.04.2018.
@@ -9,18 +9,18 @@
 import Foundation
 import RxDataSources
 
-enum GroupSection: SectionModelType {
-    case section(title: GroupSectionTitle, items: [GroupItemType])
+enum GroupListSection: SectionModelType {
+    case section(title: GroupListSectionTitle, items: [GroupListItemType])
     
-    typealias Item = GroupItemType
-    init(original: GroupSection, items: [GroupItemType]) {
+    typealias Item = GroupListItemType
+    init(original: GroupListSection, items: [GroupListItemType]) {
         switch original {
         case .section(title: let title, _):
             self = .section(title: title, items: items)
         }
     }
     
-    var items: [GroupItemType] {
+    var items: [GroupListItemType] {
         switch self {
         case .section(_, items: let items):
             return items.map { $0 }
@@ -34,12 +34,12 @@ enum GroupSection: SectionModelType {
         }
     }
 }
-enum GroupItemType {
+enum GroupListItemType {
     case userGroups(_: UserGroupsCellModel)
     case userInvites(_: UserInvitesCellModel)
 }
 
-enum GroupSectionTitle: String {
+enum GroupListSectionTitle: String {
     case userGroups
     case userInvites
     
