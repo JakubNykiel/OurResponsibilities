@@ -95,6 +95,6 @@ extension AddGroupViewController {
         self.titleLabel.text = "addGroupTitle".localize()
         self.groupNameTextField.placeholder = "group_name".localize()
         self.groupColorLbl.text = "group_color".localize()
-        self.addBtn.setTitle("add_group".localize(), for: <#T##UIControlState#>)
+        self.addBtn.setTitle("add_group".localize(), for: .normal)
     }
 }

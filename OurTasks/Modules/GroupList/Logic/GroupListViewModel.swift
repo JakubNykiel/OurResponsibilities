@@ -73,7 +73,7 @@ class GroupListViewModel {
     }
     
     func getInvitesGroups() {
-        
+        self.userInvitesBehaviorSubject.onNext([])
     }
     
     private func toGroupModel(_ groups: [String]) {
