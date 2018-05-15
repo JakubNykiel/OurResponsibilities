@@ -26,3 +26,10 @@
 "groups" = "Groups";
 "my_groups" = "My Groups";
 "invites" = "Invites";
+//Group
+"my_tasks" = "My tasks:";
+"past_events" = "Events in the past:";
+"future_events" = "Coming events";
+"present_events" = "Current events:";
+"global_ranking" = "Group Ranking:";
+

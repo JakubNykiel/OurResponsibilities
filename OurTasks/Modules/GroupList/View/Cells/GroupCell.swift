@@ -17,15 +17,9 @@ class GroupCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     func configure(_ model: UserGroupsCellModel) {
-        self.nameLbl.text = model.name
-        self.groupColor.backgroundColor = model.color.hexStringToUIColor()
+        self.nameLbl.text = model.groupModel.name
+        self.groupColor.backgroundColor = model.groupModel.color.hexStringToUIColor()
     }
 }

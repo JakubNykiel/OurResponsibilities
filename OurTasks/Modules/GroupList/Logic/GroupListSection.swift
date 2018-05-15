@@ -52,8 +52,7 @@ enum GroupListSectionTitle: String {
 }
 
 struct UserGroupsCellModel {
-    var name: String
-    var color: String
+    var groupModel: GroupModel
 }
 
 struct UserInvitesCellModel {

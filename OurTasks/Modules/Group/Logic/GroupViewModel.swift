@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import RxSwift
+
+class GroupViewModel {
+    
+    var hexStringColor: String = ""
+    var groupModel: Variable<GroupModel>?
+    
+}

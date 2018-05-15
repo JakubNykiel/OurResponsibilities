@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RxDataSources
+
 
 class GroupViewController: UIViewController {
+    
+    var viewModel: GroupViewModel = GroupViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -17,6 +17,8 @@
 		743F2206209A79F100B25E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743F2208209A79F100B25E30 /* Localizable.strings */; };
 		74B869512087627300D6F99B /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupListSection.swift */; };
 		74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869532087655F00D6F99B /* GroupInviteCell.swift */; };
+		74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0B20A397B700B61EF8 /* GroupSection.swift */; };
+		74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */; };
 		C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301AE4F1FE8826500107DCD /* Dictionary+Encodable.swift */; };
 		C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C301FF1C1F66C7070045641A /* AppDelegate.swift */; };
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		743F220A209A7A7F00B25E30 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		74B869502087627300D6F99B /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		74B869532087655F00D6F99B /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
+		74EEFF0B20A397B700B61EF8 /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
+		74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTaskCell.swift; sourceTree = "<group>"; };
 		7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OurTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FC2731CBC522993327801F6 /* Pods-OurTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		A9779A76851841E46402BAF5 /* Pods-OurTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OurTasks.release.xcconfig"; path = "Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				743F21FD20987A0400B25E30 /* GroupViewModel.swift */,
+				74EEFF0B20A397B700B61EF8 /* GroupSection.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -144,6 +149,7 @@
 		743F21F7209873D500B25E30 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				74EEFF0D20A3A43100B61EF8 /* Cells */,
 				743F21FB209879F600B25E30 /* GroupViewController.swift */,
 				743F21F92098791300B25E30 /* Group.storyboard */,
 			);
@@ -163,6 +169,14 @@
 			children = (
 				C3415F5920697426007E7EED /* GroupCell.swift */,
 				74B869532087655F00D6F99B /* GroupInviteCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		74EEFF0D20A3A43100B61EF8 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -694,10 +708,12 @@
 				743F21FE20987A0400B25E30 /* GroupViewModel.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
+				74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */,
 				C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
 				C39AB1D52078239A00A3B178 /* BarcodeHandler.swift in Sources */,
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
+				74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */,
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,

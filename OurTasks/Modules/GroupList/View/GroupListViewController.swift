@@ -51,6 +51,17 @@ class GroupListViewController: UIViewController {
         self.tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+        
+        self.tableView.rx.itemSelected
+            .subscribe(onNext: {
+                switch self.dataSource[$0]{
+                case .userGroups(let model):
+                    
+                    return
+                default: return
+                }
+            })
+            .disposed(by: self.disposeBag)
 
         self.prepare()
     }

@@ -27,7 +27,7 @@ class GroupListViewModel {
         self.userGroupsBehaviorSubject
             .flatMap({ (userGroups) -> Observable<[UserGroupsCellModel]> in
                 let ret: [UserGroupsCellModel] = userGroups.compactMap({
-                    return UserGroupsCellModel(name: $0.name, color: $0.color)
+                    return UserGroupsCellModel(groupModel: $0)
                 })
                 return Observable.of(ret)
             })

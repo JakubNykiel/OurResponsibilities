@@ -26,3 +26,9 @@
 "groups" = "Grupy";
 "my_groups" = "Moje grupy";
 "invites" = "Zaproszenia do grup";
+//Group
+"my_tasks" = "Moje zadania:";
+"past_events" = "Historia wydarzeń:";
+"future_events" = "Przyszłe wydarzenia:";
+"present_events" = "Trwające wydarzenia:";
+"global_ranking" = "Ranking ogólny:";

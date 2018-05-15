@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 struct StoryboardManager {
     
@@ -25,6 +26,7 @@ struct StoryboardManager {
         let register = RegisterViewController.self
         let afterLogin = GroupListViewController.self
         let addGroup = AddGroupViewController.self
+        let group = GroupViewController.self
     }
 
     enum StoryboardNames: String {
@@ -33,6 +35,7 @@ struct StoryboardManager {
         case GroupList
         case AddGroup
         case ARKit
+        case Group
     }
 
     enum ViewControllerIdentifiers: String {
@@ -41,6 +44,7 @@ struct StoryboardManager {
         case groupListViewController
         case addGroupViewController
         case arKitViewController
+        case groupViewController
     }
 
     static func loginViewController() -> LoginViewController {
@@ -60,6 +64,12 @@ struct StoryboardManager {
         let addGroupVC = self.viewController(ViewControllerTypes().addGroup, withIdentifier: ViewControllerIdentifiers.addGroupViewController.rawValue, fromStoryboard: StoryboardNames.AddGroup.rawValue)
         return addGroupVC
     }
+    static func groupViewController(_ groupModel: GroupModel) -> GroupViewController {
+        let groupVC = self.viewController(ViewControllerTypes().group, withIdentifier: ViewControllerIdentifiers.groupViewController.rawValue, fromStoryboard: StoryboardNames.Group.rawValue)
+        groupVC.viewModel.groupModel?.value = groupModel
+        return groupVC
+    }
+    
     
     @available(iOS 11.0, *)
     static func arKitViewController() -> ARKitViewController {
