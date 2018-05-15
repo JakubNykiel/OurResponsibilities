@@ -66,7 +66,8 @@ struct StoryboardManager {
     }
     static func groupViewController(_ groupModel: GroupModel) -> GroupViewController {
         let groupVC = self.viewController(ViewControllerTypes().group, withIdentifier: ViewControllerIdentifiers.groupViewController.rawValue, fromStoryboard: StoryboardNames.Group.rawValue)
-        groupVC.viewModel.groupModel?.value = groupModel
+        let viewModel = GroupViewModel.init(groupModel: groupModel)
+        groupVC.viewModel = viewModel
         return groupVC
     }
     

@@ -12,12 +12,25 @@ import RxDataSources
 
 class GroupViewController: UIViewController {
     
-    var viewModel: GroupViewModel = GroupViewModel()
+    var viewModel: GroupViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.prepare()
+    }
+    
+    private func prepare() {
+        self.prepareNavigation()
     }
 
+}
+// MARK: Prepare
+extension GroupViewController {
+    private func prepareNavigation() {
+        self.navigationItem.title = self.viewModel.groupModel.name.capitalized
+    }
 }

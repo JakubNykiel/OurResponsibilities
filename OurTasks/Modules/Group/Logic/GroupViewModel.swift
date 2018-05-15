@@ -12,6 +12,9 @@ import RxSwift
 class GroupViewModel {
     
     var hexStringColor: String = ""
-    var groupModel: Variable<GroupModel>?
+    var groupModel: GroupModel
     
+    init(groupModel: GroupModel) {
+        self.groupModel = groupModel
+    }
 }
