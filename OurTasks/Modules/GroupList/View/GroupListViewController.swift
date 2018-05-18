@@ -69,7 +69,6 @@ class GroupListViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
     }
     
     private func prepare() {

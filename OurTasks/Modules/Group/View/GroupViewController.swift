@@ -20,7 +20,12 @@ class GroupViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         self.prepare()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     private func prepare() {
@@ -32,5 +37,6 @@ class GroupViewController: UIViewController {
 extension GroupViewController {
     private func prepareNavigation() {
         self.navigationItem.title = self.viewModel.groupModel.name.capitalized
+        self.navigationController?.navigationBar.backgroundColor = self.viewModel.groupModel.color.hexStringToUIColor()
     }
 }
