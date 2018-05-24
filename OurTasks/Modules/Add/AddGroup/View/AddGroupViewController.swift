@@ -51,7 +51,7 @@ class AddGroupViewController: UIViewController {
         let currentUserUid = self.viewModel.getCurrentUserUid()
         let groupName = self.groupNameTextField.text ?? ""
         let colorString: String = self.viewModel.prepareColorForGroup(self.groupColorsCollection.indexPathsForVisibleItems.first?.row ?? 0)
-        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: nil, events: nil, admins: [currentUserUid], userInteraction: false)
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: nil, events: nil, admins: [currentUserUid:0], userInteraction: false)
     }
     
     @IBAction func nextColor(_ sender: Any) {

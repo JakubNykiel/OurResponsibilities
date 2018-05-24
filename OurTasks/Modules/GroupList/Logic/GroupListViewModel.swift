@@ -18,6 +18,8 @@ class GroupListViewModel {
     
     var userGroupsBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
     var userInvitesBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
+    var noGroupUserBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var noInvitesBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[GroupListSection]> = BehaviorSubject(value: [])
     
     private let disposeBag = DisposeBag()
@@ -51,6 +53,36 @@ class GroupListViewModel {
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
+        
+        self.noGroupUserBehaviorSubject
+            .flatMap({ (noTeams) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_group_user".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userGroups.rawValue })
+                self.sections.insert(GroupListSection.section(title: .userGroups, items: [GroupListItemType.noResult($0)]), at: 0)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.noInvitesBehaviorSubject
+            .flatMap({ (noTeams) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_invites".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userInvites.rawValue })
+                self.sections.insert(GroupListSection.section(title: .userInvites, items: [GroupListItemType.noResult($0)]), at: 1)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+
+        
     }
     
     func toggleFollow(teamAtIndex: Int) {
@@ -74,25 +106,31 @@ class GroupListViewModel {
     
     func getInvitesGroups() {
         self.userInvitesBehaviorSubject.onNext([])
+        self.noInvitesBehaviorSubject.onNext(true)
     }
     
     private func toGroupModel(_ groups: [String]) {
-        let userGroups = groups.compactMap({ group in
-            let groupRef = FirebaseReferences().groupRef.document(group)
-            groupRef.getDocument(completion: { (document, error) in
-                if let document = document {
-                    guard let groupData = document.data() else { return }
-                    let groupModel = try! FirebaseDecoder().decode(GroupModel.self, from: groupData)
-                    self.userGroups.value.append(groupModel)
-                    if groups.count == self.userGroups.value.count {
-                        self.userGroupsBehaviorSubject.onNext(self.userGroups.value)
+        if groups.count == 0 {
+            self.noGroupUserBehaviorSubject.onNext(true)
+        } else {
+            let userGroups = groups.compactMap({ group in
+                let groupRef = FirebaseReferences().groupRef.document(group)
+                groupRef.getDocument(completion: { (document, error) in
+                    if let document = document {
+                        guard let groupData = document.data() else { return }
+                        let groupModel = try! FirebaseDecoder().decode(GroupModel.self, from: groupData)
+                        self.userGroups.value.append(groupModel)
+                        if groups.count == self.userGroups.value.count {
+                            self.userGroupsBehaviorSubject.onNext(self.userGroups.value)
+                        }
+                        
+                    } else {
+                        print("Group not exist")
                     }
-                    
-                } else {
-                    print("Group not exist")
-                }
+                })
             })
-        })
+        }
+        
     }
     
     

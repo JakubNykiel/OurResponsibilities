@@ -28,6 +28,10 @@ class GroupListViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupInvitesCell", for: indexPath) as! GroupInviteCell
             cell.configure(model)
             return cell
+        case .noResult(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! NoResultCell
+            cell.descLbl.text = model.description
+            return cell
         }
     })
     
@@ -74,7 +78,7 @@ class GroupListViewController: UIViewController {
     private func prepare() {
         self.viewModel.userGroups.value = []
         self.viewModel.getUserGroups()
-        self.viewModel.getInvitesGroups()
+//        self.viewModel.getInvitesGroups()
     }
     
     @IBAction func addGroupView(_ sender: Any) {

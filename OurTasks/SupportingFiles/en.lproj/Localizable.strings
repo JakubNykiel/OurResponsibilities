@@ -26,6 +26,8 @@
 "groups" = "Groups";
 "my_groups" = "My Groups";
 "invites" = "Invites";
+"no_group_user" = "No groups";
+"no_invites" = "No invites to group";
 //Group
 "my_tasks" = "My tasks:";
 "past_events" = "Events in the past:";

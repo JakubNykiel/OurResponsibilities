@@ -8,8 +8,16 @@
 
 import Foundation
 import RxSwift
+import UIKit
 
 class GroupViewModel {
+    
+    var userGroupsBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
+    var userInvitesBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
+    var sectionsBehaviourSubject: BehaviorSubject<[GroupListSection]> = BehaviorSubject(value: [])
+    
+    private let disposeBag = DisposeBag()
+    private var sections: [GroupSection] = []
     
     var hexStringColor: String = ""
     var groupModel: GroupModel

@@ -26,6 +26,8 @@ class GroupViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black,  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)]
+        self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     private func prepare() {
@@ -36,7 +38,8 @@ class GroupViewController: UIViewController {
 // MARK: Prepare
 extension GroupViewController {
     private func prepareNavigation() {
+        let groupColor = self.viewModel.groupModel.color.hexStringToUIColor()
         self.navigationItem.title = self.viewModel.groupModel.name.capitalized
-        self.navigationController?.navigationBar.backgroundColor = self.viewModel.groupModel.color.hexStringToUIColor()
+        self.navigationController?.navigationBar.backgroundColor = groupColor.withAlphaComponent(0.2)
     }
 }

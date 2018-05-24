@@ -12,94 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Groups Table-->
-        <scene sceneID="zb2-PK-Fcv">
-            <objects>
-                <tableViewController id="nX5-zc-pxx" userLabel="Groups Table" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e6r-yf-fjm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userGroupCell" rowHeight="60" id="MzD-h7-UdI" customClass="GroupCell" customModule="OurTasks" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MzD-h7-UdI" id="B66-dX-nhS">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AS6-jx-egC">
-                                            <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="AS6-jx-egC" firstAttribute="top" secondItem="B66-dX-nhS" secondAttribute="topMargin" id="OuJ-Ju-n2R"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="AS6-jx-egC" secondAttribute="trailing" id="WZJ-tj-8Gs"/>
-                                        <constraint firstItem="AS6-jx-egC" firstAttribute="leading" secondItem="B66-dX-nhS" secondAttribute="leadingMargin" id="f5l-BD-Mfu"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="AS6-jx-egC" secondAttribute="bottom" id="qHY-h5-ea9"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="nameLbl" destination="AS6-jx-egC" id="Nwk-Ba-Ori"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="userInvitesCell" rowHeight="60" id="xgE-jv-nFw" customClass="GroupInviteCell" customModule="OurTasks" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="88" width="375" height="60"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xgE-jv-nFw" id="FEx-pI-b5A">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bbj-zk-QV8">
-                                            <rect key="frame" x="16" y="11" width="343" height="38"/>
-                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S60-JA-0JT">
-                                            <rect key="frame" x="164" y="14" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="bbj-zk-QV8" firstAttribute="leading" secondItem="FEx-pI-b5A" secondAttribute="leadingMargin" id="EJd-r6-LIp"/>
-                                        <constraint firstItem="bbj-zk-QV8" firstAttribute="top" secondItem="FEx-pI-b5A" secondAttribute="topMargin" id="LQ9-Vm-J5F"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="bbj-zk-QV8" secondAttribute="bottom" id="YOs-kS-H49"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="bbj-zk-QV8" secondAttribute="trailing" id="rOk-AE-7ba"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="acceptInvitationButton" destination="S60-JA-0JT" id="L7h-dh-yHR"/>
-                                    <outlet property="nameLbl" destination="bbj-zk-QV8" id="sGM-Po-p25"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Groups" id="cVC-Ea-f9o">
-                        <barButtonItem key="leftBarButtonItem" title="AR" id="rJp-Tq-tQ6">
-                            <connections>
-                                <action selector="presentAR:" destination="nX5-zc-pxx" id="NTd-ya-19n"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BLV-SK-Oxu">
-                            <connections>
-                                <action selector="addGroupView:" destination="nX5-zc-pxx" id="nWl-SY-3DH"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <connections>
-                        <outlet property="arButton" destination="rJp-Tq-tQ6" id="tbC-uh-9jt"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="giz-ZW-ryL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2932" y="233.43328335832086"/>
-        </scene>
         <!--Groups-->
         <scene sceneID="U1r-91-yZk">
             <objects>
@@ -203,6 +115,31 @@
                                             <outlet property="acceptInvitationButton" destination="Ke6-vg-AO2" id="KIF-ga-h1v"/>
                                             <outlet property="groupColor" destination="0yj-5U-dyf" id="RpZ-rr-6fb"/>
                                             <outlet property="nameLbl" destination="oR4-nE-49P" id="RZ6-qi-d2q"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noResultCell" rowHeight="60" id="ais-I7-kfz" customClass="NoResultCell" customModule="OurTasks" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ais-I7-kfz" id="SaP-NT-rdv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXh-Df-YZN">
+                                                    <rect key="frame" x="15" y="11" width="345" height="38"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yXh-Df-YZN" secondAttribute="bottom" id="djn-U3-Uf2"/>
+                                                <constraint firstItem="yXh-Df-YZN" firstAttribute="top" secondItem="SaP-NT-rdv" secondAttribute="topMargin" id="oEV-3S-eVp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yXh-Df-YZN" secondAttribute="trailing" id="qki-Y4-N1M"/>
+                                                <constraint firstItem="yXh-Df-YZN" firstAttribute="leading" secondItem="SaP-NT-rdv" secondAttribute="leadingMargin" id="xba-1p-T6z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descLbl" destination="yXh-Df-YZN" id="wfn-th-gUI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -26,6 +26,8 @@
 "groups" = "Grupy";
 "my_groups" = "Moje grupy";
 "invites" = "Zaproszenia do grup";
+"no_group_user" = "Nie masz żadnej grupy";
+"no_invites" = "Nie masz żadnych zaproszeń!";
 //Group
 "my_tasks" = "Moje zadania:";
 "past_events" = "Historia wydarzeń:";

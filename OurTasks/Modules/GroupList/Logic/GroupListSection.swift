@@ -37,6 +37,7 @@ enum GroupListSection: SectionModelType {
 enum GroupListItemType {
     case userGroups(_: UserGroupsCellModel)
     case userInvites(_: UserInvitesCellModel)
+    case noResult(_: NoResultCellModel)
 }
 
 enum GroupListSectionTitle: String {
@@ -60,4 +61,8 @@ struct UserInvitesCellModel {
     var color: String
     var followBtnText: String
     var followBtnVisible: Bool
+}
+
+struct NoResultCellModel {
+    var description: String
 }

@@ -25,10 +25,13 @@
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
 		C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C301FF251F66C7070045641A /* LaunchScreen.storyboard */; };
 		C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */; };
+		C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB620B23C6600C2C805 /* EventModel.swift */; };
+		C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB820B23C7300C2C805 /* TaskModel.swift */; };
 		C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F96011F6A9A41003491E1 /* FirebaseManager.swift */; };
 		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
 		C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE63B1F68386400692B3D /* KeyboardObservers.swift */; };
+		C331343C20B6271300216C5B /* NoResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331343B20B6271300216C5B /* NoResultCell.swift */; };
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
@@ -84,10 +87,13 @@
 		C301FF261F66C7070045641A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C301FF281F66C7070045641A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
+		C31DEBB620B23C6600C2C805 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
+		C31DEBB820B23C7300C2C805 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		C32F96011F6A9A41003491E1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		C32FE63B1F68386400692B3D /* KeyboardObservers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObservers.swift; sourceTree = "<group>"; };
+		C331343B20B6271300216C5B /* NoResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultCell.swift; sourceTree = "<group>"; };
 		C3415F5920697426007E7EED /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -246,6 +252,54 @@
 				C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		C31DEBB320B23C3800C2C805 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				C31DEBB620B23C6600C2C805 /* EventModel.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		C31DEBB520B23C4C00C2C805 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				C31DEBB820B23C7300C2C805 /* TaskModel.swift */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		C33AEB1720B4C4C70042C53A /* AddTask */ = {
+			isa = PBXGroup;
+			children = (
+				C33AEB1920B4C4FF0042C53A /* Logic */,
+				C33AEB1A20B4C5050042C53A /* View */,
+			);
+			path = AddTask;
+			sourceTree = "<group>";
+		};
+		C33AEB1820B4C4D50042C53A /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
+				C33AEB1720B4C4C70042C53A /* AddTask */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		C33AEB1920B4C4FF0042C53A /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C33AEB1A20B4C5050042C53A /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C36BDFBB1F69349E005D7650 /* User */ = {
@@ -458,9 +512,9 @@
 		C3D5519B1FA61A8700D7F081 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C33AEB1820B4C4D50042C53A /* Add */,
 				743F21F5209873C000B25E30 /* Group */,
 				C3E669BB2076DFFE00980EE4 /* ARKit */,
-				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
 				C3C11DB21F83B1460074D9AC /* GroupList */,
 				C3A5F62B1F66EA20002A9B30 /* Login */,
 				C3A5F6271F66EA20002A9B30 /* Register */,
@@ -481,6 +535,8 @@
 		C3D5519D1FA61A9F00D7F081 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C31DEBB520B23C4C00C2C805 /* Task */,
+				C31DEBB320B23C3800C2C805 /* Event */,
 				C39AB1C42078207A00A3B178 /* QRCode */,
 				C3E122B01FC36EE9004FD87F /* Group */,
 				C36BDFBB1F69349E005D7650 /* User */,
@@ -492,6 +548,7 @@
 			isa = PBXGroup;
 			children = (
 				743F220220988F8100B25E30 /* AppColor.swift */,
+				C331343B20B6271300216C5B /* NoResultCell.swift */,
 			);
 			path = Reusable;
 			sourceTree = "<group>";
@@ -712,6 +769,7 @@
 				C3415F5A20697426007E7EED /* GroupCell.swift in Sources */,
 				C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */,
 				C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */,
+				C331343C20B6271300216C5B /* NoResultCell.swift in Sources */,
 				743F21FC209879F600B25E30 /* GroupViewController.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
@@ -730,6 +788,7 @@
 				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
+				C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */,
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
@@ -742,6 +801,7 @@
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,
+				C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */,
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
 				743F2205209A77D400B25E30 /* String+Hex.swift in Sources */,
 				C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */,
