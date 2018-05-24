@@ -17,6 +17,9 @@ struct TaskModel: Codable {
     var positivePoints: Int
     var negativePoints: Int
     var userInteraction: Bool
+    var AR: Bool
+    var qrID: Int?
+    var coordinates: [Float]?
     
     enum TaskKeys: String,CodingKey {
         case owner
@@ -27,9 +30,12 @@ struct TaskModel: Codable {
         case positivePoints
         case negativePoints
         case userInteraction
+        case AR
+        case qrID
+        case coordinates
     }
     
-    init(owner: String, name: String, startDate: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool) {
+    init(owner: String, name: String, startDate: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?) {
         self.owner = owner
         self.name = name
         self.startDate = startDate
@@ -38,6 +44,9 @@ struct TaskModel: Codable {
         self.positivePoints = positivePoints
         self.negativePoints = negativePoints
         self.userInteraction = userInteraction
+        self.AR = AR
+        self.qrID = qrID
+        self.coordinates = coordinates
     }
     
     public init(from decoder: Decoder) throws {
@@ -51,6 +60,9 @@ struct TaskModel: Codable {
         self.positivePoints = try container.decode(Int?.self, forKey: .positivePoints) ?? 0
         self.negativePoints = try container.decode(Int?.self, forKey: .negativePoints) ?? 0
         self.userInteraction = try container.decode(Bool?.self, forKey: .userInteraction) ?? false
+        self.AR = try container.decode(Bool?.self, forKey: .AR) ?? false
+        self.qrID = try? container.decode(Int?.self, forKey: .qrID) ?? 0
+        self.coordinates = try? container.decode([Float]?.self, forKey: .coordinates) ?? []
     }
     
 }
@@ -65,5 +77,8 @@ extension TaskModel {
         try container.encode(self.positivePoints, forKey: .positivePoints)
         try container.encode(self.negativePoints, forKey: .negativePoints)
         try container.encode(self.userInteraction, forKey: .userInteraction)
+        try container.encode(self.AR, forKey: .AR)
+        try container.encode(self.qrID, forKey: .qrID)
+        try container.encode(self.coordinates, forKey: .coordinates)
     }
 }
