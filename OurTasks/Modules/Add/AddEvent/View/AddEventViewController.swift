@@ -10,26 +10,33 @@ import UIKit
 
 class AddEventViewController: UIViewController {
 
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameTF: UITextField!
+    
+    @IBOutlet weak var startDateLbl: UILabel!
+    @IBOutlet weak var startDateTF: UITextField!
+    
+    @IBOutlet weak var endDateLbl: UILabel!
+    @IBOutlet weak var endDateTF: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.prepare()
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func prepare() {
+        
     }
-    */
 
+}
+//MARK: Prepare
+extension AddEventViewController {
+    func prepareTexts() {
+        self.navigationController?.title = "addEvent".localize()
+        self.nameLbl.text = "name".localize()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from:date as Date)
+    }
 }

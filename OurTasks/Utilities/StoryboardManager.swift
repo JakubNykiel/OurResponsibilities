@@ -27,6 +27,7 @@ struct StoryboardManager {
         let afterLogin = GroupListViewController.self
         let addGroup = AddGroupViewController.self
         let group = GroupViewController.self
+        let addEvent = AddEventViewController.self
     }
 
     enum StoryboardNames: String {
@@ -36,6 +37,7 @@ struct StoryboardManager {
         case AddGroup
         case ARKit
         case Group
+        case AddEvent
     }
 
     enum ViewControllerIdentifiers: String {
@@ -45,6 +47,7 @@ struct StoryboardManager {
         case addGroupViewController
         case arKitViewController
         case groupViewController
+        case addEventViewController
     }
 
     static func loginViewController() -> LoginViewController {
@@ -69,6 +72,10 @@ struct StoryboardManager {
         let viewModel = GroupViewModel.init(groupModel: groupModel)
         groupVC.viewModel = viewModel
         return groupVC
+    }
+    static func addEventViewController() -> AddEventViewController {
+        let addEventVC = self.viewController(ViewControllerTypes().addEvent, withIdentifier: ViewControllerIdentifiers.addEventViewController.rawValue, fromStoryboard: StoryboardNames.AddEvent.rawValue)
+        return addEventVC
     }
     
     

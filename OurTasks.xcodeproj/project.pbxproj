@@ -36,6 +36,7 @@
 		C331344320B7495100216C5B /* AddTask.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C331344220B7495100216C5B /* AddTask.storyboard */; };
 		C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344420B7497200216C5B /* AddTaskViewController.swift */; };
 		C331344720B7498B00216C5B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344620B7498B00216C5B /* AddEventViewController.swift */; };
+		C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344920B77BD000216C5B /* AddEventViewModel.swift */; };
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
@@ -102,6 +103,7 @@
 		C331344220B7495100216C5B /* AddTask.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddTask.storyboard; sourceTree = "<group>"; };
 		C331344420B7497200216C5B /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		C331344620B7498B00216C5B /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
+		C331344920B77BD000216C5B /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
 		C3415F5920697426007E7EED /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 		C331343E20B7492000216C5B /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				C331344920B77BD000216C5B /* AddEventViewModel.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -297,10 +300,18 @@
 		C331343F20B7492600216C5B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C331344820B7771900216C5B /* Cells */,
 				C331344020B7493F00216C5B /* AddEvent.storyboard */,
 				C331344620B7498B00216C5B /* AddEventViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C331344820B7771900216C5B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C33AEB1720B4C4C70042C53A /* AddTask */ = {
@@ -816,6 +827,7 @@
 				743F21FE20987A0400B25E30 /* GroupViewModel.swift in Sources */,
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
+				C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */,
 				74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */,
 				C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */,
 				C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */,

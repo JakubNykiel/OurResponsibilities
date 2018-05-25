@@ -15,8 +15,7 @@ struct EventModel: Codable {
     var admins: [String]?
     var users: [String]?
     var tasks: [String]?
-    var money: Bool
-    var ratio: Float?
+    var winnerGlobalPoints: Int
     
     enum EventKeys: String,CodingKey {
         case name
@@ -27,17 +26,17 @@ struct EventModel: Codable {
         case tasks
         case money
         case ratio
+        case winnerGlobalPoints
     }
     
-    init(name: String, startDate: String, endDate: String,admins: [String], users: [String]?, tasks: [String], money: Bool, ratio: Float?) {
+    init(name: String, startDate: String, endDate: String,admins: [String], users: [String]?, tasks: [String], winnerGlobalPoints: Int) {
         self.name = name
         self.startDate = startDate
         self.endDate = endDate
         self.admins = admins
         self.users = users
         self.tasks = tasks
-        self.money = money
-        self.ratio = ratio
+        self.winnerGlobalPoints = winnerGlobalPoints
     }
     
     public init(from decoder: Decoder) throws {
@@ -49,8 +48,7 @@ struct EventModel: Codable {
         self.admins = try? container.decode([String]?.self, forKey: .admins) ?? []
         self.users = try? container.decode([String]?.self, forKey: .users) ?? []
         self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
-        self.money = try container.decode(Bool?.self, forKey: .money) ?? false
-        self.ratio = try? container.decode(Float?.self, forKey: .ratio) ?? 0.0
+        self.winnerGlobalPoints = try container.decode(Int?.self, forKey: .winnerGlobalPoints) ?? 0
     }
     
 }
@@ -63,7 +61,6 @@ extension EventModel {
         try container.encode(self.admins, forKey: .admins)
         try container.encode(self.users, forKey: .users)
         try container.encode(self.tasks, forKey: .tasks)
-        try container.encode(self.money, forKey: .money)
-        try container.encode(self.ratio, forKey: .ratio)
+        try container.encode(self.winnerGlobalPoints, forKey: .winnerGlobalPoints)
     }
 }

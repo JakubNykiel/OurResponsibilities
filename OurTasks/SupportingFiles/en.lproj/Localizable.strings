@@ -34,4 +34,9 @@
 "future_events" = "Coming events";
 "present_events" = "Current events:";
 "global_ranking" = "Group Ranking:";
+//Add event
+"add_event" = "Add Event";
+"name" = "Name";
+"start_date" = "Start date";
+"end_date" = "End date";
 

@@ -26,8 +26,6 @@ class GroupViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black,  NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)]
-        self.navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     private func prepare() {
