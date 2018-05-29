@@ -6,6 +6,7 @@
   Copyright © 2017 Jakub Nykiel. All rights reserved.
 */
 
+"choose" = "Wybierz";
 // Login
 "signIn" = "Logowanie";
 "signInAction" = "Zaloguj";
@@ -38,4 +39,13 @@
 "add_event" = "Dodaj wydarzenie";
 "name" = "Nazwa wydarzenia";
 "start_date" = "Data rozpoczęcia";
-"end_date" = "Data zakończenia";
+"end_date" = "Liczba dni wydarzenia";
+"winner_points" = "Punkty za zwycięstwo";
+//Add task
+"add_task" = "Dodaj zadanie";
+"end" = "Koniec";
+"positive_points" = "+ punkty";
+"negative_points" = "- punkty";
+"gloabl_points" = "Punkty grupowe";
+"AR" = "AR";
+"QR" = "QR";

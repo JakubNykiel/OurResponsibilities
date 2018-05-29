@@ -45,7 +45,6 @@ class AddGroupViewModel {
     
     private func addGroupToUser(id: String) {
         guard let userUID = self.currentUser?.uid else { return }
-        let groupInUserRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
 
         let userRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
         userRef.getDocument { (document,error) in

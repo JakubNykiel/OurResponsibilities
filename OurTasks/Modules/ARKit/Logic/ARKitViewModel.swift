@@ -21,6 +21,7 @@ class ARKitViewModel {
     
     var planeDetected: Variable<Bool> = Variable(false)
     var detectingActive: Variable<Bool> = Variable(false)
+    var automaticEnabled: Variable<Bool> = Variable(true)
     let barcodeHandler: BarcodeHandler
     private var delegate: QRNodeDelegate?
     var isSearchingActive: Bool = false

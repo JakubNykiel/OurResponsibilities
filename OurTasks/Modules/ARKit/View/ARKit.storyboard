@@ -74,9 +74,24 @@
                                     <action selector="startSearchingPlane:" destination="wA2-WR-aqt" eventType="touchUpInside" id="tra-zX-Ymr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="d8m-lP-cLd">
+                                <rect key="frame" x="40" y="60" width="295" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="2Uy-pG-H4S"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="40"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="d8m-lP-cLd" firstAttribute="leading" secondItem="JBo-uL-uPv" secondAttribute="leading" constant="40" id="5V2-sl-uEw"/>
                             <constraint firstAttribute="trailing" secondItem="Lqz-WR-xg8" secondAttribute="trailing" constant="24" id="GBI-6a-pyi"/>
                             <constraint firstItem="ZSl-pL-HBj" firstAttribute="centerY" secondItem="Lqz-WR-xg8" secondAttribute="centerY" id="Hqu-8x-oyM"/>
                             <constraint firstItem="FS4-FM-ZtW" firstAttribute="top" secondItem="7YZ-Gm-h6p" secondAttribute="topMargin" id="OFW-OV-NvS"/>
@@ -85,13 +100,16 @@
                             <constraint firstItem="FS4-FM-ZtW" firstAttribute="leading" secondItem="JBo-uL-uPv" secondAttribute="leading" id="T39-3e-XTa"/>
                             <constraint firstItem="Lqz-WR-xg8" firstAttribute="top" secondItem="sgv-nq-lbF" secondAttribute="bottom" constant="20" id="W9j-LC-yP8"/>
                             <constraint firstItem="sgv-nq-lbF" firstAttribute="width" secondItem="sgv-nq-lbF" secondAttribute="height" multiplier="1:1" id="WZp-sy-7zN"/>
+                            <constraint firstItem="JBo-uL-uPv" firstAttribute="trailing" secondItem="d8m-lP-cLd" secondAttribute="trailing" constant="40" id="fJw-Af-VVR"/>
                             <constraint firstItem="ZSl-pL-HBj" firstAttribute="centerX" secondItem="7YZ-Gm-h6p" secondAttribute="centerX" id="jcO-Jd-4Z4"/>
                             <constraint firstItem="JBo-uL-uPv" firstAttribute="trailing" secondItem="FS4-FM-ZtW" secondAttribute="trailing" id="lRi-hl-qe3"/>
                             <constraint firstItem="JBo-uL-uPv" firstAttribute="trailing" secondItem="sgv-nq-lbF" secondAttribute="trailing" constant="24" id="rLT-gC-av0"/>
+                            <constraint firstItem="d8m-lP-cLd" firstAttribute="top" secondItem="JBo-uL-uPv" secondAttribute="top" constant="40" id="yiK-w4-3ul"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JBo-uL-uPv"/>
                     </view>
                     <connections>
+                        <outlet property="infoLbl" destination="d8m-lP-cLd" id="Csh-Ji-Aep"/>
                         <outlet property="qrBtn" destination="Lqz-WR-xg8" id="Vln-fC-Gy9"/>
                         <outlet property="removeBtn" destination="ZSl-pL-HBj" id="bVj-fR-Yad"/>
                         <outlet property="sceneView" destination="FS4-FM-ZtW" id="3eM-4J-aOG"/>

@@ -21,8 +21,10 @@ class GroupViewModel {
     
     var hexStringColor: String = ""
     var groupModel: GroupModel
+    var groupID: String
     
-    init(groupModel: GroupModel) {
+    init(groupModel: GroupModel, groupID: String) {
         self.groupModel = groupModel
+        self.groupID = groupID
     }
 }

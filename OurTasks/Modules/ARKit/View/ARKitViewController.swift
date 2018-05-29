@@ -16,6 +16,7 @@ import Vision
 @available(iOS 11.0, *)
 class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererDelegate {
     
+    @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var sceneView: ARSCNView!
     @IBOutlet weak var surfaceBtn: UIButton!
     @IBOutlet weak var qrBtn: UIButton!
@@ -27,6 +28,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.infoLbl.isHidden = true
         self.sceneView.delegate = self
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         self.setupView()
@@ -40,6 +42,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
 //                
 //            }).disposed(by: disposeBag)
         self.arHandler.startSession(sceneView: self.sceneView)
+        self.prepareInfoLabel(text: "Wyszukaj QR Code", color: AppColor.appleBlue)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,12 +64,34 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         lastNode?.removeFromParentNode()
     }
     @IBAction func startSearchingQR(_ sender: Any) {
-        self.sceneView.scene.rootNode.enumerateChildNodes { (node, _) in
-            node.removeFromParentNode()
+        if self.viewModel?.automaticEnabled.value ?? true {
+            self.surfaceBtn.isEnabled = false
+            self.surfaceBtn.alpha = 0.5
+            self.viewModel?.isSearchingActive = true
+            self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                if self.viewModel?.isSearchingActive ?? true {
+                    self.viewModel?.isSearchingActive = false
+                    self.prepareInfoLabel(text: "Nie znaleziono QR", color: AppColor.appleRed)
+                    let alert = UIAlertController(title: "Nie znaleziono QR code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Wyszukaj ponownie", style: .default, handler: { action in
+                        self.viewModel?.isSearchingActive = true
+                        self.viewModel?.automaticEnabled.value = true
+                        self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
+                        self.startSearchingQR(sender)
+                    
+                    }))
+                    alert.addAction(UIAlertAction(title: "Dodaj ręcznie", style: .cancel, handler: { action in
+                        self.prepareInfoLabel(text: "Umieść telefon nad QR kodem i naciśnij przycisk z ikoną QR", color: AppColor.appleYellow)
+                        self.viewModel?.automaticEnabled.value = false
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        } else {
+            self.viewModel?.isSearchingActive = false
+            self.addQRToScene()
         }
-        self.surfaceBtn.isEnabled = false
-        self.surfaceBtn.alpha = 0.5
-        self.viewModel?.isSearchingActive = true
     }
     
     override func didReceiveMemoryWarning() {
@@ -80,6 +105,27 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.sceneView.delegate = self
         self.arHandler.setupARScene(sceneView: self.sceneView)
         self.prepareBtn()
+    }
+    
+    private func prepareInfoLabel(text: String, color: UIColor) {
+        self.infoLbl.isHidden = false
+        self.infoLbl.layer.masksToBounds = true
+        self.infoLbl.text = text
+        self.infoLbl.backgroundColor = color.withAlphaComponent(0.25)
+        self.infoLbl.textColor = color
+        self.infoLbl.layer.borderColor = color.cgColor
+        self.infoLbl.layer.borderWidth = 4.0
+        self.infoLbl.layoutIfNeeded()
+    }
+    
+    func addQRToScene() {
+        let boxNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+        let qrMaterial = SCNMaterial()
+        qrMaterial.diffuse.contents = #imageLiteral(resourceName: "qrNode")
+        qrMaterial.isDoubleSided = false
+        boxNode.geometry?.materials = [qrMaterial]
+        self.sceneView.pointOfView?.addChildNode(boxNode)
+        self.viewModel?.automaticEnabled.value = true
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -100,6 +146,7 @@ extension ARKitViewController: QRNodeDelegate {
     func showNodeOnQR(node: SCNNode) {
         let nodes = self.sceneView.scene.rootNode.childNodes
         nodes.forEach { $0.removeFromParentNode() }
+
         let parentNode = SCNNode()
         parentNode.name = "parent"
         parentNode.addChildNode(node)
@@ -110,7 +157,15 @@ extension ARKitViewController: QRNodeDelegate {
         self.sceneView.scene.rootNode.addChildNode(parentNode)
         self.surfaceBtn.alpha = 1.0
         self.surfaceBtn.isEnabled = true
+        self.prepareInfoLabel(text: "Znaleziono QR!", color: AppColor.appleGreen)
         self.viewModel?.isSearchingActive = false
+        self.qrBtn.isEnabled = false
+        self.qrBtn.alpha = 0.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            self.qrBtn.isEnabled = true
+            self.qrBtn.alpha = 1.0
+            self.prepareInfoLabel(text: "Dodaj zadanie", color: AppColor.appleBlue)
+        }
     }
     
     private func addTextNode(node: SCNNode) -> SCNNode {
@@ -140,14 +195,14 @@ extension ARKitViewController: BarcodeDelegate {
 @available(iOS 11.0, *)
 extension ARKitViewController {
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard let detectingActive = self.viewModel?.detectingActive.value else { return }
-        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
-        if detectingActive {
-            node.addChildNode(planeNode)
-            self.viewModel?.detectingActive.value = false
-            self.viewModel?.planeDetected.value = true
-        }
+//        guard let detectingActive = self.viewModel?.detectingActive.value else { return }
+//        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+//        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
+//        if detectingActive {
+//            node.addChildNode(planeNode)
+//            self.viewModel?.detectingActive.value = false
+//            self.viewModel?.planeDetected.value = true
+//        }
     }
     
 //    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {

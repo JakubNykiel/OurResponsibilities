@@ -17,6 +17,7 @@
 		743F2206209A79F100B25E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743F2208209A79F100B25E30 /* Localizable.strings */; };
 		74B869512087627300D6F99B /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupListSection.swift */; };
 		74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869532087655F00D6F99B /* GroupInviteCell.swift */; };
+		74CA49B720BB8264002929FF /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA49B620BB8264002929FF /* AddTaskViewModel.swift */; };
 		74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D03A2E20AF94D0006D43CF /* UINavigation+BackgroundColor.swift */; };
 		74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0B20A397B700B61EF8 /* GroupSection.swift */; };
 		74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */; };
@@ -79,6 +80,7 @@
 		743F220A209A7A7F00B25E30 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		74B869502087627300D6F99B /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		74B869532087655F00D6F99B /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
+		74CA49B620BB8264002929FF /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTaskViewModel.swift; path = OurTasks/Modules/Add/AddEvent/Logic/AddTaskViewModel.swift; sourceTree = SOURCE_ROOT; };
 		74D03A2E20AF94D0006D43CF /* UINavigation+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+BackgroundColor.swift"; sourceTree = "<group>"; };
 		74EEFF0B20A397B700B61EF8 /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
 		74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTaskCell.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 		C33AEB1920B4C4FF0042C53A /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				74CA49B620BB8264002929FF /* AddTaskViewModel.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */,
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
+				74CA49B720BB8264002929FF /* AddTaskViewModel.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
 				743F220320988F8100B25E30 /* AppColor.swift in Sources */,

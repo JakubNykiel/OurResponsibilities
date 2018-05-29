@@ -60,7 +60,7 @@ class GroupListViewController: UIViewController {
             .subscribe(onNext: {
                 switch self.dataSource[$0]{
                 case .userGroups(let model):
-                    let groupVC = StoryboardManager.groupViewController(model.groupModel)
+                    let groupVC = StoryboardManager.groupViewController(model.groupModel, groupID: model.id)
                     self.navigationController?.pushViewController(groupVC, animated: true)
                     return
                 default: return
@@ -76,20 +76,21 @@ class GroupListViewController: UIViewController {
     }
     
     private func prepare() {
-        self.viewModel.userGroups.value = []
+        self.viewModel.userGroups = [:]
         self.viewModel.getUserGroups()
 //        self.viewModel.getInvitesGroups()
-    }
-    
-    @IBAction func addGroupView(_ sender: Any) {
-        let addGroupVC = StoryboardManager.addGroupViewController()
-        self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
     
     @IBAction func presentAR(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "ARKit", bundle: nil)
         let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
-        self.present(groupListVC, animated: true, completion: nil)
+//        self.present(groupListVC, animated: true, completion: nil)
+        self.navigationController?.present(groupListVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func addGroupView(_ sender: Any) {
+        let addGroupVC = StoryboardManager.addGroupViewController()
+        self.navigationController?.pushViewController(addGroupVC, animated: true)
     }
     
 }

@@ -9,7 +9,6 @@
 import UIKit
 import RxDataSources
 
-
 class GroupViewController: UIViewController {
     
     var viewModel: GroupViewModel!
@@ -26,6 +25,11 @@ class GroupViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+    }
+    
+    @IBAction func toAddEvent(_ sender: Any) {
+        let addEventVC = StoryboardManager.addEventViewController(self.viewModel.groupID)
+        self.navigationController?.pushViewController(addEventVC, animated: true)
     }
     
     private func prepare() {

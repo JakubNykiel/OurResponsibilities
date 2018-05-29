@@ -15,6 +15,8 @@ enum FirebaseModel: String {
     case users
     case groups
     case admins
+    case events
+    case tasks
 }
 
 struct FirebaseReferences {
@@ -30,6 +32,11 @@ class FirebaseManager {
     
     init() {
         self.currentUser = Auth.auth().currentUser
+    }
+    
+    func getCurrentUserUid() -> String {
+        guard let uid = self.currentUser?.uid else { return "" }
+        return uid
     }
    
 }

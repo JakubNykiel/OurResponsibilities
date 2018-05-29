@@ -8,12 +8,21 @@
 
 import Foundation
 
+enum TaskState: String {
+    case backlog = "backlog"
+    case inProgress = "In Progress"
+    case done = "Done"
+    case toFix = "To Fix"
+    
+}
+
 struct TaskModel: Codable {
     var owner: String
     var name: String
-    var startDate: String
+    var state: String
     var endDate: String
     var users: [String]?
+    var globalPoints: Int
     var positivePoints: Int
     var negativePoints: Int
     var userInteraction: Bool
@@ -24,7 +33,6 @@ struct TaskModel: Codable {
     enum TaskKeys: String,CodingKey {
         case owner
         case name
-        case startDate
         case endDate
         case users
         case positivePoints
@@ -33,12 +41,13 @@ struct TaskModel: Codable {
         case AR
         case qrID
         case coordinates
+        case state
+        case globalPoints
     }
     
-    init(owner: String, name: String, startDate: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?) {
+    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?, state: String, globalPoints: Int) {
         self.owner = owner
         self.name = name
-        self.startDate = startDate
         self.endDate = endDate
         self.users = users
         self.positivePoints = positivePoints
@@ -47,6 +56,8 @@ struct TaskModel: Codable {
         self.AR = AR
         self.qrID = qrID
         self.coordinates = coordinates
+        self.state = state
+        self.globalPoints = globalPoints
     }
     
     public init(from decoder: Decoder) throws {
@@ -54,7 +65,6 @@ struct TaskModel: Codable {
             TaskKeys.self)
         self.owner = try container.decode(String?.self, forKey: .owner) ?? ""
         self.name = try container.decode(String?.self, forKey: .name) ?? ""
-        self.startDate = try container.decode(String?.self, forKey: .startDate) ?? ""
         self.endDate = try container.decode(String?.self, forKey: .endDate) ?? ""
         self.users = try? container.decode([String]?.self, forKey: .users) ?? []
         self.positivePoints = try container.decode(Int?.self, forKey: .positivePoints) ?? 0
@@ -63,6 +73,8 @@ struct TaskModel: Codable {
         self.AR = try container.decode(Bool?.self, forKey: .AR) ?? false
         self.qrID = try? container.decode(Int?.self, forKey: .qrID) ?? 0
         self.coordinates = try? container.decode([Float]?.self, forKey: .coordinates) ?? []
+        self.state = try container.decode(String?.self, forKey: .state) ?? "backlog"
+        self.globalPoints = try container.decode(Int?.self, forKey: .globalPoints) ?? 0
     }
     
 }
@@ -71,7 +83,6 @@ extension TaskModel {
         var container = encoder.container(keyedBy: TaskKeys.self)
         try container.encode(self.owner, forKey: .owner)
         try container.encode(self.name, forKey: .name)
-        try container.encode(self.startDate, forKey: .startDate)
         try container.encode(self.endDate, forKey: .endDate)
         try container.encode(self.users, forKey: .users)
         try container.encode(self.positivePoints, forKey: .positivePoints)
@@ -80,5 +91,7 @@ extension TaskModel {
         try container.encode(self.AR, forKey: .AR)
         try container.encode(self.qrID, forKey: .qrID)
         try container.encode(self.coordinates, forKey: .coordinates)
+        try container.encode(self.state, forKey: .state)
+        try container.encode(self.globalPoints, forKey: .globalPoints)
     }
 }

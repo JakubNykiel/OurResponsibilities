@@ -14,10 +14,10 @@ import RxSwift
 class GroupListViewModel {
     
     private let firebaseManager: FirebaseManager = FirebaseManager()
-    var userGroups: Variable<[GroupModel]> = Variable([])
+    var userGroups: [String:GroupModel] = [:]
     
-    var userGroupsBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
-    var userInvitesBehaviorSubject: BehaviorSubject<[GroupModel]> = BehaviorSubject(value: [])
+    var userGroupsBehaviorSubject: BehaviorSubject<[String:GroupModel]> = BehaviorSubject(value: [:])
+    var userInvitesBehaviorSubject: BehaviorSubject<[String:GroupModel]> = BehaviorSubject(value: [:])
     var noGroupUserBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var noInvitesBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[GroupListSection]> = BehaviorSubject(value: [])
@@ -29,7 +29,7 @@ class GroupListViewModel {
         self.userGroupsBehaviorSubject
             .flatMap({ (userGroups) -> Observable<[UserGroupsCellModel]> in
                 let ret: [UserGroupsCellModel] = userGroups.compactMap({
-                    return UserGroupsCellModel(groupModel: $0)
+                    return UserGroupsCellModel(id: $0.key, groupModel: $0.value)
                 })
                 return Observable.of(ret)
             })
@@ -43,7 +43,7 @@ class GroupListViewModel {
         self.userInvitesBehaviorSubject
             .flatMap({ (userInvites) -> Observable<[UserInvitesCellModel]> in
                 let ret: [UserInvitesCellModel] = userInvites.compactMap({
-                    return UserInvitesCellModel(name: $0.name, color: $0.color, followBtnText: "Follow", followBtnVisible: true)
+                    return UserInvitesCellModel(id: $0.key, name: $0.value.name, color: $0.value.color, followBtnText: "Follow", followBtnVisible: true)
                 })
                 return Observable.of(ret)
             })
@@ -105,7 +105,7 @@ class GroupListViewModel {
     }
     
     func getInvitesGroups() {
-        self.userInvitesBehaviorSubject.onNext([])
+        self.userInvitesBehaviorSubject.onNext([:])
         self.noInvitesBehaviorSubject.onNext(true)
     }
     
@@ -119,9 +119,9 @@ class GroupListViewModel {
                     if let document = document {
                         guard let groupData = document.data() else { return }
                         let groupModel = try! FirebaseDecoder().decode(GroupModel.self, from: groupData)
-                        self.userGroups.value.append(groupModel)
-                        if groups.count == self.userGroups.value.count {
-                            self.userGroupsBehaviorSubject.onNext(self.userGroups.value)
+                        self.userGroups[document.documentID] = groupModel
+                        if groups.count == self.userGroups.count {
+                            self.userGroupsBehaviorSubject.onNext(self.userGroups)
                         }
                         
                     } else {
