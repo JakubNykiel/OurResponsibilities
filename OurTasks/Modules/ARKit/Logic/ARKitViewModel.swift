@@ -12,6 +12,12 @@ import ARKit
 import SceneKit
 import RxSwift
 
+enum QRState {
+    case search
+    case find
+    case task
+}
+
 protocol QRNodeDelegate {
     func showNodeOnQR(node: SCNNode)
 }

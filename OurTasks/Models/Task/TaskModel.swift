@@ -29,6 +29,7 @@ struct TaskModel: Codable {
     var AR: Bool
     var qrID: Int?
     var coordinates: [Float]?
+    var blockSize: Float?
     
     enum TaskKeys: String,CodingKey {
         case owner
@@ -43,9 +44,10 @@ struct TaskModel: Codable {
         case coordinates
         case state
         case globalPoints
+        case blockSize
     }
     
-    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?, state: String, globalPoints: Int) {
+    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?, state: String, globalPoints: Int, blockSize: Float?) {
         self.owner = owner
         self.name = name
         self.endDate = endDate
@@ -58,6 +60,7 @@ struct TaskModel: Codable {
         self.coordinates = coordinates
         self.state = state
         self.globalPoints = globalPoints
+        self.blockSize = blockSize
     }
     
     public init(from decoder: Decoder) throws {
@@ -75,6 +78,7 @@ struct TaskModel: Codable {
         self.coordinates = try? container.decode([Float]?.self, forKey: .coordinates) ?? []
         self.state = try container.decode(String?.self, forKey: .state) ?? "backlog"
         self.globalPoints = try container.decode(Int?.self, forKey: .globalPoints) ?? 0
+        self.blockSize = try? container.decode(Float?.self, forKey: .blockSize) ?? 0.1
     }
     
 }
@@ -93,5 +97,6 @@ extension TaskModel {
         try container.encode(self.coordinates, forKey: .coordinates)
         try container.encode(self.state, forKey: .state)
         try container.encode(self.globalPoints, forKey: .globalPoints)
+        try container.encode(self.blockSize, forKey: .blockSize)
     }
 }

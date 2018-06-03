@@ -41,6 +41,7 @@
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
+		C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */; };
 		C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */; };
 		C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C8207820CD00A3B178 /* QRCode.swift */; };
 		C39AB1CB207820D600A3B178 /* QRNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1CA207820D600A3B178 /* QRNode.swift */; };
@@ -110,6 +111,7 @@
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
 		C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConvertFromCamera + UIView.swift"; sourceTree = "<group>"; };
 		C39AB1C8207820CD00A3B178 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
 		C39AB1CA207820D600A3B178 /* QRNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRNode.swift; sourceTree = "<group>"; };
@@ -358,6 +360,14 @@
 				C36BDFBC1F6934A8005D7650 /* UserModel.swift */,
 			);
 			path = User;
+			sourceTree = "<group>";
+		};
+		C397F0ED20C3248100E4B6CA /* Dispatch */ = {
+			isa = PBXGroup;
+			children = (
+				C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */,
+			);
+			path = Dispatch;
 			sourceTree = "<group>";
 		};
 		C39AB1C42078207A00A3B178 /* QRCode */ = {
@@ -617,6 +627,7 @@
 		C3D5B1FE1FB4762B00550564 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				C397F0ED20C3248100E4B6CA /* Dispatch */,
 				C301AE4E1FE8824600107DCD /* Encodable */,
 				C3D5B1FF1FB4763C00550564 /* String */,
 			);
@@ -854,6 +865,7 @@
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
 				C39AB1D32078235C00A3B178 /* ARKitViewModel.swift in Sources */,
+				C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */,
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,

@@ -64,12 +64,17 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         lastNode?.removeFromParentNode()
     }
     @IBAction func startSearchingQR(_ sender: Any) {
+        let nodes = self.sceneView.scene.rootNode.childNodes.filter{$0.name == "parent"}
+        nodes.forEach({
+            $0.removeFromParentNode()
+        })
+        self.viewModel?.isSearchingActive = true
         if self.viewModel?.automaticEnabled.value ?? true {
             self.surfaceBtn.isEnabled = false
             self.surfaceBtn.alpha = 0.5
             self.viewModel?.isSearchingActive = true
             self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            DispatchQueue.performAction(after: 3.0) {
                 if self.viewModel?.isSearchingActive ?? true {
                     self.viewModel?.isSearchingActive = false
                     self.prepareInfoLabel(text: "Nie znaleziono QR", color: AppColor.appleRed)
@@ -79,7 +84,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
                         self.viewModel?.automaticEnabled.value = true
                         self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
                         self.startSearchingQR(sender)
-                    
+
                     }))
                     alert.addAction(UIAlertAction(title: "Dodaj ręcznie", style: .cancel, handler: { action in
                         self.prepareInfoLabel(text: "Umieść telefon nad QR kodem i naciśnij przycisk z ikoną QR", color: AppColor.appleYellow)
@@ -98,6 +103,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     private func setupView() {
         self.viewModel = ARKitViewModel(barcodeHandler: self.barcodeHandler)
@@ -132,21 +138,18 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         if self.viewModel!.isSearchingActive {
             guard let image = self.sceneView.session.currentFrame?.capturedImage else { return }
             self.viewModel?.analize(image: image)
-            let parentNode = self.sceneView.scene.rootNode.childNodes.filter{$0.name == "parent"}.first
-            let textNode = parentNode?.childNodes.filter{$0.name == "text"}.first
-            let constraint = SCNLookAtConstraint(target: self.sceneView.pointOfView)
-            constraint.isGimbalLockEnabled = true
-            parentNode?.constraints = [constraint]
-            textNode?.eulerAngles = SCNVector3Make(0, .pi, 0)
+//            let parentNode = self.sceneView.scene.rootNode.childNodes.filter{$0.name == "parent"}.first
+//            let textNode = parentNode?.childNodes.filter{$0.name == "text"}.first
+//            let constraint = SCNLookAtConstraint(target: self.sceneView.pointOfView)
+//            constraint.isGimbalLockEnabled = true
+//            parentNode?.constraints = [constraint]
+//            textNode?.eulerAngles = SCNVector3Make(0, .pi, 0)
         }
     }
 }
 @available(iOS 11.0, *)
 extension ARKitViewController: QRNodeDelegate {
     func showNodeOnQR(node: SCNNode) {
-        let nodes = self.sceneView.scene.rootNode.childNodes
-        nodes.forEach { $0.removeFromParentNode() }
-
         let parentNode = SCNNode()
         parentNode.name = "parent"
         parentNode.addChildNode(node)
@@ -161,7 +164,7 @@ extension ARKitViewController: QRNodeDelegate {
         self.viewModel?.isSearchingActive = false
         self.qrBtn.isEnabled = false
         self.qrBtn.alpha = 0.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.performAction(after: 3.0) {
             self.qrBtn.isEnabled = true
             self.qrBtn.alpha = 1.0
             self.prepareInfoLabel(text: "Dodaj zadanie", color: AppColor.appleBlue)

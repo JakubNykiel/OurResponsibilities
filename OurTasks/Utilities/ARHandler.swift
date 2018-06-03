@@ -31,4 +31,11 @@ class ARHandler {
         let scene = SCNScene()
         sceneView.scene = scene
     }
+    
+    func resetARScene(sceneView: ARSCNView) {
+        sceneView.session.pause()
+        sceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
+            node.removeFromParentNode() }
+        self.startSession(sceneView: sceneView)
+    }
 }
