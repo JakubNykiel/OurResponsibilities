@@ -73,7 +73,7 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
-        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 extension AddTaskViewController {

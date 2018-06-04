@@ -21,6 +21,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     @IBOutlet weak var surfaceBtn: UIButton!
     @IBOutlet weak var qrBtn: UIButton!
     @IBOutlet weak var removeBtn: UIButton!
+    @IBOutlet weak var taskDatabaseBtn: UIButton!
     let barcodeHandler: BarcodeHandler = BarcodeHandler()
     let arHandler: ARHandler = ARHandler()
     var viewModel: ARKitViewModel?
@@ -28,6 +29,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.taskDatabaseBtn.isHidden = true
         self.infoLbl.isHidden = true
         self.sceneView.delegate = self
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
@@ -36,11 +38,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.viewModel?.planeDetected.asObservable()
-//            .subscribe(onNext: {
-////                self.removeBtn.isHidden = !$0
-//                
-//            }).disposed(by: disposeBag)
+        self.taskDatabaseBtn.isHidden = true
         self.arHandler.startSession(sceneView: self.sceneView)
         self.prepareInfoLabel(text: "Wyszukaj QR Code", color: AppColor.appleBlue)
     }
@@ -50,14 +48,21 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.arHandler.pauseSession(sceneView: self.sceneView)
     }
     
+    @IBAction func addTaskToDatabaseAction(_ sender: Any) {
+        let addTaskVC = StoryboardManager.addTaskViewController("", eventID: "")
+        self.present(addTaskVC, animated: true, completion: nil)
+    }
+    
     @IBAction func startSearchingPlane(_ sender: Any) {
-//        let nodes = self.sceneView.scene.rootNode.childNodes
-//        if nodes.count > 2 {
-//            nodes.last?.removeFromParentNode()
-//        }
-        self.viewModel?.detectingActive.value = true
-        print("Szukam plane")
-        
+        print("TaskTask")
+        print((self.sceneView.session.currentFrame?.camera.transform.position())!)
+        let taskNode = self.viewModel?.addTask((self.sceneView.session.currentFrame?.camera.transform)!)
+        taskNode?.name = "task"
+        self.sceneView.scene.rootNode.addChildNode(taskNode!)
+        self.taskDatabaseBtn.isHidden = false
+        self.surfaceBtn.isEnabled = false
+        self.surfaceBtn.alpha = 0.5
+        self.prepareInfoLabel(text: "Dodaj zadanie do bazy", color: AppColor.appleBlue)
     }
     @IBAction func removePlane(_ sender: Any) {
         let lastNode = self.sceneView.scene.rootNode.childNodes.last
@@ -106,6 +111,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     
     private func setupView() {
+        self.registerGestureRecognizers()
         self.viewModel = ARKitViewModel(barcodeHandler: self.barcodeHandler)
         self.viewModel?.setupDelegates(viewController: self)
         self.sceneView.delegate = self
@@ -126,6 +132,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     func addQRToScene() {
         let boxNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
+        boxNode.name = "ManualQR"
         let qrMaterial = SCNMaterial()
         qrMaterial.diffuse.contents = #imageLiteral(resourceName: "qrNode")
         qrMaterial.isDoubleSided = false
@@ -134,16 +141,14 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.viewModel?.automaticEnabled.value = true
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        guard anchor is ARPlaneAnchor else {return}
+    }
+    
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
         if self.viewModel!.isSearchingActive {
             guard let image = self.sceneView.session.currentFrame?.capturedImage else { return }
             self.viewModel?.analize(image: image)
-//            let parentNode = self.sceneView.scene.rootNode.childNodes.filter{$0.name == "parent"}.first
-//            let textNode = parentNode?.childNodes.filter{$0.name == "text"}.first
-//            let constraint = SCNLookAtConstraint(target: self.sceneView.pointOfView)
-//            constraint.isGimbalLockEnabled = true
-//            parentNode?.constraints = [constraint]
-//            textNode?.eulerAngles = SCNVector3Make(0, .pi, 0)
         }
     }
 }
@@ -153,10 +158,7 @@ extension ARKitViewController: QRNodeDelegate {
         let parentNode = SCNNode()
         parentNode.name = "parent"
         parentNode.addChildNode(node)
-        //        let textNode = self.addTextNode(node: node)
-        //        let textPosition = SCNVector3Make(node.position.x, node.position.y + 0.1, node.position.z)
-        //        textNode.position = textPosition
-        //        parentNode.addChildNode(textNode)
+
         self.sceneView.scene.rootNode.addChildNode(parentNode)
         self.surfaceBtn.alpha = 1.0
         self.surfaceBtn.isEnabled = true
@@ -194,33 +196,6 @@ extension ARKitViewController: BarcodeDelegate {
         return results.first
     }
 }
-
-@available(iOS 11.0, *)
-extension ARKitViewController {
-    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-//        guard let detectingActive = self.viewModel?.detectingActive.value else { return }
-//        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-//        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
-//        if detectingActive {
-//            node.addChildNode(planeNode)
-//            self.viewModel?.detectingActive.value = false
-//            self.viewModel?.planeDetected.value = true
-//        }
-    }
-    
-//    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
-//        guard let detectingActive = self.viewModel?.detectingActive.value else { return }
-//        guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
-//        guard let planeNode = self.viewModel?.foundPlane(planeAnchor: planeAnchor) else { return }
-//        if detectingActive {
-//            let lastNode = self.sceneView.scene.rootNode.childNodes.last
-//            lastNode?.removeFromParentNode()
-//            node.addChildNode(planeNode)
-//            self.viewModel?.detectingActive.value = false
-//            self.viewModel?.planeDetected.value = true
-//        }
-//    }
-}
 //MARK: Prepare
 @available(iOS 11.0, *)
 extension ARKitViewController {
@@ -233,5 +208,29 @@ extension ARKitViewController {
         self.surfaceBtn.isEnabled = false
         self.surfaceBtn.alpha = 0.5
         
+    }
+}
+//MARK: Gestures
+@available(iOS 11.0, *)
+extension ARKitViewController {
+    
+    func registerGestureRecognizers() {
+        let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
+    }
+    
+    @objc func pinch(sender: UIPinchGestureRecognizer) {
+        let sceneView = sender.view as! ARSCNView
+        let pinchLocation = sender.location(in: sceneView)
+        let hitTest = sceneView.hitTest(pinchLocation)
+        
+        if !hitTest.isEmpty && hitTest.first!.node.name != "parent" {
+            let results = hitTest.first!
+            let node = results.node
+            let pinchAction = SCNAction.scale(by: sender.scale, duration: 0)
+            print(sender.scale)
+            node.runAction(pinchAction)
+            sender.scale = 1.0
+        }
     }
 }

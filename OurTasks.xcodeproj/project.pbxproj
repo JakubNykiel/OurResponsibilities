@@ -26,6 +26,8 @@
 		C301FF241F66C7070045641A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C301FF231F66C7070045641A /* Assets.xcassets */; };
 		C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C301FF251F66C7070045641A /* LaunchScreen.storyboard */; };
 		C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */; };
+		C316C3AA20C4A1A8008F0E2F /* matrix_float4x4.swift in Sources */ = {isa = PBXBuildFile; fileRef = C316C3A920C4A1A8008F0E2F /* matrix_float4x4.swift */; };
+		C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C316C3AB20C4B2F6008F0E2F /* Model.scnassets */; };
 		C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB620B23C6600C2C805 /* EventModel.swift */; };
 		C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB820B23C7300C2C805 /* TaskModel.swift */; };
 		C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F96011F6A9A41003491E1 /* FirebaseManager.swift */; };
@@ -95,6 +97,8 @@
 		C301FF261F66C7070045641A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C301FF281F66C7070045641A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewModel.swift; sourceTree = "<group>"; };
+		C316C3A920C4A1A8008F0E2F /* matrix_float4x4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = matrix_float4x4.swift; sourceTree = "<group>"; };
+		C316C3AB20C4B2F6008F0E2F /* Model.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Model.scnassets; sourceTree = "<group>"; };
 		C31DEBB620B23C6600C2C805 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		C31DEBB820B23C7300C2C805 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 		C32F96011F6A9A41003491E1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		C301FF1B1F66C7070045641A /* OurTasks */ = {
 			isa = PBXGroup;
 			children = (
+				C316C3AB20C4B2F6008F0E2F /* Model.scnassets */,
 				C3D5519C1FA61A9800D7F081 /* AppSettings */,
 				C3AC494F1F66D419001E2586 /* Extensions */,
 				C3D5519D1FA61A9F00D7F081 /* Models */,
@@ -266,6 +271,14 @@
 				C30826941FBA36BB00876B56 /* AddGroupViewModel.swift */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		C316C3A820C4A0B9008F0E2F /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				C316C3A920C4A1A8008F0E2F /* matrix_float4x4.swift */,
+			);
+			path = ARKit;
 			sourceTree = "<group>";
 		};
 		C31DEBB320B23C3800C2C805 /* Event */ = {
@@ -479,6 +492,7 @@
 		C3AC494F1F66D419001E2586 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				C316C3A820C4A0B9008F0E2F /* ARKit */,
 				C3D5B1FE1FB4762B00550564 /* Foundation */,
 				C3D551971FA6193C00D7F081 /* UIKit */,
 			);
@@ -749,6 +763,7 @@
 				743F21FA2098791300B25E30 /* Group.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
+				C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */,
 				C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */,
 				C331344320B7495100216C5B /* AddTask.storyboard in Resources */,
 			);
@@ -864,6 +879,7 @@
 				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
+				C316C3AA20C4A1A8008F0E2F /* matrix_float4x4.swift in Sources */,
 				C39AB1D32078235C00A3B178 /* ARKitViewModel.swift in Sources */,
 				C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */,
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
