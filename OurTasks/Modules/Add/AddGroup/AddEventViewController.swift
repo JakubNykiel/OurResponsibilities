@@ -9,9 +9,8 @@
 import UIKit
 import RxSwift
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UITableViewController {
 
-    @IBOutlet weak var bottomTextFieldsConstraint: NSLayoutConstraint!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var nameTF: UITextField!
     
@@ -33,8 +32,7 @@ class AddEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.containerDependOnKeyboardBottomConstrain = bottomTextFieldsConstraint
-        self.watchForKeyboard()
+
         self.hideKeyboardWhenTappedAround()
         self.prepare()
     }

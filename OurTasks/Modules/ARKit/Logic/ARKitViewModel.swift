@@ -65,7 +65,7 @@ class ARKitViewModel {
     }
     
     func addTask(_ position: matrix_float4x4) -> SCNNode {
-        let taskNode = SCNNode(geometry: SCNBox(width: 0.15, height: 0.15, length: 0.15, chamferRadius: 0))
+        let taskNode = SCNNode(geometry: SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0))
         let taskMaterial = SCNMaterial()
         taskMaterial.diffuse.contents = #imageLiteral(resourceName: "task")
         taskMaterial.isDoubleSided = false

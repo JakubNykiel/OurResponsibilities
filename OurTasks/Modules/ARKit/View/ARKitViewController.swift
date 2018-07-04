@@ -48,6 +48,9 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.arHandler.pauseSession(sceneView: self.sceneView)
     }
     
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     @IBAction func addTaskToDatabaseAction(_ sender: Any) {
         let addTaskVC = StoryboardManager.addTaskViewController("", eventID: "")
         self.present(addTaskVC, animated: true, completion: nil)
@@ -216,7 +219,24 @@ extension ARKitViewController {
     
     func registerGestureRecognizers() {
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleSlider))
         self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
+//        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    private func changeDistanceFromCamera(_ node: SCNNode, newValue: CGFloat) {
+        let position = node.position
+    }
+    
+    @objc func toggleSlider(sender: UITapGestureRecognizer) {
+        let sceneView = sender.view as! ARSCNView
+        let tapLocation = sender.location(in: sceneView)
+        let hitTest = sceneView.hitTest(tapLocation)
+        
+        if !hitTest.isEmpty && hitTest.first!.node.name != "parent" {
+            let results = hitTest.first!
+            let node = results.node
+        }
     }
     
     @objc func pinch(sender: UIPinchGestureRecognizer) {

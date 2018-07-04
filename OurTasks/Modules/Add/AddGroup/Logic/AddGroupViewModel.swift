@@ -49,7 +49,7 @@ class AddGroupViewModel {
         let userRef = self.db.collection(FirebaseModel.users.rawValue).document(userUID)
         userRef.getDocument { (document,error) in
             if let document = document {
-                print("Document data: \(document.data())")
+                print("Document data: \(String(describing: document.data()))")
                 guard let data = document.data() else { return }
                 guard var groups: [String] = data[FirebaseModel.groups.rawValue] as? [String] else { return }
                 groups.append(id)

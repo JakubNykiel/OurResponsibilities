@@ -319,7 +319,6 @@
 			children = (
 				C331344820B7771900216C5B /* Cells */,
 				C331344020B7493F00216C5B /* AddEvent.storyboard */,
-				C331344620B7498B00216C5B /* AddEventViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -531,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				C30826931FBA36A400876B56 /* Logic */,
+				C331344620B7498B00216C5B /* AddEventViewController.swift */,
 				C3D3B1C01FADD72800E04716 /* View */,
 			);
 			path = AddGroup;
