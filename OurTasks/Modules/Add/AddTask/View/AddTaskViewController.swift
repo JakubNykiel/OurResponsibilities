@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 
-class AddTaskViewController: UIViewController {
+class AddTaskViewController: UITableViewController {
     
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var nameTF: UITextField!
@@ -18,13 +18,12 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var endTF: UITextField!
     
     @IBOutlet weak var globalPointsLbl: UILabel!
-    @IBOutlet weak var globalPointsTF: UITextField!
+    @IBOutlet weak var globalPositivePointsTF: UITextField!
+    @IBOutlet weak var globalNegativePointsTF: UITextField!
     
-    @IBOutlet weak var positivePointsLbl: UILabel!
-    @IBOutlet weak var positivePointsTF: UITextField!
-    
-    @IBOutlet weak var negativePointsLbl: UILabel!
-    @IBOutlet weak var negativePointsTF: UITextField!
+    @IBOutlet weak var eventPointsLbl: UILabel!
+    @IBOutlet weak var eventPositivePointsTF: UITextField!
+    @IBOutlet weak var eventNegativePointsTF: UITextField!
     
     @IBOutlet weak var arHeight: NSLayoutConstraint!
     @IBOutlet weak var arLbl: UILabel!
@@ -32,9 +31,9 @@ class AddTaskViewController: UIViewController {
     @IBOutlet weak var switchAR: UISwitch!
     @IBOutlet weak var qrName: UILabel!
     @IBOutlet weak var qrNameValueLbl: UILabel!
-    @IBOutlet weak var xLbl: UILabel!
-    @IBOutlet weak var yLbl: UILabel!
-    @IBOutlet weak var zLbl: UILabel!
+    @IBOutlet weak var xValueLbl: UILabel!
+    @IBOutlet weak var yValueLbl: UILabel!
+    @IBOutlet weak var zValueLbl: UILabel!
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     
@@ -93,8 +92,6 @@ extension AddTaskViewController {
         self.navigationController?.title = "addEvent".localize()
         self.nameLbl.text = "name".localize()
         self.endDateLbl.text = "end_date".localize()
-        self.positivePointsLbl.text = "positive_points".localize()
-        self.negativePointsLbl.text = "negative_points".localize()
         self.globalPointsLbl.text = "global_points".localize()
         self.arLbl.text = "AR".localize()
         self.qrName.text = "QR".localize()
@@ -103,9 +100,10 @@ extension AddTaskViewController {
     func prepareTextFields() {
         self.nameTF.tag = 1
         self.endTF.tag = 2
-        self.globalPointsTF.tag = 3
-        self.positivePointsTF.tag = 4
-        self.negativePointsTF.tag = 5
+        self.globalPositivePointsTF.tag = 3
+        self.globalNegativePointsTF.tag = 4
+        self.eventPositivePointsTF.tag = 5
+        self.eventNegativePointsTF.tag = 6
     }
     
     func preparePickers() {

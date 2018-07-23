@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14306.4" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14278.2"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -60,7 +59,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Sy-6r-ghy">
-                                        <rect key="frame" x="64" y="190.5" width="248" height="64"/>
+                                        <rect key="frame" x="63.5" y="190.5" width="248" height="64"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kolor grupy:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i3p-rS-cRQ">
                                                 <rect key="frame" x="0.0" y="21.5" width="99" height="21"/>
@@ -72,7 +71,7 @@
                                                 <rect key="frame" x="99" y="0.0" width="149" height="64"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcA-NC-BbI">
-                                                        <rect key="frame" x="2" y="15" width="25" height="35"/>
+                                                        <rect key="frame" x="2" y="14.5" width="25" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="oK2-6O-JRg"/>
                                                             <constraint firstAttribute="width" constant="25" id="zLb-Nu-2hQ"/>
@@ -195,7 +194,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icBack" width="25" height="25"/>
-        <image name="icNextBigger" width="25" height="25"/>
+        <image name="icBack" width="40" height="40"/>
+        <image name="icNextBigger" width="40" height="40"/>
     </resources>
 </document>
