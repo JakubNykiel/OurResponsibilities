@@ -39,7 +39,7 @@
 "add_event" = "Add Event";
 "name" = "Name";
 "start_date" = "Start date";
-"end_date" = "Day to end";
+"end_date" = "End date";
 "winner_points" = "Points for winner";
 //Add task
 "add_task" = "Add task";

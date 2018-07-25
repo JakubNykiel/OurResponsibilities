@@ -39,7 +39,7 @@
 "add_event" = "Dodaj wydarzenie";
 "name" = "Nazwa wydarzenia";
 "start_date" = "Data rozpoczęcia";
-"end_date" = "Liczba dni wydarzenia";
+"end_date" = "Data zakończenia";
 "winner_points" = "Punkty za zwycięstwo";
 //Add task
 "add_task" = "Dodaj zadanie";

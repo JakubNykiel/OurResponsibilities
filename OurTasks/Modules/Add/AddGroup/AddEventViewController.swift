@@ -8,7 +8,7 @@
 
 import UIKit
 import RxSwift
-
+//TODO: Block add button when fields are empty
 class AddEventViewController: UITableViewController {
 
     @IBOutlet weak var nameLbl: UILabel!
@@ -27,8 +27,7 @@ class AddEventViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     private let firebaseManager = FirebaseManager()
     private let startDatePicker: UIDatePicker = UIDatePicker()
-    private let endDatePicker: UIPickerView = UIPickerView()
-    private let days = Array(1...365)
+    private let endDatePicker: UIDatePicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,11 +69,26 @@ extension AddEventViewController {
     @objc func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
-        self.startDateTF.text = dateFormatter.string(from: sender.date)
+        if sender.tag == 1 {
+            self.startDateTF.text = dateFormatter.string(from: sender.date)
+            self.endDatePicker.minimumDate = sender.date
+            if endDatePicker.date < sender.date {
+                self.endDateTF.text = dateFormatter.string(from: sender.date)
+                self.endDatePicker.date = sender.date
+                //TODO: Add end date to view model
+            }
+            self.endDateTF.alpha = 1
+            self.endDateLbl.alpha = 1
+            self.endDateTF.isUserInteractionEnabled = true
+            //TODO: Add start date to view model
+        } else if sender.tag == 2 {
+            self.endDateTF.text = dateFormatter.string(from: sender.date)
+            //TODO: Add end date to view model
+        }
+        
     }
     
     @objc private func donePicker() {
-        // trzeba dodać zapis informacji z tych pickerów
         dismissKeyboard()
     }
     
@@ -99,28 +113,23 @@ extension AddEventViewController {
     }
     
     func preparePickers() {
-        let toolBar = UIToolbar()
-        toolBar.barStyle = UIBarStyle.default
-        toolBar.isTranslucent = true
-        toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "choose".localize(), style: UIBarButtonItemStyle.done, target: self, action: #selector(donePicker))
-        let flexible = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
-        toolBar.setItems([flexible,doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
         self.startDatePicker.tag = 1
+        self.startDatePicker.datePickerMode = .date
         self.startDatePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
         self.startDateTF.inputView = self.startDatePicker
-        self.startDateTF.inputAccessoryView = toolBar
         
+        self.endDateTF.alpha = 0.5
+        self.endDateLbl.alpha = 0.5
+        self.endDateTF.isUserInteractionEnabled = false
         self.endDatePicker.tag = 2
-        self.endDatePicker.delegate = self
+        self.endDatePicker.datePickerMode = .date
+        self.endDatePicker.addTarget(self, action: #selector(handleDatePicker(sender:)), for: .valueChanged)
         self.endDateTF.inputView = self.endDatePicker
-        self.endDateTF.inputAccessoryView = toolBar
     }
+    
 }
-
-extension AddEventViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+//MARK: TextField
+extension AddEventViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 2 || textField.tag == 3 {
@@ -129,21 +138,6 @@ extension AddEventViewController: UIPickerViewDelegate, UIPickerViewDataSource, 
         } else {
             return false
         }
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 2 {
-            return days.count
-        }
-        return 0
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 50.0
     }
 
 }
