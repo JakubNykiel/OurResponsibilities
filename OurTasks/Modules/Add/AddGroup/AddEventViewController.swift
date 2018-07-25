@@ -69,7 +69,7 @@ extension AddEventViewController {
     
     @objc func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.dateFormat = "dd.MM.yyyy"
         self.startDateTF.text = dateFormatter.string(from: sender.date)
     }
     
