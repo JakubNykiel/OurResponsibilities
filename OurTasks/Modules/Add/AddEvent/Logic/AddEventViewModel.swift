@@ -47,7 +47,7 @@ class AddEventViewModel {
             if let document = document {
                 print("Document data: \(String(describing: document.data()))")
                 guard let data = document.data() else { return }
-                guard var events: [String] = data[FirebaseModel.events.rawValue] as? [String] else { return }
+                var events: [String] = data[FirebaseModel.events.rawValue] as? [String] ?? []
                 events.append(id)
                 groupRef.updateData([FirebaseModel.events.rawValue : events])
                 self.eventAdded.onNext(true)
