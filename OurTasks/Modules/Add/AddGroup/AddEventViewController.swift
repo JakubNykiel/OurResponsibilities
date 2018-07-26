@@ -23,6 +23,10 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var winnerPointsLbl: UILabel!
     @IBOutlet weak var winnerPointsTF: UITextField!
     
+    @IBOutlet weak var participateSwitch: UISwitch!
+    @IBOutlet weak var participateLbl: UILabel!
+    
+    
     var viewModel: AddEventViewModel!
     private let disposeBag = DisposeBag()
     private let firebaseManager = FirebaseManager()
@@ -54,13 +58,10 @@ class AddEventViewController: UITableViewController {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
     }
     
-    @IBAction func presentTask(_ sender: Any) {
-        
-    }
-    
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
-        self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: [], tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+        let usersInEvent: [String] = self.participateSwitch.isOn ? [currentUserUid] : []
+        self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: usersInEvent, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
         self.viewModel.addEventToDatabase()
     }
     
