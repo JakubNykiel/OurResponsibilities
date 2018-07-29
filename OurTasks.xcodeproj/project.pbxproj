@@ -157,8 +157,9 @@
 		743F21F5209873C000B25E30 /* Group */ = {
 			isa = PBXGroup;
 			children = (
-				743F21F6209873D000B25E30 /* Logic */,
-				743F21F7209873D500B25E30 /* View */,
+				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
+				C3C11DB21F83B1460074D9AC /* GroupList */,
+				C338B4CC210E2A520070865B /* Group */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -330,6 +331,31 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		C338B4CC210E2A520070865B /* Group */ = {
+			isa = PBXGroup;
+			children = (
+				743F21F7209873D500B25E30 /* View */,
+				743F21F6209873D000B25E30 /* Logic */,
+			);
+			path = Group;
+			sourceTree = "<group>";
+		};
+		C338B4CD210E2A750070865B /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				C331343D20B748E300216C5B /* AddEvent */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		C338B4CE210E2A7C0070865B /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				C33AEB1720B4C4C70042C53A /* AddTask */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
 		C33AEB1720B4C4C70042C53A /* AddTask */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,16 +363,6 @@
 				C33AEB1A20B4C5050042C53A /* View */,
 			);
 			path = AddTask;
-			sourceTree = "<group>";
-		};
-		C33AEB1820B4C4D50042C53A /* Add */ = {
-			isa = PBXGroup;
-			children = (
-				C331343D20B748E300216C5B /* AddEvent */,
-				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
-				C33AEB1720B4C4C70042C53A /* AddTask */,
-			);
-			path = Add;
 			sourceTree = "<group>";
 		};
 		C33AEB1920B4C4FF0042C53A /* Logic */ = {
@@ -586,10 +602,10 @@
 		C3D5519B1FA61A8700D7F081 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				C33AEB1820B4C4D50042C53A /* Add */,
+				C338B4CE210E2A7C0070865B /* Task */,
+				C338B4CD210E2A750070865B /* Event */,
 				743F21F5209873C000B25E30 /* Group */,
 				C3E669BB2076DFFE00980EE4 /* ARKit */,
-				C3C11DB21F83B1460074D9AC /* GroupList */,
 				C3A5F62B1F66EA20002A9B30 /* Login */,
 				C3A5F6271F66EA20002A9B30 /* Register */,
 				C3AC494A1F66D0C4001E2586 /* Main */,
