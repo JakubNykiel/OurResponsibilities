@@ -17,7 +17,6 @@
 		743F2206209A79F100B25E30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 743F2208209A79F100B25E30 /* Localizable.strings */; };
 		74B869512087627300D6F99B /* GroupListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869502087627300D6F99B /* GroupListSection.swift */; };
 		74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74B869532087655F00D6F99B /* GroupInviteCell.swift */; };
-		74CA49B720BB8264002929FF /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74CA49B620BB8264002929FF /* AddTaskViewModel.swift */; };
 		74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74D03A2E20AF94D0006D43CF /* UINavigation+BackgroundColor.swift */; };
 		74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0B20A397B700B61EF8 /* GroupSection.swift */; };
 		74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */; };
@@ -40,6 +39,7 @@
 		C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344420B7497200216C5B /* AddTaskViewController.swift */; };
 		C331344720B7498B00216C5B /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344620B7498B00216C5B /* AddEventViewController.swift */; };
 		C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C331344920B77BD000216C5B /* AddEventViewModel.swift */; };
+		C338B4D5210E30530070865B /* AddTaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C338B4D4210E30530070865B /* AddTaskViewModel.swift */; };
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
@@ -60,6 +60,7 @@
 		C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */; };
 		C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */; };
 		C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */; };
+		C3AA4D5021262C0C00ED1813 /* GroupEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AA4D4F21262C0C00ED1813 /* GroupEventCell.swift */; };
 		C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3AC49501F66D629001E2586 /* ButtonBorder.swift */; };
 		C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C11DB61F83B1590074D9AC /* GroupList.storyboard */; };
 		C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */; };
@@ -83,7 +84,6 @@
 		743F220A209A7A7F00B25E30 /* pl-PL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pl-PL"; path = "pl-PL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		74B869502087627300D6F99B /* GroupListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListSection.swift; sourceTree = "<group>"; };
 		74B869532087655F00D6F99B /* GroupInviteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupInviteCell.swift; sourceTree = "<group>"; };
-		74CA49B620BB8264002929FF /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddTaskViewModel.swift; path = OurTasks/Modules/Add/AddEvent/Logic/AddTaskViewModel.swift; sourceTree = SOURCE_ROOT; };
 		74D03A2E20AF94D0006D43CF /* UINavigation+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+BackgroundColor.swift"; sourceTree = "<group>"; };
 		74EEFF0B20A397B700B61EF8 /* GroupSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupSection.swift; sourceTree = "<group>"; };
 		74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTaskCell.swift; sourceTree = "<group>"; };
@@ -111,6 +111,7 @@
 		C331344420B7497200216C5B /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		C331344620B7498B00216C5B /* AddEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		C331344920B77BD000216C5B /* AddEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventViewModel.swift; sourceTree = "<group>"; };
+		C338B4D4210E30530070865B /* AddTaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewModel.swift; sourceTree = "<group>"; };
 		C3415F5920697426007E7EED /* GroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCell.swift; sourceTree = "<group>"; };
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		C3A5F6331F675052002A9B30 /* TextFieldBottomBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldBottomBorder.swift; sourceTree = "<group>"; };
 		C3A5F6351F67563F002A9B30 /* HideKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyboard.swift; sourceTree = "<group>"; };
 		C3A732CB1FE891820033DC8A /* GroupListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewModel.swift; sourceTree = "<group>"; };
+		C3AA4D4F21262C0C00ED1813 /* GroupEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupEventCell.swift; sourceTree = "<group>"; };
 		C3AC49501F66D629001E2586 /* ButtonBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBorder.swift; sourceTree = "<group>"; };
 		C3C11DB61F83B1590074D9AC /* GroupList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList.storyboard; sourceTree = "<group>"; };
 		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				74EEFF0E20A3A44B00B61EF8 /* GroupTaskCell.swift */,
+				C3AA4D4F21262C0C00ED1813 /* GroupEventCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -368,7 +371,7 @@
 		C33AEB1920B4C4FF0042C53A /* Logic */ = {
 			isa = PBXGroup;
 			children = (
-				74CA49B620BB8264002929FF /* AddTaskViewModel.swift */,
+				C338B4D4210E30530070865B /* AddTaskViewModel.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				C301FF161F66C7070045641A /* Frameworks */,
 				C301FF171F66C7070045641A /* Resources */,
 				1CFB7FD26B1046B41DB05F70 /* [CP] Embed Pods Frameworks */,
+				A255036092FC219FCD081A61 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -817,7 +821,7 @@
 				"${BUILT_PRODUCTS_DIR}/CodableFirebase/CodableFirebase.framework",
 				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -835,7 +839,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodableFirebase.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -850,6 +854,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A255036092FC219FCD081A61 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OurTasks/Pods-OurTasks-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -877,6 +896,7 @@
 				C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */,
 				C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
+				C338B4D5210E30530070865B /* AddTaskViewModel.swift in Sources */,
 				C39AB1D52078239A00A3B178 /* BarcodeHandler.swift in Sources */,
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
 				74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */,
@@ -887,8 +907,8 @@
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */,
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
-				74CA49B720BB8264002929FF /* AddTaskViewModel.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
+				C3AA4D5021262C0C00ED1813 /* GroupEventCell.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
 				743F220320988F8100B25E30 /* AppColor.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,

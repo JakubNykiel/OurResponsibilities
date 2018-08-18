@@ -35,6 +35,8 @@
 "future_events" = "Przyszłe wydarzenia:";
 "present_events" = "Trwające wydarzenia:";
 "global_ranking" = "Ranking ogólny:";
+"event_start" = "Start";
+"event_end" = "End";
 // Add event
 "add_event" = "Dodaj wydarzenie";
 "name" = "Nazwa wydarzenia";
