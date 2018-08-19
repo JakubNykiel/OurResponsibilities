@@ -21,6 +21,7 @@ enum FirebaseModel: String {
 
 struct FirebaseReferences {
     var groupRef = Firestore.firestore().collection(FirebaseModel.groups.rawValue)
+    var eventRef = Firestore.firestore().collection(FirebaseModel.events.rawValue)
 }
 
 class FirebaseManager {
@@ -37,6 +38,5 @@ class FirebaseManager {
     func getCurrentUserUid() -> String {
         guard let uid = self.currentUser?.uid else { return "" }
         return uid
-    }
-   
+    }   
 }

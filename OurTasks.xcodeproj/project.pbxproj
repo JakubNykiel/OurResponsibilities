@@ -116,6 +116,7 @@
 		C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		C377FD1C212862C000E51394 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../Desktop/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
 		C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConvertFromCamera + UIView.swift"; sourceTree = "<group>"; };
 		C39AB1C8207820CD00A3B178 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
@@ -239,6 +240,7 @@
 		C301FF101F66C7070045641A = {
 			isa = PBXGroup;
 			children = (
+				C377FD1C212862C000E51394 /* MyPlayground.playground */,
 				C301FF1B1F66C7070045641A /* OurTasks */,
 				C301FF1A1F66C7070045641A /* Products */,
 				AE03FAE935383AD154A450EB /* Pods */,

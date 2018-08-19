@@ -100,7 +100,7 @@ extension GroupListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60.0
+        return 36.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -109,7 +109,7 @@ extension GroupListViewController: UITableViewDelegate {
         let section = dataSource[section]
 //        guard section.items.count > 0 else { return UIView() }
         
-        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 50.0))
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
         let label = UILabel(frame: CGRect(x: 21.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
         label.text = section.title + ":"
         label.textColor = AppColor.applePurple

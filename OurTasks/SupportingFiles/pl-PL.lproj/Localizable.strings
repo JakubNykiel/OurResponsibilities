@@ -30,11 +30,11 @@
 "no_group_user" = "Nie masz żadnej grupy";
 "no_invites" = "Nie masz żadnych zaproszeń!";
 //Group
-"my_tasks" = "Moje zadania:";
-"past_events" = "Historia wydarzeń:";
-"future_events" = "Przyszłe wydarzenia:";
-"present_events" = "Trwające wydarzenia:";
-"global_ranking" = "Ranking ogólny:";
+"my_tasks" = "Moje zadania";
+"past_events" = "Historia wydarzeń";
+"future_events" = "Przyszłe wydarzenia";
+"present_events" = "Trwające wydarzenia";
+"global_ranking" = "Ranking ogólny";
 "event_start" = "Start";
 "event_end" = "End";
 // Add event

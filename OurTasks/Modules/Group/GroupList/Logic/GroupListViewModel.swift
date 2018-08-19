@@ -113,7 +113,7 @@ class GroupListViewModel {
         if groups.count == 0 {
             self.noGroupUserBehaviorSubject.onNext(true)
         } else {
-            let userGroups = groups.compactMap({ group in
+            _ = groups.compactMap({ group in
                 let groupRef = FirebaseReferences().groupRef.document(group)
                 groupRef.getDocument(completion: { (document, error) in
                     if let document = document {

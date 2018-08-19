@@ -16,7 +16,7 @@ class GroupViewController: UITableViewController {
     
     enum Constants {
         struct CellIdentifiers {
-            static let presentEvent = "groupPresentEvent"
+            static let groupEvent = "groupEvent"
         }
         
         struct NibNames {
@@ -32,11 +32,20 @@ class GroupViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = nil
-        self.tableView.delaysContentTouches = true
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
+            case .pastEvents(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
+                cell.configure(model)
+                return cell
+                
             case .presentEvents(let model):
-                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.presentEvent, for: indexPath) as! GroupEventCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
+                cell.configure(model)
+                return cell
+                
+            case .futureEvents(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
                 cell.configure(model)
                 return cell
             }
@@ -56,7 +65,7 @@ class GroupViewController: UITableViewController {
 //            .disposed(by: self.disposeBag)
         
         self.prepare()
-        self.viewModel.fetchEventsAndTasks()
+        self.viewModel.prepareEventsAndTasks()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -79,5 +88,38 @@ extension GroupViewController {
         let groupColor = self.viewModel.groupModel.color.hexStringToUIColor()
         self.navigationItem.title = self.viewModel.groupModel.name.capitalized
         self.navigationController?.navigationBar.backgroundColor = groupColor.withAlphaComponent(0.2)
+    }
+}
+// MARK: TableView
+extension GroupViewController {
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        guard section < dataSource.sectionModels.count else { return UIView() }
+        let section = dataSource[section]
+//        guard section.items.count > 0 else { return UIView() }
+        
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
+        let label = UILabel(frame: CGRect(x: 21.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
+        label.text = section.title + ":"
+        label.textColor = AppColor.applePurple
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        view.addSubview(label)
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 21.0))
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 21.0))
+        
+        return view
     }
 }

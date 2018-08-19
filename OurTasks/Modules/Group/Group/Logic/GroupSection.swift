@@ -36,8 +36,8 @@ enum GroupSection: SectionModelType {
 }
 enum GroupItemType {
 //    case task(_: GroupTaskCellModel)
-//    case pastEvents(_: GroupEventCellModel)
-//    case futureEvents(_: GroupEventCellModel)
+    case pastEvents(_: GroupEventCellModel)
+    case futureEvents(_: GroupEventCellModel)
     case presentEvents(_: GroupEventCellModel)
 //    case noResult(_: NoResultCellModel)
 //    case globalRanking(_: GroupGlobalRankingCellModel)
