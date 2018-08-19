@@ -57,12 +57,13 @@ class GroupViewController: UITableViewController {
         self.viewModel.sectionsBehaviourSubject.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: self.disposeBag)
-//        self.tableView.rx.itemSelected
-//            .subscribe(onNext: {
-//                switch self.dataSource[$0]{
-//
-//            })
-//            .disposed(by: self.disposeBag)
+       
+        self.tableView.rx.itemSelected
+            .subscribe(onNext: {
+                //ADD Task option in FUTURE
+                
+            })
+            .disposed(by: self.disposeBag)
         
         self.prepare()
         self.viewModel.prepareEventsAndTasks()
@@ -100,7 +101,7 @@ extension GroupViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-    
+     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40.0
     }

@@ -68,6 +68,9 @@
 		C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */; };
 		C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */; };
 		C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5B2001FB4767200550564 /* Localize+String.swift */; };
+		C3E1086521297B17006A278B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086421297B17006A278B /* EventSection.swift */; };
+		C3E1086721297B26006A278B /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086621297B26006A278B /* EventViewModel.swift */; };
+		C3E1086921297B42006A278B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086821297B42006A278B /* EventViewController.swift */; };
 		C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B11FC36F2D004FD87F /* GroupModel.swift */; };
 		C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B41FC392C8004FD87F /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -141,6 +144,9 @@
 		C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddGroup.storyboard; sourceTree = "<group>"; };
 		C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		C3D5B2001FB4767200550564 /* Localize+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+String.swift"; sourceTree = "<group>"; };
+		C3E1086421297B17006A278B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
+		C3E1086621297B26006A278B /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		C3E1086821297B42006A278B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C3E122B11FC36F2D004FD87F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		C3E122B41FC392C8004FD87F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -348,6 +354,7 @@
 		C338B4CD210E2A750070865B /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				C3E1086121297AD6006A278B /* Event */,
 				C331343D20B748E300216C5B /* AddEvent */,
 			);
 			path = Event;
@@ -678,6 +685,32 @@
 			path = String;
 			sourceTree = "<group>";
 		};
+		C3E1086121297AD6006A278B /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				C3E1086321297AE6006A278B /* Logic */,
+				C3E1086221297ADF006A278B /* View */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		C3E1086221297ADF006A278B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3E1086821297B42006A278B /* EventViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3E1086321297AE6006A278B /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C3E1086421297B17006A278B /* EventSection.swift */,
+				C3E1086621297B26006A278B /* EventViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		C3E122B01FC36EE9004FD87F /* Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,15 +952,18 @@
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
 				C316C3AA20C4A1A8008F0E2F /* matrix_float4x4.swift in Sources */,
 				C39AB1D32078235C00A3B178 /* ARKitViewModel.swift in Sources */,
+				C3E1086521297B17006A278B /* EventSection.swift in Sources */,
 				C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */,
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
+				C3E1086721297B26006A278B /* EventViewModel.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,
 				C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */,
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
 				743F2205209A77D400B25E30 /* String+Hex.swift in Sources */,
 				C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */,
 				C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */,
+				C3E1086921297B42006A278B /* EventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
