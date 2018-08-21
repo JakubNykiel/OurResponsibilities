@@ -63,9 +63,7 @@ enum GroupSectionTitle: String {
 
 struct GroupEventCellModel {
     var id: String
-    var eventName: String
-    var startDate: Date?
-    var endDate: Date?
+    var eventModel: EventModel
 }
 
 struct GroupTaskCellModel {

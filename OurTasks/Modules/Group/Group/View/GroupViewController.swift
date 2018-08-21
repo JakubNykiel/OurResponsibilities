@@ -30,7 +30,6 @@ class GroupViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = nil
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .pastEvents(let model):
@@ -52,6 +51,8 @@ class GroupViewController: UITableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.disposeBag = DisposeBag()
+        self.tableView.dataSource = nil
         
         self.viewModel.sectionsBehaviourSubject.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
@@ -60,7 +61,12 @@ class GroupViewController: UITableViewController {
         self.tableView.rx.itemSelected
             .subscribe(onNext: {
                 //ADD Task option in FUTURE
-                
+                switch self.dataSource[$0] {
+                case .futureEvents(let model), .presentEvents(let model), .pastEvents(let model):
+                    let eventVC = StoryboardManager.eventViewController(model.eventModel, eventID: model.id)
+                    self.navigationController?.pushViewController(eventVC, animated: true)
+                }
+               
             })
             .disposed(by: self.disposeBag)
         

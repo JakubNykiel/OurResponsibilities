@@ -80,7 +80,7 @@ class GroupViewModel {
                 let ret: [GroupEventCellModel] = pastEvents.compactMap({
                     let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
                     let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
-                    return GroupEventCellModel(id: $0.key, eventName: $0.value.name, startDate: startDate, endDate: endDate)
+                    return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
             })
@@ -96,7 +96,7 @@ class GroupViewModel {
                 let ret: [GroupEventCellModel] = presentEvents.compactMap({
                     let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
                     let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
-                    return GroupEventCellModel(id: $0.key, eventName: $0.value.name, startDate: startDate, endDate: endDate)
+                    return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
             })
@@ -112,7 +112,7 @@ class GroupViewModel {
                 let ret: [GroupEventCellModel] = futureEvents.compactMap({
                     let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
                     let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
-                    return GroupEventCellModel(id: $0.key, eventName: $0.value.name, startDate: startDate, endDate: endDate)
+                    return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
             })

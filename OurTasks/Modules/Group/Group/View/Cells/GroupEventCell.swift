@@ -25,10 +25,10 @@ class GroupEventCell: UITableViewCell {
     }
 
     func configure(_ model: GroupEventCellModel) {
-        self.eventName.text = model.eventName
+        self.eventName.text = model.eventModel.name
         self.titleStart.text = "event_start".localize()
-        self.eventStartDate.text = self.dateFormatter.string(from: model.startDate!)
+        self.eventStartDate.text = model.eventModel.startDate
         self.titleEnd.text = "event_end".localize()
-        self.eventEndDate.text = self.dateFormatter.string(from: model.endDate!)
+        self.eventEndDate.text = model.eventModel.endDate
     }
 }

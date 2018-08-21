@@ -84,7 +84,6 @@ class GroupListViewController: UIViewController {
     @IBAction func presentAR(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "ARKit", bundle: nil)
         let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
-//        self.present(groupListVC, animated: true, completion: nil)
         self.navigationController?.present(groupListVC, animated: true, completion: nil)
     }
     
