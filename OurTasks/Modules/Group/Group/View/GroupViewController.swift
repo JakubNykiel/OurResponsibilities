@@ -10,7 +10,6 @@ import UIKit
 import RxDataSources
 import Firebase
 import RxSwift
-import RxCocoa
 
 class GroupViewController: UITableViewController {
     

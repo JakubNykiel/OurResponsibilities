@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import RxDataSources
+import Firebase
+import RxSwift
 
 class EventViewController: UITableViewController {
 
+    enum Constants {
+        struct CellIdentifiers {
+            static let eventTask = ""
+        }
+        
+        struct NibNames {
+            
+        }
+    }
+    
+    var viewModel: EventViewModel!
+    private let firebaseManager: FirebaseManager = FirebaseManager()
+    private var disposeBag: DisposeBag = DisposeBag()
+    private var dataSource: RxTableViewSectionedReloadDataSource<EventSection>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

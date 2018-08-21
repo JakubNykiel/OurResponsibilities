@@ -43,6 +43,7 @@
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
+		C39286B2212B57C000734627 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39286B1212B57C000734627 /* Event.storyboard */; };
 		C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */; };
 		C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */; };
 		C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C8207820CD00A3B178 /* QRCode.swift */; };
@@ -120,6 +121,7 @@
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C377FD1C212862C000E51394 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../Desktop/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C39286B1212B57C000734627 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
 		C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConvertFromCamera + UIView.swift"; sourceTree = "<group>"; };
 		C39AB1C8207820CD00A3B178 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				C3E1086821297B42006A278B /* EventViewController.swift */,
+				C39286B1212B57C000734627 /* Event.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 				743F21FA2098791300B25E30 /* Group.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
+				C39286B2212B57C000734627 /* Event.storyboard in Resources */,
 				C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */,
 				C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */,
 				C331344320B7495100216C5B /* AddTask.storyboard in Resources */,

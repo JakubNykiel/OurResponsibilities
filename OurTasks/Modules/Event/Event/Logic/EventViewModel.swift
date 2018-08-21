@@ -22,12 +22,14 @@ class EventViewModel {
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private let disposeBag = DisposeBag()
     private var sections: [EventSection] = []
+    private let dateFormatter = DateFormatter()
     
     var eventTasks: [String:TaskModel] = [:]
     var eventModel: EventModel
     var eventID: String
     
     init(eventModel: EventModel, eventID: String) {
+        self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.eventID = eventID
         self.eventModel = eventModel
     }

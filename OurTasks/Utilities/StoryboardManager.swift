@@ -29,6 +29,7 @@ struct StoryboardManager {
         let group = GroupViewController.self
         let addEvent = AddEventViewController.self
         let addTask = AddTaskViewController.self
+        let event = EventViewController.self
     }
 
     enum StoryboardNames: String {
@@ -40,6 +41,7 @@ struct StoryboardManager {
         case Group
         case AddEvent
         case AddTask
+        case Event
     }
 
     enum ViewControllerIdentifiers: String {
@@ -51,8 +53,10 @@ struct StoryboardManager {
         case groupViewController
         case addEventViewController
         case addTaskViewController
+        case eventViewController
     }
-
+    
+    //MARK: GENERAL
     static func loginViewController() -> LoginViewController {
         let loginVC = self.viewController(ViewControllerTypes().login, withIdentifier: ViewControllerIdentifiers.loginViewController.rawValue, fromStoryboard: StoryboardNames.Login.rawValue)
         return loginVC
@@ -61,6 +65,7 @@ struct StoryboardManager {
         let registerVC = self.viewController(ViewControllerTypes().register, withIdentifier: ViewControllerIdentifiers.registerViewController.rawValue, fromStoryboard: StoryboardNames.Register.rawValue)
         return registerVC
     }
+    //MARK: GROUP
     static func groupListViewController() -> GroupListViewController {
         let groupListVC = self.viewController(ViewControllerTypes().afterLogin, withIdentifier: ViewControllerIdentifiers.groupListViewController.rawValue, fromStoryboard: StoryboardNames.GroupList.rawValue)
         groupListVC.viewModel = GroupListViewModel()
@@ -76,12 +81,20 @@ struct StoryboardManager {
         groupVC.viewModel = viewModel
         return groupVC
     }
+    //MARK: EVENT
     static func addEventViewController(_ groupID: String) -> AddEventViewController {
         let addEventVC = self.viewController(ViewControllerTypes().addEvent, withIdentifier: ViewControllerIdentifiers.addEventViewController.rawValue, fromStoryboard: StoryboardNames.AddEvent.rawValue)
         let viewModel = AddEventViewModel.init(groupID: groupID)
         addEventVC.viewModel = viewModel
         return addEventVC
     }
+    static func eventViewController(_ eventModel: EventModel, eventID: String) -> EventViewController {
+        let eventVC = self.viewController(ViewControllerTypes().event, withIdentifier: ViewControllerIdentifiers.eventViewController.rawValue, fromStoryboard: StoryboardNames.Event.rawValue)
+        let viewModel = EventViewModel.init(eventModel: eventModel, eventID: eventID)
+        eventVC.viewModel = viewModel
+        return eventVC
+    }
+    //MARK: TASK
     static func addTaskViewController(_ groupID: String, eventID: String) -> AddTaskViewController {
         let addTaskVC = self.viewController(ViewControllerTypes().addTask, withIdentifier: ViewControllerIdentifiers.addTaskViewController.rawValue, fromStoryboard: StoryboardNames.AddTask.rawValue)
         let viewModel = AddTaskViewModel.init(groupID: groupID, eventID: eventID)
