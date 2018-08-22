@@ -17,6 +17,9 @@ class AddTaskViewController: UITableViewController {
     @IBOutlet weak var endDateLbl: UILabel!
     @IBOutlet weak var endTF: UITextField!
     
+    @IBOutlet weak var usersInteractionLbl: UILabel!
+    @IBOutlet weak var usersInteractionSwitch: UISwitch!
+    
     @IBOutlet weak var globalPointsLbl: UILabel!
     @IBOutlet weak var globalPositivePointsTF: UITextField!
     @IBOutlet weak var globalNegativePointsTF: UITextField!
@@ -72,6 +75,21 @@ class AddTaskViewController: UITableViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
+        let currentUserUid = self.firebaseManager.getCurrentUserUid()
+        self.viewModel?.taskModel = TaskModel(
+            owner: currentUserUid,
+            name: self.nameTF.text ?? "",
+            endDate: self.endTF.text ?? "",
+            users: [],
+            positivePoints: Int(self.eventPositivePointsTF.text ?? "0")!,
+            negativePoints: Int(self.eventNegativePointsTF.text ?? "0")!,
+            userInteraction: self.usersInteractionSwitch.isOn,
+            AR: self.switchAR.isOn,
+            arTask: self.viewModel?.arTaskModel,
+            state: TaskState.backlog.rawValue,
+            globalPositivePoints: Int(self.globalPositivePointsTF.text ?? "0")!,
+            globalNegativePoints: Int(self.globalNegativePointsTF.text ?? "0")!)
+        self.viewModel?.addTaskToDatabase()
         self.dismiss(animated: true, completion: nil)
     }
 }

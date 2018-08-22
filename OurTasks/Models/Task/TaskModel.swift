@@ -22,14 +22,13 @@ struct TaskModel: Codable {
     var state: String
     var endDate: String
     var users: [String]?
-    var globalPoints: Int
+    var globalPositivePoints: Int
+    var globalNegativePoints: Int
     var positivePoints: Int
     var negativePoints: Int
     var userInteraction: Bool
     var AR: Bool
-    var qrID: Int?
-    var coordinates: [Float]?
-    var blockSize: Float?
+    var arTask: ARTaskModel?
     
     enum TaskKeys: String,CodingKey {
         case owner
@@ -40,14 +39,13 @@ struct TaskModel: Codable {
         case negativePoints
         case userInteraction
         case AR
-        case qrID
-        case coordinates
+        case arTask
         case state
-        case globalPoints
-        case blockSize
+        case globalPositivePoints
+        case globalNegativePoints
     }
     
-    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, qrID: Int?, coordinates: [Float]?, state: String, globalPoints: Int, blockSize: Float?) {
+    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, globalNegativePoints: Int) {
         self.owner = owner
         self.name = name
         self.endDate = endDate
@@ -56,11 +54,10 @@ struct TaskModel: Codable {
         self.negativePoints = negativePoints
         self.userInteraction = userInteraction
         self.AR = AR
-        self.qrID = qrID
-        self.coordinates = coordinates
+        self.arTask = arTask
         self.state = state
-        self.globalPoints = globalPoints
-        self.blockSize = blockSize
+        self.globalPositivePoints = globalPositivePoints
+        self.globalNegativePoints = globalNegativePoints
     }
     
     public init(from decoder: Decoder) throws {
@@ -74,11 +71,10 @@ struct TaskModel: Codable {
         self.negativePoints = try container.decode(Int?.self, forKey: .negativePoints) ?? 0
         self.userInteraction = try container.decode(Bool?.self, forKey: .userInteraction) ?? false
         self.AR = try container.decode(Bool?.self, forKey: .AR) ?? false
-        self.qrID = try? container.decode(Int?.self, forKey: .qrID) ?? 0
-        self.coordinates = try? container.decode([Float]?.self, forKey: .coordinates) ?? []
+        self.arTask = try? container.decode(ARTaskModel?.self, forKey: .arTask) ?? ARTaskModel()
         self.state = try container.decode(String?.self, forKey: .state) ?? "backlog"
-        self.globalPoints = try container.decode(Int?.self, forKey: .globalPoints) ?? 0
-        self.blockSize = try? container.decode(Float?.self, forKey: .blockSize) ?? 0.1
+        self.globalPositivePoints = try container.decode(Int?.self, forKey: .globalPositivePoints) ?? 0
+        self.globalNegativePoints = try container.decode(Int?.self, forKey: .globalNegativePoints) ?? 0
     }
     
 }
@@ -93,10 +89,9 @@ extension TaskModel {
         try container.encode(self.negativePoints, forKey: .negativePoints)
         try container.encode(self.userInteraction, forKey: .userInteraction)
         try container.encode(self.AR, forKey: .AR)
-        try container.encode(self.qrID, forKey: .qrID)
-        try container.encode(self.coordinates, forKey: .coordinates)
+        try container.encode(self.arTask, forKey: .arTask)
         try container.encode(self.state, forKey: .state)
-        try container.encode(self.globalPoints, forKey: .globalPoints)
-        try container.encode(self.blockSize, forKey: .blockSize)
+        try container.encode(self.globalPositivePoints, forKey: .globalPositivePoints)
+        try container.encode(self.globalNegativePoints, forKey: .globalNegativePoints)
     }
 }

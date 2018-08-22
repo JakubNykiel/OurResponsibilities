@@ -22,6 +22,7 @@ enum FirebaseModel: String {
 struct FirebaseReferences {
     var groupRef = Firestore.firestore().collection(FirebaseModel.groups.rawValue)
     var eventRef = Firestore.firestore().collection(FirebaseModel.events.rawValue)
+    var taskRef = Firestore.firestore().collection(FirebaseModel.tasks.rawValue)
 }
 
 class FirebaseManager {

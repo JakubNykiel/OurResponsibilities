@@ -29,6 +29,8 @@
 		C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C316C3AB20C4B2F6008F0E2F /* Model.scnassets */; };
 		C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB620B23C6600C2C805 /* EventModel.swift */; };
 		C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB820B23C7300C2C805 /* TaskModel.swift */; };
+		C3231EDA212DB53C0094AB94 /* ARTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */; };
+		C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */; };
 		C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F96011F6A9A41003491E1 /* FirebaseManager.swift */; };
 		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
@@ -105,6 +107,8 @@
 		C316C3AB20C4B2F6008F0E2F /* Model.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Model.scnassets; sourceTree = "<group>"; };
 		C31DEBB620B23C6600C2C805 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		C31DEBB820B23C7300C2C805 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTaskModel.swift; sourceTree = "<group>"; };
+		C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3 + Codable.swift"; sourceTree = "<group>"; };
 		C32F96011F6A9A41003491E1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				C316C3A920C4A1A8008F0E2F /* matrix_float4x4.swift */,
+				C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */,
 			);
 			path = ARKit;
 			sourceTree = "<group>";
@@ -309,6 +314,14 @@
 				C31DEBB820B23C7300C2C805 /* TaskModel.swift */,
 			);
 			path = Task;
+			sourceTree = "<group>";
+		};
+		C3231ED8212DB4290094AB94 /* TaskAR */ = {
+			isa = PBXGroup;
+			children = (
+				C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */,
+			);
+			path = TaskAR;
 			sourceTree = "<group>";
 		};
 		C331343D20B748E300216C5B /* AddEvent */ = {
@@ -639,6 +652,7 @@
 		C3D5519D1FA61A9F00D7F081 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C3231ED8212DB4290094AB94 /* TaskAR */,
 				C31DEBB520B23C4C00C2C805 /* Task */,
 				C31DEBB320B23C3800C2C805 /* Event */,
 				C39AB1C42078207A00A3B178 /* QRCode */,
@@ -932,6 +946,7 @@
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */,
 				74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */,
+				C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */,
 				C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */,
 				C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
@@ -948,6 +963,7 @@
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
 				C3A5F6321F66EAAF002A9B30 /* LoginViewController.swift in Sources */,
 				C3AA4D5021262C0C00ED1813 /* GroupEventCell.swift in Sources */,
+				C3231EDA212DB53C0094AB94 /* ARTaskModel.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
 				743F220320988F8100B25E30 /* AppColor.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
@@ -1116,7 +1132,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6454359TU3;
 				INFOPLIST_FILE = "$(SRCROOT)/OurTasks/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nykiel.OurTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1133,7 +1149,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6454359TU3;
 				INFOPLIST_FILE = "$(SRCROOT)/OurTasks/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nykiel.OurTask;
 				PRODUCT_NAME = "$(TARGET_NAME)";
