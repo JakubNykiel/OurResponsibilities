@@ -95,9 +95,9 @@ struct StoryboardManager {
         return eventVC
     }
     //MARK: TASK
-    static func addTaskViewController(_ groupID: String, eventID: String) -> AddTaskViewController {
+    static func addTaskViewController(_ eventID: String) -> AddTaskViewController {
         let addTaskVC = self.viewController(ViewControllerTypes().addTask, withIdentifier: ViewControllerIdentifiers.addTaskViewController.rawValue, fromStoryboard: StoryboardNames.AddTask.rawValue)
-        let viewModel = AddTaskViewModel.init(groupID: groupID, eventID: eventID)
+        let viewModel = AddTaskViewModel.init(eventID: eventID)
         addTaskVC.viewModel = viewModel
         return addTaskVC
     }

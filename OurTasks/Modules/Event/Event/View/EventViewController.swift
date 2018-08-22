@@ -32,4 +32,9 @@ class EventViewController: UITableViewController {
         super.viewDidLoad()
 
     }
+    
+    @IBAction func toAddTask(_ sender: Any) {
+        let addTaskVC = StoryboardManager.addTaskViewController(self.viewModel.eventID)
+        self.navigationController?.pushViewController(addTaskVC, animated: true)
+    }
 }

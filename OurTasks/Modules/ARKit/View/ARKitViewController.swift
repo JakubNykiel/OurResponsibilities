@@ -52,7 +52,7 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func addTaskToDatabaseAction(_ sender: Any) {
-        let addTaskVC = StoryboardManager.addTaskViewController("", eventID: "")
+        let addTaskVC = StoryboardManager.addTaskViewController("")
         self.present(addTaskVC, animated: true, completion: nil)
     }
     

@@ -18,13 +18,11 @@ class AddTaskViewModel {
     var taskModel: TaskModel?
     var arTaskModel: ARTaskModel?
     
-    var groupID: String
     var eventID: String
     var qrCode: QRCode?
     
-    init(groupID: String, eventID: String) {
+    init(eventID: String) {
         self.eventID = eventID
-        self.groupID = groupID
     }
     
     func addTaskToDatabase() {
