@@ -13,11 +13,14 @@ import CodableFirebase
 
 class EventViewModel {
     
-    var myTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
+    var allTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var doneTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var eventUsersBehaviorSubject: BehaviorSubject<[String:UserModel]> = BehaviorSubject(value: [:])
     var noTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[EventSection]> = BehaviorSubject(value: [])
+    var eventName: Variable<String> = Variable("")
+    var eventDate: Variable<String> = Variable("")
+    var eventPoints: Variable<String> = Variable("")
     
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private let disposeBag = DisposeBag()
@@ -32,5 +35,13 @@ class EventViewModel {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.eventID = eventID
         self.eventModel = eventModel
+        
+        self.bindGeneralInformation()
+    }
+    
+    private func bindGeneralInformation() {
+        self.eventName.value = self.eventModel.name
+        self.eventPoints.value = "winner_points".localize() + " " + String(self.eventModel.winnerGlobalPoints)
+        self.eventDate.value = self.eventModel.startDate + " - " + self.eventModel.endDate
     }
 }

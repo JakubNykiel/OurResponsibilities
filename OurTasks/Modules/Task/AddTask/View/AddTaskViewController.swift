@@ -14,6 +14,9 @@ class AddTaskViewController: UITableViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var nameTF: UITextField!
     
+    @IBOutlet weak var descLbl: UILabel!
+    @IBOutlet weak var descTxt: UITextView!
+    
     @IBOutlet weak var endDateLbl: UILabel!
     @IBOutlet weak var endTF: UITextField!
     
@@ -85,7 +88,8 @@ class AddTaskViewController: UITableViewController {
             arTask: self.viewModel?.arTaskModel,
             state: TaskState.backlog.rawValue,
             globalPositivePoints: Int(self.globalPositivePointsTF.text ?? "0")!,
-            globalNegativePoints: -Int(self.globalNegativePointsTF.text ?? "0")!)
+            globalNegativePoints: -Int(self.globalNegativePointsTF.text ?? "0")!,
+            description: self.descTxt.text)
         self.viewModel?.addTaskToDatabase()
         self.navigationController?.popViewController(animated: true)
     }
@@ -109,6 +113,7 @@ extension AddTaskViewController {
         self.globalPointsLbl.text = "global_points".localize()
         self.arLbl.text = "AR".localize()
         self.qrName.text = "QR_name".localize()
+        self.descLbl.text = "desc".localize()
     }
     
     func prepareTextFields() {

@@ -36,14 +36,14 @@ enum EventSection: SectionModelType {
 }
 
 enum EventItemType {
-    case myEvents(_: EventTaskCellModel)
-    case doneEvents(_: EventTaskCellModel)
+    case allTasks(_: EventTaskCellModel)
+    case doneTasks(_: EventTaskCellModel)
     case users(_: EventUserCellModel)
 }
 
 enum EventSectionTitle: String {
-    case myEvents
-    case doneEvents
+    case allTasks
+    case doneTasks
     case users
 }
 

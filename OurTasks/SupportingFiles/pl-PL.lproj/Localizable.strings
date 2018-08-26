@@ -51,3 +51,7 @@
 "gloabl_points" = "Punkty grupowe";
 "AR" = "AR";
 "QR_name" = "Nazwa QR";
+"desc" = "Opis";
+// Task
+"winner_points" = "Punkty za zwycięstwo";
+

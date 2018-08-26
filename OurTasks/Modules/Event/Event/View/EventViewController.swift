@@ -10,6 +10,7 @@ import UIKit
 import RxDataSources
 import Firebase
 import RxSwift
+import RxCocoa
 
 class EventViewController: UITableViewController {
 
@@ -23,6 +24,10 @@ class EventViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var eventName: UILabel!
+    @IBOutlet weak var eventDate: UILabel!
+    @IBOutlet weak var eventPoints: UILabel!
+    
     var viewModel: EventViewModel!
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private var disposeBag: DisposeBag = DisposeBag()
@@ -30,11 +35,40 @@ class EventViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.prepareOnLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.prepareOnAppear()
     }
     
     @IBAction func toAddTask(_ sender: Any) {
         let addTaskVC = StoryboardManager.addTaskViewController(self.viewModel.eventID)
         self.navigationController?.pushViewController(addTaskVC, animated: true)
+    }
+}
+//MARK: Preapre
+extension EventViewController {
+    func prepareOnLoad() {
+        
+    }
+    
+    func prepareOnAppear() {
+        self.bindEventData()
+    }
+    
+    private func bindEventData() {
+        self.viewModel.eventName.asObservable()
+            .bind(to: self.eventName.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.eventDate.asObservable()
+            .bind(to: self.eventDate.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel.eventPoints.asObservable()
+            .bind(to: self.eventPoints.rx.text)
+            .disposed(by: self.disposeBag)
     }
 }
