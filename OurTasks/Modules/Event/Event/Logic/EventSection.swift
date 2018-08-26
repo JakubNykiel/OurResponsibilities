@@ -49,9 +49,7 @@ enum EventSectionTitle: String {
 
 struct EventTaskCellModel {
     var id: String
-    var taskName: String
-    var endDate: Date
-    var owner: String?
+    var taskModel: TaskModel
 }
 
 struct EventUserCellModel {

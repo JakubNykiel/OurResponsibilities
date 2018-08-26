@@ -36,6 +36,19 @@ class EventViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareOnLoad()
+        
+        self.dataSource = RxTableViewSectionedReloadDataSource<EventSection>(configureCell: { dataSource, tableView, indexPath, item in
+            switch dataSource[indexPath] {
+            case .allTasks(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! EventTaskCell
+                
+                return cell
+            case .doneTasks(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! EventTaskCell
+                
+                return cell
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

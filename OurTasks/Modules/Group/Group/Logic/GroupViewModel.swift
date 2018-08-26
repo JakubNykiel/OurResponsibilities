@@ -78,8 +78,6 @@ class GroupViewModel {
         self.pastEventsBehaviorSubject
             .flatMap({ (pastEvents) -> Observable<[GroupEventCellModel]> in
                 let ret: [GroupEventCellModel] = pastEvents.compactMap({
-                    let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
-                    let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
                     return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
