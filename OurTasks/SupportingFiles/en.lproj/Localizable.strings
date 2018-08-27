@@ -35,14 +35,17 @@
 "future_events" = "Coming events";
 "present_events" = "Current events:";
 "global_ranking" = "Group Ranking:";
+"event_start" = "Start";
+"event_end" = "End";
 //Add event
 "add_event" = "Add Event";
-"name" = "Name";
+"event_name" = "Event name";
 "start_date" = "Start date";
 "end_date" = "End date";
 "winner_points" = "Points for winner";
 //Add task
 "add_task" = "Add task";
+"task_name" = "Task name";
 "end" = "End date";
 "positive_points" = "+ points";
 "negative_points" = "- points";
@@ -52,5 +55,6 @@
 "desc" = "Description";
 // Task
 "winner_point" = "Points for winner";
-
+"all_tasks" = "All tasks";
+"done_tasks" = "Done tasks";
 

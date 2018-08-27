@@ -107,7 +107,7 @@ extension AddTaskViewController {
     }
     
     func prepareTexts() {
-        self.navigationController?.title = "addEvent".localize()
+        self.navigationController?.title = "add_task".localize()
         self.nameLbl.text = "name".localize()
         self.endDateLbl.text = "end_date".localize()
         self.globalPointsLbl.text = "global_points".localize()

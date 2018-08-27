@@ -39,12 +39,13 @@
 "event_end" = "End";
 // Add event
 "add_event" = "Dodaj wydarzenie";
-"name" = "Nazwa wydarzenia";
+"event_name" = "Nazwa wydarzenia";
 "start_date" = "Data rozpoczęcia";
 "end_date" = "Data zakończenia";
 "winner_points" = "Punkty za zwycięstwo";
 //Add task
 "add_task" = "Dodaj zadanie";
+"task_name" = "Nazwa zadania";
 "end" = "Koniec";
 "positive_points" = "+ punkty";
 "negative_points" = "- punkty";
@@ -54,4 +55,5 @@
 "desc" = "Opis";
 // Task
 "winner_points" = "Punkty za zwycięstwo";
-
+"all_tasks" = "Wszystkie zadania";
+"done_tasks" = "Wykonane zadania";

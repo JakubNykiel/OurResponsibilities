@@ -13,14 +13,14 @@ import RxSwift
 import RxCocoa
 
 class EventViewController: UITableViewController {
-
+    
     enum Constants {
         struct CellIdentifiers {
-            static let eventTask = ""
+            static let eventTask = "taskCell"
         }
         
         struct NibNames {
-            
+            static let eventTask = "TaskCell"
         }
     }
     
@@ -40,12 +40,12 @@ class EventViewController: UITableViewController {
         self.dataSource = RxTableViewSectionedReloadDataSource<EventSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .allTasks(let model):
-                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! EventTaskCell
-                
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
+                cell.configure(model)
                 return cell
             case .doneTasks(let model):
-                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! EventTaskCell
-                
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
+                cell.configure(model)
                 return cell
             }
         })
@@ -64,11 +64,17 @@ class EventViewController: UITableViewController {
 //MARK: Preapre
 extension EventViewController {
     func prepareOnLoad() {
-        
+        self.registerNibs()
     }
     
     func prepareOnAppear() {
+        self.disposeBag = DisposeBag()
+        self.tableView.dataSource = nil
         self.bindEventData()
+    }
+    
+    private func registerNibs() {
+        self.tableView.register(UINib.init(nibName: Constants.NibNames.eventTask, bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.eventTask)
     }
     
     private func bindEventData() {
@@ -83,5 +89,41 @@ extension EventViewController {
         self.viewModel.eventPoints.asObservable()
             .bind(to: self.eventPoints.rx.text)
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.sectionsBehaviourSubject.asObservable()
+            .bind(to: tableView.rx.items(dataSource: dataSource))
+            .disposed(by: self.disposeBag)
+    }
+}
+//MARK: TableView
+extension EventViewController {
+    
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section < dataSource.sectionModels.count else { return UIView() }
+        let section = dataSource[section]
+        //        guard section.items.count > 0 else { return UIView() }
+        
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
+        let label = UILabel(frame: CGRect(x: 21.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
+        label.text = section.title + ":"
+        label.textColor = AppColor.applePurple
+        label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        view.addSubview(label)
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 21.0))
+        view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 21.0))
+        
+        return view
     }
 }

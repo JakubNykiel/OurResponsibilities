@@ -36,6 +36,7 @@ class EventViewModel {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.eventID = eventID
         self.eventModel = eventModel
+        self.getEventTasks()
         
         self.bindGeneralInformation()
         
@@ -76,6 +77,7 @@ class EventViewModel {
                     $0.title != EventSectionTitle.doneTasks.rawValue
                 })
                 self.sections.insert(EventSection.section(title: .doneTasks, items: $0.compactMap({EventItemType.doneTasks($0)})), at: 0)
+                self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
         
@@ -90,8 +92,45 @@ class EventViewModel {
                 self.sections = self.sections.filter({
                     $0.title != EventSectionTitle.allTasks.rawValue
                 })
-                self.sections.insert(EventSection.section(title: .allTasks, items: $0.compactMap({EventItemType.allTasks($0)})), at: 0)
+                self.sections.insert(EventSection.section(title: .allTasks, items: $0.compactMap({EventItemType.allTasks($0)})), at: 1)
+                self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
+    }
+    
+    private func getEventTasks() {
+        let eventTasksRef = self.firebaseManager.db.collection(FirebaseModel.events.rawValue).document(self.eventID)
+        eventTasksRef.getDocument { (document, error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                guard let tasks: [String] = data["tasks"] as? [String] else { return }
+                self.toTaskModel(tasks)
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+    
+    private func toTaskModel(_ tasks: [String]) {
+        if tasks.count == 0 {
+            //            self.noEventsBehaviorSubject.onNext(true)
+        } else {
+            _ = tasks.compactMap({ task in
+                let taskRef = FirebaseReferences().taskRef.document(task)
+                taskRef.getDocument(completion: { (document, error) in
+                    if let document = document {
+                        guard let taskData = document.data() else { return }
+                        let taskModel = try! FirebaseDecoder().decode(TaskModel.self, from: taskData)
+                        self.eventTasks[document.documentID] = taskModel
+                        if tasks.count == self.eventTasks.count {
+                            self.tasksBehaviorSubject.onNext(self.eventTasks)
+                        }
+                    } else {
+                        print("Task not exist")
+                    }
+                })
+            })
+        }
+        
     }
 }

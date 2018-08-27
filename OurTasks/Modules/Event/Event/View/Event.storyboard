@@ -28,7 +28,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="START - END" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGH-Fs-o1q">
-                                    <rect key="frame" x="20" y="38" width="335" height="21"/>
+                                    <rect key="frame" x="20" y="42" width="335" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="8JJ-eM-4F5"/>
                                     </constraints>
@@ -37,7 +37,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points for winner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yhy-92-gNE">
-                                    <rect key="frame" x="20" y="63" width="335" height="18"/>
+                                    <rect key="frame" x="20" y="67" width="335" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                             <constraints>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="6B8-Ks-xhH"/>
                                 <constraint firstAttribute="trailing" secondItem="yhy-92-gNE" secondAttribute="trailing" constant="20" id="FVb-BE-bdj"/>
-                                <constraint firstItem="yGH-Fs-o1q" firstAttribute="top" secondItem="lDI-1G-Sr3" secondAttribute="bottom" id="GQv-5a-5xB"/>
+                                <constraint firstItem="yGH-Fs-o1q" firstAttribute="top" secondItem="lDI-1G-Sr3" secondAttribute="bottom" constant="4" id="GQv-5a-5xB"/>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="top" secondItem="yGH-Fs-o1q" secondAttribute="bottom" constant="4" id="Wb6-Yx-neR"/>
                                 <constraint firstItem="yGH-Fs-o1q" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="YOL-LB-Bbp"/>
                                 <constraint firstItem="lDI-1G-Sr3" firstAttribute="top" secondItem="cMq-DY-S7C" secondAttribute="top" constant="8" id="cGE-Gl-zA4"/>
@@ -57,7 +57,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yqQ-Jt-59d">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="yqQ-Jt-59d" customClass="TaskCell" customModule="OurTasks" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="117" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yqQ-Jt-59d" id="X4K-eT-e9Y">
@@ -66,10 +66,6 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="acc-UW-hhD" id="99a-QG-QBz"/>
-                            <outlet property="delegate" destination="acc-UW-hhD" id="BQS-GP-p50"/>
-                        </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="P6g-F4-xH6">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NbO-Ya-o7L">

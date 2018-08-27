@@ -38,13 +38,21 @@ enum EventSection: SectionModelType {
 enum EventItemType {
     case allTasks(_: EventTaskCellModel)
     case doneTasks(_: EventTaskCellModel)
-    case users(_: EventUserCellModel)
+//    case users(_: EventUserCellModel)
 }
 
 enum EventSectionTitle: String {
     case allTasks
     case doneTasks
     case users
+    
+    var rawValue: String {
+        switch self {
+        case .allTasks: return "all_tasks".localize()
+        case .doneTasks: return "done_tasks".localize()
+        case .users: return "users".localize()
+        }
+    }
 }
 
 struct EventTaskCellModel {
