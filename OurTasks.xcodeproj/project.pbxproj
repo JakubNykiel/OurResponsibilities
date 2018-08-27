@@ -32,6 +32,9 @@
 		C3231EDA212DB53C0094AB94 /* ARTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */; };
 		C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */; };
 		C3269298213444F30099AED9 /* TaskStateLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3269297213444F30099AED9 /* TaskStateLabel.swift */; };
+		C326929D21346D280099AED9 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C326929C21346D280099AED9 /* TaskViewModel.swift */; };
+		C32692A1213470490099AED9 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32692A0213470490099AED9 /* TaskViewController.swift */; };
+		C32692A3213471890099AED9 /* Task.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32692A2213471890099AED9 /* Task.storyboard */; };
 		C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F96011F6A9A41003491E1 /* FirebaseManager.swift */; };
 		C32FE6361F68192800692B3D /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C32FE6351F68192800692B3D /* Register.storyboard */; };
 		C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32FE6371F6819A600692B3D /* RegisterViewController.swift */; };
@@ -113,6 +116,9 @@
 		C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTaskModel.swift; sourceTree = "<group>"; };
 		C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3 + Codable.swift"; sourceTree = "<group>"; };
 		C3269297213444F30099AED9 /* TaskStateLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStateLabel.swift; sourceTree = "<group>"; };
+		C326929C21346D280099AED9 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		C32692A0213470490099AED9 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
+		C32692A2213471890099AED9 /* Task.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Task.storyboard; sourceTree = "<group>"; };
 		C32F96011F6A9A41003491E1 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		C32FE6351F68192800692B3D /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C32FE6371F6819A600692B3D /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +344,32 @@
 			path = Label;
 			sourceTree = "<group>";
 		};
+		C326929921346CFF0099AED9 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				C326929A21346D070099AED9 /* Logic */,
+				C326929B21346D0F0099AED9 /* View */,
+			);
+			path = Task;
+			sourceTree = "<group>";
+		};
+		C326929A21346D070099AED9 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C326929C21346D280099AED9 /* TaskViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C326929B21346D0F0099AED9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C32692A0213470490099AED9 /* TaskViewController.swift */,
+				C32692A2213471890099AED9 /* Task.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		C331343D20B748E300216C5B /* AddEvent */ = {
 			isa = PBXGroup;
 			children = (
@@ -392,6 +424,7 @@
 		C338B4CE210E2A7C0070865B /* Task */ = {
 			isa = PBXGroup;
 			children = (
+				C326929921346CFF0099AED9 /* Task */,
 				C33AEB1720B4C4C70042C53A /* AddTask */,
 			);
 			path = Task;
@@ -859,6 +892,7 @@
 			files = (
 				C3B2E8E121334EBB002314D4 /* TaskCell.xib in Resources */,
 				C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */,
+				C32692A3213471890099AED9 /* Task.storyboard in Resources */,
 				C331344120B7493F00216C5B /* AddEvent.storyboard in Resources */,
 				C3A5F6301F66EA9C002A9B30 /* Login.storyboard in Resources */,
 				C3A5F6221F66E0BC002A9B30 /* Main.storyboard in Resources */,
@@ -994,6 +1028,7 @@
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
+				C326929D21346D280099AED9 /* TaskViewModel.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */,
 				74B869542087655F00D6F99B /* GroupInviteCell.swift in Sources */,
@@ -1008,6 +1043,7 @@
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
 				C316C3AA20C4A1A8008F0E2F /* matrix_float4x4.swift in Sources */,
 				C39AB1D32078235C00A3B178 /* ARKitViewModel.swift in Sources */,
+				C32692A1213470490099AED9 /* TaskViewController.swift in Sources */,
 				C3E1086521297B17006A278B /* EventSection.swift in Sources */,
 				C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */,
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
