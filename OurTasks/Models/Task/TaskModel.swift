@@ -13,7 +13,7 @@ enum TaskState: String {
     case inProgress = "In Progress"
     case done = "Done"
     case toFix = "To Fix"
-    
+    case unknown = "Unknown"
 }
 
 struct TaskModel: Codable {

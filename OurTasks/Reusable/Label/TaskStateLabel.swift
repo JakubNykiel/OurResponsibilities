@@ -12,11 +12,12 @@ import UIKit
 class TaskStateLabel: UILabel {
     
     override func awakeFromNib() {
+        self.layer.masksToBounds = true
         self.layer.borderWidth = 2
         self.layer.cornerRadius = 5
     }
     
-    func configure(_ state: String) {
+    func configure(_ state: String, isActive: Bool = true) {
         var color = UIColor()
         guard let taskState = TaskState(rawValue: state) else {
             self.isHidden = true
@@ -30,6 +31,10 @@ class TaskStateLabel: UILabel {
             color = AppColor.appleYellow
         } else if taskState == .toFix {
             color = AppColor.appleRed
+        }
+        
+        if !isActive {
+            color = AppColor.gray
         }
         
         self.layer.borderColor = color.cgColor

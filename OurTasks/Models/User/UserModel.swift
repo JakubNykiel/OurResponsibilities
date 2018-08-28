@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct UserModel {
+struct UserModel: Codable {
     var email: String
     var username: String
     var groups: [String]?
@@ -20,8 +20,25 @@ struct UserModel {
         case groups
         case invites
     }
+    
+    init(email: String, username: String, groups: [String]?, invites: [String]?) {
+        self.email = email
+        self.username = username
+        self.groups = groups
+        self.invites = invites
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: UserKeys.self)
+        self.email = try container.decode(String?.self, forKey: .email) ?? ""
+        self.username = try container.decode(String?.self, forKey: .username) ?? ""
+        self.groups = try? container.decode([String]?.self, forKey: .groups) ?? []
+        self.invites = try? container.decode([String]?.self, forKey: .invites) ?? []
+    }
+    
+    
 }
-extension UserModel: Encodable {
+extension UserModel {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: UserKeys.self)
         try container.encode(self.email, forKey: .email)
