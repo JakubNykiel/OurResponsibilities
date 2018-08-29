@@ -276,7 +276,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LhB-oH-VtX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5Ng-o6-IzV"/>
+                    <navigationItem key="navigationItem" id="5Ng-o6-IzV">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="edit" id="ukG-tM-F9V">
+                            <connections>
+                                <action selector="editTaskAction:" destination="VMb-LN-rS6" id="TMI-95-ifD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backlogLbl" destination="lmF-c6-N6f" id="6rn-ID-bcZ"/>
                         <outlet property="doneLbl" destination="UfH-8R-v9X" id="gtG-Yh-8no"/>

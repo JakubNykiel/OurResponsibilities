@@ -23,7 +23,6 @@ struct TaskModel: Codable {
     var endDate: String
     var users: [String]?
     var globalPositivePoints: Int
-    var globalNegativePoints: Int
     var positivePoints: Int
     var negativePoints: Int
     var userInteraction: Bool
@@ -43,11 +42,10 @@ struct TaskModel: Codable {
         case arTask
         case state
         case globalPositivePoints
-        case globalNegativePoints
         case description
     }
     
-    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, globalNegativePoints: Int, description: String) {
+    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, description: String) {
         self.owner = owner
         self.name = name
         self.endDate = endDate
@@ -59,7 +57,6 @@ struct TaskModel: Codable {
         self.arTask = arTask
         self.state = state
         self.globalPositivePoints = globalPositivePoints
-        self.globalNegativePoints = globalNegativePoints
         self.description = description
     }
     
@@ -77,7 +74,6 @@ struct TaskModel: Codable {
         self.arTask = try? container.decode(ARTaskModel?.self, forKey: .arTask) ?? ARTaskModel()
         self.state = try container.decode(String?.self, forKey: .state) ?? "backlog"
         self.globalPositivePoints = try container.decode(Int?.self, forKey: .globalPositivePoints) ?? 0
-        self.globalNegativePoints = try container.decode(Int?.self, forKey: .globalNegativePoints) ?? 0
         self.description = try container.decode(String?.self, forKey: .description) ?? ""
     }
     
@@ -96,7 +92,6 @@ extension TaskModel {
         try container.encode(self.arTask, forKey: .arTask)
         try container.encode(self.state, forKey: .state)
         try container.encode(self.globalPositivePoints, forKey: .globalPositivePoints)
-        try container.encode(self.globalNegativePoints, forKey: .globalNegativePoints)
         try container.encode(self.description, forKey: .description)
     }
 }

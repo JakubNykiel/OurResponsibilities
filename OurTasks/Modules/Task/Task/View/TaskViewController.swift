@@ -48,6 +48,14 @@ class TaskViewController: UIViewController {
         super.viewWillAppear(animated)
         self.prepareOnAppear()
     }
+    
+    @IBAction func editTaskAction(_ sender: Any) {
+        guard let taskID = self.viewModel?.taskID else { return }
+        guard let taskModel = self.viewModel?.taskModel else { return }
+        let addTaskVC = StoryboardManager.addTaskViewController("", state: .update, taskModel: [ taskID : taskModel])
+        addTaskVC.modalPresentationStyle = .overCurrentContext
+        self.navigationController?.pushViewController(addTaskVC, animated: true)
+    }
 }
 //MARK: Prepare
 extension TaskViewController {

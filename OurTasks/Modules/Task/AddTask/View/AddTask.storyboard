@@ -174,7 +174,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="+" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YeN-Jx-boK">
-                                                    <rect key="frame" x="21" y="49" width="131.5" height="30"/>
+                                                    <rect key="frame" x="21" y="49" width="333" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Brl-bk-uIb"/>
                                                     </constraints>
@@ -182,27 +182,15 @@
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTx-h8-sfT">
-                                                    <rect key="frame" x="223" y="49" width="131" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="dbW-zN-hNM"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.99550908803939819" green="0.089599452912807465" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="YeN-Jx-boK" firstAttribute="width" secondItem="ydd-0r-uAT" secondAttribute="width" multiplier="0.35" id="7A7-wW-7iv"/>
-                                                <constraint firstItem="sTx-h8-sfT" firstAttribute="width" secondItem="YeN-Jx-boK" secondAttribute="width" id="EWh-Kz-B9C"/>
-                                                <constraint firstItem="sTx-h8-sfT" firstAttribute="centerY" secondItem="YeN-Jx-boK" secondAttribute="centerY" id="GsK-iV-S0V"/>
                                                 <constraint firstItem="YeN-Jx-boK" firstAttribute="leading" secondItem="ydd-0r-uAT" secondAttribute="leadingMargin" constant="5" id="HVj-m8-P3I"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="uJt-nj-mTD" secondAttribute="trailing" constant="5" id="W36-OB-jHw"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="YeN-Jx-boK" secondAttribute="bottom" id="atD-AT-tXh"/>
                                                 <constraint firstItem="uJt-nj-mTD" firstAttribute="leading" secondItem="ydd-0r-uAT" secondAttribute="leadingMargin" constant="5" id="kdA-T5-cmo"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="YeN-Jx-boK" secondAttribute="trailing" constant="5" id="kz5-3I-fFk"/>
                                                 <constraint firstItem="uJt-nj-mTD" firstAttribute="top" secondItem="ydd-0r-uAT" secondAttribute="topMargin" constant="15" id="llq-Iy-MJD"/>
                                                 <constraint firstItem="YeN-Jx-boK" firstAttribute="top" secondItem="uJt-nj-mTD" secondAttribute="bottom" id="mHU-MT-aSY"/>
-                                                <constraint firstAttribute="trailing" secondItem="sTx-h8-sfT" secondAttribute="trailing" constant="21" id="pI2-8y-8xH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -459,7 +447,7 @@
                         <outlet property="eventNegativePointsTF" destination="xZ3-Im-POc" id="ggE-x7-jr0"/>
                         <outlet property="eventPointsLbl" destination="XtP-Ig-UEO" id="Rg9-94-3Ln"/>
                         <outlet property="eventPositivePointsTF" destination="Xd6-Hw-p5g" id="hsD-Mc-E41"/>
-                        <outlet property="globalNegativePointsTF" destination="sTx-h8-sfT" id="zaV-Gc-rIV"/>
+                        <outlet property="finishBtn" destination="gPg-EW-f3o" id="kZV-j7-atN"/>
                         <outlet property="globalPointsLbl" destination="uJt-nj-mTD" id="uch-s5-EIx"/>
                         <outlet property="globalPositivePointsTF" destination="YeN-Jx-boK" id="bDe-eu-3VD"/>
                         <outlet property="nameLbl" destination="nRp-v2-zlk" id="rlB-83-Ekj"/>

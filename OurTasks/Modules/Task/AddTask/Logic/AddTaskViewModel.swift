@@ -10,19 +10,28 @@ import Foundation
 import Firebase
 import RxSwift
 
+enum AddTaskViewState {
+    case add
+    case update
+}
+
 class AddTaskViewModel {
     
     let firebaseManager: FirebaseManager = FirebaseManager()
     var ref: DocumentReference?
     var taskAdded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var taskModel: TaskModel?
+    var taskModelToUpdate: [String:TaskModel]?
     var arTaskModel: ARTaskModel?
+    var viewState: AddTaskViewState?
     
     var eventID: String
     var qrCode: QRCode?
     
-    init(eventID: String) {
+    init(eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) {
         self.eventID = eventID
+        self.viewState = state
+        self.taskModelToUpdate = taskModel
     }
     
     func addTaskToDatabase() {
@@ -39,6 +48,15 @@ class AddTaskViewModel {
                 self.addTaskToEvent(id: eventRef.documentID)
             }
         }
+    }
+    
+    func updateTask() {
+        guard let taskKey = self.taskModelToUpdate?.first?.key else { return }
+        guard let model = self.taskModel else { return }
+        guard let taskData = model.asDictionary() else { return }
+        
+        let taskRef = FirebaseReferences().taskRef.document(taskKey)
+        taskRef.setData(taskData, merge: true)
     }
     
     private func addTaskToEvent(id: String) {
@@ -58,4 +76,5 @@ class AddTaskViewModel {
             
         }
     }
+    
 }
