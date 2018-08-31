@@ -22,6 +22,7 @@
 "group_name" = "Group name:";
 "group_color" = "Group Color:";
 "add_group" = "Add group";
+"invite_group" = "Invite to group";
 //GroupList
 "admins" = "Admins: ";
 "groups" = "Groups";

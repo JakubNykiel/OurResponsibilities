@@ -171,7 +171,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite to group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-NC-MS2">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to group" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3P-NC-MS2">
                                                     <rect key="frame" x="21" y="19" width="343" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="Xut-00-mUW"/>
@@ -204,6 +204,9 @@
                                                             <integer key="value" value="15"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="sendInviteToGroup:" destination="ehX-gr-mhw" eventType="touchUpInside" id="0uc-Yk-qZt"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User must be registered in App!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEQ-z9-lBO">
                                                     <rect key="frame" x="21" y="81" width="244" height="14.5"/>
@@ -313,6 +316,10 @@
                     <connections>
                         <outlet property="endDateLbl" destination="LzA-yE-E8m" id="bTt-ef-6bd"/>
                         <outlet property="endDateTF" destination="i1Y-fG-xO7" id="SWm-NM-DMM"/>
+                        <outlet property="inviteBtn" destination="GRP-NP-DOl" id="IT1-Pt-coO"/>
+                        <outlet property="inviteDescLbl" destination="nEQ-z9-lBO" id="elQ-E0-0D1"/>
+                        <outlet property="inviteLbl" destination="u3P-NC-MS2" id="brX-vb-BCk"/>
+                        <outlet property="inviteTF" destination="wxl-Se-Zyk" id="4yg-23-kZ2"/>
                         <outlet property="nameLbl" destination="4TV-aV-LvU" id="Tub-HX-HoD"/>
                         <outlet property="nameTF" destination="tdU-Xz-9E0" id="6G9-mD-hFu"/>
                         <outlet property="participateLbl" destination="p0P-Pq-tBz" id="efI-xT-RH6"/>

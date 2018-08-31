@@ -10,28 +10,34 @@ import UIKit
 import Firebase
 import RxSwift
 
-class AddGroupViewController: UIViewController {
+class AddGroupViewController: UITableViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var groupNameTextField: UITextField!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var groupColorLbl: UILabel!
+    @IBOutlet weak var nameLbl: UILabel!
+    @IBOutlet weak var nameTF: UITextField!
+    
+    @IBOutlet weak var addToGroupLbl: UILabel!
+    @IBOutlet weak var addToGroupTF: UITextField!
+    @IBOutlet weak var addToGroupBtn: UIButton!
+    @IBOutlet weak var addToGroupDesc: UILabel!
+    
+    @IBOutlet weak var groupColorLbl: UIView!
+    @IBOutlet weak var groupColorCollection: UICollectionView!
+    
     @IBOutlet weak var addBtn: UIButton!
     
-    @IBOutlet weak var groupColorsCollection: UICollectionView!
+    
     private let viewModel: AddGroupViewModel = AddGroupViewModel()
     private let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.prepareTexts()
-        groupColorsCollection.delegate = self
-        groupColorsCollection.dataSource = self
+        groupColorCollection.delegate = self
+        groupColorCollection.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideKeyboardWhenTappedAround()
-        self.containerDependOnKeyboardBottomConstrain = bottomConstraint
         self.watchForKeyboard()
         self.configureTextFields()
 
@@ -44,28 +50,33 @@ class AddGroupViewController: UIViewController {
     }
     
     private func configureTextFields() {
-        self.groupNameTextField.setBottomBorder()
+        self.nameTF.setBottomBorder()
+        self.addToGroupTF.setBottomBorder()
     }
     
     private func prepareGroupModel() {
         let currentUserUid = self.viewModel.getCurrentUserUid()
-        let groupName = self.groupNameTextField.text ?? ""
-        let colorString: String = self.viewModel.prepareColorForGroup(self.groupColorsCollection.indexPathsForVisibleItems.first?.row ?? 0)
-        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: nil, events: nil, admins: [currentUserUid:0], userInteraction: false)
+        let groupName = self.nameTF.text ?? ""
+        let colorString: String = self.viewModel.prepareColorForGroup(self.groupColorCollection.indexPathsForVisibleItems.first?.row ?? 0)
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: nil, events: nil, admins: [:])
+    }
+    
+    @IBAction func addToGroupAction(_ sender: Any) {
+        
     }
     
     @IBAction func nextColor(_ sender: Any) {
-        guard let indexPath = self.groupColorsCollection.indexPathsForVisibleItems.first else { return }
+        guard let indexPath = self.groupColorCollection.indexPathsForVisibleItems.first else { return }
         let nextIndexPath = IndexPath(item: indexPath.item + 1, section: indexPath.section)
         if nextIndexPath.row < self.viewModel.colors.count {
-            self.groupColorsCollection.scrollToItem(at: nextIndexPath, at: .left, animated: true)
+            self.groupColorCollection.scrollToItem(at: nextIndexPath, at: .left, animated: true)
         }
     }
     @IBAction func prevColor(_ sender: Any) {
-        guard let indexPath = self.groupColorsCollection.indexPathsForVisibleItems.first else { return }
+        guard let indexPath = self.groupColorCollection.indexPathsForVisibleItems.first else { return }
         let nextIndexPath = IndexPath(item: indexPath.item - 1, section: indexPath.section)
         if nextIndexPath.row >= 0 {
-            self.groupColorsCollection.scrollToItem(at: nextIndexPath, at: .right, animated: true)
+            self.groupColorCollection.scrollToItem(at: nextIndexPath, at: .right, animated: true)
         }
     }
     

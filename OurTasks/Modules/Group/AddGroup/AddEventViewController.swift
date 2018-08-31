@@ -58,6 +58,10 @@ class AddEventViewController: UITableViewController {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
     }
     
+    @IBAction func sendInviteToGroup(_ sender: Any) {
+        
+        
+    }
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
         let usersInEvent: [String] = self.participateSwitch.isOn ? [currentUserUid] : []
@@ -143,13 +147,4 @@ extension AddEventViewController: UITextFieldDelegate {
         }
     }
 }
-//MARK: TableView
-extension AddEventViewController {
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 4 {
-            return UITableViewAutomaticDimension
-        } else {
-            return 90.0
-        }
-    }
-}
+
