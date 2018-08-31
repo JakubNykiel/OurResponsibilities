@@ -10,7 +10,9 @@ import UIKit
 import RxSwift
 
 class TaskViewController: UIViewController {
-
+    
+    @IBOutlet var informationView: UIView!
+    
     @IBOutlet weak var taskNameTitle: UILabel!
     @IBOutlet weak var taskName: UILabel!
     
@@ -35,6 +37,9 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var toFixLbl: TaskStateLabel!
     @IBOutlet weak var doneLbl: TaskStateLabel!
     
+    @IBOutlet weak var resignButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
+    @IBOutlet weak var doneButton: UIButton!
     
     var viewModel: TaskViewModel?
     private let disposeBag = DisposeBag()
@@ -51,7 +56,7 @@ class TaskViewController: UIViewController {
     
     @IBAction func editTaskAction(_ sender: Any) {
         guard let taskID = self.viewModel?.taskID else { return }
-        guard let taskModel = self.viewModel?.taskModel else { return }
+        guard let taskModel = self.viewModel?.taskModel.value else { return }
         let addTaskVC = StoryboardManager.addTaskViewController("", state: .update, taskModel: [ taskID : taskModel])
         addTaskVC.modalPresentationStyle = .overCurrentContext
         self.navigationController?.pushViewController(addTaskVC, animated: true)
@@ -64,11 +69,54 @@ extension TaskViewController {
     }
     
     func prepareOnAppear() {
+        self.prepareButtons()
         self.bindInformation()
         self.prepareStateLabels()
+        self.viewModel?.bindTask()
+    }
+    
+    private func prepareView(_ model: TaskModel) {
+        switch model.state {
+        case TaskState.backlog.rawValue:
+            self.backlogLbl.configure(TaskState.backlog.rawValue, isActive: true)
+            self.informationView.backgroundColor = self.backlogLbl.backgroundColor
+        case TaskState.inProgress.rawValue:
+            self.inProgressLbl.configure(TaskState.inProgress.rawValue, isActive: true)
+            self.informationView.backgroundColor = self.inProgressLbl.backgroundColor
+        case TaskState.toFix.rawValue:
+            self.toFixLbl.configure(TaskState.toFix.rawValue, isActive: true)
+            self.informationView.backgroundColor = self.toFixLbl.backgroundColor
+        case TaskState.done.rawValue:
+            self.doneLbl.configure(TaskState.done.rawValue, isActive: true)
+            self.informationView.backgroundColor = self.doneLbl.backgroundColor
+        default:
+            break
+        }
+    }
+    
+    private func disableButton(_ button: UIButton) {
+        button.alpha = 0.3
+        button.isEnabled = false
+    }
+    
+    private func enableButton(_ button: UIButton) {
+        button.alpha = 1.0
+        button.isEnabled = true
+    }
+    
+    private func prepareButtons() {
+        self.resignButton.backgroundColor = AppColor.appleRed
+        self.checkButton.backgroundColor = AppColor.appleTealBlue
+        self.doneButton.backgroundColor = AppColor.appleGreen
     }
     
     private func bindInformation() {
+        
+        self.viewModel?.taskModel.asObservable().subscribe(onNext: {
+            guard let model = $0 else { return }
+            self.prepareView(model)
+        }).disposed(by: self.disposeBag)
+        
         self.viewModel?.taskName.asObservable()
             .bind(to: self.taskName.rx.text)
             .disposed(by: self.disposeBag)
@@ -86,27 +134,36 @@ extension TaskViewController {
         self.backlogLbl.configure(TaskState.backlog.rawValue, isActive: false)
         self.backlogLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
         self.backlogLbl.isUserInteractionEnabled = true
-        self.inProgressLbl.configure(TaskState.inProgress.rawValue)
+        self.inProgressLbl.configure(TaskState.inProgress.rawValue, isActive: false)
         self.inProgressLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
         self.inProgressLbl.isUserInteractionEnabled = true
-        self.toFixLbl.configure(TaskState.toFix.rawValue)
+        self.toFixLbl.configure(TaskState.toFix.rawValue, isActive: false)
         self.toFixLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
         self.toFixLbl.isUserInteractionEnabled = true
-        self.doneLbl.configure(TaskState.done.rawValue)
+        self.doneLbl.configure(TaskState.done.rawValue, isActive: false)
         self.doneLbl.isUserInteractionEnabled = true
         self.doneLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
         
     }
     
     @objc private func changeTaskState(_ sender: UITapGestureRecognizer) {
+        self.prepareStateLabels()
+        guard var model = self.viewModel?.taskModel.value else { return }
         if sender.view?.tag == 1 {
             self.viewModel?.updateTaskState(TaskState.backlog)
+            model.state = TaskState.backlog.rawValue
         } else if sender.view?.tag == 2 {
             self.viewModel?.updateTaskState(TaskState.inProgress)
+            model.state = TaskState.inProgress.rawValue
         } else if sender.view?.tag == 3 {
             self.viewModel?.updateTaskState(TaskState.toFix)
+            model.state = TaskState.toFix.rawValue
         } else if sender.view?.tag == 4 {
             self.viewModel?.updateTaskState(TaskState.done)
+            model.state = TaskState.done.rawValue
         }
+        
+        self.view.layoutIfNeeded()
+        self.prepareView(model)
     }
 }

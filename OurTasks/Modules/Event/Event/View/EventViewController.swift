@@ -70,16 +70,18 @@ extension EventViewController {
     func prepareOnAppear() {
         self.disposeBag = DisposeBag()
         self.tableView.dataSource = nil
+        self.viewModel.getEventTasks()
+        self.viewModel.bindGeneralInformation()
         self.bindEventData()
         
         self.tableView.rx.itemSelected
             .subscribe(onNext: {
                 switch self.dataSource[$0] {
                 case .doneTasks(let model):
-                    let taskVC = StoryboardManager.taskViewController(model.taskModel, taskID: model.id)
+                    let taskVC = StoryboardManager.taskViewController(model.id)
                     self.navigationController?.pushViewController(taskVC, animated: true)
                 case .allTasks(let model):
-                    let taskVC = StoryboardManager.taskViewController(model.taskModel, taskID: model.id)
+                    let taskVC = StoryboardManager.taskViewController(model.id)
                     self.navigationController?.pushViewController(taskVC, animated: true)
                 }
             }).disposed(by: self.disposeBag)

@@ -191,7 +191,7 @@
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="4"/>
+                                        <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -241,23 +241,54 @@
                                     <constraint firstAttribute="height" constant="120" id="rlr-ls-qcn"/>
                                 </constraints>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-Om-VAr">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-Om-VAr">
                                 <rect key="frame" x="20" y="603" width="335" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRo-2e-gmw">
-                                        <rect key="frame" x="0.0" y="0.0" width="105.5" height="48"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="48"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Resign">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoU-fb-cSQ">
-                                        <rect key="frame" x="114.5" y="0.0" width="106" height="48"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="102.5" y="0.0" width="130" height="48"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="93x-U0-ehS"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Check">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5W-3U-es6">
-                                        <rect key="frame" x="229.5" y="0.0" width="105.5" height="48"/>
-                                        <state key="normal" title="Button"/>
+                                        <rect key="frame" x="241.5" y="0.0" width="93.5" height="48"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Done">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="24"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="VRo-2e-gmw" firstAttribute="width" secondItem="l5W-3U-es6" secondAttribute="width" id="mC0-Ec-4ds"/>
                                     <constraint firstAttribute="height" constant="48" id="z17-vf-Hds"/>
                                 </constraints>
                             </stackView>
@@ -285,6 +316,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backlogLbl" destination="lmF-c6-N6f" id="6rn-ID-bcZ"/>
+                        <outlet property="checkButton" destination="yoU-fb-cSQ" id="CMc-5q-bNl"/>
+                        <outlet property="doneButton" destination="l5W-3U-es6" id="hMh-Wu-MT0"/>
                         <outlet property="doneLbl" destination="UfH-8R-v9X" id="gtG-Yh-8no"/>
                         <outlet property="eventNegativePoints" destination="GnQ-7m-Pcm" id="mUi-rD-IHz"/>
                         <outlet property="eventNegativePointsTitle" destination="N1A-Sa-NhM" id="Dui-nc-0OW"/>
@@ -294,6 +327,8 @@
                         <outlet property="generalPoints" destination="j3M-cz-JHs" id="rI2-0O-ej2"/>
                         <outlet property="generalPointsTitle" destination="CZL-7D-nKb" id="oBK-u0-Mq0"/>
                         <outlet property="inProgressLbl" destination="KED-oX-wav" id="Pla-aV-g84"/>
+                        <outlet property="informationView" destination="GE6-E7-SPo" id="4Ay-KL-icN"/>
+                        <outlet property="resignButton" destination="VRo-2e-gmw" id="1t0-e2-jLS"/>
                         <outlet property="stateStackView" destination="imd-DN-9Gm" id="q4t-7b-jLx"/>
                         <outlet property="taskEndDateLbl" destination="DFY-IS-WPL" id="jiJ-kx-57e"/>
                         <outlet property="taskEndDateTitle" destination="Hbh-n8-2Kr" id="Bkc-eR-wOr"/>

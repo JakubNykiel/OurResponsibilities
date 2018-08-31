@@ -36,9 +36,9 @@ class EventViewModel {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.eventID = eventID
         self.eventModel = eventModel
-        self.getEventTasks()
-        
-        self.bindGeneralInformation()
+//        self.getEventTasks()
+//
+//        self.bindGeneralInformation()
         
         self.tasksBehaviorSubject.asObservable()
             .subscribe(onNext: {
@@ -60,7 +60,7 @@ class EventViewModel {
             }).disposed(by: self.disposeBag)
     }
     
-    private func bindGeneralInformation() {
+    func bindGeneralInformation() {
         self.eventName.value = self.eventModel.name
         self.eventPoints.value = "winner_points".localize() + " " + String(self.eventModel.winnerGlobalPoints)
         self.eventDate.value = self.eventModel.startDate + " - " + self.eventModel.endDate
@@ -98,7 +98,7 @@ class EventViewModel {
             .disposed(by: self.disposeBag)
     }
     
-    private func getEventTasks() {
+    func getEventTasks() {
         let eventTasksRef = self.firebaseManager.db.collection(FirebaseModel.events.rawValue).document(self.eventID)
         eventTasksRef.getDocument { (document, error) in
             if let document = document {

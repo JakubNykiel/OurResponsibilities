@@ -104,9 +104,9 @@ struct StoryboardManager {
         addTaskVC.viewModel = viewModel
         return addTaskVC
     }
-    static func taskViewController(_ taskModel: TaskModel, taskID: String) -> TaskViewController {
+    static func taskViewController(_ taskID: String) -> TaskViewController {
         let taskVC = self.viewController(ViewControllerTypes().task, withIdentifier: ViewControllerIdentifiers.taskViewController.rawValue, fromStoryboard: StoryboardNames.Task.rawValue)
-        let viewModel = TaskViewModel(taskModel: taskModel, taskID: taskID)
+        let viewModel = TaskViewModel(taskID: taskID)
         taskVC.viewModel = viewModel
         return taskVC
     }
