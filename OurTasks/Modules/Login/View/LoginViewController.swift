@@ -27,6 +27,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.signBtn.isEnabled = false
         self.prepareTexts()
         self.configureTextFields()
         self.containerDependOnKeyboardBottomConstrain = bottomTextFieldsConstraint
@@ -74,8 +75,11 @@ extension LoginViewController {
         let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
             .share(replay: 1)
         
-        everythingValid
-            .bind(to: self.signBtn.rx.isEnabled)
+        self.signBtn.setTitleColor(AppColor.gray, for: .disabled)
+        everythingValid.asObservable()
+            .subscribe(onNext: {
+                self.signBtn.isEnabled = $0
+            })
             .disposed(by: disposeBag)
     }
 }
