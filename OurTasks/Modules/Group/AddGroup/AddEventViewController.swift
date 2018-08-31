@@ -143,3 +143,13 @@ extension AddEventViewController: UITextFieldDelegate {
         }
     }
 }
+//MARK: TableView
+extension AddEventViewController {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 4 {
+            return UITableViewAutomaticDimension
+        } else {
+            return 90.0
+        }
+    }
+}

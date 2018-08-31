@@ -8,6 +8,11 @@
 
 import Foundation
 
+enum UserRole {
+    case admin
+    case user
+}
+
 struct UserModel: Codable {
     var email: String
     var username: String
