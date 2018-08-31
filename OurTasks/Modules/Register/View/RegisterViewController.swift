@@ -31,6 +31,13 @@ class RegisterViewController: UIViewController {
         self.setupErrorObservable()
         self.prepareTexts()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.registerBtn.isEnabled = false
+        self.validation()
+    }
+    
     @IBAction func registerUser(_ sender: Any) {
         self.viewModel.createUser(email: self.emailTextField.text!, password: self.passwordTextField.text!, username: self.usernameTextField.text!)
     }
@@ -45,6 +52,21 @@ class RegisterViewController: UIViewController {
         self.passwordTextField.setBottomBorder()
     }
     
+}
+//MARK: Prepare
+extension RegisterViewController {
+    func validation() {
+        let usernameValid = usernameTextField.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let emailValid = emailTextField.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let passwordValid = passwordTextField.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        
+        let everythingValid = Observable.combineLatest(usernameValid, emailValid, passwordValid) { $0 && $1 && $2 }
+            .share(replay: 1)
+        
+        everythingValid
+            .bind(to: self.registerBtn.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
 }
 // MARK: RxSwift, RxCocoa
 extension RegisterViewController {

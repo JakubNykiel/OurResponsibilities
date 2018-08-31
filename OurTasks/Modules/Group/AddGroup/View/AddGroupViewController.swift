@@ -20,7 +20,7 @@ class AddGroupViewController: UITableViewController {
     @IBOutlet weak var addToGroupBtn: UIButton!
     @IBOutlet weak var addToGroupDesc: UILabel!
     
-    @IBOutlet weak var groupColorLbl: UIView!
+    @IBOutlet weak var groupColorLbl: UILabel!
     @IBOutlet weak var groupColorCollection: UICollectionView!
     
     @IBOutlet weak var addBtn: UIButton!
@@ -103,8 +103,7 @@ extension AddGroupViewController: UICollectionViewDataSource, UICollectionViewDe
 //MARK: Localize
 extension AddGroupViewController {
     private func prepareTexts() {
-        self.titleLabel.text = "addGroupTitle".localize()
-        self.groupNameTextField.placeholder = "group_name".localize()
+        self.nameTF.placeholder = "group_name".localize()
         self.groupColorLbl.text = "group_color".localize()
         self.addBtn.setTitle("add_group".localize(), for: .normal)
     }
