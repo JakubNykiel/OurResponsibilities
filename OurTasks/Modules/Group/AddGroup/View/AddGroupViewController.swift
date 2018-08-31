@@ -38,7 +38,6 @@ class AddGroupViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.hideKeyboardWhenTappedAround()
-        self.watchForKeyboard()
         self.configureTextFields()
 
         self.viewModel.groupAdded.asObservable()
@@ -58,11 +57,12 @@ class AddGroupViewController: UITableViewController {
         let currentUserUid = self.viewModel.getCurrentUserUid()
         let groupName = self.nameTF.text ?? ""
         let colorString: String = self.viewModel.prepareColorForGroup(self.groupColorCollection.indexPathsForVisibleItems.first?.row ?? 0)
-        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: nil, events: nil, admins: [:])
+        self.viewModel.users[currentUserUid] = 0
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: self.viewModel.users, events: nil, admins: [currentUserUid:0])
     }
     
     @IBAction func addToGroupAction(_ sender: Any) {
-        
+        self.viewModel.addUserUid(email: self.addToGroupTF.text!)
     }
     
     @IBAction func nextColor(_ sender: Any) {
@@ -81,7 +81,6 @@ class AddGroupViewController: UITableViewController {
     }
     
     @IBAction func addGroup(_ sender: Any) {
-        
         self.prepareGroupModel()
         self.viewModel.addGroupToDatabase()
     }

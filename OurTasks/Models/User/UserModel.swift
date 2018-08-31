@@ -17,20 +17,17 @@ struct UserModel: Codable {
     var email: String
     var username: String
     var groups: [String]?
-    var invites: [String]?
     
     enum UserKeys: String, CodingKey {
         case email
         case username
         case groups
-        case invites
     }
     
-    init(email: String, username: String, groups: [String]?, invites: [String]?) {
+    init(email: String, username: String, groups: [String]?) {
         self.email = email
         self.username = username
         self.groups = groups
-        self.invites = invites
     }
     
     public init(from decoder: Decoder) throws {
@@ -38,7 +35,6 @@ struct UserModel: Codable {
         self.email = try container.decode(String?.self, forKey: .email) ?? ""
         self.username = try container.decode(String?.self, forKey: .username) ?? ""
         self.groups = try? container.decode([String]?.self, forKey: .groups) ?? []
-        self.invites = try? container.decode([String]?.self, forKey: .invites) ?? []
     }
     
     
@@ -49,6 +45,5 @@ extension UserModel {
         try container.encode(self.email, forKey: .email)
         try container.encode(self.username, forKey: .username)
         try container.encode(self.groups, forKey: .groups)
-        try container.encode(self.invites, forKey: .invites)
     }
 }
