@@ -39,6 +39,7 @@ class LoginViewController: UIViewController {
         //TODO: remove mocks
         self.mockLoginData()
         self.siginInListener()
+        self.validation()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -63,6 +64,20 @@ class LoginViewController: UIViewController {
         self.present(registerVC, animated: true, completion: nil)
     }
     
+}
+// MARK: Prepare
+extension LoginViewController {
+    func validation() {
+        let emailValid = emailTextField.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let passwordValid = passwordTextField.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        
+        let everythingValid = Observable.combineLatest(emailValid, passwordValid) { $0 && $1 }
+            .share(replay: 1)
+        
+        everythingValid
+            .bind(to: self.signBtn.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
 }
 // MARK: listener
 extension LoginViewController {
