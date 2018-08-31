@@ -17,9 +17,7 @@ class GroupListViewModel {
     var userGroups: [String:GroupModel] = [:]
     
     var userGroupsBehaviorSubject: BehaviorSubject<[String:GroupModel]> = BehaviorSubject(value: [:])
-    var userInvitesBehaviorSubject: BehaviorSubject<[String:GroupModel]> = BehaviorSubject(value: [:])
     var noGroupUserBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
-    var noInvitesBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[GroupListSection]> = BehaviorSubject(value: [])
     
     private let disposeBag = DisposeBag()
@@ -40,20 +38,6 @@ class GroupListViewModel {
             })
             .disposed(by: self.disposeBag)
         
-        self.userInvitesBehaviorSubject
-            .flatMap({ (userInvites) -> Observable<[UserInvitesCellModel]> in
-                let ret: [UserInvitesCellModel] = userInvites.compactMap({
-                    return UserInvitesCellModel(id: $0.key, name: $0.value.name, color: $0.value.color, followBtnText: "Follow", followBtnVisible: true)
-                })
-                return Observable.of(ret)
-            })
-            .subscribe(onNext: {
-                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userInvites.rawValue })
-                self.sections.insert(GroupListSection.section(title: .userInvites, items: $0.compactMap({ GroupListItemType.userInvites($0) })), at: 1)
-                self.sectionsBehaviourSubject.onNext(self.sections)
-            })
-            .disposed(by: self.disposeBag)
-        
         self.noGroupUserBehaviorSubject
             .flatMap({ (noTeams) -> Observable<NoResultCellModel> in
                 let ret: NoResultCellModel = {
@@ -67,28 +51,7 @@ class GroupListViewModel {
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
-        
-        self.noInvitesBehaviorSubject
-            .flatMap({ (noTeams) -> Observable<NoResultCellModel> in
-                let ret: NoResultCellModel = {
-                    return NoResultCellModel(description: "no_invites".localize())
-                }()
-                return Observable.of(ret)
-            })
-            .subscribe(onNext: {
-                self.sections = self.sections.filter({ $0.title != GroupListSectionTitle.userInvites.rawValue })
-                self.sections.insert(GroupListSection.section(title: .userInvites, items: [GroupListItemType.noResult($0)]), at: 1)
-                self.sectionsBehaviourSubject.onNext(self.sections)
-            })
-            .disposed(by: self.disposeBag)
-
-        
     }
-    
-    func toggleFollow(teamAtIndex: Int) {
-        //TODO: dodaj grupe przy nacisnieciu follow i odśwież widoki
-    }
-
     
     func getUserGroups() {
         guard let uid = self.firebaseManager.currentUser?.uid else { return }
@@ -102,11 +65,6 @@ class GroupListViewModel {
                 print("Document does not exist")
             }
         }
-    }
-    
-    func getInvitesGroups() {
-        self.userInvitesBehaviorSubject.onNext([:])
-        self.noInvitesBehaviorSubject.onNext(true)
     }
     
     private func toGroupModel(_ groups: [String]) {

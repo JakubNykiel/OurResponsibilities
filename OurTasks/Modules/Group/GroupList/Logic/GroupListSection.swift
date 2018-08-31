@@ -36,18 +36,15 @@ enum GroupListSection: SectionModelType {
 }
 enum GroupListItemType {
     case userGroups(_: UserGroupsCellModel)
-    case userInvites(_: UserInvitesCellModel)
     case noResult(_: NoResultCellModel)
 }
 
 enum GroupListSectionTitle: String {
     case userGroups
-    case userInvites
     
     var rawValue: String  {
         switch self {
         case .userGroups: return "my_groups".localize()
-        case .userInvites: return "invites".localize()
         }
     }
 }
@@ -55,14 +52,6 @@ enum GroupListSectionTitle: String {
 struct UserGroupsCellModel {
     var id: String
     var groupModel: GroupModel
-}
-
-struct UserInvitesCellModel {
-    var id: String
-    var name: String
-    var color: String
-    var followBtnText: String
-    var followBtnVisible: Bool
 }
 
 struct NoResultCellModel {

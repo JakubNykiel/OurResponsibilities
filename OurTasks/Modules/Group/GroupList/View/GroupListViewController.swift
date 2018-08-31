@@ -24,10 +24,6 @@ class GroupListViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupCell", for: indexPath) as! GroupCell
             cell.configure(model)
             return cell
-        case .userInvites(let model):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupInvitesCell", for: indexPath) as! GroupInviteCell
-            cell.configure(model)
-            return cell
         case .noResult(let model):
             let cell = tableView.dequeueReusableCell(withIdentifier: "noResultCell", for: indexPath) as! NoResultCell
             cell.descLbl.text = model.description
