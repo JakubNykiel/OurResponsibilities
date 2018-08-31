@@ -47,15 +47,19 @@ class AddGroupViewModel {
         
         _ = self.groupModel?.users?.compactMap({
             let userRef = self.db.collection(FirebaseModel.users.rawValue).document($0.key)
-            userRef.setData([FirebaseModel.groups.rawValue : [groupId]], merge: true)
-            userRef.setData([FirebaseModel.groups.rawValue : [groupId]], merge: true, completion: { (err) in
-                if let error = err {
-                    print(error.localizedDescription)
-                } else {
+            userRef.getDocument { (document,error) in
+                if let document = document {
+                    print("Document data: \(String(describing: document.data()))")
+                    guard let data = document.data() else { return }
+                    guard var groups: [String] = data[FirebaseModel.groups.rawValue] as? [String] else { return }
+                    groups.append(groupId)
+                    userRef.setData([FirebaseModel.groups.rawValue : groups], merge: true)
                     self.groupAdded.onNext(true)
+                } else {
+                    print("Document does not exist")
                 }
-            })
-            
+                
+            }
         })
     }
     
