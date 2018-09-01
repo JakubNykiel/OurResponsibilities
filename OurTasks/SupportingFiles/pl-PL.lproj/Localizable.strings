@@ -65,3 +65,4 @@
 "done" = "Zakończ";
 //Event
 "no_events" = "Brak wydarzeń";
+"event_name" = "Nazwa wydarzenia";

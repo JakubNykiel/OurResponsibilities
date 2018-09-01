@@ -26,6 +26,7 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var participateSwitch: UISwitch!
     @IBOutlet weak var participateLbl: UILabel!
     
+    @IBOutlet weak var addEventBtn: UIButton!
     
     var viewModel: AddEventViewModel!
     private let disposeBag = DisposeBag()
@@ -56,12 +57,10 @@ class AddEventViewController: UITableViewController {
         self.prepareTextFields()
         self.preparePickers()
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
+        self.validation()
+        self.navigationItem.title = "add_event".localize()
     }
     
-    @IBAction func sendInviteToGroup(_ sender: Any) {
-        
-        
-    }
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
         let usersInEvent: [String] = self.participateSwitch.isOn ? [currentUserUid] : []
@@ -77,9 +76,25 @@ extension AddEventViewController {
         dismissKeyboard()
     }
     
+    func validation() {
+        let nameValid = nameTF.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let startValid = startDateTF.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let endValid = endDateTF.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        let pointValid = winnerPointsTF.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        
+        let everythingValid = Observable.combineLatest(nameValid, startValid, endValid, pointValid) { $0 && $1 && $2 && $3}
+            .share(replay: 1)
+        
+        self.addEventBtn.setTitleColor(AppColor.gray, for: .disabled)
+        everythingValid.asObservable()
+            .subscribe(onNext: {
+                self.addEventBtn.isEnabled = $0
+            }).disposed(by: self.disposeBag)
+    }
+    
     func prepareTexts() {
         self.navigationController?.title = "addEvent".localize()
-        self.nameLbl.text = "name".localize()
+        self.nameLbl.text = "event_name".localize()
         self.startDateLbl.text = "start_date".localize()
         self.endDateLbl.text = "end_date".localize()
         self.winnerPointsLbl.text = "winner_points".localize()

@@ -7,6 +7,7 @@
 */
 
 "choose" = "Choose";
+
 // Login
 "signIn" = "Sign In";
 "signInAction" = "Sign In";
@@ -65,3 +66,4 @@
 "done" = "Done";
 //Event
 "no_events" = "No events";
+"event_name" = "Event name";
