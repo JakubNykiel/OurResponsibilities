@@ -33,6 +33,7 @@ class AddGroupViewController: UITableViewController {
         self.prepareTexts()
         groupColorCollection.delegate = self
         groupColorCollection.dataSource = self
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {

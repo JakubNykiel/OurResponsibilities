@@ -52,7 +52,9 @@ class GroupViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.disposeBag = DisposeBag()
+        
         self.tableView.dataSource = nil
+        self.tableView.tableFooterView = UIView()
         
         self.viewModel.sectionsBehaviourSubject.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
