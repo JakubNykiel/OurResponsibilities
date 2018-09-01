@@ -63,3 +63,5 @@
 "check" = "Do sprawdzenia";
 "resign" = "Zrezygnuj";
 "done" = "Zakończ";
+//Event
+"no_events" = "Brak wydarzeń";

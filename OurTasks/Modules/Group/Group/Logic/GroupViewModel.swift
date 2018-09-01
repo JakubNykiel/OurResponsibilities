@@ -18,7 +18,9 @@ class GroupViewModel {
     var eventsBehaviorSubject: BehaviorSubject<[String:EventModel]> = BehaviorSubject(value: [:])
     var pastEventsBehaviorSubject: BehaviorSubject<[String:EventModel]> = BehaviorSubject(value: [:])
     var futureEventsBehaviorSubject: BehaviorSubject<[String:EventModel]> = BehaviorSubject(value: [:])
-    var noEventsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var noPastEventsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var noPresentEventsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var noFutureEventsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[GroupSection]> = BehaviorSubject(value: [])
     
     private let firebaseManager: FirebaseManager = FirebaseManager()
@@ -60,10 +62,10 @@ class GroupViewModel {
                     }
                     
                     //END condition
-                    if index == (self.groupEvents.count - 1) && self.groupEvents.count != 0 {
-                        self.eventsBehaviorSubject.onNext(presentEvent)
-                        self.pastEventsBehaviorSubject.onNext(pastEvent)
-                        self.futureEventsBehaviorSubject.onNext(futureEvent)
+                    if index == (self.groupEvents.count - 1) {
+                        presentEvent.count == 0 ? self.noPresentEventsBehaviorSubject.onNext(true) : self.eventsBehaviorSubject.onNext(presentEvent)
+                        pastEvent.count == 0 ? self.noPastEventsBehaviorSubject.onNext(true) : self.pastEventsBehaviorSubject.onNext(pastEvent)
+                        futureEvent.count == 0 ? self.noFutureEventsBehaviorSubject.onNext(true) : self.futureEventsBehaviorSubject.onNext(futureEvent)
                     }
                 }
                 
@@ -117,6 +119,48 @@ class GroupViewModel {
             .subscribe(onNext: {
                 self.sections = self.sections.filter({ $0.title != GroupSectionTitle.futureEvents.rawValue })
                 self.sections.insert(GroupSection.section(title: .futureEvents, items: $0.compactMap({ GroupItemType.futureEvents($0) })), at: 2)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.noPastEventsBehaviorSubject
+            .flatMap({ (noEvents) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_events".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != GroupSectionTitle.pastEvents.rawValue })
+                self.sections.insert(GroupSection.section(title: .pastEvents, items: [GroupItemType.noResult($0)]), at: 0)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.noPresentEventsBehaviorSubject
+            .flatMap({ (noEvents) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_events".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != GroupSectionTitle.presentEvents.rawValue })
+                self.sections.insert(GroupSection.section(title: .presentEvents, items: [GroupItemType.noResult($0)]), at: 1)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+        
+        self.noFutureEventsBehaviorSubject
+            .flatMap({ (noEvents) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_events".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != GroupSectionTitle.futureEvents.rawValue })
+                self.sections.insert(GroupSection.section(title: .futureEvents, items: [GroupItemType.noResult($0)]), at: 2)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)

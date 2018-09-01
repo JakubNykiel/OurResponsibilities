@@ -16,6 +16,7 @@ class GroupViewController: UITableViewController {
     enum Constants {
         struct CellIdentifiers {
             static let groupEvent = "groupEvent"
+            static let noResult = "noResultCell"
         }
         
         struct NibNames {
@@ -46,6 +47,11 @@ class GroupViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
                 cell.configure(model)
                 return cell
+                
+            case .noResult(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.noResult, for: indexPath) as! NoResultCell
+                cell.descLbl.text = model.description
+                return cell
             }
         })
     }
@@ -67,6 +73,8 @@ class GroupViewController: UITableViewController {
                 case .futureEvents(let model), .presentEvents(let model), .pastEvents(let model):
                     let eventVC = StoryboardManager.eventViewController(model.eventModel, eventID: model.id)
                     self.navigationController?.pushViewController(eventVC, animated: true)
+                default:
+                    break
                 }
                
             })

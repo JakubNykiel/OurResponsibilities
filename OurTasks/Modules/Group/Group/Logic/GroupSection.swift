@@ -39,7 +39,7 @@ enum GroupItemType {
     case pastEvents(_: GroupEventCellModel)
     case futureEvents(_: GroupEventCellModel)
     case presentEvents(_: GroupEventCellModel)
-//    case noResult(_: NoResultCellModel)
+    case noResult(_: NoResultCellModel)
 //    case globalRanking(_: GroupGlobalRankingCellModel)
 }
 

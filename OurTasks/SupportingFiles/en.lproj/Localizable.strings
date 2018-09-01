@@ -63,3 +63,5 @@
 "check" = "Check";
 "resign" = "Resign";
 "done" = "Done";
+//Event
+"no_events" = "No events";

@@ -150,6 +150,34 @@
                                     <outlet property="taskName" destination="VFW-Xq-yk5" id="Gee-Mc-Cja"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noResultCell" rowHeight="60" id="Ti6-OU-Cu8" customClass="NoResultCell" customModule="OurTasks" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="148" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ti6-OU-Cu8" id="4ef-nE-MIf">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0i-16-otb">
+                                            <rect key="frame" x="20" y="0.0" width="335" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="59.5" id="fZu-Y9-SNo"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="b0i-16-otb" secondAttribute="trailing" constant="20" id="84o-mR-LaU"/>
+                                        <constraint firstItem="b0i-16-otb" firstAttribute="top" secondItem="4ef-nE-MIf" secondAttribute="top" id="Ewx-WB-0fl"/>
+                                        <constraint firstAttribute="bottom" secondItem="b0i-16-otb" secondAttribute="bottom" id="cuj-yo-pMM"/>
+                                        <constraint firstItem="b0i-16-otb" firstAttribute="leading" secondItem="4ef-nE-MIf" secondAttribute="leading" constant="20" id="zFb-AA-DCG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descLbl" destination="b0i-16-otb" id="VGj-lT-ifz"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="Ci3-GP-z0r">
