@@ -37,9 +37,12 @@ class AddGroupViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.addBtn.isEnabled = false
         self.hideKeyboardWhenTappedAround()
         self.configureTextFields()
-
+        
+        self.validation()
+        
         self.viewModel.groupAdded.asObservable()
             .subscribe(onNext: {
                 if $0 {
@@ -98,6 +101,18 @@ extension AddGroupViewController: UICollectionViewDataSource, UICollectionViewDe
         return cell
     }
 
+}
+//MARK: Prepare
+extension AddGroupViewController {
+    private func validation() {
+        let nameValid = nameTF.rx.text.orEmpty.map{ $0.count > 0 }.share(replay: 1)
+        
+        self.addBtn.setTitleColor(AppColor.gray, for: .disabled)
+
+        nameValid.asObservable()
+            .bind(to: self.addBtn.rx.isEnabled)
+            .disposed(by: disposeBag)
+    }
 }
 //MARK: Localize
 extension AddGroupViewController {
