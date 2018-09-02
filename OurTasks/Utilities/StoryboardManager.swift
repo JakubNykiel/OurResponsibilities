@@ -85,9 +85,9 @@ struct StoryboardManager {
         return groupVC
     }
     //MARK: EVENT
-    static func addEventViewController(_ groupID: String) -> AddEventViewController {
+    static func addEventViewController(_ groupID: String, state: AddEventViewState, eventModel: [String:EventModel]?) -> AddEventViewController {
         let addEventVC = self.viewController(ViewControllerTypes().addEvent, withIdentifier: ViewControllerIdentifiers.addEventViewController.rawValue, fromStoryboard: StoryboardNames.AddEvent.rawValue)
-        let viewModel = AddEventViewModel.init(groupID: groupID)
+        let viewModel = AddEventViewModel.init(groupID: groupID, state: state, eventModel: eventModel)
         addEventVC.viewModel = viewModel
         return addEventVC
     }

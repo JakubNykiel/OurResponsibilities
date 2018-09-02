@@ -10,6 +10,11 @@ import Foundation
 import Firebase
 import RxSwift
 
+enum AddEventViewState {
+    case add
+    case update
+}
+
 class AddEventViewModel {
     let db = Firestore.firestore()
     var ref: DocumentReference?
@@ -19,10 +24,23 @@ class AddEventViewModel {
     var groupID: String = ""
     var events: [String] = []
     var users: [String] = []
+    var viewState: AddEventViewState?
+    var eventModelToUpdate: [String:EventModel]?
     
-    init(groupID: String) {
+    init(groupID: String, state: AddEventViewState, eventModel: [String:EventModel]?) {
         self.groupID = groupID
-        self.getGroupInfo()
+        self.viewState = state
+        self.eventModelToUpdate = eventModel
+    }
+    
+    func updateEvent() {
+        guard let eventKey = self.eventModelToUpdate?.first?.key else { return }
+        guard let model = self.eventModel else { return }
+        guard let eventData = model.asDictionary() else { return }
+        
+        let eventRef = FirebaseReferences().eventRef.document(eventKey)
+        eventRef.setData(eventData, merge: true)
+        self.eventAdded.onNext(true)
     }
     
     func addEventToDatabase() {

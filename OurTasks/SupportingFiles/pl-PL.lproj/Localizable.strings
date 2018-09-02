@@ -7,6 +7,8 @@
 */
 
 "choose" = "Wybierz";
+"edit" = "Edytuj";
+"add" = "Dodaj";
 // Login
 "signIn" = "Logowanie";
 "signInAction" = "Zaloguj";

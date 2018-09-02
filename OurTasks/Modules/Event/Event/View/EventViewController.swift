@@ -24,6 +24,7 @@ class EventViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventPoints: UILabel!
@@ -56,6 +57,13 @@ class EventViewController: UITableViewController {
         self.prepareOnAppear()
     }
     
+    @IBAction func toEditEvent(_ sender: Any) {
+        guard let eventID = self.viewModel?.eventID else { return }
+        guard let eventModel = self.viewModel?.eventModel else { return }
+        let addEventVC = StoryboardManager.addEventViewController("", state: .update, eventModel: [eventID:eventModel])
+        self.navigationController?.pushViewController(addEventVC, animated: true)
+    }
+    
     @IBAction func toAddTask(_ sender: Any) {
         let addTaskVC = StoryboardManager.addTaskViewController(self.viewModel.eventID, state: .add, taskModel: nil)
         self.navigationController?.pushViewController(addTaskVC, animated: true)
@@ -65,6 +73,7 @@ class EventViewController: UITableViewController {
 extension EventViewController {
     func prepareOnLoad() {
         self.registerNibs()
+        self.editBtn.setTitle("edit".localize(), for: .normal)
     }
     
     func prepareOnAppear() {

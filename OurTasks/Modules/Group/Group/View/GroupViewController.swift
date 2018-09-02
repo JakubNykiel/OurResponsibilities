@@ -91,7 +91,7 @@ class GroupViewController: UITableViewController {
     }
     
     @IBAction func toAddEvent(_ sender: Any) {
-        let addEventVC = StoryboardManager.addEventViewController(self.viewModel.groupID)
+        let addEventVC = StoryboardManager.addEventViewController(self.viewModel.groupID, state: .add, eventModel: nil)
         self.navigationController?.pushViewController(addEventVC, animated: true)
     }
     

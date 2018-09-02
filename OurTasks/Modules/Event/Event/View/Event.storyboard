@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="cMq-DY-S7C">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="89"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDI-1G-Sr3">
@@ -42,12 +42,22 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN6-H2-Pg7">
+                                    <rect key="frame" x="164.5" y="90" width="46" height="30"/>
+                                    <state key="normal" title="Button"/>
+                                    <connections>
+                                        <action selector="toEditEvent:" destination="acc-UW-hhD" eventType="touchUpInside" id="rDx-Hu-cmH"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="6B8-Ks-xhH"/>
                                 <constraint firstAttribute="trailing" secondItem="yhy-92-gNE" secondAttribute="trailing" constant="20" id="FVb-BE-bdj"/>
+                                <constraint firstItem="kN6-H2-Pg7" firstAttribute="centerX" secondItem="cMq-DY-S7C" secondAttribute="centerX" id="GOm-zm-eRN"/>
                                 <constraint firstItem="yGH-Fs-o1q" firstAttribute="top" secondItem="lDI-1G-Sr3" secondAttribute="bottom" constant="4" id="GQv-5a-5xB"/>
+                                <constraint firstItem="kN6-H2-Pg7" firstAttribute="top" secondItem="yhy-92-gNE" secondAttribute="bottom" constant="5" id="Kxq-Xu-zbg"/>
+                                <constraint firstAttribute="bottom" secondItem="kN6-H2-Pg7" secondAttribute="bottom" id="N5g-sx-Sc8"/>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="top" secondItem="yGH-Fs-o1q" secondAttribute="bottom" constant="4" id="Wb6-Yx-neR"/>
                                 <constraint firstItem="yGH-Fs-o1q" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="YOL-LB-Bbp"/>
                                 <constraint firstItem="lDI-1G-Sr3" firstAttribute="top" secondItem="cMq-DY-S7C" secondAttribute="top" constant="8" id="cGE-Gl-zA4"/>
@@ -58,7 +68,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="yqQ-Jt-59d" customClass="TaskCell" customModule="OurTasks" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="117" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="148" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yqQ-Jt-59d" id="X4K-eT-e9Y">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -75,6 +85,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editBtn" destination="kN6-H2-Pg7" id="92w-aW-P9Z"/>
                         <outlet property="eventDate" destination="yGH-Fs-o1q" id="END-WG-AvK"/>
                         <outlet property="eventName" destination="lDI-1G-Sr3" id="Uuc-iQ-dHO"/>
                         <outlet property="eventPoints" destination="yhy-92-gNE" id="O3c-4V-aeE"/>
