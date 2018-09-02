@@ -17,17 +17,23 @@ struct UserModel: Codable {
     var email: String
     var username: String
     var groups: [String]?
+    var events: [String]?
+    var tasks: [String]?
     
     enum UserKeys: String, CodingKey {
         case email
         case username
         case groups
+        case events
+        case tasks
     }
     
-    init(email: String, username: String, groups: [String]?) {
+    init(email: String, username: String, groups: [String]?, events: [String]?, tasks: [String]?) {
         self.email = email
         self.username = username
         self.groups = groups
+        self.events = events
+        self.tasks = tasks
     }
     
     public init(from decoder: Decoder) throws {
@@ -35,6 +41,8 @@ struct UserModel: Codable {
         self.email = try container.decode(String?.self, forKey: .email) ?? ""
         self.username = try container.decode(String?.self, forKey: .username) ?? ""
         self.groups = try? container.decode([String]?.self, forKey: .groups) ?? []
+        self.events = try? container.decode([String]?.self, forKey: .events) ?? []
+        self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
     }
     
     

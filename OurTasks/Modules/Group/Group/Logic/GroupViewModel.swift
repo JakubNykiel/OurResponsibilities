@@ -37,7 +37,6 @@ class GroupViewModel {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.groupModel = groupModel
         self.groupID = groupID
-        self.getEvents()
         
         self.groupEventsBehaviorSubject.asObservable()
             .subscribe(onNext: {
@@ -50,7 +49,7 @@ class GroupViewModel {
                     let orderStart = self.calendar.compare( self.dateFormatter.date(from: event.value.startDate)!, to: nowDate, toGranularity: .day)
                     let orderEnd = self.calendar.compare( self.dateFormatter.date(from: event.value.endDate)!, to: nowDate, toGranularity: .day)
                     //nowDate after startDate
-                    if orderStart == .orderedAscending {
+                    if orderStart == .orderedAscending || orderStart == .orderedSame {
                         // past
                         if orderEnd == .orderedDescending || orderEnd == .orderedSame {
                             presentEvent[event.key] = event.value
@@ -94,8 +93,6 @@ class GroupViewModel {
         self.eventsBehaviorSubject
             .flatMap({ (presentEvents) -> Observable<[GroupEventCellModel]> in
                 let ret: [GroupEventCellModel] = presentEvents.compactMap({
-                    let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
-                    let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
                     return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
@@ -110,8 +107,6 @@ class GroupViewModel {
         self.futureEventsBehaviorSubject
             .flatMap({ (futureEvents) -> Observable<[GroupEventCellModel]> in
                 let ret: [GroupEventCellModel] = futureEvents.compactMap({
-                    let startDate = self.dateFormatter.date(from: $0.value.startDate) ?? nil
-                    let endDate = self.dateFormatter.date(from: $0.value.endDate) ?? nil
                     return GroupEventCellModel(id: $0.key, eventModel: $0.value)
                 })
                 return Observable.of(ret)
@@ -167,7 +162,7 @@ class GroupViewModel {
         
     }
     
-    private func getEvents() {
+    func getEvents() {
         let groupEventsRef = self.firebaseManager.db.collection(FirebaseModel.groups.rawValue).document(self.groupID)
         groupEventsRef.getDocument { (document, error) in
             if let document = document {

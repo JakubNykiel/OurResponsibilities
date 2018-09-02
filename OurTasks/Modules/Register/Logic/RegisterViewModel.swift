@@ -25,7 +25,7 @@ class RegisterViewModel {
                 self.error.value = error.localizedDescription
             }
             if let user = user {
-                self.currentUser = UserModel(email: email, username: username, groups: [])
+                self.currentUser = UserModel(email: email, username: username, groups: [], events: [], tasks: [])
                 self.saveUser()
             }
         }

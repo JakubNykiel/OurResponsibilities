@@ -62,6 +62,8 @@ class GroupViewController: UITableViewController {
         self.tableView.dataSource = nil
         self.tableView.tableFooterView = UIView()
         
+        self.viewModel.getEvents()
+        
         self.viewModel.sectionsBehaviourSubject.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: self.disposeBag)

@@ -23,9 +23,6 @@ class AddEventViewController: UITableViewController {
     @IBOutlet weak var winnerPointsLbl: UILabel!
     @IBOutlet weak var winnerPointsTF: UITextField!
     
-    @IBOutlet weak var participateSwitch: UISwitch!
-    @IBOutlet weak var participateLbl: UILabel!
-    
     @IBOutlet weak var addEventBtn: UIButton!
     
     var viewModel: AddEventViewModel!
@@ -63,8 +60,8 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
-        let usersInEvent: [String] = self.participateSwitch.isOn ? [currentUserUid] : []
-        self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: usersInEvent, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+        self.viewModel.users.append(currentUserUid)
+        self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
         self.viewModel.addEventToDatabase()
     }
     

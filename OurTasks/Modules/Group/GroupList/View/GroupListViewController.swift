@@ -102,7 +102,6 @@ extension GroupListViewController: UITableViewDelegate {
         
         guard section < dataSource.sectionModels.count else { return UIView() }
         let section = dataSource[section]
-//        guard section.items.count > 0 else { return UIView() }
         
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
         let label = UILabel(frame: CGRect(x: 21.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
