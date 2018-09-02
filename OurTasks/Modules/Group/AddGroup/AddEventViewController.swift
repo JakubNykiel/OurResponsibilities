@@ -60,7 +60,6 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
-        self.viewModel.users.append(currentUserUid)
         self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
         self.viewModel.addEventToDatabase()
     }
