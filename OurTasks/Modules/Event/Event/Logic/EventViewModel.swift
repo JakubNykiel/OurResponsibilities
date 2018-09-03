@@ -36,9 +36,12 @@ class EventViewModel {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.eventID = eventID
         self.eventModel = eventModel
-//        self.getEventTasks()
-//
-//        self.bindGeneralInformation()
+    }
+    
+    func bindGeneralInformation() {
+        self.eventName.value = self.eventModel.name
+        self.eventPoints.value = "winner_points".localize() + " " + String(self.eventModel.winnerGlobalPoints)
+        self.eventDate.value = self.eventModel.startDate + " - " + self.eventModel.endDate
         
         self.tasksBehaviorSubject.asObservable()
             .subscribe(onNext: {
@@ -53,17 +56,11 @@ class EventViewModel {
                     }
                     
                     if index == (self.eventTasks.count - 1) && self.eventTasks.count != 0 {
-                            self.allTasksBehaviorSubject.onNext(restTasks)
-                            self.doneTasksBehaviorSubject.onNext(doneTasks)
+                        self.allTasksBehaviorSubject.onNext(restTasks)
+                        self.doneTasksBehaviorSubject.onNext(doneTasks)
                     }
                 }
             }).disposed(by: self.disposeBag)
-    }
-    
-    func bindGeneralInformation() {
-        self.eventName.value = self.eventModel.name
-        self.eventPoints.value = "winner_points".localize() + " " + String(self.eventModel.winnerGlobalPoints)
-        self.eventDate.value = self.eventModel.startDate + " - " + self.eventModel.endDate
         
         self.doneTasksBehaviorSubject
             .flatMap({ (doneTasks) -> Observable<[EventTaskCellModel]> in

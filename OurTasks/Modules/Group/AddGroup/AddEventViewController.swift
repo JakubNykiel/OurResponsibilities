@@ -45,7 +45,12 @@ class AddEventViewController: UITableViewController {
         self.viewModel.eventAdded.asObservable()
             .subscribe(onNext: {
                 if $0 {
-                    self.navigationController?.popViewController(animated: true)
+                    let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController]
+                    if self.viewModel.viewState == .add {
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                       self.navigationController!.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+                    }
                 }
             }).disposed(by: self.disposeBag)
     }
@@ -66,8 +71,14 @@ class AddEventViewController: UITableViewController {
     
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
-        self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
-        self.viewModel.viewState == AddEventViewState.add ? self.viewModel.addEventToDatabase() : self.viewModel.updateEvent()
+        if self.viewModel.viewState == AddEventViewState.add {
+            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+            self.viewModel.addEventToDatabase()
+        } else {
+            guard let model = self.viewModel.eventModelToUpdate?.first?.value else { return }
+            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: model.admins ?? [], users: model.users, tasks: model.tasks ?? [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+            self.viewModel.updateEvent()
+        }
     }
     
 }
