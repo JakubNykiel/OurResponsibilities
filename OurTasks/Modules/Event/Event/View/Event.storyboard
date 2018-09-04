@@ -43,10 +43,11 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN6-H2-Pg7">
-                                    <rect key="frame" x="164.5" y="90" width="46" height="30"/>
+                                    <rect key="frame" x="162.5" y="90" width="50" height="30"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                     <state key="normal" title="Button"/>
                                     <connections>
-                                        <action selector="toEditEvent:" destination="acc-UW-hhD" eventType="touchUpInside" id="rDx-Hu-cmH"/>
+                                        <action selector="toAddTask:" destination="acc-UW-hhD" eventType="touchUpInside" id="eH5-YA-IQf"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -78,14 +79,14 @@
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="P6g-F4-xH6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NbO-Ya-o7L">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="edit" id="NbO-Ya-o7L">
                             <connections>
-                                <action selector="toAddTask:" destination="acc-UW-hhD" id="bH0-Ys-JPP"/>
+                                <action selector="toEditEvent:" destination="acc-UW-hhD" id="Sam-ME-TuX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editBtn" destination="kN6-H2-Pg7" id="92w-aW-P9Z"/>
+                        <outlet property="addBtn" destination="kN6-H2-Pg7" id="OLw-q7-vqf"/>
                         <outlet property="eventDate" destination="yGH-Fs-o1q" id="END-WG-AvK"/>
                         <outlet property="eventName" destination="lDI-1G-Sr3" id="Uuc-iQ-dHO"/>
                         <outlet property="eventPoints" destination="yhy-92-gNE" id="O3c-4V-aeE"/>

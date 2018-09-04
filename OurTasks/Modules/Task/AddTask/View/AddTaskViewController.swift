@@ -20,6 +20,9 @@ class AddTaskViewController: UITableViewController {
     @IBOutlet weak var endDateLbl: UILabel!
     @IBOutlet weak var endTF: UITextField!
     
+    @IBOutlet weak var userLbl: UILabel!
+    @IBOutlet weak var userTF: UITextField!
+    
     @IBOutlet weak var usersInteractionLbl: UILabel!
     @IBOutlet weak var usersInteractionSwitch: UISwitch!
     
@@ -49,6 +52,8 @@ class AddTaskViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.estimatedRowHeight = 75
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.hideKeyboardWhenTappedAround()
         // Do any additional setup after loading the view.
     }
@@ -115,8 +120,10 @@ extension AddTaskViewController {
     
     func prepareTexts() {
         self.navigationController?.title = "add_task".localize()
-        self.nameLbl.text = "name".localize()
+        self.nameLbl.text = "task_name".localize()
         self.endDateLbl.text = "end_date".localize()
+        self.userLbl.text = "task_assigned".localize()
+        self.userTF.placeholder = "choose_user".localize()
         self.globalPointsLbl.text = "global_points".localize()
         self.arLbl.text = "AR".localize()
         self.qrName.text = "QR_name".localize()
@@ -200,9 +207,16 @@ extension AddTaskViewController: UIPickerViewDelegate, UITextFieldDelegate {
         return 50.0
     }
     
+    
 }
 extension AddTaskViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 3 {
+            
+        }
     }
 }

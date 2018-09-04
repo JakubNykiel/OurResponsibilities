@@ -65,6 +65,9 @@
 "check" = "Check";
 "resign" = "Resign";
 "done" = "Done";
+"choose_user" = "Choose user";
+"task_assigned" = "Task is assigned to: ";
+"task_name" = "Task name";
 //Event
 "no_events" = "No events";
 "event_name" = "Event name";

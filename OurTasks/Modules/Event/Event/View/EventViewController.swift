@@ -24,7 +24,7 @@ class EventViewController: UITableViewController {
         }
     }
     
-    @IBOutlet weak var editBtn: UIButton!
+    @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDate: UILabel!
     @IBOutlet weak var eventPoints: UILabel!
@@ -73,7 +73,7 @@ class EventViewController: UITableViewController {
 extension EventViewController {
     func prepareOnLoad() {
         self.registerNibs()
-        self.editBtn.setTitle("edit".localize(), for: .normal)
+        self.addBtn.setTitle("add_task".localize(), for: .normal)
     }
     
     func prepareOnAppear() {

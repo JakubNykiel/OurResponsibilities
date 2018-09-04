@@ -65,6 +65,9 @@
 "check" = "Do sprawdzenia";
 "resign" = "Zrezygnuj";
 "done" = "Zakończ";
+"choose_user" = "Wybierz osobę";
+"task_assigned" = "Zadanie jest przypisane do: ";
+"task_name" = "Nazwa zadania";
 //Event
 "no_events" = "Brak wydarzeń";
 "event_name" = "Nazwa wydarzenia";
