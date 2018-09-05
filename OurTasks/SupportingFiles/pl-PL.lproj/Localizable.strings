@@ -9,6 +9,7 @@
 "choose" = "Wybierz";
 "edit" = "Edytuj";
 "add" = "Dodaj";
+"my" = "Moje";
 // Login
 "signIn" = "Logowanie";
 "signInAction" = "Zaloguj";

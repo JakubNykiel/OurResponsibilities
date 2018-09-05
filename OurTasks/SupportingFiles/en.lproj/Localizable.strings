@@ -9,6 +9,7 @@
 "choose" = "Choose";
 "edit" = "Edit";
 "add" = "Add";
+"my" = "My";
 // Login
 "signIn" = "Sign In";
 "signInAction" = "Sign In";

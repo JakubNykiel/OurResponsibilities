@@ -14,5 +14,8 @@ class MenuViewController: UITabBarController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let my = self.viewControllers?.first as? MyViewController {
+            my.viewModel = MyViewModel()
+        }
     }
 }
