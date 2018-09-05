@@ -75,6 +75,10 @@
 		C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */; };
 		C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */; };
 		C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */; };
+		C3D463E9213EA5EE00F1AD47 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D463E8213EA5EE00F1AD47 /* User.storyboard */; };
+		C3D463EB213EA61600F1AD47 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D463EA213EA61600F1AD47 /* UserViewController.swift */; };
+		C3D463EF213EA63D00F1AD47 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D463EE213EA63D00F1AD47 /* UserViewModel.swift */; };
+		C3D463F2213EAB6E00F1AD47 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D463F1213EAB6E00F1AD47 /* UserCell.swift */; };
 		C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D5B2001FB4767200550564 /* Localize+String.swift */; };
 		C3E1086521297B17006A278B /* EventSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086421297B17006A278B /* EventSection.swift */; };
 		C3E1086721297B26006A278B /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086621297B26006A278B /* EventViewModel.swift */; };
@@ -159,6 +163,10 @@
 		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
 		C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddGroup.storyboard; sourceTree = "<group>"; };
 		C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
+		C3D463E8213EA5EE00F1AD47 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
+		C3D463EA213EA61600F1AD47 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		C3D463EE213EA63D00F1AD47 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		C3D463F1213EAB6E00F1AD47 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		C3D5B2001FB4767200550564 /* Localize+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Localize+String.swift"; sourceTree = "<group>"; };
 		C3E1086421297B17006A278B /* EventSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSection.swift; sourceTree = "<group>"; };
 		C3E1086621297B26006A278B /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
@@ -368,6 +376,7 @@
 		C326929B21346D0F0099AED9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C3D463F0213EAB6100F1AD47 /* Cells */,
 				C32692A0213470490099AED9 /* TaskViewController.swift */,
 				C32692A2213471890099AED9 /* Task.storyboard */,
 			);
@@ -657,6 +666,40 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		C3D463E7213EA5CD00F1AD47 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				C3D463ED213EA63100F1AD47 /* Logic */,
+				C3D463EC213EA62800F1AD47 /* View */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		C3D463EC213EA62800F1AD47 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3D463E8213EA5EE00F1AD47 /* User.storyboard */,
+				C3D463EA213EA61600F1AD47 /* UserViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3D463ED213EA63100F1AD47 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C3D463EE213EA63D00F1AD47 /* UserViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C3D463F0213EAB6100F1AD47 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C3D463F1213EAB6E00F1AD47 /* UserCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		C3D551971FA6193C00D7F081 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +741,7 @@
 		C3D5519B1FA61A8700D7F081 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C3D463E7213EA5CD00F1AD47 /* User */,
 				C338B4CE210E2A7C0070865B /* Task */,
 				C338B4CD210E2A750070865B /* Event */,
 				743F21F5209873C000B25E30 /* Group */,
@@ -912,6 +956,7 @@
 				C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */,
 				C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */,
 				C331344320B7495100216C5B /* AddTask.storyboard in Resources */,
+				C3D463E9213EA5EE00F1AD47 /* User.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,9 +1086,11 @@
 				C3231EDA212DB53C0094AB94 /* ARTaskModel.swift in Sources */,
 				C39AB1D7207823CA00A3B178 /* ARKitViewController.swift in Sources */,
 				743F220320988F8100B25E30 /* AppColor.swift in Sources */,
+				C3D463EB213EA61600F1AD47 /* UserViewController.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
 				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
+				C3D463EF213EA63D00F1AD47 /* UserViewModel.swift in Sources */,
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
 				C316C3AA20C4A1A8008F0E2F /* matrix_float4x4.swift in Sources */,
 				C39AB1D32078235C00A3B178 /* ARKitViewModel.swift in Sources */,
@@ -1052,6 +1099,7 @@
 				C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */,
 				743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */,
 				C3A5F6341F675052002A9B30 /* TextFieldBottomBorder.swift in Sources */,
+				C3D463F2213EAB6E00F1AD47 /* UserCell.swift in Sources */,
 				C3E1086721297B26006A278B /* EventViewModel.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,
 				C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */,

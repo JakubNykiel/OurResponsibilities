@@ -23,7 +23,7 @@ class AddEventViewModel {
     var eventAdded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var groupID: String = ""
     var events: [String] = []
-    var users: [String] = []
+    var users: [String:Int] = [:]
     var viewState: AddEventViewState?
     var eventModelToUpdate: [String:EventModel]?
     
@@ -67,7 +67,7 @@ class AddEventViewModel {
     func addEventToUser(id: String) {
         
         let userRef = self.db.collection(FirebaseModel.users.rawValue)
-        for user in self.users {
+        for user in self.users.keys {
             userRef.document(user).updateData([FirebaseModel.events.rawValue : events])
         }
     }
@@ -88,7 +88,7 @@ class AddEventViewModel {
                 guard let events: [String] = data[FirebaseModel.events.rawValue] as? [String] else { return }
                 guard let users: [String:Int] = data[FirebaseModel.users.rawValue] as? [String:Int] else { return }
                 users.compactMap({
-                    self.users.append($0.key)
+                    self.users[$0.key] = $0.value ?? 0
                 })
                 self.events = events
             } else {

@@ -31,6 +31,7 @@ struct StoryboardManager {
         let addTask = AddTaskViewController.self
         let event = EventViewController.self
         let task = TaskViewController.self
+        let user = UserViewController.self
     }
 
     enum StoryboardNames: String {
@@ -44,6 +45,7 @@ struct StoryboardManager {
         case AddTask
         case Event
         case Task
+        case User
     }
 
     enum ViewControllerIdentifiers: String {
@@ -57,6 +59,7 @@ struct StoryboardManager {
         case addTaskViewController
         case eventViewController
         case taskViewController
+        case userViewController
     }
     
     //MARK: GENERAL
@@ -67,6 +70,11 @@ struct StoryboardManager {
     static func registerViewController() -> RegisterViewController {
         let registerVC = self.viewController(ViewControllerTypes().register, withIdentifier: ViewControllerIdentifiers.registerViewController.rawValue, fromStoryboard: StoryboardNames.Register.rawValue)
         return registerVC
+    }
+    static func usersViewController(eventID: String) -> UserViewController {
+        let userVC = self.viewController(ViewControllerTypes().user, withIdentifier: ViewControllerIdentifiers.userViewController.rawValue, fromStoryboard: StoryboardNames.User.rawValue)
+        userVC.viewModel = UserViewModel(eventID: eventID)
+        return userVC
     }
     //MARK: GROUP
     static func groupListViewController() -> GroupListViewController {

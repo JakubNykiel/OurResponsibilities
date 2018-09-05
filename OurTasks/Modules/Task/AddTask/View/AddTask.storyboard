@@ -161,8 +161,10 @@
                                                 <constraint firstItem="GgE-8z-phf" firstAttribute="leading" secondItem="S1D-Kj-BXD" secondAttribute="leadingMargin" constant="5" id="CxG-sZ-57r"/>
                                                 <constraint firstItem="fHh-ue-2iG" firstAttribute="leading" secondItem="S1D-Kj-BXD" secondAttribute="leadingMargin" constant="5" id="Jmd-Z9-atj"/>
                                                 <constraint firstItem="fHh-ue-2iG" firstAttribute="top" secondItem="S1D-Kj-BXD" secondAttribute="topMargin" id="LvV-Ig-ADK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="GgE-8z-phf" secondAttribute="bottom" constant="24" id="MTC-m2-jSk"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="fHh-ue-2iG" secondAttribute="trailing" constant="5" id="Wae-RW-ZJZ"/>
                                                 <constraint firstItem="GgE-8z-phf" firstAttribute="centerY" secondItem="S1D-Kj-BXD" secondAttribute="centerY" id="cLc-kf-QAO"/>
+                                                <constraint firstItem="GgE-8z-phf" firstAttribute="top" secondItem="fHh-ue-2iG" secondAttribute="bottom" constant="1" id="exK-6P-xMg"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GgE-8z-phf" secondAttribute="trailing" constant="5" id="pYW-3U-v0N"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -219,7 +221,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -256,7 +258,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.36078431370000003" green="0.72156862749999995" blue="0.36078431370000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="-" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xZ3-Im-POc">
                                                     <rect key="frame" x="223" y="49" width="131" height="30"/>
@@ -265,7 +267,7 @@
                                                     </constraints>
                                                     <color key="textColor" red="0.99550908803939819" green="0.089599452912807465" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -429,7 +431,7 @@
                                         <rect key="frame" x="0.0" y="758" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iAq-XF-OvL" id="fLG-nq-GdT">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-EW-f3o">

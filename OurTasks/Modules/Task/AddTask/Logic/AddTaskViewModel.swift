@@ -22,6 +22,7 @@ class AddTaskViewModel {
     var taskAdded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var taskModel: TaskModel?
     var taskModelToUpdate: [String:TaskModel]?
+    var taskUser: [String:UserModel]?
     var arTaskModel: ARTaskModel?
     var viewState: AddTaskViewState?
     
@@ -64,11 +65,28 @@ class AddTaskViewModel {
         
         eventRef.getDocument { (document,error) in
             if let document = document {
-                print("Document data: \(String(describing: document.data()))")
                 guard let data = document.data() else { return }
                 var tasks: [String] = data[FirebaseModel.tasks.rawValue] as? [String] ?? []
                 tasks.append(id)
                 eventRef.updateData([FirebaseModel.tasks.rawValue : tasks])
+                self.addTaskToUser(id: id)
+            } else {
+                print("Document does not exist")
+            }
+            
+        }
+    }
+    
+    private func addTaskToUser(id: String) {
+        guard let model = self.taskUser?.first else { return }
+        let userRef = FirebaseReferences().userRef.document(model.key)
+        
+        userRef.getDocument { (document,error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                var tasks: [String] = data[FirebaseModel.tasks.rawValue] as? [String] ?? []
+                tasks.append(id)
+                userRef.updateData([FirebaseModel.tasks.rawValue : tasks])
                 self.taskAdded.onNext(true)
             } else {
                 print("Document does not exist")

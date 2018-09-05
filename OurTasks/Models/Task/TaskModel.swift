@@ -21,7 +21,7 @@ struct TaskModel: Codable {
     var name: String
     var state: String
     var endDate: String
-    var users: [String]?
+    var user: String?
     var globalPositivePoints: Int
     var positivePoints: Int
     var negativePoints: Int
@@ -34,7 +34,7 @@ struct TaskModel: Codable {
         case owner
         case name
         case endDate
-        case users
+        case user
         case positivePoints
         case negativePoints
         case userInteraction
@@ -45,11 +45,11 @@ struct TaskModel: Codable {
         case description
     }
     
-    init(owner: String, name: String, endDate: String, users: [String]?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, description: String) {
+    init(owner: String, name: String, endDate: String, user: String?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, description: String) {
         self.owner = owner
         self.name = name
         self.endDate = endDate
-        self.users = users
+        self.user = user
         self.positivePoints = positivePoints
         self.negativePoints = negativePoints
         self.userInteraction = userInteraction
@@ -66,7 +66,7 @@ struct TaskModel: Codable {
         self.owner = try container.decode(String?.self, forKey: .owner) ?? ""
         self.name = try container.decode(String?.self, forKey: .name) ?? ""
         self.endDate = try container.decode(String?.self, forKey: .endDate) ?? ""
-        self.users = try? container.decode([String]?.self, forKey: .users) ?? []
+        self.user = try? container.decode(String?.self, forKey: .user) ?? ""
         self.positivePoints = try container.decode(Int?.self, forKey: .positivePoints) ?? 0
         self.negativePoints = try container.decode(Int?.self, forKey: .negativePoints) ?? 0
         self.userInteraction = try container.decode(Bool?.self, forKey: .userInteraction) ?? false
@@ -84,7 +84,7 @@ extension TaskModel {
         try container.encode(self.owner, forKey: .owner)
         try container.encode(self.name, forKey: .name)
         try container.encode(self.endDate, forKey: .endDate)
-        try container.encode(self.users, forKey: .users)
+        try container.encode(self.user, forKey: .user)
         try container.encode(self.positivePoints, forKey: .positivePoints)
         try container.encode(self.negativePoints, forKey: .negativePoints)
         try container.encode(self.userInteraction, forKey: .userInteraction)

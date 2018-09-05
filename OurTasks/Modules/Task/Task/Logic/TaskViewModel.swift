@@ -16,6 +16,9 @@ class TaskViewModel {
     var taskName: Variable<String> = Variable("")
     var taskOwner: Variable<String> = Variable("")
     var taskDate: Variable<String> = Variable("")
+    var eventPositivePoints: Variable<String> = Variable("")
+    var eventNegativePoints: Variable<String> = Variable("")
+    var generalPoints: Variable<String> = Variable("")
     
     var taskModel: Variable<TaskModel?> = Variable(nil)
     var taskID: String
@@ -44,7 +47,8 @@ class TaskViewModel {
     }
     
     private func bindUser(model: TaskModel) {
-        let userRef = FirebaseReferences().userRef.document(model.owner)
+        guard let userID = model.user else { return }
+        let userRef = FirebaseReferences().userRef.document(userID)
         userRef.getDocument { (document, error) in
             if let document = document {
                 guard let data = document.data() else { return }
@@ -52,6 +56,9 @@ class TaskViewModel {
                 self.taskName.value = model.name
                 self.taskDate.value = model.endDate
                 self.taskOwner.value = userModel.username
+                self.eventNegativePoints.value = String(model.negativePoints)
+                self.eventPositivePoints.value = String(model.positivePoints)
+                self.generalPoints.value = String(model.globalPositivePoints)
             } else {
                 print("User does not exist")
             }

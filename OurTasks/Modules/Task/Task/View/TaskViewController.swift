@@ -128,6 +128,18 @@ extension TaskViewController {
         self.viewModel?.taskDate.asObservable()
             .bind(to: self.taskEndDateLbl.rx.text)
             .disposed(by: self.disposeBag)
+        
+        self.viewModel?.eventNegativePoints.asObservable()
+            .bind(to: self.eventNegativePoints.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel?.eventPositivePoints.asObservable()
+            .bind(to: self.eventPositivePoints.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel?.generalPoints.asObservable()
+            .bind(to: self.generalPoints.rx.text)
+            .disposed(by: self.disposeBag)
     }
     
     private func prepareStateLabels() {

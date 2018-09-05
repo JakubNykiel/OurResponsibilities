@@ -13,7 +13,7 @@ struct EventModel: Codable {
     var startDate: String
     var endDate: String
     var admins: [String]?
-    var users: [String]?
+    var users: [String:Int]?
     var tasks: [String]?
     var winnerGlobalPoints: Int
     
@@ -29,7 +29,7 @@ struct EventModel: Codable {
         case winnerGlobalPoints
     }
     
-    init(name: String, startDate: String, endDate: String, admins: [String], users: [String]?, tasks: [String], winnerGlobalPoints: Int) {
+    init(name: String, startDate: String, endDate: String, admins: [String], users: [String:Int]?, tasks: [String], winnerGlobalPoints: Int) {
         self.name = name
         self.startDate = startDate
         self.endDate = endDate
@@ -46,7 +46,7 @@ struct EventModel: Codable {
         self.startDate = try container.decode(String?.self, forKey: .startDate) ?? ""
         self.endDate = try container.decode(String?.self, forKey: .endDate) ?? ""
         self.admins = try? container.decode([String]?.self, forKey: .admins) ?? []
-        self.users = try? container.decode([String]?.self, forKey: .users) ?? []
+        self.users = try? container.decode([String:Int]?.self, forKey: .users) ?? [:]
         self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
         self.winnerGlobalPoints = try container.decode(Int?.self, forKey: .winnerGlobalPoints) ?? 0
     }

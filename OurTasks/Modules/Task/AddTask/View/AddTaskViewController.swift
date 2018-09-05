@@ -9,8 +9,8 @@
 import UIKit
 import RxSwift
 
-class AddTaskViewController: UITableViewController {
-    
+class AddTaskViewController: UITableViewController, UserSelectedDelegate {
+
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var nameTF: UITextField!
     
@@ -89,7 +89,7 @@ class AddTaskViewController: UITableViewController {
             owner: currentUserUid,
             name: self.nameTF.text ?? "",
             endDate: self.endTF.text ?? "",
-            users: [],
+            user: self.viewModel?.taskUser?.first?.key ?? "",
             positivePoints: Int(self.eventPositivePointsTF.text ?? "0")!,
             negativePoints: -Int(self.eventNegativePointsTF.text ?? "0")!,
             userInteraction: self.usersInteractionSwitch.isOn,
@@ -144,6 +144,10 @@ extension AddTaskViewController {
         self.globalPositivePointsTF.tag = 3
         self.globalPositivePointsTF.setBottomBorder()
         self.globalPositivePointsTF.delegate = self
+        
+        self.userTF.tag = 4
+        self.userTF.setBottomBorder()
+        self.userTF.delegate = self
         
         self.eventPositivePointsTF.tag = 5
         self.eventPositivePointsTF.setBottomBorder()
@@ -216,7 +220,17 @@ extension AddTaskViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
-            
+            let modalVC = StoryboardManager.usersViewController(eventID: self.viewModel?.eventID ?? "")
+            modalVC.delegate = self
+            self.present(modalVC, animated: true, completion: nil)
         }
+    }
+    
+}
+//MARK: Delegate
+extension AddTaskViewController {
+    func userSelected(user: [String : UserModel]) {
+        self.viewModel?.taskUser = user
+        self.userTF.text = user.first?.value.username
     }
 }
