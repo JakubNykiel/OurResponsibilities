@@ -27,9 +27,11 @@ class AddTaskViewModel {
     var viewState: AddTaskViewState?
     
     var eventID: String
+    var groupID: String
     var qrCode: QRCode?
     
-    init(eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) {
+    init(groupID: String, eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) {
+        self.groupID = groupID
         self.eventID = eventID
         self.viewState = state
         self.taskModelToUpdate = taskModel

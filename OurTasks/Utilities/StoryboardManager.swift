@@ -32,14 +32,16 @@ struct StoryboardManager {
         let event = EventViewController.self
         let task = TaskViewController.self
         let user = UserViewController.self
+        let menu = MenuViewController.self
     }
 
     enum StoryboardNames: String {
         case Login
         case Register
         case GroupList
+        case Menu
         case AddGroup
-        case ARKit
+//        case ARKit
         case Group
         case AddEvent
         case AddTask
@@ -60,6 +62,7 @@ struct StoryboardManager {
         case eventViewController
         case taskViewController
         case userViewController
+        case menuViewController
     }
     
     //MARK: GENERAL
@@ -75,6 +78,10 @@ struct StoryboardManager {
         let userVC = self.viewController(ViewControllerTypes().user, withIdentifier: ViewControllerIdentifiers.userViewController.rawValue, fromStoryboard: StoryboardNames.User.rawValue)
         userVC.viewModel = UserViewModel(eventID: eventID)
         return userVC
+    }
+    static func menuViewController() -> MenuViewController {
+        let menuVC = self.viewController(ViewControllerTypes().menu, withIdentifier: ViewControllerIdentifiers.menuViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        return menuVC
     }
     //MARK: GROUP
     static func groupListViewController() -> GroupListViewController {
@@ -106,9 +113,9 @@ struct StoryboardManager {
         return eventVC
     }
     //MARK: TASK
-    static func addTaskViewController(_ eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) -> AddTaskViewController {
+    static func addTaskViewController(_ groupID: String, _ eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) -> AddTaskViewController {
         let addTaskVC = self.viewController(ViewControllerTypes().addTask, withIdentifier: ViewControllerIdentifiers.addTaskViewController.rawValue, fromStoryboard: StoryboardNames.AddTask.rawValue)
-        let viewModel = AddTaskViewModel.init(eventID: eventID, state: state, taskModel: taskModel)
+        let viewModel = AddTaskViewModel.init(groupID: groupID, eventID: eventID, state: state, taskModel: taskModel)
         addTaskVC.viewModel = viewModel
         return addTaskVC
     }
@@ -122,7 +129,7 @@ struct StoryboardManager {
     
     @available(iOS 11.0, *)
     static func arKitViewController() -> ARKitViewController {
-        let arVC = self.viewController(ARKitViewController.self, withIdentifier: ViewControllerIdentifiers.arKitViewController.rawValue, fromStoryboard: StoryboardNames.ARKit.rawValue)
+        let arVC = self.viewController(ARKitViewController.self, withIdentifier: ViewControllerIdentifiers.arKitViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
         return arVC
     }
 }

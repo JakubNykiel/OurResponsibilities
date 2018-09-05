@@ -36,15 +36,18 @@ enum GroupListSection: SectionModelType {
 }
 enum GroupListItemType {
     case userGroups(_: UserGroupsCellModel)
+    case userTasks(_: GroupTaskCellModel)
     case noResult(_: NoResultCellModel)
 }
 
 enum GroupListSectionTitle: String {
     case userGroups
+    case userTasks
     
     var rawValue: String  {
         switch self {
-        case .userGroups: return "my_groups".localize()
+        case .userGroups: return "choose_group".localize()
+        case .userTasks: return "your_tasks".localize()
         }
     }
 }

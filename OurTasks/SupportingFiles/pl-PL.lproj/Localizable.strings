@@ -27,11 +27,13 @@
 "invite_group" = "Zaproś do grupy:";
 //GroupList
 "admins" = "Zarzadzający:";
+"choose_group" = "Wybierz grupę";
 "groups" = "Grupy";
 "my_groups" = "Moje grupy";
 "invites" = "Zaproszenia do grup";
 "no_group_user" = "Nie masz żadnej grupy";
 "no_invites" = "Nie masz żadnych zaproszeń!";
+"your_tasks" = "Twoje zadania";
 //Group
 "my_tasks" = "Moje zadania";
 "past_events" = "Historia wydarzeń";
@@ -68,6 +70,7 @@
 "choose_user" = "Wybierz osobę";
 "task_assigned" = "Zadanie jest przypisane do: ";
 "task_name" = "Nazwa zadania";
+"no_tasks" = "Brak zadań";
 //Event
 "no_events" = "Brak wydarzeń";
 "event_name" = "Nazwa wydarzenia";

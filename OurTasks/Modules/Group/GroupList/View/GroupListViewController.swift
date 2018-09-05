@@ -13,7 +13,6 @@ import RxDataSources
 
 class GroupListViewController: UIViewController {
 
-    @IBOutlet weak var arButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: GroupListViewModel!
@@ -22,6 +21,10 @@ class GroupListViewController: UIViewController {
         switch dataSource[indexPath] {
         case .userGroups(let model):
             let cell = tableView.dequeueReusableCell(withIdentifier: "userGroupCell", for: indexPath) as! GroupCell
+            cell.configure(model)
+            return cell
+        case .userTasks(let model):
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupTaskCell", for: indexPath) as! GroupTaskCell
             cell.configure(model)
             return cell
         case .noResult(let model):
@@ -56,8 +59,10 @@ class GroupListViewController: UIViewController {
             .subscribe(onNext: {
                 switch self.dataSource[$0]{
                 case .userGroups(let model):
-                    let groupVC = StoryboardManager.groupViewController(model.groupModel, groupID: model.id)
-                    self.navigationController?.pushViewController(groupVC, animated: true)
+//                    let groupVC = StoryboardManager.groupViewController(model.groupModel, groupID: model.id)
+//                    self.navigationController?.pushViewController(groupVC, animated: true)
+                    let menuVC = StoryboardManager.menuViewController()
+                    self.navigationController?.pushViewController(menuVC, animated: true)
                     return
                 default: return
                 }
@@ -75,12 +80,6 @@ class GroupListViewController: UIViewController {
         self.viewModel.userGroups = [:]
         self.viewModel.getUserGroups()
 //        self.viewModel.getInvitesGroups()
-    }
-    
-    @IBAction func presentAR(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "ARKit", bundle: nil)
-        let groupListVC = storyBoard.instantiateViewController(withIdentifier: "arKitViewController")
-        self.navigationController?.present(groupListVC, animated: true, completion: nil)
     }
     
     @IBAction func addGroupView(_ sender: Any) {
@@ -109,6 +108,7 @@ extension GroupListViewController: UITableViewDelegate {
         label.textColor = AppColor.applePurple
         label.font = UIFont.boldSystemFont(ofSize: 20.0)
         view.addSubview(label)
+
         view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 21.0))
         view.addConstraint(NSLayoutConstraint.init(item: label, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 21.0))
         

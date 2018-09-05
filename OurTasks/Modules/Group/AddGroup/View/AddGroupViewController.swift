@@ -118,6 +118,7 @@ extension AddGroupViewController {
 //MARK: Localize
 extension AddGroupViewController {
     private func prepareTexts() {
+        self.navigationItem.title = "add_group".localize()
         self.nameTF.placeholder = "group_name".localize()
         self.groupColorLbl.text = "group_color".localize()
         self.addBtn.setTitle("add_group".localize(), for: .normal)

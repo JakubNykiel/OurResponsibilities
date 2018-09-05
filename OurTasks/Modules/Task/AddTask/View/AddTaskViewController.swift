@@ -97,7 +97,9 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
             arTask: self.viewModel?.arTaskModel,
             state: TaskState.backlog.rawValue,
             globalPositivePoints: Int(self.globalPositivePointsTF.text ?? "0")!,
-            description: self.descTxt.text)
+            description: self.descTxt.text,
+            groupID: self.viewModel?.groupID ?? "",
+            eventID: self.viewModel?.eventID ?? "")
         if self.viewModel?.viewState == AddTaskViewState.add {
             self.viewModel?.addTaskToDatabase()
         } else {

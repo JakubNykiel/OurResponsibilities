@@ -27,11 +27,13 @@
 "invite_group" = "Invite to group";
 //GroupList
 "admins" = "Admins: ";
+"choose_group" = "Choose group";
 "groups" = "Groups";
 "my_groups" = "My Groups";
 "invites" = "Invites";
 "no_group_user" = "No groups";
 "no_invites" = "No invites to group";
+"your_tasks" = "Your tasks";
 //Group
 "my_tasks" = "My tasks:";
 "past_events" = "Events in the past:";
@@ -68,6 +70,7 @@
 "choose_user" = "Choose user";
 "task_assigned" = "Task is assigned to: ";
 "task_name" = "Task name";
+"no_tasks" = "No tasks";
 //Event
 "no_events" = "No events";
 "event_name" = "Event name";

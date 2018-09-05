@@ -193,11 +193,6 @@
                                                                                     </view>
                                                                                     <color key="backgroundColor" red="0.0" green="0.41176470590000003" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <size key="customSize" width="84" height="60"/>
-                                                                                    <userDefinedRuntimeAttributes>
-                                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                                                            <integer key="value" value="2"/>
-                                                                                        </userDefinedRuntimeAttribute>
-                                                                                    </userDefinedRuntimeAttributes>
                                                                                 </collectionViewCell>
                                                                             </cells>
                                                                         </collectionView>

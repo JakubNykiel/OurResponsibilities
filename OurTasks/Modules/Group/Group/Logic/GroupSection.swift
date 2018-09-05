@@ -68,8 +68,8 @@ struct GroupEventCellModel {
 
 struct GroupTaskCellModel {
     var id: String
-    var taskName: String
-    var endDate: Date?
+    var groupName: String
+    var taskModel: TaskModel
 }
 struct GroupGlobalRankingCellModel {
     var position: Int

@@ -72,11 +72,11 @@ class AddEventViewController: UITableViewController {
     @IBAction func addEvent(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
         if self.viewModel.viewState == AddEventViewState.add {
-            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: [currentUserUid], users: self.viewModel.users, tasks: [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0, groupID: self.viewModel.groupID)
             self.viewModel.addEventToDatabase()
         } else {
             guard let model = self.viewModel.eventModelToUpdate?.first?.value else { return }
-            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: model.admins ?? [], users: model.users, tasks: model.tasks ?? [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0)
+            self.viewModel.eventModel = EventModel.init(name: nameTF.text ?? "", startDate: startDateTF.text ?? "", endDate: endDateTF.text ?? "", admins: model.admins ?? [], users: model.users, tasks: model.tasks ?? [], winnerGlobalPoints: Int(self.winnerPointsTF.text ?? "") ?? 0, groupID: self.viewModel.groupID)
             self.viewModel.updateEvent()
         }
     }

@@ -57,7 +57,7 @@ class TaskViewController: UIViewController {
     @IBAction func editTaskAction(_ sender: Any) {
         guard let taskID = self.viewModel?.taskID else { return }
         guard let taskModel = self.viewModel?.taskModel.value else { return }
-        let addTaskVC = StoryboardManager.addTaskViewController("", state: .update, taskModel: [ taskID : taskModel])
+        let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, taskModel: [ taskID : taskModel])
         addTaskVC.modalPresentationStyle = .overCurrentContext
         self.navigationController?.pushViewController(addTaskVC, animated: true)
     }
