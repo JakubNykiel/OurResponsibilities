@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0EB1182FBE45AFE0AB0DF531 /* Pods_OurTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C3D99AE7B6AF67E4F99BB93 /* Pods_OurTasks.framework */; };
-		743F21FA2098791300B25E30 /* Group.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 743F21F92098791300B25E30 /* Group.storyboard */; };
 		743F21FC209879F600B25E30 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F21FB209879F600B25E30 /* GroupViewController.swift */; };
 		743F21FE20987A0400B25E30 /* GroupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F21FD20987A0400B25E30 /* GroupViewModel.swift */; };
 		743F220120988E5F00B25E30 /* UIColor+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743F220020988E5F00B25E30 /* UIColor+HexString.swift */; };
@@ -48,10 +47,8 @@
 		C3415F5A20697426007E7EED /* GroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3415F5920697426007E7EED /* GroupCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
+		C38B7ED7214096E700F8385F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B7ED6214096E700F8385F /* MenuViewModel.swift */; };
 		C39286B2212B57C000734627 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39286B1212B57C000734627 /* Event.storyboard */; };
-		C397D3742140250700F83E7D /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397D3732140250600F83E7D /* MyViewController.swift */; };
-		C397D3762140253100F83E7D /* MyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397D3752140253100F83E7D /* MyViewModel.swift */; };
-		C397D3782140253D00F83E7D /* MySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397D3772140253D00F83E7D /* MySection.swift */; };
 		C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */; };
 		C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */; };
 		C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39AB1C8207820CD00A3B178 /* QRCode.swift */; };
@@ -92,7 +89,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		743F21F92098791300B25E30 /* Group.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Group.storyboard; sourceTree = "<group>"; };
 		743F21FB209879F600B25E30 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		743F21FD20987A0400B25E30 /* GroupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewModel.swift; sourceTree = "<group>"; };
 		743F220020988E5F00B25E30 /* UIColor+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+HexString.swift"; sourceTree = "<group>"; };
@@ -141,10 +137,8 @@
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C377FD1C212862C000E51394 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../Desktop/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C38B7ED6214096E700F8385F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		C39286B1212B57C000734627 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
-		C397D3732140250600F83E7D /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
-		C397D3752140253100F83E7D /* MyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewModel.swift; sourceTree = "<group>"; };
-		C397D3772140253D00F83E7D /* MySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySection.swift; sourceTree = "<group>"; };
 		C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
 		C39AB1C6207820B000A3B178 /* ConvertFromCamera + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConvertFromCamera + UIView.swift"; sourceTree = "<group>"; };
 		C39AB1C8207820CD00A3B178 /* QRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCode.swift; sourceTree = "<group>"; };
@@ -200,7 +194,6 @@
 			children = (
 				C3D3B1BF1FADD70C00E04716 /* AddGroup */,
 				C3C11DB21F83B1460074D9AC /* GroupList */,
-				C338B4CC210E2A520070865B /* Group */,
 			);
 			path = Group;
 			sourceTree = "<group>";
@@ -219,7 +212,6 @@
 			children = (
 				74EEFF0D20A3A43100B61EF8 /* Cells */,
 				743F21FB209879F600B25E30 /* GroupViewController.swift */,
-				743F21F92098791300B25E30 /* Group.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -494,32 +486,6 @@
 			path = Tab;
 			sourceTree = "<group>";
 		};
-		C397D370214024EA00F83E7D /* My */ = {
-			isa = PBXGroup;
-			children = (
-				C397D372214024F400F83E7D /* View */,
-				C397D371214024EF00F83E7D /* Logic */,
-			);
-			path = My;
-			sourceTree = "<group>";
-		};
-		C397D371214024EF00F83E7D /* Logic */ = {
-			isa = PBXGroup;
-			children = (
-				C397D3752140253100F83E7D /* MyViewModel.swift */,
-				C397D3772140253D00F83E7D /* MySection.swift */,
-			);
-			path = Logic;
-			sourceTree = "<group>";
-		};
-		C397D372214024F400F83E7D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C397D3732140250600F83E7D /* MyViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		C397F0ED20C3248100E4B6CA /* Dispatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,7 +630,7 @@
 		C3BEE4B1213FD15600F6E11A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				C397D370214024EA00F83E7D /* My */,
+				C338B4CC210E2A520070865B /* Group */,
 				C397D36F214024DF00F83E7D /* Tab */,
 			);
 			path = Menu;
@@ -682,6 +648,7 @@
 		C3BEE4B3213FD17800F6E11A /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				C38B7ED6214096E700F8385F /* MenuViewModel.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -1017,7 +984,6 @@
 				C301FF271F66C7070045641A /* LaunchScreen.storyboard in Resources */,
 				743F2206209A79F100B25E30 /* Localizable.strings in Resources */,
 				C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */,
-				743F21FA2098791300B25E30 /* Group.storyboard in Resources */,
 				C301FF241F66C7070045641A /* Assets.xcassets in Resources */,
 				C32FE6361F68192800692B3D /* Register.storyboard in Resources */,
 				C39286B2212B57C000734627 /* Event.storyboard in Resources */,
@@ -1132,6 +1098,7 @@
 				C3A5F6261F66E76D002A9B30 /* StoryboardManager.swift in Sources */,
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */,
+				C38B7ED7214096E700F8385F /* MenuViewModel.swift in Sources */,
 				74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */,
 				C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */,
 				C331344520B7497200216C5B /* AddTaskViewController.swift in Sources */,
@@ -1145,7 +1112,6 @@
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,
-				C397D3742140250700F83E7D /* MyViewController.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C326929D21346D280099AED9 /* TaskViewModel.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
@@ -1159,7 +1125,6 @@
 				C3D463EB213EA61600F1AD47 /* UserViewController.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
 				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
-				C397D3762140253100F83E7D /* MyViewModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3D463EF213EA63D00F1AD47 /* UserViewModel.swift in Sources */,
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
@@ -1173,7 +1138,6 @@
 				C3D463F2213EAB6E00F1AD47 /* UserCell.swift in Sources */,
 				C3E1086721297B26006A278B /* EventViewModel.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,
-				C397D3782140253D00F83E7D /* MySection.swift in Sources */,
 				C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */,
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
 				743F2205209A77D400B25E30 /* String+Hex.swift in Sources */,

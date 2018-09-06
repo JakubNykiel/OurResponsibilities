@@ -41,8 +41,6 @@ struct StoryboardManager {
         case GroupList
         case Menu
         case AddGroup
-//        case ARKit
-        case Group
         case AddEvent
         case AddTask
         case Event
@@ -79,8 +77,9 @@ struct StoryboardManager {
         userVC.viewModel = UserViewModel(eventID: eventID)
         return userVC
     }
-    static func menuViewController() -> MenuViewController {
+    static func menuViewController(groupID: String, groupModel: GroupModel) -> MenuViewController {
         let menuVC = self.viewController(ViewControllerTypes().menu, withIdentifier: ViewControllerIdentifiers.menuViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        menuVC.viewModel = MenuViewModel(groupID: groupID, groupModel: groupModel)
         return menuVC
     }
     //MARK: GROUP
@@ -94,7 +93,7 @@ struct StoryboardManager {
         return addGroupVC
     }
     static func groupViewController(_ groupModel: GroupModel, groupID: String) -> GroupViewController {
-        let groupVC = self.viewController(ViewControllerTypes().group, withIdentifier: ViewControllerIdentifiers.groupViewController.rawValue, fromStoryboard: StoryboardNames.Group.rawValue)
+        let groupVC = self.viewController(ViewControllerTypes().group, withIdentifier: ViewControllerIdentifiers.groupViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
         let viewModel = GroupViewModel.init(groupModel: groupModel, groupID: groupID)
         groupVC.viewModel = viewModel
         return groupVC

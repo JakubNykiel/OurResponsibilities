@@ -59,9 +59,7 @@ class GroupListViewController: UIViewController {
             .subscribe(onNext: {
                 switch self.dataSource[$0]{
                 case .userGroups(let model):
-//                    let groupVC = StoryboardManager.groupViewController(model.groupModel, groupID: model.id)
-//                    self.navigationController?.pushViewController(groupVC, animated: true)
-                    let menuVC = StoryboardManager.menuViewController()
+                    let menuVC = StoryboardManager.menuViewController(groupID: model.id, groupModel: model.groupModel)
                     self.navigationController?.pushViewController(menuVC, animated: true)
                     return
                 default: return
