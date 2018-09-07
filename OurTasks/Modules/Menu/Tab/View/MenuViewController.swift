@@ -25,7 +25,8 @@ extension MenuViewController {
     
     private func preapreViewModels() {
         guard let views = self.viewControllers else { return }
-        for view in views {
+        for naviViews in views {
+            let view = (naviViews as? UINavigationController)?.viewControllers.first
             if view is GroupViewController {
                 let groupVC = view as! GroupViewController
                 guard let model = self.viewModel?.groupModel,

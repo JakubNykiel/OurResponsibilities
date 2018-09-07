@@ -13,22 +13,22 @@
         <!--Menu View Controller-->
         <scene sceneID="5SM-Fp-7G4">
             <objects>
-                <tabBarController storyboardIdentifier="menuViewController" id="M7D-UK-hbI" customClass="MenuViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="menuViewController" automaticallyAdjustsScrollViewInsets="NO" id="M7D-UK-hbI" customClass="MenuViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cUS-OQ-38Z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="upC-EJ-hj5" kind="relationship" relationship="viewControllers" id="ubk-S2-pdt"/>
-                        <segue destination="bc9-uk-WYu" kind="relationship" relationship="viewControllers" id="Clr-BI-NEY"/>
+                        <segue destination="A0H-By-UfH" kind="relationship" relationship="viewControllers" id="ubk-S2-pdt"/>
+                        <segue destination="w5Y-rz-S9v" kind="relationship" relationship="viewControllers" id="Clr-BI-NEY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bdo-Zy-0oJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-801" y="-237"/>
         </scene>
-        <!--ARKit-->
+        <!--Kit View Controller-->
         <scene sceneID="O34-N0-Qeg">
             <objects>
                 <viewController storyboardIdentifier="arKitViewController" id="bc9-uk-WYu" customClass="ARKitViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3L3-yu-Ktm">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </arscnView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hG9-rT-2Nt">
                                 <rect key="frame" x="163.5" y="538" width="48" height="48"/>
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="UMB-ou-jYk">
-                                <rect key="frame" x="40" y="60" width="295" height="80"/>
+                                <rect key="frame" x="40" y="104" width="295" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="fwZ-20-Yf7"/>
                                 </constraints>
@@ -167,7 +167,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rFm-jq-w9c"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="ARKit" id="bAJ-wA-BTX"/>
+                    <navigationItem key="navigationItem" id="Obr-fq-zwl"/>
                     <connections>
                         <outlet property="infoLbl" destination="UMB-ou-jYk" id="eWC-G2-Ns8"/>
                         <outlet property="qrBtn" destination="CBd-9H-p0w" id="eSv-ex-HAE"/>
@@ -179,13 +179,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUh-M0-ynB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-462"/>
+            <point key="canvasLocation" x="1020" y="-462.8185907046477"/>
         </scene>
-        <!--Item-->
+        <!--Group View Controller-->
         <scene sceneID="REF-VW-fSa">
             <objects>
-                <tableViewController storyboardIdentifier="groupViewController" id="upC-EJ-hj5" customClass="GroupViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Sqm-r4-bio">
+                <tableViewController storyboardIdentifier="groupViewController" automaticallyAdjustsScrollViewInsets="NO" id="upC-EJ-hj5" customClass="GroupViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="Sqm-r4-bio">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -352,7 +352,6 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="TPy-tr-H1s"/>
                     <navigationItem key="navigationItem" id="wT9-7W-1NA">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="G0W-FZ-UvG">
                             <connections>
@@ -363,10 +362,50 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Aw-ld-M0m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="274"/>
+            <point key="canvasLocation" x="1020" y="273.91304347826087"/>
+        </scene>
+        <!--ARKit-->
+        <scene sceneID="rZE-1B-19V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="w5Y-rz-S9v" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="ARKit" image="icAR" id="bAJ-wA-BTX"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fyc-rh-EB0">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="bc9-uk-WYu" kind="relationship" relationship="rootViewController" id="5aC-bF-50l"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TuC-n2-pS2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80.799999999999997" y="-462.8185907046477"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="a00-VT-g3a">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="A0H-By-UfH" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="icCalendar" id="TPy-tr-H1s"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DXm-cx-zCq">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="upC-EJ-hj5" kind="relationship" relationship="rootViewController" id="aMn-fG-OGX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5xz-mb-1IL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="80.799999999999997" y="273.91304347826087"/>
         </scene>
     </scenes>
     <resources>
+        <image name="icAR" width="18.75" height="18.75"/>
+        <image name="icCalendar" width="18.75" height="18.75"/>
         <image name="icQR" width="220" height="220"/>
         <image name="icSurfaceArea" width="512" height="512"/>
     </resources>

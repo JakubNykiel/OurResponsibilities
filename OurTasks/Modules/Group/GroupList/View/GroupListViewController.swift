@@ -60,7 +60,7 @@ class GroupListViewController: UIViewController {
                 switch self.dataSource[$0]{
                 case .userGroups(let model):
                     let menuVC = StoryboardManager.menuViewController(groupID: model.id, groupModel: model.groupModel)
-                    self.navigationController?.pushViewController(menuVC, animated: true)
+                    self.present(menuVC, animated: true, completion: nil)
                     return
                 default: return
                 }

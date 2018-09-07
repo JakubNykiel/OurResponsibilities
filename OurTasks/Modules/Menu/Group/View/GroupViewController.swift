@@ -23,7 +23,6 @@ class GroupViewController: UITableViewController {
             
         }
     }
-    
     var viewModel: GroupViewModel!
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private var disposeBag: DisposeBag = DisposeBag()
@@ -31,6 +30,7 @@ class GroupViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
             case .pastEvents(let model):
@@ -58,8 +58,9 @@ class GroupViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.disposeBag = DisposeBag()
-        
+        self.navigationController?.isNavigationBarHidden = false
         self.tableView.dataSource = nil
+        self.tableView.tableHeaderView = UIView()
         self.tableView.tableFooterView = UIView()
         
         self.viewModel.getEvents()
@@ -87,7 +88,7 @@ class GroupViewController: UITableViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
+//        self.navigationController?.navigationBar.backgroundColor = UIColor.clear
     }
     
     @IBAction func toAddEvent(_ sender: Any) {
@@ -104,7 +105,7 @@ class GroupViewController: UITableViewController {
 extension GroupViewController {
     private func prepareNavigation() {
         let groupColor = self.viewModel.groupModel.color.hexStringToUIColor()
-        self.navigationItem.title = self.viewModel.groupModel.name.capitalized
+        self.navigationController?.navigationItem.title = self.viewModel.groupModel.name.capitalized
         self.navigationController?.navigationBar.backgroundColor = groupColor.withAlphaComponent(0.2)
     }
 }
@@ -115,12 +116,12 @@ extension GroupViewController {
         return 60.0
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 36.0
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-    }
-     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40.0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
