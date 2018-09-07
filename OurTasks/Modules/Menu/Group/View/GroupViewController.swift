@@ -105,7 +105,7 @@ class GroupViewController: UITableViewController {
 extension GroupViewController {
     private func prepareNavigation() {
         let groupColor = self.viewModel.groupModel.color.hexStringToUIColor()
-        self.navigationController?.navigationItem.title = self.viewModel.groupModel.name.capitalized
+        self.navigationItem.title = self.viewModel.groupModel.name.capitalized
         self.navigationController?.navigationBar.backgroundColor = groupColor.withAlphaComponent(0.2)
     }
 }
