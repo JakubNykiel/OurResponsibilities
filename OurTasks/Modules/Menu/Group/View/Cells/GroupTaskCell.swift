@@ -11,7 +11,9 @@ import UIKit
 class GroupTaskCell: UITableViewCell {
     
     @IBOutlet weak var taskName: UILabel!
+    @IBOutlet weak var taskEndDateTitle: UILabel!
     @IBOutlet weak var taskEndDate: UILabel!
+    @IBOutlet weak var groupNameTitle: UILabel!
     @IBOutlet weak var groupName: UILabel!
 
     private let dateFormatter = DateFormatter()
@@ -19,6 +21,8 @@ class GroupTaskCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
+        self.taskEndDateTitle.text = "end".localize()
+        self.groupNameTitle.text = "group_name".localize()
     }
 
     func configure(_ model: GroupTaskCellModel) {

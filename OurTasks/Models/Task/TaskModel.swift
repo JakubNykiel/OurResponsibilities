@@ -13,6 +13,7 @@ enum TaskState: String {
     case inProgress = "In Progress"
     case done = "Done"
     case toFix = "To Fix"
+    case review = "Review"
     case unknown = "Unknown"
 }
 

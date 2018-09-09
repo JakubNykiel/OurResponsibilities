@@ -76,6 +76,34 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="noResultCell" rowHeight="60" id="S5g-nq-lYr" customClass="NoResultCell" customModule="OurTasks" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="192" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="S5g-nq-lYr" id="53m-to-ULz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYV-Ja-Ors">
+                                            <rect key="frame" x="20" y="0.0" width="335" height="59.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="59.5" id="xIW-Rc-VoG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="qYV-Ja-Ors" firstAttribute="top" secondItem="53m-to-ULz" secondAttribute="top" id="6fd-DO-zRz"/>
+                                        <constraint firstItem="qYV-Ja-Ors" firstAttribute="leading" secondItem="53m-to-ULz" secondAttribute="leading" constant="20" id="EEz-e4-HwV"/>
+                                        <constraint firstAttribute="trailing" secondItem="qYV-Ja-Ors" secondAttribute="trailing" constant="20" id="uLd-Fx-V9b"/>
+                                        <constraint firstAttribute="bottom" secondItem="qYV-Ja-Ors" secondAttribute="bottom" id="veO-0E-sO0"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="descLbl" destination="qYV-Ja-Ors" id="CV8-SL-zdL"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" id="P6g-F4-xH6">

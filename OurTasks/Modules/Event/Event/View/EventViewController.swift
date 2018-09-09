@@ -17,6 +17,7 @@ class EventViewController: UITableViewController {
     enum Constants {
         struct CellIdentifiers {
             static let eventTask = "taskCell"
+            static let noResult = "noResultCell"
         }
         
         struct NibNames {
@@ -40,6 +41,10 @@ class EventViewController: UITableViewController {
         
         self.dataSource = RxTableViewSectionedReloadDataSource<EventSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
+            case .unassignedTasks(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
+                cell.configure(model)
+                return cell
             case .allTasks(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
                 cell.configure(model)
@@ -47,6 +52,10 @@ class EventViewController: UITableViewController {
             case .doneTasks(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
                 cell.configure(model)
+                return cell
+            case .noResult(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.noResult, for: indexPath) as! NoResultCell
+                cell.descLbl.text = model.description
                 return cell
             }
         })
@@ -93,6 +102,11 @@ extension EventViewController {
                 case .allTasks(let model):
                     let taskVC = StoryboardManager.taskViewController(model.id)
                     self.navigationController?.pushViewController(taskVC, animated: true)
+                case .unassignedTasks(let model):
+                    let taskVC = StoryboardManager.taskViewController(model.id)
+                    self.navigationController?.pushViewController(taskVC, animated: true)
+                case .noResult(let model):
+                    break
                 }
             }).disposed(by: self.disposeBag)
     }

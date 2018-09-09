@@ -72,6 +72,10 @@
 "task_assigned" = "Zadanie jest przypisane do: ";
 "task_name" = "Nazwa zadania";
 "no_tasks" = "Brak zadań";
+"unassigned_tasks" = "Nieprzypisane zadania";
+"no_unassigned_tasks" = "Brak nieprzypisanych zadań";
+"no_done_tasks" = "Żadne zadanie nie zostało wykonane";
+"no_all_tasks" = "Brak zadań";
 //Event
 "no_events" = "Brak wydarzeń";
 "event_name" = "Nazwa wydarzenia";

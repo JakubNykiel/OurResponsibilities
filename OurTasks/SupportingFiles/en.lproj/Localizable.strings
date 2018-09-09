@@ -72,6 +72,10 @@
 "task_assigned" = "Task is assigned to: ";
 "task_name" = "Task name";
 "no_tasks" = "No tasks";
+"unassigned_tasks" = "Unassigned tasks";
+"no_unassigned_tasks" = "No unassigned tasks";
+"no_done_tasks" = "No done tasks";
+"no_all_tasks" = "Event has no tasks";
 //Event
 "no_events" = "No events";
 "event_name" = "Event name";

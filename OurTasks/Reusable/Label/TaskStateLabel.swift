@@ -11,6 +11,11 @@ import UIKit
 
 class TaskStateLabel: UILabel {
     
+    override func drawText(in rect: CGRect) {
+        let insets = UIEdgeInsets.init(top: 0, left: 5, bottom: 0, right: 5)
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
+    }
+    
     override func awakeFromNib() {
         self.layer.masksToBounds = true
         self.layer.borderWidth = 2
@@ -31,15 +36,18 @@ class TaskStateLabel: UILabel {
             color = AppColor.appleYellow
         } else if taskState == .toFix {
             color = AppColor.appleRed
+        } else if taskState == .review {
+            color = AppColor.applePink
         }
         
+        self.textColor = UIColor.white
         if !isActive {
             color = AppColor.gray
+            self.textColor = color
         }
         
         self.layer.borderColor = color.cgColor
-        self.textColor = color
-        self.backgroundColor = color.withAlphaComponent(0.5)
+        self.backgroundColor = color.withAlphaComponent(0.8)
         self.text = state.capitalized
     }
 }

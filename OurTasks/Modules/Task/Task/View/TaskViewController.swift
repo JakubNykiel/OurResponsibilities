@@ -31,12 +31,14 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var generalPointsTitle: UILabel!
     @IBOutlet weak var generalPoints: UILabel!
     
-    @IBOutlet weak var stateStackView: UIStackView!
+    @IBOutlet weak var stateView: UIView!
     @IBOutlet weak var backlogLbl: TaskStateLabel!
     @IBOutlet weak var inProgressLbl: TaskStateLabel!
     @IBOutlet weak var toFixLbl: TaskStateLabel!
     @IBOutlet weak var doneLbl: TaskStateLabel!
+    @IBOutlet weak var reviewLbl: TaskStateLabel!
     
+    @IBOutlet weak var userStateView: UIStackView!
     @IBOutlet weak var resignButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
     @IBOutlet weak var doneButton: UIButton!
@@ -61,6 +63,7 @@ class TaskViewController: UIViewController {
         addTaskVC.modalPresentationStyle = .overCurrentContext
         self.navigationController?.pushViewController(addTaskVC, animated: true)
     }
+    
 }
 //MARK: Prepare
 extension TaskViewController {
@@ -89,6 +92,9 @@ extension TaskViewController {
         case TaskState.done.rawValue:
             self.doneLbl.configure(TaskState.done.rawValue, isActive: true)
             self.informationView.backgroundColor = self.doneLbl.backgroundColor
+        case TaskState.review.rawValue:
+            self.reviewLbl.configure(TaskState.review.rawValue, isActive: true)
+            self.informationView.backgroundColor = self.reviewLbl.backgroundColor
         default:
             break
         }
@@ -140,6 +146,19 @@ extension TaskViewController {
         self.viewModel?.generalPoints.asObservable()
             .bind(to: self.generalPoints.rx.text)
             .disposed(by: self.disposeBag)
+        
+        self.viewModel?.taskViewState.asObservable()
+            .subscribe(onNext: {
+                if $0 == .user {
+                    self.prepareUserView()
+                } else if $0 == .admin {
+                    self.prepareAdminView()
+                } else if $0 == .unassignedTaskUser {
+                    self.prepareUnassignedView()
+                } else if $0 == .viewer {
+                    self.prepareViewerView()
+                }
+            }).disposed(by: self.disposeBag)
     }
     
     private func prepareStateLabels() {
@@ -155,6 +174,9 @@ extension TaskViewController {
         self.doneLbl.configure(TaskState.done.rawValue, isActive: false)
         self.doneLbl.isUserInteractionEnabled = true
         self.doneLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
+        self.reviewLbl.configure(TaskState.review.rawValue, isActive: false)
+        self.reviewLbl.isUserInteractionEnabled = true
+        self.reviewLbl.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(changeTaskState(_:))))
         
     }
     
@@ -173,9 +195,33 @@ extension TaskViewController {
         } else if sender.view?.tag == 4 {
             self.viewModel?.updateTaskState(TaskState.done)
             model.state = TaskState.done.rawValue
+        } else if sender.view?.tag == 5 {
+            self.viewModel?.updateTaskState(TaskState.review)
+            model.state = TaskState.review.rawValue
         }
         
         self.view.layoutIfNeeded()
         self.prepareView(model)
+    }
+    
+    private func prepareUserView() {
+        self.userStateView.isHidden = false
+    }
+    
+    private func prepareAdminView() {
+        self.userStateView.isHidden = true
+        if self.viewModel?.taskModel.value?.state == TaskState.review.rawValue {
+        
+        } else {
+            
+        }
+    }
+    
+    private func prepareViewerView() {
+        self.userStateView.isHidden = true
+    }
+    
+    private func prepareUnassignedView() {
+        
     }
 }
