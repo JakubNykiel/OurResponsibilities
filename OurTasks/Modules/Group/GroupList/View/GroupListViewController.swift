@@ -98,6 +98,17 @@ extension GroupListViewController: UITableViewDelegate {
         return 36.0
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 1.0
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 1.0))
+        let backgroundView = UIView(frame: CGRect(x: 20.0, y: 0.0, width: view.bounds.width - 40.0, height: 1.0))
+        backgroundView.backgroundColor = AppColor.gray.withAlphaComponent(0.5)
+        view.addSubview(backgroundView)
+        return view
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         guard section < dataSource.sectionModels.count else { return UIView() }
