@@ -78,6 +78,7 @@
 "no_unassigned_tasks" = "Brak nieprzypisanych zadań";
 "no_done_tasks" = "Żadne zadanie nie zostało wykonane";
 "no_all_tasks" = "Brak zadań";
+"no_my_tasks" = "Nie masz żadnych zadań";
 //Event
 "no_events" = "Brak wydarzeń";
 "event_name" = "Nazwa wydarzenia";

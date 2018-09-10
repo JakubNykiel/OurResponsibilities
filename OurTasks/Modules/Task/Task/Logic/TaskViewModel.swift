@@ -49,7 +49,7 @@ class TaskViewModel {
         } else {
             if currentUserID == self.taskModel.value?.user {
                 self.taskViewState.value = .user
-            } else if self.taskModel.value?.owner == "" {
+            } else if self.taskModel.value?.user == "" {
                 self.taskViewState.value = .unassignedTaskUser
             } else {
                 self.taskViewState.value = .viewer
@@ -100,6 +100,69 @@ class TaskViewModel {
     }
     
     func updateTaskState(_ state: TaskState) {
-        let taskRef = FirebaseReferences().taskRef.document(self.taskID).setData(["state": state.rawValue], merge: true)
+        _ = FirebaseReferences().taskRef.document(self.taskID).setData(["state": state.rawValue], merge: true)
+    }
+    
+    func resignFromTask() {
+        let currentUserUID = self.firebaseManager.getCurrentUserUid()
+        
+        _ = FirebaseReferences().taskRef.document(self.taskID).setData(["user": ""], merge: true)
+        
+        let userRef = FirebaseReferences().userRef.document(currentUserUID)
+        userRef.getDocument { (document, error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                var tasks = data[FirebaseModel.tasks.rawValue] as? [String] ?? []
+                if let index = tasks.index(of: self.taskID) {
+                    tasks.remove(at: index)
+                    userRef.updateData([FirebaseModel.tasks.rawValue : tasks])
+                }
+            } else {
+                print("User does not exist")
+            }
+        }
+        
+        self.savePointsToDatabase(points: self.taskModel.value?.negativePoints ?? 0)
+    }
+    
+    func doneTask() {
+        
+    }
+    
+    
+    private func savePointsToDatabase(points: Int) {
+        let currentUserUID = self.firebaseManager.getCurrentUserUid()
+        guard let eventID = self.taskModel.value?.eventID else { return }
+        guard let groupID = self.taskModel.value?.groupID else { return }
+        let eventRef = FirebaseReferences().eventRef.document(eventID)
+        let groupRef = FirebaseReferences().groupRef.document(groupID)
+       
+        if points <= 0 {
+            eventRef.getDocument { (document, error) in
+                if let document = document {
+                    guard let data = document.data() else { return }
+                    var users = data[FirebaseModel.users.rawValue] as? [String:Int] ?? [:]
+                    guard var userPoints = users[currentUserUID] else { return }
+                    userPoints = userPoints + points
+                    eventRef.updateData(["users":userPoints])
+                } else {
+                    print("User does not exist")
+                }
+            }
+            
+            groupRef.getDocument { (document, error) in
+                if let document = document {
+                    guard let data = document.data() else { return }
+                    var users = data[FirebaseModel.users.rawValue] as? [String:Int] ?? [:]
+                    guard var userPoints = users[currentUserUID] else { return }
+                    userPoints = userPoints + points
+                    groupRef.updateData(["users":userPoints])
+                } else {
+                    print("User does not exist")
+                }
+            }
+        } else {
+            
+        }
     }
 }

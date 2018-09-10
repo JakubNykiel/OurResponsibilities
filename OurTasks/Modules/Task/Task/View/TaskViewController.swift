@@ -207,8 +207,8 @@ extension TaskViewController {
             model.state = TaskState.review.rawValue
         }
         //REFRESH
-        self.viewModel?.taskViewState.value = (self.viewModel?.taskViewState.value)!
         self.view.layoutIfNeeded()
+        self.viewModel?.taskViewState.value = (self.viewModel?.taskViewState.value)!
         self.prepareView(model)
     }
     
@@ -216,7 +216,7 @@ extension TaskViewController {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         let state = self.viewModel?.taskModel.value?.state
         self.userStateView.isHidden = false
-//        self.stateView.isUserInteractionEnabled = false
+        self.stateView.isUserInteractionEnabled = false
         if state == TaskState.done.rawValue {
             self.userStateView.isHidden = true
         } else if state == TaskState.toFix.rawValue {
@@ -237,17 +237,21 @@ extension TaskViewController {
     
     private func prepareAdminView() {
         self.navigationItem.rightBarButtonItem?.isEnabled = true
+        self.stateView.isUserInteractionEnabled = true
         self.userStateView.isHidden = true
     }
     
     private func prepareViewerView() {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.stateView.isUserInteractionEnabled = false
         self.userStateView.isHidden = true
     }
     
     private func prepareUnassignedView() {
         self.navigationItem.rightBarButtonItem?.isEnabled = false
-        self.userStateView.isHidden = true
-        
+        self.stateView.isUserInteractionEnabled = false
+        self.userStateView.isHidden = false
+        self.disableButton(resignButton)
+        self.checkButton.setTitle("take_task".localize(), for: .normal)
     }
 }

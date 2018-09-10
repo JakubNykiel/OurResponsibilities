@@ -36,6 +36,7 @@ enum EventSection: SectionModelType {
 }
 
 enum EventItemType {
+    case myTasks(_: EventTaskCellModel)
     case allTasks(_: EventTaskCellModel)
     case doneTasks(_: EventTaskCellModel)
     case unassignedTasks(_: EventTaskCellModel)
@@ -44,6 +45,7 @@ enum EventItemType {
 }
 
 enum EventSectionTitle: String {
+    case myTasks
     case allTasks
     case doneTasks
     case unassignedTasks
@@ -51,6 +53,7 @@ enum EventSectionTitle: String {
     
     var rawValue: String {
         switch self {
+        case .myTasks: return "my_tasks".localize()
         case .allTasks: return "all_tasks".localize()
         case .doneTasks: return "done_tasks".localize()
         case .unassignedTasks: return "unassigned_tasks".localize()

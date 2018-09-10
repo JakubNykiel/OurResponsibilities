@@ -53,6 +53,10 @@ class EventViewController: UITableViewController {
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
                 cell.configure(model)
                 return cell
+            case .myTasks(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
+                cell.configure(model)
+                return cell
             case .noResult(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.noResult, for: indexPath) as! NoResultCell
                 cell.descLbl.text = model.description
@@ -105,7 +109,10 @@ extension EventViewController {
                 case .unassignedTasks(let model):
                     let taskVC = StoryboardManager.taskViewController(model.id)
                     self.navigationController?.pushViewController(taskVC, animated: true)
-                case .noResult(let model):
+                case .myTasks(let model):
+                    let taskVC = StoryboardManager.taskViewController(model.id)
+                    self.navigationController?.pushViewController(taskVC, animated: true)
+                case .noResult(_):
                     break
                 }
             }).disposed(by: self.disposeBag)
