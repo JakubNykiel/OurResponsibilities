@@ -74,7 +74,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GE6-E7-SPo">
-                                <rect key="frame" x="60" y="206" width="255" height="255"/>
+                                <rect key="frame" x="60" y="144" width="255" height="255"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5f-35-oCU">
                                         <rect key="frame" x="8" y="8" width="67.5" height="14"/>
@@ -250,15 +250,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-Om-VAr">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xSm-Om-VAr">
                                 <rect key="frame" x="20" y="603" width="335" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VRo-2e-gmw">
-                                        <rect key="frame" x="0.0" y="0.0" width="93.5" height="48"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="48"/>
+                                        <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Resign">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -267,8 +270,8 @@
                                         </userDefinedRuntimeAttributes>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoU-fb-cSQ">
-                                        <rect key="frame" x="102.5" y="0.0" width="130" height="48"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <rect key="frame" x="205" y="0.0" width="130" height="48"/>
+                                        <color key="backgroundColor" red="0.29803921570000003" green="0.85098039219999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="93x-U0-ehS"/>
                                         </constraints>
@@ -276,18 +279,8 @@
                                         <state key="normal" title="Check">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5W-3U-es6">
-                                        <rect key="frame" x="241.5" y="0.0" width="93.5" height="48"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                        <state key="normal" title="Done">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="disabled">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -297,18 +290,39 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="VRo-2e-gmw" firstAttribute="width" secondItem="l5W-3U-es6" secondAttribute="width" id="mC0-Ec-4ds"/>
+                                    <constraint firstItem="VRo-2e-gmw" firstAttribute="width" secondItem="yoU-fb-cSQ" secondAttribute="width" id="MPC-IZ-dfx"/>
                                     <constraint firstAttribute="height" constant="48" id="z17-vf-Hds"/>
                                 </constraints>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3D5-5e-rvK">
+                                <rect key="frame" x="16" y="415" width="343" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Elo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czp-F8-3hH">
+                                <rect key="frame" x="32" y="437.5" width="311" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="x9j-Oi-g8f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LhB-oH-VtX" firstAttribute="trailing" secondItem="czp-F8-3hH" secondAttribute="trailing" constant="32" id="0Rb-11-RFa"/>
+                            <constraint firstItem="czp-F8-3hH" firstAttribute="leading" secondItem="LhB-oH-VtX" secondAttribute="leading" constant="32" id="9Pc-dT-riQ"/>
+                            <constraint firstItem="3D5-5e-rvK" firstAttribute="top" secondItem="GE6-E7-SPo" secondAttribute="bottom" constant="16" id="Bum-dS-JUI"/>
                             <constraint firstItem="xSm-Om-VAr" firstAttribute="leading" secondItem="LhB-oH-VtX" secondAttribute="leading" constant="20" id="G7Z-VS-ZWU"/>
                             <constraint firstItem="LhB-oH-VtX" firstAttribute="bottom" secondItem="xSm-Om-VAr" secondAttribute="bottom" constant="16" id="H80-sj-Csd"/>
+                            <constraint firstItem="czp-F8-3hH" firstAttribute="top" secondItem="3D5-5e-rvK" secondAttribute="bottom" constant="8" id="Hdw-3f-Sxg"/>
                             <constraint firstItem="LhB-oH-VtX" firstAttribute="trailing" secondItem="GE6-E7-SPo" secondAttribute="trailing" constant="60" id="Nul-AH-PTD"/>
                             <constraint firstItem="77D-OF-s4I" firstAttribute="leading" secondItem="LhB-oH-VtX" secondAttribute="leading" id="Tip-ec-gcC"/>
-                            <constraint firstItem="GE6-E7-SPo" firstAttribute="centerY" secondItem="gxe-SL-QUh" secondAttribute="centerY" id="W02-JP-tSi"/>
+                            <constraint firstItem="3D5-5e-rvK" firstAttribute="leading" secondItem="LhB-oH-VtX" secondAttribute="leading" constant="16" id="YoZ-qd-abW"/>
+                            <constraint firstItem="GE6-E7-SPo" firstAttribute="top" secondItem="77D-OF-s4I" secondAttribute="bottom" id="f3h-Qo-hAH"/>
+                            <constraint firstItem="LhB-oH-VtX" firstAttribute="trailing" secondItem="3D5-5e-rvK" secondAttribute="trailing" constant="16" id="fvW-Ne-O92"/>
                             <constraint firstItem="77D-OF-s4I" firstAttribute="top" secondItem="LhB-oH-VtX" secondAttribute="top" id="gES-El-wkN"/>
                             <constraint firstItem="LhB-oH-VtX" firstAttribute="trailing" secondItem="77D-OF-s4I" secondAttribute="trailing" id="muC-jL-qmc"/>
                             <constraint firstItem="GE6-E7-SPo" firstAttribute="leading" secondItem="LhB-oH-VtX" secondAttribute="leading" constant="60" id="qr4-Cu-qMv"/>
@@ -326,7 +340,8 @@
                     <connections>
                         <outlet property="backlogLbl" destination="lmF-c6-N6f" id="6rn-ID-bcZ"/>
                         <outlet property="checkButton" destination="yoU-fb-cSQ" id="CMc-5q-bNl"/>
-                        <outlet property="doneButton" destination="l5W-3U-es6" id="hMh-Wu-MT0"/>
+                        <outlet property="descriptionLbl" destination="czp-F8-3hH" id="ECn-oL-6Pe"/>
+                        <outlet property="descriptionTitle" destination="3D5-5e-rvK" id="w00-jn-fIl"/>
                         <outlet property="doneLbl" destination="UfH-8R-v9X" id="gtG-Yh-8no"/>
                         <outlet property="eventNegativePoints" destination="GnQ-7m-Pcm" id="mUi-rD-IHz"/>
                         <outlet property="eventNegativePointsTitle" destination="N1A-Sa-NhM" id="Dui-nc-0OW"/>

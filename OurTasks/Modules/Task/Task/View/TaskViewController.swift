@@ -41,7 +41,9 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var userStateView: UIStackView!
     @IBOutlet weak var resignButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
+    
+    @IBOutlet weak var descriptionTitle: UILabel!
+    @IBOutlet weak var descriptionLbl: UILabel!
     
     var viewModel: TaskViewModel?
     private let disposeBag = DisposeBag()
@@ -69,6 +71,8 @@ class TaskViewController: UIViewController {
 extension TaskViewController {
     func prepareOnLoad() {
         self.navigationItem.title = "details".localize()
+        self.descriptionLbl.text = "description".localize()
+        self.resignButton.setTitle("resign".localize(), for: .normal)
     }
     
     func prepareOnAppear() {
@@ -101,7 +105,7 @@ extension TaskViewController {
     }
     
     private func disableButton(_ button: UIButton) {
-        button.alpha = 0.3
+        button.alpha = 0.5
         button.isEnabled = false
     }
     
@@ -112,8 +116,7 @@ extension TaskViewController {
     
     private func prepareButtons() {
         self.resignButton.backgroundColor = AppColor.appleRed
-        self.checkButton.backgroundColor = AppColor.appleTealBlue
-        self.doneButton.backgroundColor = AppColor.appleGreen
+        self.checkButton.backgroundColor = AppColor.appleGreen
     }
     
     private func bindInformation() {
@@ -145,6 +148,10 @@ extension TaskViewController {
         
         self.viewModel?.generalPoints.asObservable()
             .bind(to: self.generalPoints.rx.text)
+            .disposed(by: self.disposeBag)
+        
+        self.viewModel?.description.asObservable()
+            .bind(to: self.descriptionLbl.rx.text)
             .disposed(by: self.disposeBag)
         
         self.viewModel?.taskViewState.asObservable()
@@ -199,29 +206,48 @@ extension TaskViewController {
             self.viewModel?.updateTaskState(TaskState.review)
             model.state = TaskState.review.rawValue
         }
-        
+        //REFRESH
+        self.viewModel?.taskViewState.value = (self.viewModel?.taskViewState.value)!
         self.view.layoutIfNeeded()
         self.prepareView(model)
     }
     
     private func prepareUserView() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        let state = self.viewModel?.taskModel.value?.state
         self.userStateView.isHidden = false
-    }
-    
-    private func prepareAdminView() {
-        self.userStateView.isHidden = true
-        if self.viewModel?.taskModel.value?.state == TaskState.review.rawValue {
-        
-        } else {
-            
+//        self.stateView.isUserInteractionEnabled = false
+        if state == TaskState.done.rawValue {
+            self.userStateView.isHidden = true
+        } else if state == TaskState.toFix.rawValue {
+            self.disableButton(resignButton)
+            self.checkButton.setTitle("check".localize(), for: .normal)
+        } else if state == TaskState.review.rawValue {
+            self.disableButton(resignButton)
+            self.disableButton(checkButton)
+        } else if state == TaskState.inProgress.rawValue {
+            self.enableButton(resignButton)
+            self.enableButton(checkButton)
+            self.checkButton.setTitle("check".localize(), for: .normal)
+        } else if state == TaskState.backlog.rawValue {
+            self.disableButton(resignButton)
+            self.checkButton.setTitle("take_task".localize(), for: .normal)
         }
     }
     
+    private func prepareAdminView() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+        self.userStateView.isHidden = true
+    }
+    
     private func prepareViewerView() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.userStateView.isHidden = true
     }
     
     private func prepareUnassignedView() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.userStateView.isHidden = true
         
     }
 }

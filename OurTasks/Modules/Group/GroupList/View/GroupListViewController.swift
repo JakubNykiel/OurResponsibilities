@@ -62,6 +62,9 @@ class GroupListViewController: UIViewController {
                     let menuVC = StoryboardManager.menuViewController(groupID: model.id, groupModel: model.groupModel)
                     self.present(menuVC, animated: true, completion: nil)
                     return
+                case .userTasks(let model):
+                    let taskVC = StoryboardManager.taskViewController(model.id)
+                    self.navigationController?.pushViewController(taskVC, animated: true)
                 default: return
                 }
             })
@@ -101,7 +104,7 @@ extension GroupListViewController: UITableViewDelegate {
         let section = dataSource[section]
         
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
-        let label = UILabel(frame: CGRect(x: 21.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
+        let label = UILabel(frame: CGRect(x: 20.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
         label.text = section.title + ":"
         label.textColor = AppColor.applePurple
         label.font = UIFont.boldSystemFont(ofSize: 20.0)

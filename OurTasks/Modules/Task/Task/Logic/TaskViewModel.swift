@@ -26,6 +26,7 @@ class TaskViewModel {
     var eventPositivePoints: Variable<String> = Variable("")
     var eventNegativePoints: Variable<String> = Variable("")
     var generalPoints: Variable<String> = Variable("")
+    var description: Variable<String> = Variable("")
     
     var taskViewState: Variable<TaskViewState> = Variable(TaskViewState.admin)
     
@@ -43,25 +44,15 @@ class TaskViewModel {
     
     private func checkTaskViewState() {
         let currentUserID = self.firebaseManager.getCurrentUserUid()
-        guard let eventID = self.taskModel.value?.eventID else { return }
-        let eventRef = FirebaseReferences().eventRef.document(eventID)
-        eventRef.getDocument { (document, error) in
-            if let document = document {
-                guard let data = document.data() else { return }
-                guard let admins = data["admins"] as? [String] else { return }
-                if admins.contains(currentUserID) {
-                    self.taskViewState.value = .admin
-                } else {
-                    if currentUserID == self.taskModel.value?.owner {
-                        self.taskViewState.value = .user
-                    } else if self.taskModel.value?.owner == "" {
-                        self.taskViewState.value = .unassignedTaskUser
-                    } else {
-                        self.taskViewState.value = .viewer
-                    }
-                }
+        if self.taskModel.value?.owner == currentUserID {
+            self.taskViewState.value = .admin
+        } else {
+            if currentUserID == self.taskModel.value?.user {
+                self.taskViewState.value = .user
+            } else if self.taskModel.value?.owner == "" {
+                self.taskViewState.value = .unassignedTaskUser
             } else {
-                print("User does not exist")
+                self.taskViewState.value = .viewer
             }
         }
     }
@@ -105,6 +96,7 @@ class TaskViewModel {
         self.eventNegativePoints.value = String(model.negativePoints)
         self.eventPositivePoints.value = String(model.positivePoints)
         self.generalPoints.value = String(model.globalPositivePoints)
+        self.description.value = model.description
     }
     
     func updateTaskState(_ state: TaskState) {

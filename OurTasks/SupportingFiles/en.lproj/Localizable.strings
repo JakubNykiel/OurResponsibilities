@@ -10,6 +10,8 @@
 "edit" = "Edit";
 "add" = "Add";
 "my" = "My";
+"description" = "Description";
+"resign" = "Resign";
 // Login
 "signIn" = "Sign In";
 "signInAction" = "Sign In";
@@ -79,3 +81,6 @@
 //Event
 "no_events" = "No events";
 "event_name" = "Event name";
+//TaskState
+"check" = "Check";
+"take_task" = "Take task";
