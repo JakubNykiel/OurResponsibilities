@@ -33,6 +33,7 @@ struct StoryboardManager {
         let task = TaskViewController.self
         let user = UserViewController.self
         let menu = MenuViewController.self
+        let ranking = RankingViewController.self
     }
 
     enum StoryboardNames: String {
@@ -46,6 +47,7 @@ struct StoryboardManager {
         case Event
         case Task
         case User
+        case Ranking
     }
 
     enum ViewControllerIdentifiers: String {
@@ -61,6 +63,7 @@ struct StoryboardManager {
         case taskViewController
         case userViewController
         case menuViewController
+        case rankingViewController
     }
     
     //MARK: GENERAL
@@ -123,6 +126,13 @@ struct StoryboardManager {
         let viewModel = TaskViewModel(taskID: taskID)
         taskVC.viewModel = viewModel
         return taskVC
+    }
+    //MARK: Ranking
+    static func rankingViewController(groupID: String, groupModel: GroupModel) -> RankingViewController {
+        let rankingVC = self.viewController(ViewControllerTypes().ranking, withIdentifier: ViewControllerIdentifiers.rankingViewController.rawValue, fromStoryboard: StoryboardNames.Ranking.rawValue)
+        let viewModel = RankingViewModel(groupId: groupID, groupModel: groupModel)
+        rankingVC.viewModel = viewModel
+        return rankingVC
     }
     
     

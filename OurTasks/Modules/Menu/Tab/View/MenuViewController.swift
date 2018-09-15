@@ -35,6 +35,11 @@ extension MenuViewController {
                 groupVC.viewModel = GroupViewModel(groupModel: model, groupID: id)
             } else if view is ARKitViewController {
                 print("ARKit")
+            } else if view is RankingViewController {
+                let rankingVC = view as! RankingViewController
+                guard let model = self.viewModel?.groupModel,
+                    let id = self.viewModel?.groupID else { return }
+                rankingVC.viewModel = RankingViewModel(groupId: id, groupModel: model)
             }
         }
     }

@@ -86,6 +86,10 @@
 		C3E1086921297B42006A278B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086821297B42006A278B /* EventViewController.swift */; };
 		C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B11FC36F2D004FD87F /* GroupModel.swift */; };
 		C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B41FC392C8004FD87F /* LoginViewModel.swift */; };
+		C3F843D521483FFB0024F08C /* RankingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843D421483FFB0024F08C /* RankingSection.swift */; };
+		C3F843D7214840140024F08C /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843D6214840140024F08C /* RankingViewModel.swift */; };
+		C3F843DB214845620024F08C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843DA214845620024F08C /* RankingViewController.swift */; };
+		C3F843DE21486AE50024F08C /* RankingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843DD21486AE50024F08C /* RankingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -175,6 +179,10 @@
 		C3E1086821297B42006A278B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C3E122B11FC36F2D004FD87F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		C3E122B41FC392C8004FD87F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C3F843D421483FFB0024F08C /* RankingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSection.swift; sourceTree = "<group>"; };
+		C3F843D6214840140024F08C /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
+		C3F843DA214845620024F08C /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		C3F843DD21486AE50024F08C /* RankingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -630,6 +638,8 @@
 		C3BEE4B1213FD15600F6E11A /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				C3F843D121483A680024F08C /* Ranking */,
+				C3E669BB2076DFFE00980EE4 /* ARKit */,
 				C338B4CC210E2A520070865B /* Group */,
 				C397D36F214024DF00F83E7D /* Tab */,
 			);
@@ -780,7 +790,6 @@
 				C338B4CE210E2A7C0070865B /* Task */,
 				C338B4CD210E2A750070865B /* Event */,
 				743F21F5209873C000B25E30 /* Group */,
-				C3E669BB2076DFFE00980EE4 /* ARKit */,
 				C3A5F62B1F66EA20002A9B30 /* Login */,
 				C3A5F6271F66EA20002A9B30 /* Register */,
 				C3AC494A1F66D0C4001E2586 /* Main */,
@@ -901,6 +910,41 @@
 				C39AB1D0207822FF00A3B178 /* Logic */,
 			);
 			path = ARKit;
+			sourceTree = "<group>";
+		};
+		C3F843D121483A680024F08C /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				C3F843D321483FEC0024F08C /* Logic */,
+				C3F843D221483FE60024F08C /* View */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		C3F843D221483FE60024F08C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C3F843DC21486AD10024F08C /* Cells */,
+				C3F843DA214845620024F08C /* RankingViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C3F843D321483FEC0024F08C /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C3F843D421483FFB0024F08C /* RankingSection.swift */,
+				C3F843D6214840140024F08C /* RankingViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C3F843DC21486AD10024F08C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C3F843DD21486AE50024F08C /* RankingCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		F756AF95BFF9BF3CE8F112EA /* Frameworks */ = {
@@ -1105,10 +1149,13 @@
 				C39AB1C9207820CD00A3B178 /* QRCode.swift in Sources */,
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
 				C338B4D5210E30530070865B /* AddTaskViewModel.swift in Sources */,
+				C3F843D521483FFB0024F08C /* RankingSection.swift in Sources */,
+				C3F843D7214840140024F08C /* RankingViewModel.swift in Sources */,
 				C39AB1D52078239A00A3B178 /* BarcodeHandler.swift in Sources */,
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
 				74EEFF0C20A397B700B61EF8 /* GroupSection.swift in Sources */,
 				C3269298213444F30099AED9 /* TaskStateLabel.swift in Sources */,
+				C3F843DE21486AE50024F08C /* RankingCell.swift in Sources */,
 				C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */,
 				C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */,
 				74B869512087627300D6F99B /* GroupListSection.swift in Sources */,
@@ -1144,6 +1191,7 @@
 				C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */,
 				C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */,
 				C3E1086921297B42006A278B /* EventViewController.swift in Sources */,
+				C3F843DB214845620024F08C /* RankingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
