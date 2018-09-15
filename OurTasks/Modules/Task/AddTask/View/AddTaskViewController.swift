@@ -83,6 +83,11 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
         
     }
     
+    @IBAction func removeTask(_ sender: Any) {
+        self.viewModel?.removeTask()
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func addTask(_ sender: Any) {
         let currentUserUid = self.firebaseManager.getCurrentUserUid()
         self.viewModel?.taskModel = TaskModel(

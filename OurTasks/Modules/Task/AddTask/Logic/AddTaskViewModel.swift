@@ -97,4 +97,45 @@ class AddTaskViewModel {
         }
     }
     
+    func removeTask() {
+        guard let id = self.taskModelToUpdate?.first?.key else { return }
+        guard let user = self.taskModelToUpdate?.first?.value.user else { return }
+
+        let taskRef = FirebaseReferences().taskRef.document(id)
+        let userRef = FirebaseReferences().userRef.document(user)
+        let eventRef = FirebaseReferences().eventRef.document(self.eventID)
+        
+        userRef.getDocument { (document,error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                let tasks: [String] = data[FirebaseModel.tasks.rawValue] as? [String] ?? []
+                let taskToUpdate: [String] = tasks.filter{ $0 != id}
+                userRef.updateData([FirebaseModel.tasks.rawValue : taskToUpdate])
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+        eventRef.getDocument { (document,error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                let tasks: [String] = data[FirebaseModel.tasks.rawValue] as? [String] ?? []
+                let taskToUpdate: [String] = tasks.filter{ $0 != id}
+                eventRef.updateData([FirebaseModel.tasks.rawValue : taskToUpdate])
+            } else {
+                print("Document does not exist")
+            }
+        }
+        
+        taskRef.delete(completion: { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Event successfully removed!")
+            }
+        })
+        
+        
+    }
+    
 }
