@@ -116,6 +116,12 @@ extension EventViewController {
                     break
                 }
             }).disposed(by: self.disposeBag)
+        
+        guard let admins = self.viewModel.eventModel.admins else { return }
+        
+        if !admins.contains(self.firebaseManager.getCurrentUserUid()) {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     private func registerNibs() {

@@ -14,7 +14,7 @@ struct GroupModel: Codable {
     var color: String
     var users: [String:Int]?
     var events: [String]?
-    var admins: [String:Int] = [:]
+    var admins: [String] = []
 
     enum GroupKeys: String,CodingKey {
         case name
@@ -25,7 +25,7 @@ struct GroupModel: Codable {
         case admins
     }
     
-    init(name: String, createDate: String, color: String, users: [String:Int]?, events: [String]?, admins: [String:Int]) {
+    init(name: String, createDate: String, color: String, users: [String:Int]?, events: [String]?, admins: [String]) {
         self.name = name
         self.createDate = createDate
         self.color = color
@@ -42,7 +42,7 @@ struct GroupModel: Codable {
         self.color = try container.decode(String?.self, forKey: .color) ?? "FFFFFF"
         self.users = try? container.decode([String:Int]?.self, forKey: .users) ?? [:]
         self.events = try? container.decode([String]?.self, forKey: .events) ?? []
-        self.admins = try container.decode([String:Int]?.self, forKey: .admins) ?? [:]
+        self.admins = try container.decode([String]?.self, forKey: .admins) ?? []
     }
 
 }

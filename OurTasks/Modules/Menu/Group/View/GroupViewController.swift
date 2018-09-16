@@ -107,6 +107,10 @@ extension GroupViewController {
         let groupColor = self.viewModel.groupModel.color.hexStringToUIColor()
         self.navigationItem.title = self.viewModel.groupModel.name.capitalized
         self.navigationController?.navigationBar.backgroundColor = groupColor.withAlphaComponent(0.2)
+        let admins = self.viewModel.groupModel.admins
+        if !admins.contains(self.firebaseManager.getCurrentUserUid()) {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
 }
 // MARK: TableView
