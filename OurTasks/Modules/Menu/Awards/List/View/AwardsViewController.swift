@@ -40,7 +40,12 @@ class AwardsViewController: UITableViewController {
             switch dataSource[indexPath] {
             case .award(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.award, for: indexPath) as! AwardCell
-                cell.enable(on: false)
+                cell.configure(model)
+                if model.model.cost > (self.viewModel?.userModel?.points ?? 0) || model.model.available == 0 {
+                    cell.enable(on: false)
+                } else {
+                    cell.enable(on: true)
+                }
                 return cell
             }
         })
@@ -49,8 +54,7 @@ class AwardsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.prepareOnAppear()
-        
-        
+        self.viewModel?.fetchData()
     }
     @IBAction func addAward(_ sender: Any) {
         guard let id = self.viewModel?.groupID else { return }
@@ -74,14 +78,5 @@ extension AwardsViewController {
 extension AwardsViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 96.0
-    }
-}
-extension UITableViewCell {
-    func enable(on: Bool) {
-        self.isUserInteractionEnabled = on
-        for view in contentView.subviews {
-            self.isUserInteractionEnabled = on
-            view.alpha = on ? 1 : 0.5
-        }
     }
 }

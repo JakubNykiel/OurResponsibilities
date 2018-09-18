@@ -93,6 +93,7 @@
 		C3E1086921297B42006A278B /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E1086821297B42006A278B /* EventViewController.swift */; };
 		C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B11FC36F2D004FD87F /* GroupModel.swift */; };
 		C3E122B51FC392C8004FD87F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E122B41FC392C8004FD87F /* LoginViewModel.swift */; };
+		C3E6FBE32151667F00EA22F4 /* UITableViewCell+Enable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E6FBE22151667F00EA22F4 /* UITableViewCell+Enable.swift */; };
 		C3F843D521483FFB0024F08C /* RankingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843D421483FFB0024F08C /* RankingSection.swift */; };
 		C3F843D7214840140024F08C /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843D6214840140024F08C /* RankingViewModel.swift */; };
 		C3F843DB214845620024F08C /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F843DA214845620024F08C /* RankingViewController.swift */; };
@@ -193,6 +194,7 @@
 		C3E1086821297B42006A278B /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		C3E122B11FC36F2D004FD87F /* GroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupModel.swift; sourceTree = "<group>"; };
 		C3E122B41FC392C8004FD87F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		C3E6FBE22151667F00EA22F4 /* UITableViewCell+Enable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Enable.swift"; sourceTree = "<group>"; };
 		C3F843D421483FFB0024F08C /* RankingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingSection.swift; sourceTree = "<group>"; };
 		C3F843D6214840140024F08C /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
 		C3F843DA214845620024F08C /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
@@ -839,6 +841,7 @@
 		C3D551971FA6193C00D7F081 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C3E6FBE12151665E00EA22F4 /* UICell */,
 				74D03A2D20AF94B2006D43CF /* UINavigation */,
 				743F21FF20988E2100B25E30 /* UIColor */,
 				C39AB1C52078208800A3B178 /* UIView */,
@@ -1003,6 +1006,14 @@
 				C39AB1D0207822FF00A3B178 /* Logic */,
 			);
 			path = ARKit;
+			sourceTree = "<group>";
+		};
+		C3E6FBE12151665E00EA22F4 /* UICell */ = {
+			isa = PBXGroup;
+			children = (
+				C3E6FBE22151667F00EA22F4 /* UITableViewCell+Enable.swift */,
+			);
+			path = UICell;
 			sourceTree = "<group>";
 		};
 		C3F843D121483A680024F08C /* Ranking */ = {
@@ -1258,6 +1269,7 @@
 				C33FB85D214F1E3C00C9CD11 /* AwardsViewModel.swift in Sources */,
 				C3A5F6361F67563F002A9B30 /* HideKeyboard.swift in Sources */,
 				C326929D21346D280099AED9 /* TaskViewModel.swift in Sources */,
+				C3E6FBE32151667F00EA22F4 /* UITableViewCell+Enable.swift in Sources */,
 				C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */,
 				C3BEE4B7213FDEE300F6E11A /* MenuViewController.swift in Sources */,
 				C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */,

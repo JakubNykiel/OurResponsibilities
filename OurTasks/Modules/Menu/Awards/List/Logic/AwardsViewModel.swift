@@ -19,6 +19,7 @@ class AwardsViewModel {
     var sections: [AwardSection] = []
     var groupID: String
     var groupModel: GroupModel?
+    var userModel: UserModel?
     
     var awardsBehaviorSubject: BehaviorSubject<[String:AwardModel]> = BehaviorSubject(value: [:])
     var sectionsBehaviourSubject: BehaviorSubject<[AwardSection]> = BehaviorSubject(value: [])
@@ -26,7 +27,6 @@ class AwardsViewModel {
     init(groupID: String, groupModel: GroupModel) {
         self.groupID = groupID
         self.groupModel = groupModel
-        self.fetchAwards()
         
         self.awardsBehaviorSubject
             .flatMap({ (awards) -> Observable<[AwardCellModel]> in
@@ -38,7 +38,25 @@ class AwardsViewModel {
             .subscribe(onNext: {
                 self.sections = [AwardSection.section(items: $0.compactMap({AwardItemType.award($0)}))]
                 self.sectionsBehaviourSubject.onNext(self.sections)
-            })
+            }).disposed(by: self.disposeBag)
+    }
+    
+    func fetchData() {
+        self.fetchAwards()
+        self.fetchCurrentUser()
+    }
+    
+    private func fetchCurrentUser() {
+        let currentUserUID = self.firebaseManager.getCurrentUserUid()
+        let userRef = FirebaseReferences().userRef.document(currentUserUID)
+        userRef.getDocument(completion: { (document, error) in
+            if let document = document {
+                guard let userData = document.data() else { return }
+                self.userModel = try! FirebaseDecoder().decode(UserModel.self, from: userData)
+            } else {
+                print("User not exist")
+            }
+        })
     }
     
     private func fetchAwards() {
@@ -49,7 +67,7 @@ class AwardsViewModel {
                 guard let awards = groupData["awards"] as? [String] else { return }
                 self.toAwardModel(awards)
             } else {
-                print("User not exist")
+                print("Group not exist")
             }
         })
     }
