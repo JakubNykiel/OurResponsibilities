@@ -17,6 +17,7 @@ enum FirebaseModel: String {
     case admins
     case events
     case tasks
+    case awards
 }
 
 struct FirebaseReferences {
@@ -24,6 +25,7 @@ struct FirebaseReferences {
     var groupRef = Firestore.firestore().collection(FirebaseModel.groups.rawValue)
     var eventRef = Firestore.firestore().collection(FirebaseModel.events.rawValue)
     var taskRef = Firestore.firestore().collection(FirebaseModel.tasks.rawValue)
+    var awardRef = Firestore.firestore().collection(FirebaseModel.awards.rawValue)
 }
 
 class FirebaseManager {

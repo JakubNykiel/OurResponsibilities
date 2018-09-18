@@ -6,6 +6,7 @@
   Copyright © 2017 Jakub Nykiel. All rights reserved.
 */
 
+"name" = "Nazwa";
 "choose" = "Wybierz";
 "edit" = "Edytuj";
 "add" = "Dodaj";
@@ -85,3 +86,8 @@
 //TaskState
 "check" = "Do sprawdzenia";
 "take_task" = "Biorę zadanie";
+//Add Award
+"point_price" = "Punkty na wymianę";
+"available" = "Dostępność";
+"award" = "Nagroda";
+"cost" = "Koszt";

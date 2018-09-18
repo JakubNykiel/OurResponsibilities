@@ -25,21 +25,21 @@ extension MenuViewController {
     
     private func preapreViewModels() {
         guard let views = self.viewControllers else { return }
+        guard let model = self.viewModel?.groupModel,
+            let id = self.viewModel?.groupID else { return }
         for naviViews in views {
             let view = (naviViews as? UINavigationController)?.viewControllers.first
             if view is GroupViewController {
                 let groupVC = view as! GroupViewController
-                guard let model = self.viewModel?.groupModel,
-                      let id = self.viewModel?.groupID else { return }
-                
                 groupVC.viewModel = GroupViewModel(groupModel: model, groupID: id)
             } else if view is ARKitViewController {
                 print("ARKit")
             } else if view is RankingViewController {
                 let rankingVC = view as! RankingViewController
-                guard let model = self.viewModel?.groupModel,
-                    let id = self.viewModel?.groupID else { return }
                 rankingVC.viewModel = RankingViewModel(groupId: id, groupModel: model)
+            } else if view is AwardsViewController {
+                let awardsVC = view as! AwardsViewController
+                awardsVC.viewModel = AwardsViewModel(groupID: id, groupModel: model)
             }
         }
     }

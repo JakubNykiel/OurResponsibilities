@@ -34,6 +34,8 @@ struct StoryboardManager {
         let user = UserViewController.self
         let menu = MenuViewController.self
         let ranking = RankingViewController.self
+        let awards = AwardsViewController.self
+        let addaward = AddAwardViewController.self
     }
 
     enum StoryboardNames: String {
@@ -48,6 +50,8 @@ struct StoryboardManager {
         case Task
         case User
         case Ranking
+        case award
+        case addAward
     }
 
     enum ViewControllerIdentifiers: String {
@@ -64,6 +68,8 @@ struct StoryboardManager {
         case userViewController
         case menuViewController
         case rankingViewController
+        case awardsViewController
+        case addAwardViewController
     }
     
     //MARK: GENERAL
@@ -129,16 +135,30 @@ struct StoryboardManager {
     }
     //MARK: Ranking
     static func rankingViewController(groupID: String, groupModel: GroupModel) -> RankingViewController {
-        let rankingVC = self.viewController(ViewControllerTypes().ranking, withIdentifier: ViewControllerIdentifiers.rankingViewController.rawValue, fromStoryboard: StoryboardNames.Ranking.rawValue)
+        let rankingVC = self.viewController(ViewControllerTypes().ranking, withIdentifier: ViewControllerIdentifiers.rankingViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
         let viewModel = RankingViewModel(groupId: groupID, groupModel: groupModel)
         rankingVC.viewModel = viewModel
         return rankingVC
     }
     
-    
     @available(iOS 11.0, *)
     static func arKitViewController() -> ARKitViewController {
         let arVC = self.viewController(ARKitViewController.self, withIdentifier: ViewControllerIdentifiers.arKitViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
         return arVC
+    }
+    
+    //MARK: Awards
+    static func awardViewController(groupID: String, groupModel: GroupModel) -> AwardsViewController {
+        let awardVC = self.viewController(AwardsViewController.self, withIdentifier: ViewControllerIdentifiers.awardsViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = AwardsViewModel(groupID: groupID, groupModel: groupModel)
+        awardVC.viewModel = viewModel
+        return awardVC
+    }
+    
+    static func addAwardViewController(groupID: String, groupModel: GroupModel) -> AddAwardViewController {
+        let addAwardVC = self.viewController(ViewControllerTypes().addaward, withIdentifier: ViewControllerIdentifiers.addAwardViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = AddAwardViewModel(groupId: groupID, groupModel: groupModel)
+        addAwardVC.viewModel = viewModel
+        return addAwardVC
     }
 }

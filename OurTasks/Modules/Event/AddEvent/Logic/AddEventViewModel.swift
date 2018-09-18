@@ -83,7 +83,6 @@ class AddEventViewModel {
         
         groupRef.getDocument { (document,error) in
             if let document = document {
-                print("Document data: \(String(describing: document.data()))")
                 guard let data = document.data() else { return }
                 guard let events: [String] = data[FirebaseModel.events.rawValue] as? [String] else { return }
                 guard let users: [String:Int] = data[FirebaseModel.users.rawValue] as? [String:Int] else { return }

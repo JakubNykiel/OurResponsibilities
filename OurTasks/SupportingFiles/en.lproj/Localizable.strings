@@ -6,6 +6,7 @@
   Copyright © 2017 Jakub Nykiel. All rights reserved.
 */
 
+"name" = "Name";
 "choose" = "Choose";
 "edit" = "Edit";
 "add" = "Add";
@@ -85,3 +86,8 @@
 //TaskState
 "check" = "Check";
 "take_task" = "Take task";
+//Add Award
+"point_price" = "Points";
+"available" = "Available";
+"award" = "Award";
+"cost" = "Cost";
