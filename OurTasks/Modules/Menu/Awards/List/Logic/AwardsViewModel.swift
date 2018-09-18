@@ -15,12 +15,14 @@ class AwardsViewModel {
     
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private let disposeBag = DisposeBag()
+    private let dateFormater = DateFormatter()
     var awards: [String:AwardModel] = [:]
     var sections: [AwardSection] = []
     var groupID: String
     var groupModel: GroupModel?
     var userModel: UserModel?
     
+    var userPoints: Variable<String> = Variable("")
     var awardsBehaviorSubject: BehaviorSubject<[String:AwardModel]> = BehaviorSubject(value: [:])
     var sectionsBehaviourSubject: BehaviorSubject<[AwardSection]> = BehaviorSubject(value: [])
     
@@ -40,7 +42,7 @@ class AwardsViewModel {
                 self.sectionsBehaviourSubject.onNext(self.sections)
             }).disposed(by: self.disposeBag)
     }
-    
+    //MARK: Fetch Data
     func fetchData() {
         self.fetchAwards()
         self.fetchCurrentUser()
@@ -53,6 +55,7 @@ class AwardsViewModel {
             if let document = document {
                 guard let userData = document.data() else { return }
                 self.userModel = try! FirebaseDecoder().decode(UserModel.self, from: userData)
+                self.userPoints.value = String(self.userModel?.points ?? 0)
             } else {
                 print("User not exist")
             }
@@ -92,5 +95,14 @@ class AwardsViewModel {
                 })
             })
         }
+    }
+    
+    //MARK: Exchange
+    func exchange(id: String) {
+        //obnizamy awardy i dostepnosc
+        let awardRef = FirebaseReferences().awardRef.document(id)
+        
+        
+        //dopisujemy wymiane do usera z data dzisiejsza
     }
 }
