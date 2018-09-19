@@ -81,11 +81,11 @@ class AwardsViewController: UITableViewController, AwardProtocol {
     
     //MARK Protocol
     func editTap(id: String, model: AwardModel) {
-        <#code#>
+        
     }
     
     func exchangeTap(id: String) {
-        self.viewModel?.exchange()
+        self.viewModel?.exchange(id: id)
     }
 }
 //MARK: Prepare
@@ -108,6 +108,6 @@ extension AwardsViewController {
 //MARK: TableView
 extension AwardsViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96.0
+        return 120.0
     }
 }

@@ -29,6 +29,7 @@ class AwardsViewModel {
     init(groupID: String, groupModel: GroupModel) {
         self.groupID = groupID
         self.groupModel = groupModel
+        self.dateFormater.dateFormat = "dd.MM.YYYY"
         
         self.awardsBehaviorSubject
             .flatMap({ (awards) -> Observable<[AwardCellModel]> in
@@ -99,10 +100,38 @@ class AwardsViewModel {
     
     //MARK: Exchange
     func exchange(id: String) {
-        //obnizamy awardy i dostepnosc
+        var awards: [String:[String]] = [:]
+        let todayDateString = dateFormater.string(from: Date())
+        let currentUserUID = self.firebaseManager.getCurrentUserUid()
         let awardRef = FirebaseReferences().awardRef.document(id)
+        let userRef = FirebaseReferences().userRef.document(currentUserUID)
         
+        awardRef.getDocument(completion: { (document, error) in
+            if let document = document {
+                guard let awardData = document.data() else { return }
+                guard let points = awardData["available"] as? Int else { return }
+                awardRef.updateData(["available":(points-1)])
+            } else {
+                print("Group not exist")
+            }
+        })
         
-        //dopisujemy wymiane do usera z data dzisiejsza
+        userRef.getDocument(completion: { (document, error) in
+            if let document = document {
+                guard let userData = document.data() else { return }
+                guard var points = userData["points"] as? Int else { return }
+                awards = userData["awards"] as? [String:[String]] ?? [:]
+                var dateAwards = awards[todayDateString] ?? []
+                dateAwards.append(id)
+                awards[todayDateString] = dateAwards
+                
+                points = points - (self.awards[id]?.cost ?? 0)
+                userRef.setData(["awards":awards,
+                                 "points":points], merge: true)
+                
+            } else {
+                print("Group not exist")
+            }
+        })
     }
 }
