@@ -18,10 +18,12 @@ class AddAwardViewModel {
     var groupID: String
     var groupModel: GroupModel
     var awardModel: AwardModel?
+    var awardModelToUpdate: Variable<[String:AwardModel]?> = Variable(nil)
     
-    init(groupId: String, groupModel: GroupModel) {
+    init(groupId: String, groupModel: GroupModel, awardModel: [String:AwardModel]?) {
         self.groupID = groupId
         self.groupModel = groupModel
+        self.awardModelToUpdate.value = awardModel
     }
     
     func addTaskToDatabase() {
@@ -53,6 +55,14 @@ class AddAwardViewModel {
                 print("Document does not exist")
             }
         }
+    }
+    
+    func updateAward() {
+        guard let awardKey = self.awardModelToUpdate.value?.first?.key else { return }
+        guard let model = self.awardModel else { return }
+        guard let awardData = model.asDictionary() else { return }
         
+        let awardRef = FirebaseReferences().awardRef.document(awardKey)
+        awardRef.setData(awardData, merge: true)
     }
 }

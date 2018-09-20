@@ -654,7 +654,6 @@
                                                     <connections>
                                                         <action selector="addAction:" destination="2a1-OJ-UtA" eventType="touchUpInside" id="jHe-97-zkW"/>
                                                         <action selector="editAction:" destination="Cv3-tM-6f7" eventType="touchUpInside" id="3NF-HI-Ily"/>
-                                                        <action selector="exchangeAction:" destination="Cv3-tM-6f7" eventType="touchUpInside" id="YGL-rS-p0X"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PkW-Bq-b3p">

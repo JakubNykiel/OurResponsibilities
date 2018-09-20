@@ -155,9 +155,9 @@ struct StoryboardManager {
         return awardVC
     }
     
-    static func addAwardViewController(groupID: String, groupModel: GroupModel) -> AddAwardViewController {
+    static func addAwardViewController(groupID: String, groupModel: GroupModel, awardModel: [String:AwardModel]?) -> AddAwardViewController {
         let addAwardVC = self.viewController(ViewControllerTypes().addaward, withIdentifier: ViewControllerIdentifiers.addAwardViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
-        let viewModel = AddAwardViewModel(groupId: groupID, groupModel: groupModel)
+        let viewModel = AddAwardViewModel(groupId: groupID, groupModel: groupModel, awardModel: awardModel)
         addAwardVC.viewModel = viewModel
         return addAwardVC
     }

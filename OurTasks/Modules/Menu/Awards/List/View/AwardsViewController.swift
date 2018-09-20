@@ -75,13 +75,16 @@ class AwardsViewController: UITableViewController, AwardProtocol {
     @IBAction func addAward(_ sender: Any) {
         guard let id = self.viewModel?.groupID else { return }
         guard let model = self.viewModel?.groupModel else { return }
-        let addAwardVC = StoryboardManager.addAwardViewController(groupID: id, groupModel: model)
+        let addAwardVC = StoryboardManager.addAwardViewController(groupID: id, groupModel: model, awardModel: nil)
         self.navigationController?.pushViewController(addAwardVC, animated: true)
     }
     
     //MARK Protocol
     func editTap(id: String, model: AwardModel) {
-        
+        guard let groupID = self.viewModel?.groupID else { return }
+        guard let groupModel = self.viewModel?.groupModel else { return }
+        let editVC = StoryboardManager.addAwardViewController(groupID: groupID, groupModel: groupModel, awardModel: [id:model])
+        self.navigationController?.pushViewController(editVC, animated: true)
     }
     
     func exchangeTap(id: String) {

@@ -26,6 +26,7 @@ class AddAwardViewController: UITableViewController {
     @IBOutlet weak var addBtn: UIButton!
     
     var viewModel: AddAwardViewModel?
+    private let disposeBag: DisposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,16 @@ class AddAwardViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.prepareOnAppear()
     }
     
     @IBAction func addAction(_ sender: Any) {
         self.viewModel?.awardModel = AwardModel(name: self.nameTF.text ?? "", group: self.viewModel?.groupID ?? "", cost: Int(self.pointsTF.text ?? "0")!, available: Int(self.availableTF.text ?? "0")!)
-        self.viewModel?.addTaskToDatabase()
+        if self.viewModel?.awardModelToUpdate == nil {
+            self.viewModel?.addTaskToDatabase()
+        } else {
+            self.viewModel?.updateAward()
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -48,7 +54,13 @@ class AddAwardViewController: UITableViewController {
 extension AddAwardViewController {
     
     func prepareOnAppear() {
-       
+       self.viewModel?.awardModelToUpdate.asObservable()
+        .subscribe(onNext: { (awardModel) in
+            guard let awardModel = awardModel?.values.first else { return }
+            self.nameTF.text = awardModel.name
+            self.pointsTF.text = String(awardModel.cost)
+            self.availableTF.text = String(awardModel.available)
+        }).disposed(by: self.disposeBag)
     }
     
     func prepareTexts() {
