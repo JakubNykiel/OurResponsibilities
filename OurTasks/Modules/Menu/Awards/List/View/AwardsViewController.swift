@@ -68,7 +68,8 @@ class AwardsViewController: UITableViewController, AwardProtocol {
     }
     
     @IBAction func toHistoryExchangeAwards(_ sender: Any) {
-        
+        let awardHistoryVC = StoryboardManager.awardHistoryViewController()
+        self.navigationController?.pushViewController(awardHistoryVC, animated: true)
     }
     
     

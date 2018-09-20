@@ -36,6 +36,7 @@ struct StoryboardManager {
         let ranking = RankingViewController.self
         let awards = AwardsViewController.self
         let addaward = AddAwardViewController.self
+        let awardHistory = AwardHistoryViewController.self
     }
 
     enum StoryboardNames: String {
@@ -70,6 +71,7 @@ struct StoryboardManager {
         case rankingViewController
         case awardsViewController
         case addAwardViewController
+        case awardHistoryViewController
     }
     
     //MARK: GENERAL
@@ -160,5 +162,12 @@ struct StoryboardManager {
         let viewModel = AddAwardViewModel(groupId: groupID, groupModel: groupModel, awardModel: awardModel)
         addAwardVC.viewModel = viewModel
         return addAwardVC
+    }
+    
+    static func awardHistoryViewController() -> AwardHistoryViewController {
+        let awardHistoryVC = self.viewController(ViewControllerTypes().awardHistory, withIdentifier: ViewControllerIdentifiers.awardHistoryViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = AwardHistoryViewModel()
+        awardHistoryVC.viewModel = viewModel
+        return awardHistoryVC
     }
 }

@@ -27,6 +27,10 @@
 		C316C3AC20C4B2F6008F0E2F /* Model.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = C316C3AB20C4B2F6008F0E2F /* Model.scnassets */; };
 		C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB620B23C6600C2C805 /* EventModel.swift */; };
 		C31DEBB920B23C7300C2C805 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31DEBB820B23C7300C2C805 /* TaskModel.swift */; };
+		C31EBF0C2153FF6C00D74E86 /* AwardHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EBF0B2153FF6C00D74E86 /* AwardHistoryCell.swift */; };
+		C31EBF0E2153FFE700D74E86 /* AwardHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EBF0D2153FFE700D74E86 /* AwardHistoryViewController.swift */; };
+		C31EBF112154031800D74E86 /* AwardHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EBF102154031800D74E86 /* AwardHistoryViewModel.swift */; };
+		C31EBF132154034200D74E86 /* AwardHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EBF122154034200D74E86 /* AwardHistorySection.swift */; };
 		C3231EDA212DB53C0094AB94 /* ARTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */; };
 		C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */; };
 		C32685E621505B7100F47166 /* AwardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32685E521505B7100F47166 /* AwardCell.swift */; };
@@ -127,6 +131,10 @@
 		C316C3AB20C4B2F6008F0E2F /* Model.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Model.scnassets; sourceTree = "<group>"; };
 		C31DEBB620B23C6600C2C805 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		C31DEBB820B23C7300C2C805 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
+		C31EBF0B2153FF6C00D74E86 /* AwardHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardHistoryCell.swift; sourceTree = "<group>"; };
+		C31EBF0D2153FFE700D74E86 /* AwardHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardHistoryViewController.swift; sourceTree = "<group>"; };
+		C31EBF102154031800D74E86 /* AwardHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardHistoryViewModel.swift; sourceTree = "<group>"; };
+		C31EBF122154034200D74E86 /* AwardHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardHistorySection.swift; sourceTree = "<group>"; };
 		C3231ED9212DB53C0094AB94 /* ARTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARTaskModel.swift; sourceTree = "<group>"; };
 		C3231EDB212DBACC0094AB94 /* SCNVector3 + Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SCNVector3 + Codable.swift"; sourceTree = "<group>"; };
 		C32685E521505B7100F47166 /* AwardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardCell.swift; sourceTree = "<group>"; };
@@ -364,6 +372,41 @@
 			path = Task;
 			sourceTree = "<group>";
 		};
+		C31EBF082153FE2700D74E86 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				C31EBF0F2154030500D74E86 /* Logic */,
+				C31EBF092153FF4900D74E86 /* View */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		C31EBF092153FF4900D74E86 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C31EBF0A2153FF4F00D74E86 /* Cell */,
+				C31EBF0D2153FFE700D74E86 /* AwardHistoryViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C31EBF0A2153FF4F00D74E86 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C31EBF0B2153FF6C00D74E86 /* AwardHistoryCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C31EBF0F2154030500D74E86 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C31EBF102154031800D74E86 /* AwardHistoryViewModel.swift */,
+				C31EBF122154034200D74E86 /* AwardHistorySection.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 		C3231ED8212DB4290094AB94 /* TaskAR */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +547,7 @@
 		C33FB859214F1E0800C9CD11 /* Awards */ = {
 			isa = PBXGroup;
 			children = (
+				C31EBF082153FE2700D74E86 /* History */,
 				C33FB861214F1F9B00C9CD11 /* Add */,
 				C33FB860214F1F8D00C9CD11 /* List */,
 			);
@@ -1235,6 +1279,7 @@
 				C3415F5A20697426007E7EED /* GroupCell.swift in Sources */,
 				C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */,
 				C33FB85F214F1ED500C9CD11 /* AwardsViewController.swift in Sources */,
+				C31EBF0C2153FF6C00D74E86 /* AwardHistoryCell.swift in Sources */,
 				C32F96021F6A9A41003491E1 /* FirebaseManager.swift in Sources */,
 				C331343C20B6271300216C5B /* NoResultCell.swift in Sources */,
 				C331344720B7498B00216C5B /* AddEventViewController.swift in Sources */,
@@ -1257,6 +1302,7 @@
 				C3D5B2011FB4767200550564 /* Localize+String.swift in Sources */,
 				C338B4D5210E30530070865B /* AddTaskViewModel.swift in Sources */,
 				C3F843D521483FFB0024F08C /* RankingSection.swift in Sources */,
+				C31EBF112154031800D74E86 /* AwardHistoryViewModel.swift in Sources */,
 				C3F843D7214840140024F08C /* RankingViewModel.swift in Sources */,
 				C39AB1D52078239A00A3B178 /* BarcodeHandler.swift in Sources */,
 				C3A732CC1FE891820033DC8A /* GroupListViewModel.swift in Sources */,
@@ -1296,9 +1342,11 @@
 				C3E1086721297B26006A278B /* EventViewModel.swift in Sources */,
 				C39AB1CD2078227900A3B178 /* ARHandler.swift in Sources */,
 				C31DEBB720B23C6600C2C805 /* EventModel.swift in Sources */,
+				C31EBF0E2153FFE700D74E86 /* AwardHistoryViewController.swift in Sources */,
 				C33FB86B214F2B5C00C9CD11 /* AwardModel.swift in Sources */,
 				C34DCB5D21502D0400CF72DF /* AwardSection.swift in Sources */,
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
+				C31EBF132154034200D74E86 /* AwardHistorySection.swift in Sources */,
 				743F2205209A77D400B25E30 /* String+Hex.swift in Sources */,
 				C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */,
 				C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */,

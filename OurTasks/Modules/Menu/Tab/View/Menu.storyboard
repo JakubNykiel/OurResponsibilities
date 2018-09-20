@@ -988,6 +988,69 @@
             </objects>
             <point key="canvasLocation" x="1778" y="1792"/>
         </scene>
+        <!--Award History View Controller-->
+        <scene sceneID="QSt-26-GCf">
+            <objects>
+                <tableViewController storyboardIdentifier="awardHistoryViewController" id="8zs-bc-ham" customClass="AwardHistoryViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fnP-QD-qMh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="awardHistoryCell" rowHeight="60" id="IkI-P0-ACw" customClass="AwardHistoryCell" customModule="OurTasks" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IkI-P0-ACw" id="K0V-aL-GFi">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="86h-o4-WwI">
+                                            <rect key="frame" x="20" y="0.0" width="335" height="60"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.09.2018" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kF8-XW-vYC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="117.5" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nazwa nagrody" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDZ-od-Kpc">
+                                                    <rect key="frame" x="117.5" y="0.0" width="217.5" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="kF8-XW-vYC" firstAttribute="top" secondItem="86h-o4-WwI" secondAttribute="top" id="Nyz-m4-fZH"/>
+                                                <constraint firstAttribute="bottom" secondItem="kF8-XW-vYC" secondAttribute="bottom" id="nlU-ML-ZE7"/>
+                                                <constraint firstItem="kF8-XW-vYC" firstAttribute="width" secondItem="86h-o4-WwI" secondAttribute="width" multiplier="0.35" id="rwW-Z1-rqk"/>
+                                                <constraint firstItem="kF8-XW-vYC" firstAttribute="leading" secondItem="86h-o4-WwI" secondAttribute="leading" id="sIP-tD-lkK"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="86h-o4-WwI" firstAttribute="leading" secondItem="K0V-aL-GFi" secondAttribute="leading" constant="20" id="CkP-WT-abt"/>
+                                        <constraint firstAttribute="bottom" secondItem="86h-o4-WwI" secondAttribute="bottom" id="Jte-I5-yzP"/>
+                                        <constraint firstAttribute="trailing" secondItem="86h-o4-WwI" secondAttribute="trailing" constant="20" id="k5X-eE-xkV"/>
+                                        <constraint firstItem="86h-o4-WwI" firstAttribute="top" secondItem="K0V-aL-GFi" secondAttribute="top" id="qdn-3n-JTH"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="awardName" destination="fDZ-od-Kpc" id="MQW-qR-h8k"/>
+                                    <outlet property="dateLbl" destination="kF8-XW-vYC" id="ywa-aq-QI7"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="8zs-bc-ham" id="cJN-p7-86o"/>
+                            <outlet property="delegate" destination="8zs-bc-ham" id="SXj-rv-FXT"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6in-Vy-YIA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2612" y="1791"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icAR" width="18.75" height="18.75"/>
