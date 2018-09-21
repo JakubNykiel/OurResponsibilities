@@ -36,7 +36,8 @@ enum GroupSection: SectionModelType {
 }
 enum GroupItemType {
 //    case task(_: GroupTaskCellModel)
-    case pastEvents(_: GroupEventCellModel)
+    case unsettledEvents(_: GroupEventCellModel)
+    case settledEvents(_: GroupEventCellModel)
     case futureEvents(_: GroupEventCellModel)
     case presentEvents(_: GroupEventCellModel)
     case noResult(_: NoResultCellModel)
@@ -45,7 +46,8 @@ enum GroupItemType {
 
 enum GroupSectionTitle: String {
 //    case task
-    case pastEvents
+    case unsettledEvents
+    case settledEvents
     case futureEvents
     case presentEvents
 //    case globalRanking
@@ -53,7 +55,8 @@ enum GroupSectionTitle: String {
     var rawValue: String  {
         switch self {
 //        case .task: return "my_tasks".localize()
-        case .pastEvents: return "past_events".localize()
+        case .unsettledEvents: return "unsettled_events".localize()
+        case .settledEvents: return "settled_events".localize()
         case .futureEvents: return "future_events".localize()
         case .presentEvents: return "present_events".localize()
 //        case .globalRanking: return "global_ranking".localize()

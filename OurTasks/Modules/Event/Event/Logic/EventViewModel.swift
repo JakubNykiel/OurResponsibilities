@@ -28,6 +28,7 @@ class EventViewModel {
     var eventName: Variable<String> = Variable("")
     var eventDate: Variable<String> = Variable("")
     var eventPoints: Variable<String> = Variable("")
+    var eventSettled: Variable<Bool> = Variable(false)
     
     private let firebaseManager: FirebaseManager = FirebaseManager()
     private let disposeBag = DisposeBag()
@@ -46,6 +47,7 @@ class EventViewModel {
     
     func bindGeneralInformation() {
         let currentUserUID = self.firebaseManager.getCurrentUserUid()
+        self.eventSettled.value = self.eventModel.settled
         self.eventName.value = self.eventModel.name
         self.eventPoints.value = "winner_points".localize() + " " + String(self.eventModel.winnerGlobalPoints)
         self.eventDate.value = self.eventModel.startDate + " - " + self.eventModel.endDate
@@ -229,5 +231,12 @@ class EventViewModel {
             })
         }
         
+    }
+    
+    func endEvent() {
+        self.eventModel.settled = true
+        let eventRef = FirebaseReferences().eventRef.document(self.eventID)
+        guard let eventData = eventModel.asDictionary() else { return }
+        eventRef.setData(eventData, merge: true)
     }
 }

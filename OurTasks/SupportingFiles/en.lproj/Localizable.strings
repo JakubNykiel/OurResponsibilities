@@ -81,6 +81,8 @@
 "no_all_tasks" = "Event has no tasks";
 "no_my_tasks" = "You do not have any tasks";
 //Event
+"settled_events" = "Ended Events";
+"unsettled_events" = "Events to settled";
 "no_events" = "No events";
 "event_name" = "Event name";
 //TaskState

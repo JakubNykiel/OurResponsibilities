@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.13.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.9"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -42,27 +42,42 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN6-H2-Pg7">
-                                    <rect key="frame" x="162.5" y="90" width="50" height="30"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                    <state key="normal" title="Button"/>
-                                    <connections>
-                                        <action selector="toAddTask:" destination="acc-UW-hhD" eventType="touchUpInside" id="eH5-YA-IQf"/>
-                                    </connections>
-                                </button>
+                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="rzh-S6-kgx">
+                                    <rect key="frame" x="75" y="90" width="225" height="30"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kN6-H2-Pg7">
+                                            <rect key="frame" x="0.0" y="0.0" width="105" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="toAddTask:" destination="acc-UW-hhD" eventType="touchUpInside" id="eH5-YA-IQf"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q6I-tE-qEI">
+                                            <rect key="frame" x="120" y="0.0" width="105" height="30"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <state key="normal" title="ZAKOŃCZ">
+                                                <color key="titleColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="endEvent:" destination="acc-UW-hhD" eventType="touchUpInside" id="DqL-fR-gSe"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="6B8-Ks-xhH"/>
                                 <constraint firstAttribute="trailing" secondItem="yhy-92-gNE" secondAttribute="trailing" constant="20" id="FVb-BE-bdj"/>
-                                <constraint firstItem="kN6-H2-Pg7" firstAttribute="centerX" secondItem="cMq-DY-S7C" secondAttribute="centerX" id="GOm-zm-eRN"/>
                                 <constraint firstItem="yGH-Fs-o1q" firstAttribute="top" secondItem="lDI-1G-Sr3" secondAttribute="bottom" constant="4" id="GQv-5a-5xB"/>
-                                <constraint firstItem="kN6-H2-Pg7" firstAttribute="top" secondItem="yhy-92-gNE" secondAttribute="bottom" constant="5" id="Kxq-Xu-zbg"/>
-                                <constraint firstAttribute="bottom" secondItem="kN6-H2-Pg7" secondAttribute="bottom" id="N5g-sx-Sc8"/>
+                                <constraint firstItem="rzh-S6-kgx" firstAttribute="width" secondItem="cMq-DY-S7C" secondAttribute="width" multiplier="0.6" id="VyR-T4-ZUe"/>
                                 <constraint firstItem="yhy-92-gNE" firstAttribute="top" secondItem="yGH-Fs-o1q" secondAttribute="bottom" constant="4" id="Wb6-Yx-neR"/>
                                 <constraint firstItem="yGH-Fs-o1q" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="YOL-LB-Bbp"/>
+                                <constraint firstItem="rzh-S6-kgx" firstAttribute="centerX" secondItem="cMq-DY-S7C" secondAttribute="centerX" id="Z0J-qu-p1Z"/>
                                 <constraint firstItem="lDI-1G-Sr3" firstAttribute="top" secondItem="cMq-DY-S7C" secondAttribute="top" constant="8" id="cGE-Gl-zA4"/>
                                 <constraint firstAttribute="trailing" secondItem="yGH-Fs-o1q" secondAttribute="trailing" constant="20" id="ed7-vX-VjX"/>
+                                <constraint firstAttribute="bottom" secondItem="rzh-S6-kgx" secondAttribute="bottom" id="pe9-4k-7t1"/>
                                 <constraint firstItem="lDI-1G-Sr3" firstAttribute="leading" secondItem="cMq-DY-S7C" secondAttribute="leading" constant="20" id="r3M-C2-Gee"/>
                                 <constraint firstAttribute="trailing" secondItem="lDI-1G-Sr3" secondAttribute="trailing" constant="20" id="xPY-CY-LXr"/>
                             </constraints>
@@ -115,6 +130,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addBtn" destination="kN6-H2-Pg7" id="OLw-q7-vqf"/>
+                        <outlet property="endBtn" destination="Q6I-tE-qEI" id="I6X-qS-CE0"/>
                         <outlet property="eventDate" destination="yGH-Fs-o1q" id="END-WG-AvK"/>
                         <outlet property="eventName" destination="lDI-1G-Sr3" id="Uuc-iQ-dHO"/>
                         <outlet property="eventPoints" destination="yhy-92-gNE" id="O3c-4V-aeE"/>

@@ -44,8 +44,8 @@
 "future_events" = "Przyszłe wydarzenia";
 "present_events" = "Trwające wydarzenia";
 "global_ranking" = "Ranking ogólny";
-"event_start" = "Start";
-"event_end" = "End";
+"event_start" = "Początek";
+"event_end" = "Koniec";
 // Add event
 "add_event" = "Dodaj wydarzenie";
 "event_name" = "Nazwa wydarzenia";
@@ -81,6 +81,8 @@
 "no_all_tasks" = "Brak zadań";
 "no_my_tasks" = "Nie masz żadnych zadań";
 //Event
+"settled_events" = "Zakończone wydarzenia";
+"unsettled_events" = "Wydarzenia do zakończenia";
 "no_events" = "Brak wydarzeń";
 "event_name" = "Nazwa wydarzenia";
 //TaskState

@@ -25,6 +25,7 @@ class EventViewController: UITableViewController {
         }
     }
     
+    @IBOutlet weak var endBtn: UIButton!
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDate: UILabel!
@@ -75,6 +76,11 @@ class EventViewController: UITableViewController {
         guard let eventModel = self.viewModel?.eventModel else { return }
         let addEventVC = StoryboardManager.addEventViewController("", state: .update, eventModel: [eventID:eventModel])
         self.navigationController?.pushViewController(addEventVC, animated: true)
+    }
+    
+    @IBAction func endEvent(_ sender: Any) {
+        self.viewModel.endEvent()
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func toAddTask(_ sender: Any) {
@@ -144,6 +150,11 @@ extension EventViewController {
         self.viewModel.sectionsBehaviourSubject.asObservable()
             .bind(to: tableView.rx.items(dataSource: dataSource))
             .disposed(by: self.disposeBag)
+        
+        self.viewModel.eventSettled.asObservable()
+            .subscribe(onNext: {
+                self.endBtn.isHidden = $0
+            }).disposed(by: self.disposeBag)
     }
 }
 //MARK: TableView

@@ -17,6 +17,7 @@ struct EventModel: Codable {
     var tasks: [String]?
     var winnerGlobalPoints: Int
     var groupID: String
+    var settled: Bool
     
     enum EventKeys: String,CodingKey {
         case name
@@ -29,9 +30,10 @@ struct EventModel: Codable {
         case ratio
         case winnerGlobalPoints
         case groupID
+        case settled
     }
     
-    init(name: String, startDate: String, endDate: String, admins: [String], users: [String:Int]?, tasks: [String], winnerGlobalPoints: Int, groupID: String) {
+    init(name: String, startDate: String, endDate: String, admins: [String], users: [String:Int]?, tasks: [String], winnerGlobalPoints: Int, groupID: String, settled: Bool) {
         self.name = name
         self.startDate = startDate
         self.endDate = endDate
@@ -40,6 +42,7 @@ struct EventModel: Codable {
         self.tasks = tasks
         self.winnerGlobalPoints = winnerGlobalPoints
         self.groupID = groupID
+        self.settled = settled
     }
     
     public init(from decoder: Decoder) throws {
@@ -53,6 +56,7 @@ struct EventModel: Codable {
         self.tasks = try? container.decode([String]?.self, forKey: .tasks) ?? []
         self.winnerGlobalPoints = try container.decode(Int?.self, forKey: .winnerGlobalPoints) ?? 0
         self.groupID = try container.decode(String?.self, forKey: .groupID) ?? ""
+        self.settled = try container.decode(Bool?.self, forKey: .settled) ?? false
     }
     
 }
@@ -67,5 +71,6 @@ extension EventModel {
         try container.encode(self.tasks, forKey: .tasks)
         try container.encode(self.winnerGlobalPoints, forKey: .winnerGlobalPoints)
         try container.encode(self.groupID, forKey: .groupID)
+        try container.encode(self.settled, forKey: .settled)
     }
 }

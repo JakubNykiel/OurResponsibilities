@@ -33,11 +33,17 @@ class GroupViewController: UITableViewController {
         
         self.dataSource = RxTableViewSectionedReloadDataSource<GroupSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
-            case .pastEvents(let model):
+            case .settledEvents(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
                 cell.configure(model)
+                cell.backgroundColor = AppColor.appleGreen.withAlphaComponent(0.1)
                 return cell
                 
+            case .unsettledEvents(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
+                cell.configure(model)
+                cell.backgroundColor = AppColor.appleRed.withAlphaComponent(0.1)
+                return cell
             case .presentEvents(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.groupEvent, for: indexPath) as! GroupEventCell
                 cell.configure(model)
@@ -73,7 +79,7 @@ class GroupViewController: UITableViewController {
             .subscribe(onNext: {
                 //ADD Task option in FUTURE
                 switch self.dataSource[$0] {
-                case .futureEvents(let model), .presentEvents(let model), .pastEvents(let model):
+                case .futureEvents(let model), .presentEvents(let model), .settledEvents(let model), .unsettledEvents(let model):
                     let eventVC = StoryboardManager.eventViewController(model.eventModel, eventID: model.id)
                     self.navigationController?.pushViewController(eventVC, animated: true)
                 default:
