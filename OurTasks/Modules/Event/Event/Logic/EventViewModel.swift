@@ -14,6 +14,7 @@ import CodableFirebase
 class EventViewModel {
     
     var tasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
+    var reviewTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var myTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var allTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var doneTasksBehaviorSubject: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
@@ -21,6 +22,7 @@ class EventViewModel {
     var eventUsersBehaviorSubject: BehaviorSubject<[String:UserModel]> = BehaviorSubject(value: [:])
     
     var noMyTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var noReviewTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var noAllTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var noUnassignedTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var noDoneTasksBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
@@ -58,6 +60,7 @@ class EventViewModel {
                 var unassignedTasks: [String:TaskModel] = [:]
                 var allTasks: [String:TaskModel] = [:]
                 var myTasks: [String:TaskModel] = [:]
+                var reviewTasks: [String:TaskModel] = [:]
                 
                 for (index,task) in $0.enumerated() {
                     if TaskState(rawValue: task.value.state) == TaskState.done {
@@ -70,15 +73,49 @@ class EventViewModel {
                         myTasks[task.key] = task.value
                     }
                     
+                    if task.value.state == TaskState.review.rawValue {
+                        reviewTasks[task.key] = task.value
+                    }
+                    
                     allTasks[task.key] = task.value
                     if index == (self.eventTasks.count - 1) && self.eventTasks.count != 0 {
                         unassignedTasks.count == 0 ? self.noUnassignedTasksBehaviorSubject.onNext(true) : self.unassignedTasksBehaviorSubject.onNext(unassignedTasks)
                         allTasks.count == 0 ? self.noAllTasksBehaviorSubject.onNext(true) : self.allTasksBehaviorSubject.onNext(allTasks)
                         doneTasks.count == 0 ? self.noDoneTasksBehaviorSubject.onNext(true) : self.doneTasksBehaviorSubject.onNext(doneTasks)
                         myTasks.count == 0 ? self.noMyTasksBehaviorSubject.onNext(true) : self.myTasksBehaviorSubject.onNext(myTasks)
+                        reviewTasks.count == 0 ? self.noReviewTasksBehaviorSubject.onNext(true) : self.reviewTasksBehaviorSubject.onNext(reviewTasks)
                     }
                 }
             }).disposed(by: self.disposeBag)
+        
+        self.reviewTasksBehaviorSubject
+            .flatMap({ (reviewTasks) -> Observable<[EventTaskCellModel]> in
+                let ret: [EventTaskCellModel] = reviewTasks.compactMap({
+                    return EventTaskCellModel(id: $0.key, taskModel: $0.value)
+                })
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({
+                    $0.title != EventSectionTitle.review.rawValue
+                })
+                self.sections.insert(EventSection.section(title: .review, items: $0.compactMap({EventItemType.reviewTasks($0)})), at: 0)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
+        self.noReviewTasksBehaviorSubject
+            .flatMap({ (myTasks) -> Observable<NoResultCellModel> in
+                let ret: NoResultCellModel = {
+                    return NoResultCellModel(description: "no_my_tasks".localize())
+                }()
+                return Observable.of(ret)
+            })
+            .subscribe(onNext: {
+                self.sections = self.sections.filter({ $0.title != EventSectionTitle.review.rawValue })
+                self.sections.insert(EventSection.section(title: .review, items: [EventItemType.noResult($0)]), at: 0)
+                self.sectionsBehaviourSubject.onNext(self.sections)
+            })
+            .disposed(by: self.disposeBag)
         
         self.myTasksBehaviorSubject
             .flatMap({ (myTasks) -> Observable<[EventTaskCellModel]> in
@@ -91,7 +128,7 @@ class EventViewModel {
                 self.sections = self.sections.filter({
                     $0.title != EventSectionTitle.myTasks.rawValue
                 })
-                self.sections.insert(EventSection.section(title: .myTasks, items: $0.compactMap({EventItemType.myTasks($0)})), at: 0)
+                self.sections.insert(EventSection.section(title: .myTasks, items: $0.compactMap({EventItemType.myTasks($0)})), at: 1)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -104,7 +141,7 @@ class EventViewModel {
             })
             .subscribe(onNext: {
                 self.sections = self.sections.filter({ $0.title != EventSectionTitle.myTasks.rawValue })
-                self.sections.insert(EventSection.section(title: .myTasks, items: [EventItemType.noResult($0)]), at: 0)
+                self.sections.insert(EventSection.section(title: .myTasks, items: [EventItemType.noResult($0)]), at: 1)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -120,7 +157,7 @@ class EventViewModel {
                 self.sections = self.sections.filter({
                     $0.title != EventSectionTitle.unassignedTasks.rawValue
                 })
-                self.sections.insert(EventSection.section(title: .unassignedTasks, items: $0.compactMap({EventItemType.unassignedTasks($0)})), at: 1)
+                self.sections.insert(EventSection.section(title: .unassignedTasks, items: $0.compactMap({EventItemType.unassignedTasks($0)})), at: 2)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -133,7 +170,7 @@ class EventViewModel {
             })
             .subscribe(onNext: {
                 self.sections = self.sections.filter({ $0.title != EventSectionTitle.unassignedTasks.rawValue })
-                self.sections.insert(EventSection.section(title: .unassignedTasks, items: [EventItemType.noResult($0)]), at: 1)
+                self.sections.insert(EventSection.section(title: .unassignedTasks, items: [EventItemType.noResult($0)]), at: 2)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -149,7 +186,7 @@ class EventViewModel {
                 self.sections = self.sections.filter({
                     $0.title != EventSectionTitle.doneTasks.rawValue
                 })
-                self.sections.insert(EventSection.section(title: .doneTasks, items: $0.compactMap({EventItemType.doneTasks($0)})), at: 2)
+                self.sections.insert(EventSection.section(title: .doneTasks, items: $0.compactMap({EventItemType.doneTasks($0)})), at: 3)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -162,7 +199,7 @@ class EventViewModel {
             })
             .subscribe(onNext: {
                 self.sections = self.sections.filter({ $0.title != EventSectionTitle.doneTasks.rawValue })
-                self.sections.insert(EventSection.section(title: .doneTasks, items: [EventItemType.noResult($0)]), at: 2)
+                self.sections.insert(EventSection.section(title: .doneTasks, items: [EventItemType.noResult($0)]), at: 3)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -178,7 +215,7 @@ class EventViewModel {
                 self.sections = self.sections.filter({
                     $0.title != EventSectionTitle.allTasks.rawValue
                 })
-                self.sections.insert(EventSection.section(title: .allTasks, items: $0.compactMap({EventItemType.allTasks($0)})), at: 3)
+                self.sections.insert(EventSection.section(title: .allTasks, items: $0.compactMap({EventItemType.allTasks($0)})), at: 4)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
@@ -191,10 +228,12 @@ class EventViewModel {
             })
             .subscribe(onNext: {
                 self.sections = self.sections.filter({ $0.title != EventSectionTitle.allTasks.rawValue })
-                self.sections.insert(EventSection.section(title: .allTasks, items: [EventItemType.noResult($0)]), at: 3)
+                self.sections.insert(EventSection.section(title: .allTasks, items: [EventItemType.noResult($0)]), at: 4)
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)
+        
+        
     }
     
     func getEventTasks() {

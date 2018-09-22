@@ -101,6 +101,9 @@ class TaskViewModel {
     
     func updateTaskState(_ state: TaskState) {
         _ = FirebaseReferences().taskRef.document(self.taskID).setData(["state": state.rawValue], merge: true)
+        if state == .done  && self.taskModel.value?.user == ""  {
+            self.endTask()
+        }
     }
     
     func resignFromTask() {
@@ -146,7 +149,7 @@ class TaskViewModel {
                     userPoints = userPoints + points
                     eventRef.updateData(["users":userPoints])
                 } else {
-                    print("User does not exist")
+                    print("Event does not exist")
                 }
             }
             
@@ -158,11 +161,42 @@ class TaskViewModel {
                     userPoints = userPoints + points
                     groupRef.updateData(["users":userPoints])
                 } else {
-                    print("User does not exist")
+                    print("Group does not exist")
                 }
             }
         } else {
             
+        }
+    }
+    
+    func endTask() {
+        guard let userID = self.taskModel.value?.user else { return }
+        guard let eventID = self.taskModel.value?.eventID else { return }
+        let userRef = FirebaseReferences().userRef.document(userID)
+        let eventRef = FirebaseReferences().eventRef.document(eventID)
+        
+        eventRef.getDocument { (document, error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                guard var users = data["users"] as? [String:Int] else { return }
+                var points = users[userID] ?? 0
+                points = points + (self.taskModel.value?.globalPositivePoints ?? 0)
+                users[userID] = points
+                eventRef.setData(["users":users], merge: true)
+            } else {
+                print("Event does not exist")
+            }
+        }
+        
+        userRef.getDocument { (document, error) in
+            if let document = document {
+                guard let data = document.data() else { return }
+                guard var points = data["points"] as? Int else { return }
+                points = points - (self.taskModel.value?.globalPositivePoints ?? 0)
+                userRef.setData(["points":points], merge: true)
+            } else {
+                print("User does not exist")
+            }
         }
     }
 }

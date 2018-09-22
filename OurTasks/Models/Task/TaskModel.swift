@@ -14,6 +14,7 @@ enum TaskState: String {
     case done = "Done"
     case toFix = "To Fix"
     case review = "Review"
+    case notDone = "Not Done"
     case unknown = "Unknown"
 }
 

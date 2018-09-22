@@ -42,6 +42,10 @@ class EventViewController: UITableViewController {
         
         self.dataSource = RxTableViewSectionedReloadDataSource<EventSection>(configureCell: { dataSource, tableView, indexPath, item in
             switch dataSource[indexPath] {
+            case .reviewTasks(let model):
+                let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
+                cell.configure(model)
+                return cell
             case .unassignedTasks(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifiers.eventTask, for: indexPath) as! TaskCell
                 cell.configure(model)
@@ -106,6 +110,9 @@ extension EventViewController {
         self.tableView.rx.itemSelected
             .subscribe(onNext: {
                 switch self.dataSource[$0] {
+                case .reviewTasks(let model):
+                    let taskVC = StoryboardManager.taskViewController(model.id)
+                    self.navigationController?.pushViewController(taskVC, animated: true)
                 case .doneTasks(let model):
                     let taskVC = StoryboardManager.taskViewController(model.id)
                     self.navigationController?.pushViewController(taskVC, animated: true)

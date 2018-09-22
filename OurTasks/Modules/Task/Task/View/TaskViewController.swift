@@ -59,6 +59,29 @@ class TaskViewController: UIViewController {
     }
     
     @IBAction func editTaskAction(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "", message: "Wybierz opcję", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Edycja", style: .default , handler:{ (UIAlertAction)in
+            guard let taskID = self.viewModel?.taskID else { return }
+            guard let taskModel = self.viewModel?.taskModel.value else { return }
+            let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, taskModel: [ taskID : taskModel])
+            addTaskVC.modalPresentationStyle = .overCurrentContext
+            self.navigationController?.pushViewController(addTaskVC, animated: true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Niewykonano", style: .destructive , handler:{ (UIAlertAction)in
+            self.viewModel?.endTask()
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Powrót", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
         guard let taskID = self.viewModel?.taskID else { return }
         guard let taskModel = self.viewModel?.taskModel.value else { return }
         let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, taskModel: [ taskID : taskModel])
@@ -83,6 +106,7 @@ extension TaskViewController {
     }
     
     private func prepareView(_ model: TaskModel) {
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
         switch model.state {
         case TaskState.backlog.rawValue:
             self.backlogLbl.configure(TaskState.backlog.rawValue, isActive: true)
@@ -94,8 +118,10 @@ extension TaskViewController {
             self.toFixLbl.configure(TaskState.toFix.rawValue, isActive: true)
             self.informationView.backgroundColor = self.toFixLbl.backgroundColor
         case TaskState.done.rawValue:
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.doneLbl.configure(TaskState.done.rawValue, isActive: true)
             self.informationView.backgroundColor = self.doneLbl.backgroundColor
+        //TODO: zablokuj aboslutnie wszystko bo już Done i elo i koniec
         case TaskState.review.rawValue:
             self.reviewLbl.configure(TaskState.review.rawValue, isActive: true)
             self.informationView.backgroundColor = self.reviewLbl.backgroundColor
