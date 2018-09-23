@@ -1183,6 +1183,66 @@
             </objects>
             <point key="canvasLocation" x="1777" y="2551"/>
         </scene>
+        <!--ShowQR View Controller-->
+        <scene sceneID="lHU-nu-qNU">
+            <objects>
+                <viewController storyboardIdentifier="showQRViewController" id="lEy-9a-aqF" customClass="ShowQRViewController" customModule="OurTasks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9eB-c8-OyB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Tz-dv-5LD">
+                                <rect key="frame" x="67.666666666666686" y="286" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="UIk-S7-zBG"/>
+                                    <constraint firstAttribute="height" constant="240" id="UcV-lT-6tb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rx6-tX-9xf">
+                                <rect key="frame" x="63.666666666666657" y="692" width="247.99999999999997" height="54"/>
+                                <color key="backgroundColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="0.097950556506849321" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="NDb-DB-TSJ"/>
+                                    <constraint firstAttribute="width" constant="248" id="S42-pf-TXB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="Usuń">
+                                    <color key="titleColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="removeQR:" destination="lEy-9a-aqF" eventType="touchUpInside" id="ipk-K1-eld"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5Tz-dv-5LD" firstAttribute="centerY" secondItem="9eB-c8-OyB" secondAttribute="centerY" id="PL8-di-4jm"/>
+                            <constraint firstItem="rx6-tX-9xf" firstAttribute="centerX" secondItem="9eB-c8-OyB" secondAttribute="centerX" id="dya-9E-xQw"/>
+                            <constraint firstItem="5Tz-dv-5LD" firstAttribute="centerX" secondItem="9eB-c8-OyB" secondAttribute="centerX" id="g3B-OG-C02"/>
+                            <constraint firstItem="A3v-RT-fhQ" firstAttribute="bottom" secondItem="rx6-tX-9xf" secondAttribute="bottom" constant="32" id="oLG-WE-8d9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A3v-RT-fhQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="QRImgeView" destination="5Tz-dv-5LD" id="5LP-yd-miv"/>
+                        <outlet property="removeBtn" destination="rx6-tX-9xf" id="i19-NK-kOU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GlS-Re-9GA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2538" y="2546"/>
+        </scene>
         <!--Award History View Controller-->
         <scene sceneID="QSt-26-GCf">
             <objects>

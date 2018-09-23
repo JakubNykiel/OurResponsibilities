@@ -39,6 +39,7 @@ struct StoryboardManager {
         let awardHistory = AwardHistoryViewController.self
         let qr = QRViewController.self
         let addQr = AddQRViewController.self
+        let showQR = ShowQRViewController.self
     }
 
     enum StoryboardNames: String {
@@ -76,6 +77,7 @@ struct StoryboardManager {
         case awardHistoryViewController
         case QRViewController
         case addQRViewController
+        case showQRViewController
     }
     
     //MARK: GENERAL
@@ -188,6 +190,13 @@ struct StoryboardManager {
         let viewModel = AddQRViewModel(groupID: groupID)
         qrVC.viewModel = viewModel
         return qrVC
+    }
+    
+    static func showQRViewController(qrID: String, groupID: String) -> ShowQRViewController {
+        let showQRVC = self.viewController(ViewControllerTypes().showQR, withIdentifier: ViewControllerIdentifiers.showQRViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = ShowQRViewModel(qrID: qrID, groupID: groupID)
+        showQRVC.viewModel = viewModel
+        return showQRVC
     }
     
 }

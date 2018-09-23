@@ -42,6 +42,33 @@ class QRViewModel {
     }
     
     func fetchCodes() {
-        
+        let groupRef = FirebaseReferences().groupRef.document(self.groupID)
+        groupRef.getDocument(completion: { (document, error) in
+            if let document = document {
+                guard let groupData = document.data() else { return }
+                let codes = groupData["codes"] as? [String] ?? []
+                self.toQRCodeModel(codes)
+            } else {
+                print("Group not exist")
+            }
+        })
+    }
+    
+    private func toQRCodeModel(_ codes: [String]) {
+        _ = codes.enumerated().compactMap({ (index,qr) in
+            let qrRef = FirebaseReferences().qrRef.document(qr)
+            qrRef.getDocument(completion: { (document, error) in
+                if let document = document {
+                    guard let qrData = document.data() else { return }
+                    let qrCodeModel = try! FirebaseDecoder().decode(QRCodeModel.self, from: qrData)
+                    self.qrCodes[qr] = qrCodeModel
+                    if index == codes.count - 1 {
+                        self.qrCodesBehaviorSubject.onNext(self.qrCodes)
+                    }
+                } else {
+                    print("Event not exist")
+                }
+            })
+        })
     }
 }

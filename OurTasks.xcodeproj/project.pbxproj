@@ -91,6 +91,8 @@
 		C3BEE4B7213FDEE300F6E11A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BEE4B6213FDEE300F6E11A /* MenuViewController.swift */; };
 		C3C11DB71F83B1590074D9AC /* GroupList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3C11DB61F83B1590074D9AC /* GroupList.storyboard */; };
 		C3C11DBB1F83B1AB0074D9AC /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */; };
+		C3C17E30215812B200F12E34 /* ShowQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C17E2F215812B200F12E34 /* ShowQRViewController.swift */; };
+		C3C17E3221581B3900F12E34 /* ShowQRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C17E3121581B3900F12E34 /* ShowQRViewModel.swift */; };
 		C3D251531F694B6C00A3E03E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36BDFBA1F6924EA005D7650 /* GoogleService-Info.plist */; };
 		C3D3B1C21FADD74400E04716 /* AddGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */; };
 		C3D3B1C41FADD75900E04716 /* AddGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */; };
@@ -204,6 +206,8 @@
 		C3BEE4B6213FDEE300F6E11A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		C3C11DB61F83B1590074D9AC /* GroupList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupList.storyboard; sourceTree = "<group>"; };
 		C3C11DBA1F83B1AB0074D9AC /* GroupListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupListViewController.swift; sourceTree = "<group>"; };
+		C3C17E2F215812B200F12E34 /* ShowQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQRViewController.swift; sourceTree = "<group>"; };
+		C3C17E3121581B3900F12E34 /* ShowQRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowQRViewModel.swift; sourceTree = "<group>"; };
 		C3D3B1C11FADD74400E04716 /* AddGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddGroup.storyboard; sourceTree = "<group>"; };
 		C3D3B1C31FADD75900E04716 /* AddGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupViewController.swift; sourceTree = "<group>"; };
 		C3D463E8213EA5EE00F1AD47 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
@@ -633,6 +637,8 @@
 			children = (
 				C366D7182156BE08004DAEF0 /* List */,
 				C366D7172156BE02004DAEF0 /* Add */,
+				C3C17E2F215812B200F12E34 /* ShowQRViewController.swift */,
+				C3C17E3121581B3900F12E34 /* ShowQRViewModel.swift */,
 			);
 			path = QR;
 			sourceTree = "<group>";
@@ -1362,6 +1368,7 @@
 				C331344720B7498B00216C5B /* AddEventViewController.swift in Sources */,
 				C33FB868214F205600C9CD11 /* AddAwardViewController.swift in Sources */,
 				743F21FC209879F600B25E30 /* GroupViewController.swift in Sources */,
+				C3C17E3221581B3900F12E34 /* ShowQRViewModel.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
 				C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */,
@@ -1371,6 +1378,7 @@
 				C32FE6381F6819A600692B3D /* RegisterViewController.swift in Sources */,
 				C331344A20B77BD000216C5B /* AddEventViewModel.swift in Sources */,
 				C32685E621505B7100F47166 /* AwardCell.swift in Sources */,
+				C3C17E30215812B200F12E34 /* ShowQRViewController.swift in Sources */,
 				C38B7ED7214096E700F8385F /* MenuViewModel.swift in Sources */,
 				74EEFF0F20A3A44B00B61EF8 /* GroupTaskCell.swift in Sources */,
 				C3231EDC212DBACC0094AB94 /* SCNVector3 + Codable.swift in Sources */,

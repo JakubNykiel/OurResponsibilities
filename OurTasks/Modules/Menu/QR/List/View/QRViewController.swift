@@ -72,4 +72,15 @@ extension QRViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let groupID = self.viewModel?.groupID else { return }
+        guard let qrKeys = self.viewModel?.qrCodes.keys else { return }
+        let arrayKeys = Array(qrKeys)
+        let selectedQRKey = arrayKeys[indexPath.row]
+        
+        let showVC = StoryboardManager.showQRViewController(qrID: selectedQRKey, groupID: groupID)
+        self.navigationController?.pushViewController(showVC, animated: true)
+        
+    }
 }
