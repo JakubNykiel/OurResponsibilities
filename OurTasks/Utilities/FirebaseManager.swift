@@ -26,6 +26,7 @@ struct FirebaseReferences {
     var eventRef = Firestore.firestore().collection(FirebaseModel.events.rawValue)
     var taskRef = Firestore.firestore().collection(FirebaseModel.tasks.rawValue)
     var awardRef = Firestore.firestore().collection(FirebaseModel.awards.rawValue)
+    var qrRef = Firestore.firestore().collection("codes")
 }
 
 class FirebaseManager {

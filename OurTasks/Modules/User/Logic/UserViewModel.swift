@@ -18,13 +18,13 @@ class UserViewModel {
     var usersKey: [String] = []
     var eventID: Variable<String> = Variable("")
     
-    init(eventID: String) {
-        self.eventID.value = eventID
+    init(groupID: String) {
+        self.eventID.value = groupID
     }
     
-    func getAllUsersFromGroup(_ eventID: String) {
-        let eventRef = FirebaseReferences().eventRef.document(eventID)
-        eventRef.getDocument { (document,error) in
+    func getAllUsersFromGroup(_ groupID: String) {
+        let groupRef = FirebaseReferences().groupRef.document(groupID)
+        groupRef.getDocument { (document,error) in
             if let document = document {
                 guard let data = document.data() else { return }
                 let users = data[FirebaseModel.users.rawValue] as? [String:Int] ?? [:]

@@ -37,6 +37,8 @@ struct StoryboardManager {
         let awards = AwardsViewController.self
         let addaward = AddAwardViewController.self
         let awardHistory = AwardHistoryViewController.self
+        let qr = QRViewController.self
+        let addQr = AddQRViewController.self
     }
 
     enum StoryboardNames: String {
@@ -72,6 +74,8 @@ struct StoryboardManager {
         case awardsViewController
         case addAwardViewController
         case awardHistoryViewController
+        case QRViewController
+        case addQRViewController
     }
     
     //MARK: GENERAL
@@ -83,9 +87,9 @@ struct StoryboardManager {
         let registerVC = self.viewController(ViewControllerTypes().register, withIdentifier: ViewControllerIdentifiers.registerViewController.rawValue, fromStoryboard: StoryboardNames.Register.rawValue)
         return registerVC
     }
-    static func usersViewController(eventID: String) -> UserViewController {
+    static func usersViewController(groupID: String) -> UserViewController {
         let userVC = self.viewController(ViewControllerTypes().user, withIdentifier: ViewControllerIdentifiers.userViewController.rawValue, fromStoryboard: StoryboardNames.User.rawValue)
-        userVC.viewModel = UserViewModel(eventID: eventID)
+        userVC.viewModel = UserViewModel(groupID: groupID)
         return userVC
     }
     static func menuViewController(groupID: String, groupModel: GroupModel) -> MenuViewController {
@@ -170,4 +174,20 @@ struct StoryboardManager {
         awardHistoryVC.viewModel = viewModel
         return awardHistoryVC
     }
+    
+    //MARK: QR
+    static func qrViewController(groupID: String, groupModel: GroupModel) -> QRViewController {
+        let qrVC = self.viewController(ViewControllerTypes().qr, withIdentifier: ViewControllerIdentifiers.QRViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = QRViewModel(groupID: groupID, groupModel: groupModel)
+        qrVC.viewModel = viewModel
+        return qrVC
+    }
+    
+    static func addQRViewController(groupID: String, groupModel: GroupModel) -> AddQRViewController {
+        let qrVC = self.viewController(ViewControllerTypes().addQr, withIdentifier: ViewControllerIdentifiers.addQRViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
+        let viewModel = AddQRViewModel(groupID: groupID)
+        qrVC.viewModel = viewModel
+        return qrVC
+    }
+    
 }

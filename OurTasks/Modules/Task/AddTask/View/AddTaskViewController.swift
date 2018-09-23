@@ -227,7 +227,7 @@ extension AddTaskViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 3 {
-            let modalVC = StoryboardManager.usersViewController(eventID: self.viewModel?.eventID ?? "")
+            let modalVC = StoryboardManager.usersViewController(groupID: self.viewModel?.groupID ?? "")
             modalVC.delegate = self
             self.present(modalVC, animated: true, completion: nil)
         }

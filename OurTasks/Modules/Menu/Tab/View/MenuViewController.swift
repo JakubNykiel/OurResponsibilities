@@ -40,6 +40,9 @@ extension MenuViewController {
             } else if view is AwardsViewController {
                 let awardsVC = view as! AwardsViewController
                 awardsVC.viewModel = AwardsViewModel(groupID: id, groupModel: model)
+            } else if view is QRViewController {
+                let qrVC = view as! QRViewController
+                qrVC.viewModel = QRViewModel(groupID: id, groupModel: model)
             }
         }
     }
