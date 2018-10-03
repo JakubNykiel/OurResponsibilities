@@ -29,7 +29,8 @@ struct TaskModel: Codable {
     var negativePoints: Int
     var userInteraction: Bool
     var AR: Bool
-    var arTask: ARTaskModel?
+    var ARposition: [Float]?
+    var ARscale: [Float]?
     var description: String
     var groupID: String
     var eventID: String
@@ -43,7 +44,8 @@ struct TaskModel: Codable {
         case negativePoints
         case userInteraction
         case AR
-        case arTask
+        case ARposition
+        case ARscale
         case state
         case globalPositivePoints
         case description
@@ -51,7 +53,7 @@ struct TaskModel: Codable {
         case eventID
     }
     
-    init(owner: String, name: String, endDate: String, user: String?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, arTask: ARTaskModel?, state: String, globalPositivePoints: Int, description: String, groupID: String, eventID: String) {
+    init(owner: String, name: String, endDate: String, user: String?, positivePoints: Int, negativePoints: Int, userInteraction: Bool, AR: Bool, ARposition: [Float]?, ARscale: [Float]?, state: String, globalPositivePoints: Int, description: String, groupID: String, eventID: String) {
         self.owner = owner
         self.name = name
         self.endDate = endDate
@@ -60,7 +62,8 @@ struct TaskModel: Codable {
         self.negativePoints = negativePoints
         self.userInteraction = userInteraction
         self.AR = AR
-        self.arTask = arTask
+        self.ARposition = ARposition
+        self.ARscale = ARscale
         self.state = state
         self.globalPositivePoints = globalPositivePoints
         self.description = description
@@ -79,7 +82,8 @@ struct TaskModel: Codable {
         self.negativePoints = try container.decode(Int?.self, forKey: .negativePoints) ?? 0
         self.userInteraction = try container.decode(Bool?.self, forKey: .userInteraction) ?? false
         self.AR = try container.decode(Bool?.self, forKey: .AR) ?? false
-        self.arTask = try? container.decode(ARTaskModel?.self, forKey: .arTask) ?? ARTaskModel()
+        self.ARposition = try container.decode([Float]?.self, forKey: .ARposition) ?? []
+        self.ARscale = try container.decode([Float]?.self, forKey: .ARscale) ?? []
         self.state = try container.decode(String?.self, forKey: .state) ?? "backlog"
         self.globalPositivePoints = try container.decode(Int?.self, forKey: .globalPositivePoints) ?? 0
         self.description = try container.decode(String?.self, forKey: .description) ?? ""
@@ -99,7 +103,8 @@ extension TaskModel {
         try container.encode(self.negativePoints, forKey: .negativePoints)
         try container.encode(self.userInteraction, forKey: .userInteraction)
         try container.encode(self.AR, forKey: .AR)
-        try container.encode(self.arTask, forKey: .arTask)
+        try container.encode(self.ARposition, forKey: .ARposition)
+        try container.encode(self.ARscale, forKey: .ARscale)
         try container.encode(self.state, forKey: .state)
         try container.encode(self.globalPositivePoints, forKey: .globalPositivePoints)
         try container.encode(self.description, forKey: .description)

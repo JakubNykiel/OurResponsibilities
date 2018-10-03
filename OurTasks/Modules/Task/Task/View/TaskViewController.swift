@@ -65,7 +65,7 @@ class TaskViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Edycja", style: .default , handler:{ (UIAlertAction)in
             guard let taskID = self.viewModel?.taskID else { return }
             guard let taskModel = self.viewModel?.taskModel.value else { return }
-            let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, taskModel: [ taskID : taskModel])
+            let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, position: taskModel.ARposition, scale: taskModel.ARscale, taskModel: [ taskID : taskModel])
             addTaskVC.modalPresentationStyle = .overCurrentContext
             self.navigationController?.pushViewController(addTaskVC, animated: true)
         }))
@@ -81,12 +81,6 @@ class TaskViewController: UIViewController {
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
-        
-        guard let taskID = self.viewModel?.taskID else { return }
-        guard let taskModel = self.viewModel?.taskModel.value else { return }
-        let addTaskVC = StoryboardManager.addTaskViewController(taskModel.groupID, taskModel.eventID, state: .update, taskModel: [ taskID : taskModel])
-        addTaskVC.modalPresentationStyle = .overCurrentContext
-        self.navigationController?.pushViewController(addTaskVC, animated: true)
     }
     
 }

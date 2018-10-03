@@ -65,6 +65,10 @@
 		C366D72A2157084D004DAEF0 /* QRCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C366D7292157084D004DAEF0 /* QRCodeCell.swift */; };
 		C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBC1F6934A8005D7650 /* UserModel.swift */; };
 		C36BDFBF1F6936B7005D7650 /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */; };
+		C378345221599F8C00912670 /* ArEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C378345121599F8C00912670 /* ArEventCell.swift */; };
+		C378345421599FDF00912670 /* ArEventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C378345321599FDF00912670 /* ArEventListViewController.swift */; };
+		C37834562159A00E00912670 /* AREventListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37834552159A00E00912670 /* AREventListSection.swift */; };
+		C37834582159A01E00912670 /* AREventListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37834572159A01E00912670 /* AREventListViewModel.swift */; };
 		C38B7ED7214096E700F8385F /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38B7ED6214096E700F8385F /* MenuViewModel.swift */; };
 		C39286B2212B57C000734627 /* Event.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C39286B1212B57C000734627 /* Event.storyboard */; };
 		C397F0EF20C324A800E4B6CA /* DispatchQueue+Delay.swift in Sources */ = {isa = PBXBuildFile; fileRef = C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */; };
@@ -180,6 +184,10 @@
 		C36BDFBC1F6934A8005D7650 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		C36BDFBE1F6936B7005D7650 /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
 		C377FD1C212862C000E51394 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../Desktop/MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C378345121599F8C00912670 /* ArEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArEventCell.swift; sourceTree = "<group>"; };
+		C378345321599FDF00912670 /* ArEventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArEventListViewController.swift; sourceTree = "<group>"; };
+		C37834552159A00E00912670 /* AREventListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AREventListSection.swift; sourceTree = "<group>"; };
+		C37834572159A01E00912670 /* AREventListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AREventListViewModel.swift; sourceTree = "<group>"; };
 		C38B7ED6214096E700F8385F /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
 		C39286B1212B57C000734627 /* Event.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Event.storyboard; sourceTree = "<group>"; };
 		C397F0EE20C324A800E4B6CA /* DispatchQueue+Delay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Delay.swift"; sourceTree = "<group>"; };
@@ -703,6 +711,41 @@
 			path = User;
 			sourceTree = "<group>";
 		};
+		C378344B21599F4F00912670 /* AREventList */ = {
+			isa = PBXGroup;
+			children = (
+				C378344F21599F7100912670 /* View */,
+				C378344E21599F6C00912670 /* Logic */,
+				C378345321599FDF00912670 /* ArEventListViewController.swift */,
+			);
+			path = AREventList;
+			sourceTree = "<group>";
+		};
+		C378344E21599F6C00912670 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				C37834552159A00E00912670 /* AREventListSection.swift */,
+				C37834572159A01E00912670 /* AREventListViewModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		C378344F21599F7100912670 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C378345021599F7600912670 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C378345021599F7600912670 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C378345121599F8C00912670 /* ArEventCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		C397D36F214024DF00F83E7D /* Tab */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,6 +1172,7 @@
 		C3E669BB2076DFFE00980EE4 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				C378344B21599F4F00912670 /* AREventList */,
 				C39AB1D12078230F00A3B178 /* View */,
 				C39AB1D0207822FF00A3B178 /* Logic */,
 			);
@@ -1307,6 +1351,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
@@ -1325,6 +1370,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
@@ -1370,6 +1416,7 @@
 				743F21FC209879F600B25E30 /* GroupViewController.swift in Sources */,
 				C3C17E3221581B3900F12E34 /* ShowQRViewModel.swift in Sources */,
 				C3A5F6241F66E36B002A9B30 /* MainViewController.swift in Sources */,
+				C378345221599F8C00912670 /* ArEventCell.swift in Sources */,
 				C301FF1D1F66C7070045641A /* AppDelegate.swift in Sources */,
 				C30826951FBA36BB00876B56 /* AddGroupViewModel.swift in Sources */,
 				C3B2E8E021334EBB002314D4 /* TaskCell.swift in Sources */,
@@ -1417,8 +1464,10 @@
 				C3D463EB213EA61600F1AD47 /* UserViewController.swift in Sources */,
 				C301AE501FE8826500107DCD /* Dictionary+Encodable.swift in Sources */,
 				C3E122B21FC36F2D004FD87F /* GroupModel.swift in Sources */,
+				C37834582159A01E00912670 /* AREventListViewModel.swift in Sources */,
 				C32FE63C1F68386400692B3D /* KeyboardObservers.swift in Sources */,
 				C3D463EF213EA63D00F1AD47 /* UserViewModel.swift in Sources */,
+				C37834562159A00E00912670 /* AREventListSection.swift in Sources */,
 				C366D7282156D382004DAEF0 /* QRCodeModel.swift in Sources */,
 				74D03A2F20AF94D0006D43CF /* UINavigation+BackgroundColor.swift in Sources */,
 				C33FB866214F204300C9CD11 /* AddAwardViewModel.swift in Sources */,
@@ -1439,6 +1488,7 @@
 				C36BDFBD1F6934A8005D7650 /* UserModel.swift in Sources */,
 				C31EBF132154034200D74E86 /* AwardHistorySection.swift in Sources */,
 				743F2205209A77D400B25E30 /* String+Hex.swift in Sources */,
+				C378345421599FDF00912670 /* ArEventListViewController.swift in Sources */,
 				C366D7222156C8CE004DAEF0 /* QRViewModel.swift in Sources */,
 				C39AB1C7207820B000A3B178 /* ConvertFromCamera + UIView.swift in Sources */,
 				C3AC49511F66D629001E2586 /* ButtonBorder.swift in Sources */,

@@ -75,10 +75,6 @@ class GroupViewModel {
                         futureEvent.count == 0 ? self.noFutureEventsBehaviorSubject.onNext(true) : self.futureEventsBehaviorSubject.onNext(futureEvent)
                     }
                 }
-                
-                
-                
-                
             }).disposed(by: self.disposeBag)
     }
     

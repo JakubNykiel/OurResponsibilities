@@ -31,6 +31,7 @@ class BarcodeHandler {
         for result in request.results! {
             if let barcode = result as? VNBarcodeObservation {
                 DispatchQueue.main.async {
+                    print("Description: \(barcode.payloadStringValue)")
                     self.addNode(barcode: barcode)
                 }
             }
@@ -42,8 +43,9 @@ class BarcodeHandler {
     }
     
     private func addNode(barcode: VNBarcodeObservation) {
+        guard let qrID = barcode.payloadStringValue else { return }
         guard let worldTransform = self.generateQRPosition(barcode) else { return }
-        self.viewModel.foundQR(worldTransform: worldTransform)
+        self.viewModel.foundQR(worldTransform: worldTransform, qrID: qrID)
     }
     
     private func generateQRPosition(_ barcode: VNBarcodeObservation) -> simd_float4x4? {

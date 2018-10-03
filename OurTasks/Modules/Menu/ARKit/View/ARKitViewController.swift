@@ -18,19 +18,19 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var sceneView: ARSCNView!
-    @IBOutlet weak var surfaceBtn: UIButton!
+//    @IBOutlet weak var surfaceBtn: UIButton!
     @IBOutlet weak var qrBtn: UIButton!
     @IBOutlet weak var removeBtn: UIButton!
-    @IBOutlet weak var taskDatabaseBtn: UIButton!
+    @IBOutlet weak var addTaskBtn: UIButton!
     let barcodeHandler: BarcodeHandler = BarcodeHandler()
     let arHandler: ARHandler = ARHandler()
     var viewModel: ARKitViewModel?
     private let disposeBag = DisposeBag()
+    private var timer = Timer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.taskDatabaseBtn.isHidden = true
-        self.infoLbl.isHidden = true
+        self.navigationController?.isNavigationBarHidden = true
         self.sceneView.delegate = self
         self.sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         self.setupView()
@@ -38,84 +38,81 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.taskDatabaseBtn.isHidden = true
+        self.addTaskBtn.isHidden = true
+        self.qrBtn.isHidden = false
+        self.infoLbl.isHidden = false
+        self.prepareInfoLabel(text: "Wyszukaj QR Code", color: AppColor.gray)
         self.arHandler.startSession(sceneView: self.sceneView)
-        self.prepareInfoLabel(text: "Wyszukaj QR Code", color: AppColor.appleBlue)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.timer.invalidate()
+        self.timer = Timer()
+        self.navigationController?.isNavigationBarHidden = false
         self.arHandler.pauseSession(sceneView: self.sceneView)
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    @IBAction func addTaskAction(_ sender: Any) {
+        guard let taskNode = self.sceneView.scene.rootNode.childNodes.last else { return }
+        self.presentGroupEvent(node: taskNode)
     }
     
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    @IBAction func addTaskToDatabaseAction(_ sender: Any) {
-        let addTaskVC = StoryboardManager.addTaskViewController("", "", state: .add, taskModel: nil)
-        self.present(addTaskVC, animated: true, completion: nil)
-    }
     
-    @IBAction func startSearchingPlane(_ sender: Any) {
-        print("TaskTask")
-        print((self.sceneView.session.currentFrame?.camera.transform.position())!)
-        let taskNode = self.viewModel?.addTask((self.sceneView.session.currentFrame?.camera.transform)!)
-        taskNode?.name = "task"
-        self.sceneView.scene.rootNode.addChildNode(taskNode!)
-        self.taskDatabaseBtn.isHidden = false
-        self.surfaceBtn.isEnabled = false
-        self.surfaceBtn.alpha = 0.5
-        self.prepareInfoLabel(text: "Dodaj zadanie do bazy", color: AppColor.appleBlue)
-    }
     @IBAction func removePlane(_ sender: Any) {
         let lastNode = self.sceneView.scene.rootNode.childNodes.last
         lastNode?.removeFromParentNode()
     }
+    
     @IBAction func startSearchingQR(_ sender: Any) {
         let nodes = self.sceneView.scene.rootNode.childNodes.filter{$0.name == "parent"}
         nodes.forEach({
             $0.removeFromParentNode()
         })
         self.viewModel?.isSearchingActive = true
+        
         if self.viewModel?.automaticEnabled.value ?? true {
-            self.surfaceBtn.isEnabled = false
-            self.surfaceBtn.alpha = 0.5
+//            self.surfaceBtn.isEnabled = false
+//            self.surfaceBtn.alpha = 0.5
             self.viewModel?.isSearchingActive = true
-            self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
-            DispatchQueue.performAction(after: 3.0) {
-                if self.viewModel?.isSearchingActive ?? true {
-                    self.viewModel?.isSearchingActive = false
-                    self.prepareInfoLabel(text: "Nie znaleziono QR", color: AppColor.appleRed)
-                    let alert = UIAlertController(title: "Nie znaleziono QR code", message: "", preferredStyle: UIAlertControllerStyle.alert)
-                    alert.addAction(UIAlertAction(title: "Wyszukaj ponownie", style: .default, handler: { action in
-                        self.viewModel?.isSearchingActive = true
-                        self.viewModel?.automaticEnabled.value = true
-                        self.prepareInfoLabel(text: "Szukam...", color: AppColor.appleYellow)
-                        self.startSearchingQR(sender)
-
-                    }))
-                    alert.addAction(UIAlertAction(title: "Dodaj ręcznie", style: .cancel, handler: { action in
-                        self.prepareInfoLabel(text: "Umieść telefon nad QR kodem i naciśnij przycisk z ikoną QR", color: AppColor.appleYellow)
-                        self.viewModel?.automaticEnabled.value = false
-                    }))
-                    self.present(alert, animated: true, completion: nil)
-                }
-            }
+            self.prepareInfoLabel(text: "Szukam...", color: AppColor.gray)
+            self.timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(actionAfterDelay(_:)), userInfo: nil, repeats: true)
         } else {
             self.viewModel?.isSearchingActive = false
             self.addQRToScene()
         }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @objc func actionAfterDelay(_ sender: Any) {
+        if self.viewModel?.isSearchingActive ?? true {
+            self.viewModel?.isSearchingActive = false
+            self.prepareInfoLabel(text: "Nie znaleziono QR", color: AppColor.gray)
+            let alert = UIAlertController(title: "Nie znaleziono QR code", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Wyszukaj ponownie", style: .default, handler: { action in
+                self.viewModel?.isSearchingActive = true
+                self.viewModel?.automaticEnabled.value = true
+                self.prepareInfoLabel(text: "Szukam...", color: AppColor.gray)
+                self.startSearchingQR(sender)
+                
+            }))
+            alert.addAction(UIAlertAction(title: "Dodaj ręcznie", style: .cancel, handler: { action in
+                self.prepareInfoLabel(text: "Umieść telefon nad QR kodem i naciśnij przycisk z ikoną QR", color: AppColor.appleYellow)
+                self.viewModel?.automaticEnabled.value = false
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
     private func setupView() {
         self.registerGestureRecognizers()
-        self.viewModel = ARKitViewModel(barcodeHandler: self.barcodeHandler)
         self.viewModel?.setupDelegates(viewController: self)
         self.sceneView.delegate = self
         self.arHandler.setupARScene(sceneView: self.sceneView)
@@ -126,8 +123,8 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
         self.infoLbl.isHidden = false
         self.infoLbl.layer.masksToBounds = true
         self.infoLbl.text = text
-        self.infoLbl.backgroundColor = color.withAlphaComponent(0.25)
-        self.infoLbl.textColor = color
+        self.infoLbl.backgroundColor = color.withAlphaComponent(0.75)
+        self.infoLbl.textColor = UIColor.white
         self.infoLbl.layer.borderColor = color.cgColor
         self.infoLbl.layer.borderWidth = 4.0
         self.infoLbl.layoutIfNeeded()
@@ -145,7 +142,47 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
     }
     
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-        guard anchor is ARPlaneAnchor else {return}
+        guard let planeDetectingActive = self.viewModel?.planeDetecting,
+                let isAdmin = self.viewModel?.isAdmin.value else { return }
+        if planeDetectingActive && isAdmin {
+            guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
+            let width = CGFloat(planeAnchor.extent.x)
+            let height = CGFloat(planeAnchor.extent.z)
+            let plane = SCNPlane(width: width, height: height)
+            
+            plane.materials.first?.diffuse.contents = AppColor.planeBlue
+            
+            let planeNode = SCNNode(geometry: plane)
+            
+            let x = CGFloat(planeAnchor.center.x)
+            let y = CGFloat(planeAnchor.center.y)
+            let z = CGFloat(planeAnchor.center.z)
+            planeNode.position = SCNVector3(x,y,z)
+            planeNode.eulerAngles.x = -.pi / 2
+            
+            node.addChildNode(planeNode)
+        }
+        
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let planeDetectingActive = self.viewModel?.planeDetecting,
+                let isAdmin = self.viewModel?.isAdmin.value else { return }
+        if planeDetectingActive && isAdmin {
+            guard let planeAnchor = anchor as?  ARPlaneAnchor,
+                let planeNode = node.childNodes.first,
+                let plane = planeNode.geometry as? SCNPlane
+                else { return }
+            let width = CGFloat(planeAnchor.extent.x)
+            let height = CGFloat(planeAnchor.extent.z)
+            plane.width = width
+            plane.height = height
+            
+            let x = CGFloat(planeAnchor.center.x)
+            let y = CGFloat(planeAnchor.center.y)
+            let z = CGFloat(planeAnchor.center.z)
+            planeNode.position = SCNVector3(x, y, z)
+        }
     }
     
     func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
@@ -154,6 +191,23 @@ class ARKitViewController: UIViewController, ARSCNViewDelegate,SCNSceneRendererD
             self.viewModel?.analize(image: image)
         }
     }
+    
+    @objc func addToSceneView(withGestureRecognizer recognizer: UIGestureRecognizer) {
+        let tapLocation = recognizer.location(in: sceneView)
+        let hitTestResults = sceneView.hitTest(tapLocation, types: .existingPlaneUsingExtent)
+        
+        guard let hitTestResult = hitTestResults.first else { return }
+        let translation = hitTestResult.worldTransform.columns.3
+        let x = translation.x
+        let y = translation.y
+        let z = translation.z
+        
+        let position = SCNVector3(x,y,z)
+        guard let taskNode = self.viewModel?.addTask(position) else { return }
+        sceneView.scene.rootNode.addChildNode(taskNode)
+        self.viewModel?.planeDetecting = false
+        self.addTaskBtn.isHidden = false
+    }
 }
 @available(iOS 11.0, *)
 extension ARKitViewController: QRNodeDelegate {
@@ -161,18 +215,19 @@ extension ARKitViewController: QRNodeDelegate {
         let parentNode = SCNNode()
         parentNode.name = "parent"
         parentNode.addChildNode(node)
-
+        
         self.sceneView.scene.rootNode.addChildNode(parentNode)
-        self.surfaceBtn.alpha = 1.0
-        self.surfaceBtn.isEnabled = true
-        self.prepareInfoLabel(text: "Znaleziono QR!", color: AppColor.appleGreen)
+//        self.surfaceBtn.alpha = 1.0
+//        self.surfaceBtn.isEnabled = true
+        self.prepareInfoLabel(text: "Znaleziono QR!", color: AppColor.gray)
         self.viewModel?.isSearchingActive = false
         self.qrBtn.isEnabled = false
         self.qrBtn.alpha = 0.5
         DispatchQueue.performAction(after: 3.0) {
             self.qrBtn.isEnabled = true
             self.qrBtn.alpha = 1.0
-            self.prepareInfoLabel(text: "Dodaj zadanie", color: AppColor.appleBlue)
+            self.prepareInfoLabel(text: "Dodaj zadanie", color: AppColor.gray)
+            self.viewModel?.planeDetecting = true
         }
     }
     
@@ -191,6 +246,21 @@ extension ARKitViewController: QRNodeDelegate {
         
         return textNode
     }
+    
+    private func presentGroupEvent(node: SCNNode) {
+        guard let viewModel = self.viewModel else { return }
+        var position: [Float] = []
+        position.append(node.position.x)
+        position.append(node.position.y)
+        position.append(node.position.z)
+        var scale: [Float] = []
+        scale.append(node.scale.x)
+        scale.append(node.scale.y)
+        scale.append(node.scale.z)
+        
+        let destinationVC = StoryboardManager.arEventListViewController(groupID: viewModel.groupID, groupModel: viewModel.groupModel, position: position, scale: scale)
+        self.navigationController?.pushViewController(destinationVC, animated: true)
+    }
 }
 @available(iOS 11.0, *)
 extension ARKitViewController: BarcodeDelegate {
@@ -208,8 +278,8 @@ extension ARKitViewController {
         self.removeBtn.layer.cornerRadius = self.removeBtn.layer.bounds.height / 2
         self.removeBtn.isHidden = true
         
-        self.surfaceBtn.isEnabled = false
-        self.surfaceBtn.alpha = 0.5
+//        self.surfaceBtn.isEnabled = false
+//        self.surfaceBtn.alpha = 0.5
         
     }
 }
@@ -219,9 +289,10 @@ extension ARKitViewController {
     
     func registerGestureRecognizers() {
         let pinchGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinch))
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(toggleSlider))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ARKitViewController.addToSceneView(withGestureRecognizer:)))
+        sceneView.addGestureRecognizer(tapGestureRecognizer)
         self.sceneView.addGestureRecognizer(pinchGestureRecognizer)
-//        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
+        //        self.sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func changeDistanceFromCamera(_ node: SCNNode, newValue: CGFloat) {

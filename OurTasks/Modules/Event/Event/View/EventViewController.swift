@@ -89,7 +89,7 @@ class EventViewController: UITableViewController {
     
     @IBAction func toAddTask(_ sender: Any) {
         guard let eventModel = self.viewModel?.eventModel else { return }
-        let addTaskVC = StoryboardManager.addTaskViewController(eventModel.groupID, self.viewModel.eventID, state: .add, taskModel: nil)
+        let addTaskVC = StoryboardManager.addTaskViewController(eventModel.groupID, self.viewModel.eventID, state: .add, position: nil, scale: nil, taskModel: nil)
         self.navigationController?.pushViewController(addTaskVC, animated: true)
     }
 }

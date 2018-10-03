@@ -33,7 +33,9 @@ extension MenuViewController {
                 let groupVC = view as! GroupViewController
                 groupVC.viewModel = GroupViewModel(groupModel: model, groupID: id)
             } else if view is ARKitViewController {
-                print("ARKit")
+                let arVC = view as! ARKitViewController
+                let barcodeHandler = BarcodeHandler()
+                arVC.viewModel = ARKitViewModel(barcodeHandler: barcodeHandler, groupID: id, groupModel: model)
             } else if view is RankingViewController {
                 let rankingVC = view as! RankingViewController
                 rankingVC.viewModel = RankingViewModel(groupId: id, groupModel: model)

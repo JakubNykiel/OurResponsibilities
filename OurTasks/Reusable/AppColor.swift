@@ -18,4 +18,5 @@ struct AppColor {
     static let appleBlue = UIColor.init(red: 0/255, green: 122/255, blue: 255/255, alpha: 1.0)
     static let applePurple = UIColor.init(red: 88/255, green: 86/255, blue: 214/255, alpha: 1.0)
     static let applePink = UIColor.init(red: 255/255, green: 45/255, blue: 85/255, alpha: 1.0)
+    static let planeBlue = UIColor(red: 90/255, green: 200/255, blue: 250/255, alpha: 0.50)
 }

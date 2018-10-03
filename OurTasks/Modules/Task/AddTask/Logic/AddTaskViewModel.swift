@@ -23,18 +23,20 @@ class AddTaskViewModel {
     var taskModel: TaskModel?
     var taskModelToUpdate: [String:TaskModel]?
     var taskUser: [String:UserModel]?
-    var arTaskModel: ARTaskModel?
     var viewState: AddTaskViewState?
-    
+    var position: [Float]?
+    var scale: [Float]?
     var eventID: String
     var groupID: String
     var qrCode: QRCode?
     
-    init(groupID: String, eventID: String, state: AddTaskViewState, taskModel: [String:TaskModel]?) {
+    init(groupID: String, eventID: String, state: AddTaskViewState, position: [Float]?, scale: [Float]?, taskModel: [String:TaskModel]?) {
         self.groupID = groupID
         self.eventID = eventID
         self.viewState = state
         self.taskModelToUpdate = taskModel
+        self.position = position
+        self.scale = scale
     }
     
     func addTaskToDatabase() {

@@ -37,8 +37,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
     @IBOutlet weak var arLbl: UILabel!
     @IBOutlet weak var addInAR: UIButton!
     @IBOutlet weak var switchAR: UISwitch!
-    @IBOutlet weak var qrName: UILabel!
-    @IBOutlet weak var qrNameValueLbl: UILabel!
     @IBOutlet weak var xValueLbl: UILabel!
     @IBOutlet weak var yValueLbl: UILabel!
     @IBOutlet weak var zValueLbl: UILabel!
@@ -65,13 +63,21 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
     
     func prepare() {
         self.addInAR.isHidden = true
-        self.switchAR.isOn = false
+        self.switchAR.isOn = self.viewModel?.position != nil ? true : false
         self.prepareTexts()
         self.prepareTextFields()
         self.preparePickers()
         if self.viewModel?.viewState == AddTaskViewState.update {
             self.prepareUpdateView()
+        } else {
+            guard let position = self.viewModel?.position else { return }
+            if !position.isEmpty {
+                self.xValueLbl.text = String(position[0])
+                self.yValueLbl.text = String(position[1])
+                self.zValueLbl.text = String(position[2])
+            }
         }
+        
     }
 
     @IBAction func switchARAction(_ sender: Any) {
@@ -99,7 +105,8 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
             negativePoints: -Int(self.eventNegativePointsTF.text ?? "0")!,
             userInteraction: self.usersInteractionSwitch.isOn,
             AR: self.switchAR.isOn,
-            arTask: self.viewModel?.arTaskModel,
+            ARposition: self.viewModel?.position,
+            ARscale: self.viewModel?.scale,  
             state: TaskState.backlog.rawValue,
             globalPositivePoints: Int(self.globalPositivePointsTF.text ?? "0")!,
             description: self.descTxt.text,
@@ -133,7 +140,6 @@ extension AddTaskViewController {
         self.userTF.placeholder = "choose_user".localize()
         self.globalPointsLbl.text = "global_points".localize()
         self.arLbl.text = "AR".localize()
-        self.qrName.text = "QR_name".localize()
         self.descLbl.text = "desc".localize()
         let buttonText: String = self.viewModel?.viewState == .add ? "add".localize() : "update".localize()
         self.finishBtn.setTitle(buttonText, for: .normal)
@@ -193,13 +199,6 @@ extension AddTaskViewController {
         self.globalPositivePointsTF.text = String(model.globalPositivePoints)
         self.eventPositivePointsTF.text = String(model.positivePoints)
         self.eventNegativePointsTF.text = String(model.negativePoints)
-        self.switchAR.isOn = model.AR
-        if self.switchAR.isOn {
-            self.qrNameValueLbl.text = model.arTask?.name
-            self.xValueLbl.text = String(model.arTask?.coordinates?.x ?? 0.0)
-            self.yValueLbl.text = String(model.arTask?.coordinates?.y ?? 0.0)
-            self.zValueLbl.text = String(model.arTask?.coordinates?.z ?? 0.0)
-        }
     }
 }
 
