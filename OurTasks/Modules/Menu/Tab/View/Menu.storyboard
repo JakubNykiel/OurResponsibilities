@@ -58,20 +58,6 @@
                                     <action selector="startSearchingQR:" destination="bc9-uk-WYu" eventType="touchUpInside" id="gZj-Xn-qBS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="UMB-ou-jYk">
-                                <rect key="frame" x="50" y="112" width="275" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="fwZ-20-Yf7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDt-Dh-FvR">
                                 <rect key="frame" x="20" y="641" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -110,8 +96,26 @@
                                     <action selector="startSearchingQR:" destination="bc9-uk-WYu" eventType="touchUpInside" id="tPh-pg-OfE"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6V-1f-CgC">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fe9-j2-m9g">
                                 <rect key="frame" x="287" y="561" width="64" height="64"/>
+                                <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="Nnq-1u-e3G"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
+                                <state key="normal" image="icSearch"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="32"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchTaskAction:" destination="bc9-uk-WYu" eventType="touchUpInside" id="gKt-Tb-82Q"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6V-1f-CgC">
+                                <rect key="frame" x="287" y="481" width="64" height="64"/>
                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="sPK-Xk-Mep"/>
@@ -130,9 +134,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="CBd-9H-p0w" firstAttribute="top" secondItem="fe9-j2-m9g" secondAttribute="bottom" constant="16" id="2cr-dC-rL0"/>
+                            <constraint firstItem="fe9-j2-m9g" firstAttribute="width" secondItem="fe9-j2-m9g" secondAttribute="height" multiplier="1:1" id="5b3-RM-Cny"/>
                             <constraint firstItem="rFm-jq-w9c" firstAttribute="bottom" secondItem="CBd-9H-p0w" secondAttribute="bottom" constant="24" id="66M-9a-8bp"/>
-                            <constraint firstItem="rFm-jq-w9c" firstAttribute="trailing" secondItem="UMB-ou-jYk" secondAttribute="trailing" constant="50" id="BII-89-tnO"/>
-                            <constraint firstItem="CBd-9H-p0w" firstAttribute="top" secondItem="D6V-1f-CgC" secondAttribute="bottom" constant="16" id="CWP-7v-TZq"/>
+                            <constraint firstItem="fe9-j2-m9g" firstAttribute="top" secondItem="D6V-1f-CgC" secondAttribute="bottom" constant="16" id="8iX-im-O6q"/>
+                            <constraint firstItem="fe9-j2-m9g" firstAttribute="centerX" secondItem="CBd-9H-p0w" secondAttribute="centerX" id="Chs-al-GcX"/>
                             <constraint firstItem="3L3-yu-Ktm" firstAttribute="top" secondItem="rFm-jq-w9c" secondAttribute="top" id="FaE-Y9-kcq"/>
                             <constraint firstItem="D6V-1f-CgC" firstAttribute="width" secondItem="D6V-1f-CgC" secondAttribute="height" multiplier="1:1" id="M5a-yY-xXx"/>
                             <constraint firstAttribute="trailing" secondItem="CBd-9H-p0w" secondAttribute="trailing" constant="24" id="Oih-Zb-sgd"/>
@@ -140,13 +146,10 @@
                             <constraint firstItem="rFm-jq-w9c" firstAttribute="bottom" secondItem="fDt-Dh-FvR" secondAttribute="bottom" constant="24" id="RJu-k5-jm6"/>
                             <constraint firstItem="hG9-rT-2Nt" firstAttribute="centerX" secondItem="z8V-DT-efH" secondAttribute="centerX" id="TWo-gi-pBb"/>
                             <constraint firstItem="3L3-yu-Ktm" firstAttribute="leading" secondItem="rFm-jq-w9c" secondAttribute="leading" id="VTR-tj-R2Z"/>
-                            <constraint firstItem="UMB-ou-jYk" firstAttribute="top" secondItem="rFm-jq-w9c" secondAttribute="top" constant="24" id="dS5-UU-5jn"/>
                             <constraint firstItem="fDt-Dh-FvR" firstAttribute="width" secondItem="fDt-Dh-FvR" secondAttribute="height" multiplier="1:1" id="eyw-Mi-AeM"/>
                             <constraint firstItem="D6V-1f-CgC" firstAttribute="trailing" secondItem="CBd-9H-p0w" secondAttribute="trailing" id="kPs-OC-xXS"/>
-                            <constraint firstItem="UMB-ou-jYk" firstAttribute="centerX" secondItem="z8V-DT-efH" secondAttribute="centerX" id="lxI-Zq-r3q"/>
                             <constraint firstItem="hG9-rT-2Nt" firstAttribute="centerY" secondItem="CBd-9H-p0w" secondAttribute="centerY" id="t9f-Yx-dMk"/>
                             <constraint firstItem="rFm-jq-w9c" firstAttribute="bottom" secondItem="3L3-yu-Ktm" secondAttribute="bottom" id="v3T-wq-pK0"/>
-                            <constraint firstItem="UMB-ou-jYk" firstAttribute="leading" secondItem="rFm-jq-w9c" secondAttribute="leading" constant="50" id="v95-2b-jS8"/>
                             <constraint firstItem="fDt-Dh-FvR" firstAttribute="leading" secondItem="rFm-jq-w9c" secondAttribute="leading" constant="20" id="x28-ae-aD4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rFm-jq-w9c"/>
@@ -154,10 +157,10 @@
                     <navigationItem key="navigationItem" id="Obr-fq-zwl"/>
                     <connections>
                         <outlet property="addTaskBtn" destination="D6V-1f-CgC" id="u5n-lP-2Cf"/>
-                        <outlet property="infoLbl" destination="UMB-ou-jYk" id="eWC-G2-Ns8"/>
                         <outlet property="qrBtn" destination="CBd-9H-p0w" id="eSv-ex-HAE"/>
                         <outlet property="removeBtn" destination="hG9-rT-2Nt" id="9i1-DC-aP4"/>
                         <outlet property="sceneView" destination="3L3-yu-Ktm" id="xOA-GQ-nbO"/>
+                        <outlet property="searchBtn" destination="fe9-j2-m9g" id="A0Q-jA-dki"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QUh-M0-ynB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1443,5 +1446,6 @@
         <image name="icQR" width="220" height="220"/>
         <image name="icQR2" width="18.75" height="18.75"/>
         <image name="icRanking" width="18.75" height="18.75"/>
+        <image name="icSearch" width="37.5" height="37.5"/>
     </resources>
 </document>

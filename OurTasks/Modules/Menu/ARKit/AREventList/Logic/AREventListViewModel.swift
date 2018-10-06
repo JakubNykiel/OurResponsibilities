@@ -30,16 +30,18 @@ class AREventListViewModel {
     private let calendar = Calendar.current
     var groupModel: GroupModel
     var groupID: String
+    var qrID: String
     var position: [Float]?
     var scale: [Float]?
     var groupEvents: [String:EventModel] = [:]
     
-    init(groupModel: GroupModel, groupID: String, position: [Float]?, scale: [Float]?) {
+    init(groupModel: GroupModel, groupID: String, qrID: String, position: [Float]?, scale: [Float]?) {
         self.dateFormatter.dateFormat = "dd.MM.yyyy"
         self.groupModel = groupModel
         self.position = position
         self.scale = scale
         self.groupID = groupID
+        self.qrID = qrID
         
         self.groupEventsBehaviorSubject.asObservable()
             .subscribe(onNext: {

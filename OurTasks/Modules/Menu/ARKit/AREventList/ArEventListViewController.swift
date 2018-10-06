@@ -71,7 +71,7 @@ class ArEventListViewController: UITableViewController {
             .subscribe(onNext: {
                 switch self.dataSource[$0] {
                 case .futureEvents(let model), .presentEvents(let model):
-                    let eventVC = StoryboardManager.addTaskViewController(self.viewModel.groupID, model.id, state: .add, position: self.viewModel.position, scale: self.viewModel.scale, taskModel: nil)
+                    let eventVC = StoryboardManager.addTaskViewController(self.viewModel.groupID, model.id, qrID: self.viewModel.qrID, state: .add, position: self.viewModel.position, scale: self.viewModel.scale, taskModel: nil)
                     self.navigationController?.pushViewController(eventVC, animated: true)
                 default:
                     break

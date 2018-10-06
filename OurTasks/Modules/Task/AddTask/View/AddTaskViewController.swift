@@ -23,9 +23,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
     @IBOutlet weak var userLbl: UILabel!
     @IBOutlet weak var userTF: UITextField!
     
-    @IBOutlet weak var usersInteractionLbl: UILabel!
-    @IBOutlet weak var usersInteractionSwitch: UISwitch!
-    
     @IBOutlet weak var globalPointsLbl: UILabel!
     @IBOutlet weak var globalPositivePointsTF: UITextField!
     
@@ -35,7 +32,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
     
     @IBOutlet weak var arHeight: NSLayoutConstraint!
     @IBOutlet weak var arLbl: UILabel!
-    @IBOutlet weak var addInAR: UIButton!
     @IBOutlet weak var switchAR: UISwitch!
     @IBOutlet weak var xValueLbl: UILabel!
     @IBOutlet weak var yValueLbl: UILabel!
@@ -62,7 +58,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
     }
     
     func prepare() {
-        self.addInAR.isHidden = true
         self.switchAR.isOn = self.viewModel?.position != nil ? true : false
         self.prepareTexts()
         self.prepareTextFields()
@@ -78,11 +73,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
             }
         }
         
-    }
-
-    @IBAction func switchARAction(_ sender: Any) {
-        self.addInAR.isHidden = !self.switchAR.isOn
-        self.view.layoutIfNeeded()
     }
     
     @IBAction func ARAction(_ sender: Any) {
@@ -103,7 +93,6 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
             user: self.viewModel?.taskUser?.first?.key ?? "",
             positivePoints: Int(self.eventPositivePointsTF.text ?? "0")!,
             negativePoints: -Int(self.eventNegativePointsTF.text ?? "0")!,
-            userInteraction: self.usersInteractionSwitch.isOn,
             AR: self.switchAR.isOn,
             ARposition: self.viewModel?.position,
             ARscale: self.viewModel?.scale,  
@@ -111,7 +100,8 @@ class AddTaskViewController: UITableViewController, UserSelectedDelegate {
             globalPositivePoints: Int(self.globalPositivePointsTF.text ?? "0")!,
             description: self.descTxt.text,
             groupID: self.viewModel?.groupID ?? "",
-            eventID: self.viewModel?.eventID ?? "")
+            eventID: self.viewModel?.eventID ?? "",
+            qrID: self.viewModel?.qrID ?? "")
         if self.viewModel?.viewState == AddTaskViewState.add {
             self.viewModel?.addTaskToDatabase()
         } else {
@@ -195,7 +185,6 @@ extension AddTaskViewController {
         self.nameTF.text = model.name
         self.descTxt.text = model.description
         self.endTF.text = model.endDate
-        self.usersInteractionSwitch.isOn = model.userInteraction
         self.globalPositivePointsTF.text = String(model.globalPositivePoints)
         self.eventPositivePointsTF.text = String(model.positivePoints)
         self.eventNegativePointsTF.text = String(model.negativePoints)

@@ -132,9 +132,9 @@ struct StoryboardManager {
         return eventVC
     }
     //MARK: TASK
-    static func addTaskViewController(_ groupID: String, _ eventID: String, state: AddTaskViewState, position: [Float]?, scale: [Float]?, taskModel: [String:TaskModel]?) -> AddTaskViewController {
+    static func addTaskViewController(_ groupID: String, _ eventID: String, qrID: String?, state: AddTaskViewState, position: [Float]?, scale: [Float]?, taskModel: [String:TaskModel]?) -> AddTaskViewController {
         let addTaskVC = self.viewController(ViewControllerTypes().addTask, withIdentifier: ViewControllerIdentifiers.addTaskViewController.rawValue, fromStoryboard: StoryboardNames.AddTask.rawValue)
-        let viewModel = AddTaskViewModel.init(groupID: groupID, eventID: eventID, state: state, position: position, scale: scale, taskModel: taskModel)
+        let viewModel = AddTaskViewModel.init(groupID: groupID, eventID: eventID, qrID: qrID, state: state, position: position, scale: scale, taskModel: taskModel)
         addTaskVC.viewModel = viewModel
         return addTaskVC
     }
@@ -203,9 +203,9 @@ struct StoryboardManager {
     }
     
     //MARK: ARKit
-    static func arEventListViewController(groupID: String, groupModel: GroupModel, position: [Float]?, scale: [Float]?) -> ArEventListViewController {
+    static func arEventListViewController(groupID: String, groupModel: GroupModel, qrID: String, position: [Float]?, scale: [Float]?) -> ArEventListViewController {
         let arEventListVC = self.viewController(ViewControllerTypes().arEventList, withIdentifier: ViewControllerIdentifiers.arEventListViewController.rawValue, fromStoryboard: StoryboardNames.Menu.rawValue)
-        let viewModel = AREventListViewModel(groupModel: groupModel, groupID: groupID, position: position, scale: scale)
+        let viewModel = AREventListViewModel(groupModel: groupModel, groupID: groupID, qrID: qrID, position: position, scale: scale)
         arEventListVC.viewModel = viewModel
         return arEventListVC
     }

@@ -11,6 +11,8 @@ import Vision
 import ARKit
 import SceneKit
 import RxSwift
+import Firebase
+import CodableFirebase
 
 enum QRState {
     case search
@@ -29,17 +31,21 @@ class ARKitViewModel {
     var planeDetected: Variable<Bool> = Variable(false)
     var detectingActive: Variable<Bool> = Variable(false)
     var automaticEnabled: Variable<Bool> = Variable(true)
+    var unassignedARTasks: BehaviorSubject<[TaskModel]> = BehaviorSubject(value: [])
+    var userARTasks: BehaviorSubject<[String:TaskModel]> = BehaviorSubject(value: [:])
     var planeDetecting: Bool = false
     let barcodeHandler: BarcodeHandler
     private var delegate: QRNodeDelegate?
     var isSearchingActive: Bool = false
     var userTasks: [SCNNode] = []
     var qrID: Variable<String> = Variable("")
-    var qrName: String = ""
+    var qrOwner: String = ""
+    var qrMain: Bool = false
     var groupID: String
     var groupModel: GroupModel
     var isAdmin: Variable<Bool> = Variable(false)
-    
+    var eventModels: [EventModel] = []
+    var userARTaskModels: [String:TaskModel] = [:]
     private var disposeBag = DisposeBag()
     
     init(barcodeHandler: BarcodeHandler, groupID: String, groupModel: GroupModel) {
@@ -116,19 +122,75 @@ class ARKitViewModel {
                 guard let data = document.data() else { return }
                 guard let groupID = data["groupID"] as? String else { return }
                 guard let main = data["main"] as? Bool else { return }
-                guard let name = data["name"] as? String else { return }
-                self.qrName = name
+                guard let qrOwner = data["user"] as? String else { return }
                 self.groupID = groupID
-                if main {
-//                    getAllTaskForGroupWhenARIsOn
-                } else {
-                    // get only my tasks when ar on
-                    guard let user = data["user"] as? String else { return }
-                }
+                self.qrMain = main
+                self.qrOwner = qrOwner
             } else {
                 print("Document does not exist")
             }
         }
+    }
+    
+    func getUserARTasks() {
+        
+        FirebaseReferences().taskRef
+            .whereField("groupID", isEqualTo: self.groupID)
+            .whereField("AR", isEqualTo: true)
+            .whereField("qrID", isEqualTo: self.qrID.value)
+            .whereField("user", isEqualTo: self.qrOwner)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for (index,document) in (querySnapshot!.documents).enumerated() {
+                        let data = document.data()
+                        let taskModel = try! FirebaseDecoder().decode(TaskModel.self, from: data)
+                        self.userARTaskModels[document.documentID] = taskModel
+                        if index == (querySnapshot!.documents.count - 1) {
+                            self.userARTasks.onNext(self.userARTaskModels)
+                        }
+                    }
+                }
+        }
+    }
+    
+    func getARUnassignedTasks() {
+        var unassignedTasks: [TaskModel] = []
+        FirebaseReferences().taskRef
+            .whereField("groupID", isEqualTo: self.groupID)
+            .whereField("AR", isEqualTo: true)
+            .whereField("qrID", isEqualTo: self.qrID.value)
+            .whereField("user", isEqualTo: "")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for (index,document) in (querySnapshot!.documents).enumerated() {
+                        let data = document.data()
+                        let taskModel = try! FirebaseDecoder().decode(TaskModel.self, from: data)
+                        unassignedTasks.append(taskModel)
+                        if index == (querySnapshot!.documents.count - 1) {
+                            self.unassignedARTasks.onNext(unassignedTasks)
+                        }
+                    }
+                }
+        }
+    }
+    
+    func getNodeTask(_ node: SCNNode) -> String? {
+        var nodePosition: [Float] = []
+        nodePosition.append(node.position.x)
+        nodePosition.append(node.position.y)
+        nodePosition.append(node.position.z)
+        
+        for task in self.userARTaskModels {
+            if task.1.ARposition == nodePosition {
+                return task.0
+            }
+        }
+        
+        return nil
     }
 }
 
