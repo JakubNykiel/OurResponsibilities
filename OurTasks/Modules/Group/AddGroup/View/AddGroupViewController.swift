@@ -62,7 +62,7 @@ class AddGroupViewController: UITableViewController {
         let groupName = self.nameTF.text ?? ""
         let colorString: String = self.viewModel.prepareColorForGroup(self.groupColorCollection.indexPathsForVisibleItems.first?.row ?? 0)
         self.viewModel.users[currentUserUid] = 0
-        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: self.viewModel.users, events: nil, admins: [currentUserUid])
+        self.viewModel.groupModel = GroupModel(name: groupName, createDate: self.viewModel.getTodayDate(), color: colorString, users: self.viewModel.users, events: nil, admins: [currentUserUid], codes: [])
     }
     
     @IBAction func addToGroupAction(_ sender: Any) {

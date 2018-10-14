@@ -101,8 +101,8 @@ class TaskViewModel {
     
     func updateTaskState(_ state: TaskState) {
         _ = FirebaseReferences().taskRef.document(self.taskID).setData(["state": state.rawValue], merge: true)
-        if state == .done  && self.taskModel.value?.user == ""  {
-            self.endTask()
+        if state == .done  && self.taskModel.value?.user != ""  {
+            self.doneTask()
         }
     }
     
@@ -125,29 +125,31 @@ class TaskViewModel {
             }
         }
         
-        self.savePointsToDatabase(points: self.taskModel.value?.negativePoints ?? 0)
+        self.savePointsToDatabase(points: self.taskModel.value?.negativePoints ?? 0, globalPoints: 0)
     }
     
     func doneTask() {
-        
+        self.savePointsToDatabase(points: self.taskModel.value?.positivePoints ?? 0, globalPoints: self.taskModel.value?.globalPositivePoints ?? 0)
     }
     
     
-    private func savePointsToDatabase(points: Int) {
-        let currentUserUID = self.firebaseManager.getCurrentUserUid()
+    private func savePointsToDatabase(points: Int, globalPoints: Int) {
+        guard let userID = self.taskModel.value?.user else { return }
         guard let eventID = self.taskModel.value?.eventID else { return }
         guard let groupID = self.taskModel.value?.groupID else { return }
         let eventRef = FirebaseReferences().eventRef.document(eventID)
         let groupRef = FirebaseReferences().groupRef.document(groupID)
+        let userRef = FirebaseReferences().userRef.document(userID)
        
-        if points <= 0 {
+        if points >= 0 {
             eventRef.getDocument { (document, error) in
                 if let document = document {
                     guard let data = document.data() else { return }
                     var users = data[FirebaseModel.users.rawValue] as? [String:Int] ?? [:]
-                    guard var userPoints = users[currentUserUID] else { return }
+                    guard var userPoints = users[userID] else { return }
                     userPoints = userPoints + points
-                    eventRef.updateData(["users":userPoints])
+                    users[userID] = userPoints
+                    eventRef.updateData(["users":users])
                 } else {
                     print("Event does not exist")
                 }
@@ -157,11 +159,23 @@ class TaskViewModel {
                 if let document = document {
                     guard let data = document.data() else { return }
                     var users = data[FirebaseModel.users.rawValue] as? [String:Int] ?? [:]
-                    guard var userPoints = users[currentUserUID] else { return }
-                    userPoints = userPoints + points
+                    guard var userPoints = users[userID] else { return }
+                    userPoints = userPoints + (self.taskModel.value?.globalPositivePoints ?? 0)
+                    users[userID] = userPoints
                     groupRef.updateData(["users":userPoints])
                 } else {
                     print("Group does not exist")
+                }
+            }
+            
+            userRef.getDocument { (document, error) in
+                if let document = document {
+                    guard let data = document.data() else { return }
+                    guard var points = data["points"] as? Int else { return }
+                    points = points + (self.taskModel.value?.globalPositivePoints ?? 0)
+                    userRef.setData(["points":points], merge: true)
+                } else {
+                    print("User does not exist")
                 }
             }
         } else {

@@ -95,13 +95,7 @@ extension RankingViewController {
         let sectionData = dataSource[section]
         let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: tableView.frame.size.width, height: 40.0))
         let label = UILabel(frame: CGRect(x: 20.0, y: 18.0, width: tableView.frame.size.width, height: 24.0))
-        if self.rankingSegmented.selectedSegmentIndex == 0 {
-            label.text = sectionData.title
-        } else {
-            guard let eventValues = self.viewModel?.eventRanking.values else { return UIView() }
-            let eventName = Array(eventValues)[section]
-            label.text = eventName
-        }
+        label.text = sectionData.title
         
         label.textColor = AppColor.applePurple
         label.font = UIFont.boldSystemFont(ofSize: 20.0)

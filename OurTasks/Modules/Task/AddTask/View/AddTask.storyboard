@@ -274,7 +274,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SOV-Jx-4xv">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SOV-Jx-4xv">
                                                             <rect key="frame" x="0.0" y="39" width="281" height="72"/>
                                                             <subviews>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="O68-Zg-1fb">
@@ -360,6 +360,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="SOV-Jx-4xv" secondAttribute="trailing" id="HXq-24-brT"/>
                                                         <constraint firstItem="X8n-9z-OXX" firstAttribute="leading" secondItem="aja-f5-9QA" secondAttribute="leading" id="JvI-61-zwB"/>
                                                         <constraint firstItem="SOV-Jx-4xv" firstAttribute="leading" secondItem="aja-f5-9QA" secondAttribute="leading" id="fFs-Ez-fGh"/>
+                                                        <constraint firstItem="SOV-Jx-4xv" firstAttribute="top" secondItem="Dap-re-oWC" secondAttribute="bottom" constant="8" id="gWe-A2-Xmd"/>
                                                         <constraint firstItem="Dap-re-oWC" firstAttribute="top" secondItem="aja-f5-9QA" secondAttribute="top" id="gx6-VD-kB0"/>
                                                         <constraint firstAttribute="trailing" secondItem="Dap-re-oWC" secondAttribute="trailing" id="td8-xN-egJ"/>
                                                         <constraint firstAttribute="height" constant="112" id="tgi-yd-9C0"/>

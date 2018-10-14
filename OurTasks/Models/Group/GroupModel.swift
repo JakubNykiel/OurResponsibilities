@@ -15,6 +15,7 @@ struct GroupModel: Codable {
     var users: [String:Int]?
     var events: [String]?
     var admins: [String] = []
+    var codes: [String] = []
 
     enum GroupKeys: String,CodingKey {
         case name
@@ -23,15 +24,17 @@ struct GroupModel: Codable {
         case users
         case events
         case admins
+        case codes
     }
     
-    init(name: String, createDate: String, color: String, users: [String:Int]?, events: [String]?, admins: [String]) {
+    init(name: String, createDate: String, color: String, users: [String:Int]?, events: [String]?, admins: [String], codes: [String]) {
         self.name = name
         self.createDate = createDate
         self.color = color
         self.users = users
         self.events = events
         self.admins = admins
+        self.codes = codes
     }
     
     public init(from decoder: Decoder) throws {
@@ -43,6 +46,7 @@ struct GroupModel: Codable {
         self.users = try? container.decode([String:Int]?.self, forKey: .users) ?? [:]
         self.events = try? container.decode([String]?.self, forKey: .events) ?? []
         self.admins = try container.decode([String]?.self, forKey: .admins) ?? []
+        self.codes = try container.decode([String]?.self, forKey: .codes) ?? []
     }
 
 }
@@ -55,5 +59,6 @@ extension GroupModel {
         try container.encode(self.users, forKey: .users)
         try container.encode(self.events, forKey: .events)
         try container.encode(self.admins, forKey: .admins)
+        try container.encode(self.codes, forKey: .codes)
     }
 }

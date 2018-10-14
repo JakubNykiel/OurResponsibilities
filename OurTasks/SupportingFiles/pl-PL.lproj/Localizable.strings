@@ -58,7 +58,7 @@
 "end" = "Koniec";
 "positive_points" = "+ punkty";
 "negative_points" = "- punkty";
-"gloabl_points" = "Punkty grupowe";
+"global_points" = "Punkty grupowe";
 "AR" = "AR";
 "QR_name" = "Nazwa QR";
 "desc" = "Opis";

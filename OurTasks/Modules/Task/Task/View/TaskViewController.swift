@@ -58,6 +58,15 @@ class TaskViewController: UIViewController {
         self.prepareOnAppear()
     }
     
+    @IBAction func checkAction(_ sender: Any) {
+        self.prepareView(TaskState.review)
+    }
+    
+    @IBAction func resignAction(_ sender: Any) {
+        self.viewModel?.resignFromTask()
+        self.prepareView(TaskState.backlog)
+    }
+    
     @IBAction func editTaskAction(_ sender: Any) {
         
         let alert = UIAlertController(title: "", message: "Wybierz opcję", preferredStyle: .actionSheet)
@@ -99,24 +108,24 @@ extension TaskViewController {
         self.viewModel?.bindTask()
     }
     
-    private func prepareView(_ model: TaskModel) {
+    private func prepareView(_ state: TaskState) {
         self.navigationItem.rightBarButtonItem?.isEnabled = true
-        switch model.state {
-        case TaskState.backlog.rawValue:
+        switch state {
+        case TaskState.backlog:
             self.backlogLbl.configure(TaskState.backlog.rawValue, isActive: true)
             self.informationView.backgroundColor = self.backlogLbl.backgroundColor
-        case TaskState.inProgress.rawValue:
+        case TaskState.inProgress:
             self.inProgressLbl.configure(TaskState.inProgress.rawValue, isActive: true)
             self.informationView.backgroundColor = self.inProgressLbl.backgroundColor
-        case TaskState.toFix.rawValue:
+        case TaskState.toFix:
             self.toFixLbl.configure(TaskState.toFix.rawValue, isActive: true)
             self.informationView.backgroundColor = self.toFixLbl.backgroundColor
-        case TaskState.done.rawValue:
+        case TaskState.done:
             self.navigationItem.rightBarButtonItem?.isEnabled = false
             self.doneLbl.configure(TaskState.done.rawValue, isActive: true)
             self.informationView.backgroundColor = self.doneLbl.backgroundColor
         //TODO: zablokuj aboslutnie wszystko bo już Done i elo i koniec
-        case TaskState.review.rawValue:
+        case TaskState.review:
             self.reviewLbl.configure(TaskState.review.rawValue, isActive: true)
             self.informationView.backgroundColor = self.reviewLbl.backgroundColor
         default:
@@ -143,7 +152,7 @@ extension TaskViewController {
         
         self.viewModel?.taskModel.asObservable().subscribe(onNext: {
             guard let model = $0 else { return }
-            self.prepareView(model)
+            self.prepareView(TaskState(rawValue: model.state) ?? .backlog)
         }).disposed(by: self.disposeBag)
         
         self.viewModel?.taskName.asObservable()
@@ -229,7 +238,7 @@ extension TaskViewController {
         //REFRESH
         self.view.layoutIfNeeded()
         self.viewModel?.taskViewState.value = (self.viewModel?.taskViewState.value)!
-        self.prepareView(model)
+        self.prepareView(TaskState(rawValue: model.state) ?? .backlog)
     }
     
     private func prepareUserView() {

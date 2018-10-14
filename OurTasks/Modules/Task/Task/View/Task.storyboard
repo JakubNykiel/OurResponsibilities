@@ -268,6 +268,9 @@
                                                 <integer key="value" value="24"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="resignAction:" destination="VMb-LN-rS6" eventType="touchUpInside" id="43h-BH-SUo"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoU-fb-cSQ">
                                         <rect key="frame" x="205" y="0.0" width="130" height="48"/>
@@ -287,6 +290,9 @@
                                                 <integer key="value" value="24"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="checkAction:" destination="VMb-LN-rS6" eventType="touchUpInside" id="0ad-nS-LE9"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>

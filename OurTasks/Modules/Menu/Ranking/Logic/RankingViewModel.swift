@@ -17,8 +17,9 @@ class RankingViewModel {
     var groupRanking: [String:GroupModel] = [:]
     var eventRanking: [String:String] = [:]
     var userData: [String:UserModel] = [:]
+    var eventData: [String:EventModel] = [:]
     var groupRankingBehaviorSubject: BehaviorSubject<[String:Int]> = BehaviorSubject(value: [:])
-    var eventRankingBehaviorSubject: BehaviorSubject<[String:Int]> = BehaviorSubject(value: [:])
+    var eventRankingBehaviorSubject: BehaviorSubject<[EventModel]> = BehaviorSubject(value: [])
     var noRankingGroupsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var noRankingEventsBehaviorSubject: BehaviorSubject<Bool> = BehaviorSubject(value: false)
     var sectionsBehaviourSubject: BehaviorSubject<[RankingSection]> = BehaviorSubject(value: [])
@@ -29,6 +30,7 @@ class RankingViewModel {
     var groupID: String
     var groupModel: GroupModel
     var dataBinded: BehaviorSubject<Bool> = BehaviorSubject(value: false)
+    var sectionEventTitle: [String] = []
 
     
     init(groupId: String, groupModel: GroupModel) {
@@ -50,6 +52,7 @@ class RankingViewModel {
     }
     
     private func fetchEventRanking() {
+        self.sectionEventTitle = []
         let events = self.groupModel.events ?? []
         self.toEventModel(events)
         _ = events.compactMap({
@@ -57,8 +60,8 @@ class RankingViewModel {
             eventRef.getDocument(completion: { (document, error) in
                 if let document = document {
                     guard let eventData = document.data() else { return }
-                    guard let users = eventData["users"] as? [String:Int] else { return }
-                    self.eventRankingBehaviorSubject.onNext(users)
+                    let eventModel = try! FirebaseDecoder().decode(EventModel.self, from: eventData)
+                    self.eventRankingBehaviorSubject.onNext([eventModel])
                 } else {
                     print("Event not exist")
                 }
@@ -74,6 +77,7 @@ class RankingViewModel {
                     guard let eventData = document.data() else { return }
                     let eventModel = try! FirebaseDecoder().decode(EventModel.self, from: eventData)
                     self.eventRanking[event] = eventModel.name
+                    self.eventData[eventModel.name] = eventModel
                     if index == events.count - 1 && self.selectedSegment.value == 0 {
                         self.dataBinded.onNext(true)
                     }
@@ -134,17 +138,21 @@ class RankingViewModel {
             .disposed(by: self.disposeBag)
         
         self.eventRankingBehaviorSubject
-            .flatMap({ (users) -> Observable<[RankingEventCellModel]> in
+            .flatMap({ (events) -> Observable<[RankingEventCellModel]> in
+                guard let model = events.first else { return Observable.empty() }
+                guard let users = model.users else { return Observable.empty() }
                 let sortedUsers = users.sorted { $0.1 > $1.1 }
                 let ret: [RankingEventCellModel] = sortedUsers.enumerated().compactMap({ (index,element) in
                     let name = self.userData[element.key]?.username ?? ""
-                    return RankingEventCellModel(id: element.key, eventName: "", name: name, points: element.value)
+                    let points = users[element.key] ?? 0
+                    return RankingEventCellModel(id: element.key, eventModel: model, name: name, points: points)
                 })
                 return Observable.of(ret)
             })
             .subscribe(onNext: {
-                
-                self.sections.append(RankingSection.section(title: $0.first?.eventName ?? "", items: $0.compactMap({ RankingItemType.event($0) })))
+                self.sections.append(RankingSection.section(title: $0.first?.eventModel.name ?? "", items: $0.compactMap({
+                    return RankingItemType.event($0)
+                })))
                 self.sectionsBehaviourSubject.onNext(self.sections)
             })
             .disposed(by: self.disposeBag)

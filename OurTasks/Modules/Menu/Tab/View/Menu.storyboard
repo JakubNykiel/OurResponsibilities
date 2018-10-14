@@ -955,7 +955,7 @@
         <scene sceneID="OBs-gV-U7o">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Nyg-NF-gCb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nagrody" id="qHX-RQ-BFW"/>
+                    <tabBarItem key="tabBarItem" title="Nagrody" image="icExchange" id="qHX-RQ-BFW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="50C-zX-1R0">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1443,6 +1443,7 @@
     <resources>
         <image name="icAR" width="18.75" height="18.75"/>
         <image name="icCalendar" width="18.75" height="18.75"/>
+        <image name="icExchange" width="18.75" height="18.75"/>
         <image name="icQR" width="220" height="220"/>
         <image name="icQR2" width="18.75" height="18.75"/>
         <image name="icRanking" width="18.75" height="18.75"/>

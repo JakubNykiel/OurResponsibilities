@@ -48,7 +48,7 @@ struct RankingGroupCellModel {
 }
 struct RankingEventCellModel {
     var id: String
-    var eventName: String
+    var eventModel: EventModel
     var name: String
     var points: Int
 }
